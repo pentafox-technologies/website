@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpentafox_web=self.webpackChunkpentafox_web||[]).push([[991],{1222:function(e,n,t){t.r(n);var u=t(4723),a=t(7294);n.default=function(){return a.createElement(u.x,null,"Careers")}}}]);
+//# sourceMappingURL=component---src-pages-careers-js-fb8cf778e22e7c03f2bf.js.map
