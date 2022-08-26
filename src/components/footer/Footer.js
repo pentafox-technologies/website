@@ -1,4 +1,3 @@
-import { Text, Title } from "@mantine/core";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React, { Fragment } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -6,7 +5,6 @@ import { FooterWrapper } from "./footer.css";
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
-  // const queryData = useStaticQuery(graphql`query{}`)
 
   const queryData = useStaticQuery(graphql`
     query {
@@ -26,7 +24,6 @@ const Footer = () => {
   `);
 
   return (
-    // <Title>Footer</Title>
     <FooterWrapper>
       <div className="container lg-container">
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>

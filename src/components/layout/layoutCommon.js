@@ -6,7 +6,7 @@
  */
 
  import React from "react"
- import Footer from "../footer/footer"
+ import Footer from "../footer/Footer"
 //  import HeadWithQuery from "../head/head"
  import Header from "../header/header"
  
@@ -18,7 +18,7 @@
        <div className="content-wrap">
          <main>{children}</main>
        </div>
-       {/* <Footer /> */}
+       <Footer />
      </>
    )
  }

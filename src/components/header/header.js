@@ -1,9 +1,9 @@
 import React from 'react';
 import IsMobile from '../../helpers/IsMobile';
 import { HeaderWrapper } from './header.css';
-import { Link } from '@reach/router';
 import LogoSVG from '../../images/logo-pf-white.svg';
 import LogoDarkSVG from '../../images/logo-pf-dark.svg';
+import { Link } from 'gatsby';
 
 const isMobileDevice = IsMobile();
 
