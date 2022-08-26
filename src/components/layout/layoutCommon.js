@@ -6,28 +6,22 @@
  */
 
  import React from "react"
-//  import PropTypes from "prop-types"
  import Footer from "../footer/footer"
 //  import HeadWithQuery from "../head/head"
  import Header from "../header/header"
-//  import "scss/main.scss"
  
- const LayoutCommon = ({ children, headProps={}, hideLink, showCareers=true, showDarkLogo=false }) => {
+ const LayoutCommon = ({ children, headProps={}, hideLink, showCareers=true }) => {
    return (
      <>
        {/* <HeadWithQuery {...headProps} /> */}
-       <Header showCareers={showCareers} showDarkLogo={showDarkLogo} />
+       <Header showCareers={showCareers} showDarkLogo={false} />
        <div className="content-wrap">
          <main>{children}</main>
        </div>
-       <Footer />
+       {/* <Footer /> */}
      </>
    )
  }
- 
-//  LayoutCommon.propTypes = {
-//    children: PropTypes.node.isRequired,
-//  }
- 
+
  export default LayoutCommon
  

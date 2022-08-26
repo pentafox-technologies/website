@@ -8,10 +8,7 @@
 import React from "react";
 import Footer from "../footer/Footer";
 import Header from "../header/header";
-//  import PropTypes from "prop-types"
-//  import Footer from "../footer/footer"
 //  import HeadWithQuery from "../head/head"
-//  import "../../scss/main.scss"
 
 const LayoutHome = ({
   children,

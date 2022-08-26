@@ -1,3 +1,4 @@
+import { Text, Title } from "@mantine/core";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React, { Fragment } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -5,6 +6,7 @@ import { FooterWrapper } from "./footer.css";
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
+  // const queryData = useStaticQuery(graphql`query{}`)
 
   const queryData = useStaticQuery(graphql`
     query {
@@ -24,6 +26,7 @@ const Footer = () => {
   `);
 
   return (
+    // <Title>Footer</Title>
     <FooterWrapper>
       <div className="container lg-container">
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>
@@ -63,18 +66,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* <ul className="list-unstyled social-icons mb-3">
-              <li>
-                <a href='https://www.linkedin.com/company/pentafox-tech' target="_blank">
-                  <i className="pentafox-facebook" />
-                </a>
-              </li>
-              <li>
-                <a href='https://www.linkedin.com/company/pentafox-tech' target="_blank">
-                  <i className="pentafox-linkedin" />
-                </a>
-              </li>
-            </ul> */}
+            
           </div>
           <div className="col-12 col-sm-6 col-md-6">
             <p className="mb-40">
@@ -88,20 +80,7 @@ const Footer = () => {
                 ))}
               </div>
             </p>
-            {/* {isMobileDevice ? (
-                <ul className="list-unstyled social-icons mb-40">
-                  <li>
-                    <a href={data.homeJson.footer.facebook} target="_blank">
-                      <i className="pentafox-facebook" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href={data.homeJson.footer.linkedin} target="_blank">
-                      <i className="pentafox-linkedin" />
-                    </a>
-                  </li>
-                </ul>
-              ) : null} */}
+            
           </div>
         </div>
 

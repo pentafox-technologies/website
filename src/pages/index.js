@@ -56,7 +56,6 @@ const IndexPage = () => {
   `);
 
   return (
-    // <div></div>
     <LayoutHome>
       <HomeWrapper>
         <HeroSection contentData={queryData.allContentfulServices.nodes} />
