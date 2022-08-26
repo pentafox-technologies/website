@@ -22,7 +22,6 @@ export const HeaderWrapper = styled.header`
   position: absolute;
   top: 12px;
   left: 0;
-  left: 0;
   padding: 12px 0;
   z-index: 10;
   box-shadow: none;

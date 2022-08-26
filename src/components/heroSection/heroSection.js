@@ -1,8 +1,11 @@
+import { Box, Center } from "@mantine/core";
 import { graphql, useStaticQuery } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import React from "react";
 import { HeroSectionWrapper } from "./heroSection.css";
+
+const picList = ['platformImage', 'digitalStrategyImage', 'MLImage']
 
 const FigureWrapper = ({ children, id, ...props }) => {
   return (
@@ -87,8 +90,6 @@ const HeroSection = ({ contentData }) => {
     }
   `);
 
-  console.log(queryData)
-
   return (
     <HeroSectionWrapper>
       <div className="left-col">
@@ -96,33 +97,36 @@ const HeroSection = ({ contentData }) => {
           Tag="figure"
           fluid={queryData.indexImage.childImageSharp.fluid}
         >
-          <figcaption>
-            <h2>
-              {queryData.allContentfulLangingContent.nodes[0]?.landingTitle}
-            </h2>
-            <p>
-              {
-                queryData.allContentfulLangingContent.nodes[0]
-                  ?.landingDescription.landingDescription
-              }
-            </p>
-            <span
-              className="know-more"
-              onClick={() => scrollTo(`#content-section-0`)}
-            >
-              Know More
-            </span>
-          </figcaption>
+            <figcaption>
+              <Center>
+                <Box sx={{ maxWidth: 650 }}>
+                  <h2>
+                    {queryData.allContentfulLangingContent.nodes[0]?.landingTitle}
+                  </h2>
+                  <p>
+                    {
+                      queryData.allContentfulLangingContent.nodes[0]
+                        ?.landingDescription.landingDescription
+                    }
+                  </p>
+                  <span
+                    className="know-more"
+                    onClick={() => scrollTo(`#content-section-0`)}
+                  >
+                    Know More
+                  </span>
+                </Box>
+              </Center>
+            </figcaption>
         </BackgroundImage>
       </div>
       <div className="right-col">
         {contentData?.map((item, index) => {
-          console.log(item)
           return (
             <FigureWrapper
               key={index}
               id={index}
-              image={queryData.platformImage.childImageSharp.fluid}
+              image={queryData?.[picList[index]].childImageSharp.fluid}
             >
               <figcaption>
                 <h2>{item.title}</h2>

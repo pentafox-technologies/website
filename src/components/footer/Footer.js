@@ -1,3 +1,4 @@
+import { Anchor, Center, Image, Text } from "@mantine/core";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React, { Fragment } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -44,26 +45,20 @@ const Footer = () => {
               <div className="col-6">
                 <p className="mb-2">
                   <span>Feel like talking</span>
-                  <a
-                    href={`tel:${queryData.allContentfulContact.nodes[0]?.mobile}`}
-                  >
+                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mobile}`}>
                     {queryData.allContentfulContact.nodes[0]?.mobile}
-                  </a>
+                  </Anchor>
                 </p>
               </div>
               <div className="col-6">
                 <p className="mb-2">
                   <span>Need help?</span>
-                  <a
-                    href={`mailto:${queryData.allContentfulContact.nodes[0]?.mail}`}
-                  >
+                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mail}`}>
                     {queryData.allContentfulContact.nodes[0]?.mail}
-                  </a>
+                  </Anchor>
                 </p>
               </div>
             </div>
-
-            
           </div>
           <div className="col-12 col-sm-6 col-md-6">
             <p className="mb-40">
@@ -77,7 +72,6 @@ const Footer = () => {
                 ))}
               </div>
             </p>
-            
           </div>
         </div>
 
@@ -89,10 +83,16 @@ const Footer = () => {
             {"   "}&#124;{"   "}
             <Link to="/careers" className="pl-3 text-white">
               Careers
-            </Link>{"   "}&#124;{"   "}
-            <Link to="/products" className="pl-3 text-white">
-              Products
             </Link>
+            {/* <Link to="/products" className="pl-3 text-white">
+              Products
+            </Link> */}
+          </div>
+          <div className="right-col">
+            <Center inline>
+              <Text>Designed by</Text>
+              <Image src="https://i.imgur.com/hTb0x0M.png" width={60} ml='xs'/>
+            </Center>
           </div>
         </div>
       </div>
