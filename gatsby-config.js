@@ -4,7 +4,7 @@ require("dotenv").config({
 
 
 module.exports = {
-  pathPrefix: null,
+  pathPrefix: "/website/",
   siteMetadata: {
     title: `pentafoxWeb`,
     siteUrl: `https://www.yourdomain.tld`,
