@@ -1,15 +1,12 @@
 import React from "react";
 
 const ProductContent = ({contentRight}) => {
-    console.log(contentRight);
   return (
     <div
       style={{
-        // textAlign: "center",
         padding: '20px 70px',
       }}
     >
-      {/* <h2>Loan Management System Which Answers These Challenges</h2> */}
       <div style={{ display: "flex", paddingTop: 50, textAlign: "left", flexDirection: contentRight ? 'row-reverse' : 'row' }}>
         <div className="container"></div>
         <div className="container" style={{ padding: "0px 30px" }}>

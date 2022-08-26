@@ -88,6 +88,20 @@ const Footer = () => {
                 ))}
               </div>
             </p>
+            {/* {isMobileDevice ? (
+                <ul className="list-unstyled social-icons mb-40">
+                  <li>
+                    <a href={data.homeJson.footer.facebook} target="_blank">
+                      <i className="pentafox-facebook" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href={data.homeJson.footer.linkedin} target="_blank">
+                      <i className="pentafox-linkedin" />
+                    </a>
+                  </li>
+                </ul>
+              ) : null} */}
           </div>
         </div>
 
@@ -100,9 +114,9 @@ const Footer = () => {
             <Link to="/careers" className="pl-3 text-white">
               Careers
             </Link>{"   "}&#124;{"   "}
-            <Link to="/products" className="pl-3 text-white">
+            {/* <Link to="/products" className="pl-3 text-white">
               Products
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
