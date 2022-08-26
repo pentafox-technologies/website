@@ -114,9 +114,9 @@ const Footer = () => {
             <Link to="/careers" className="pl-3 text-white">
               Careers
             </Link>{"   "}&#124;{"   "}
-            {/* <Link to="/products" className="pl-3 text-white">
+            <Link to="/products" className="pl-3 text-white">
               Products
-            </Link> */}
+            </Link>
           </div>
         </div>
       </div>
