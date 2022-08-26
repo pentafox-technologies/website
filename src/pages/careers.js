@@ -1,0 +1,86 @@
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import BenefitsSection from "../components/Benefits/BenefitsSection";
+import { HomeWrapper } from "../components/home/home.css";
+import JobsList from "../components/JobsList/JobsList";
+import LayoutCommon from "../components/layout/layoutCommon";
+import { CareersContent } from "../components/pageWrapper/careers.css";
+import PageWrapper, {
+  TopSectionWrapper,
+} from "../components/pageWrapper/PageWrapper";
+
+const Careers = () => {
+  const queryData = useStaticQuery(graphql`
+    query {
+      allContentfulJobs(sort: {fields: createdAt}) {
+        nodes {
+          title
+          tags
+          skills
+          location
+          shortDescription
+          jobType
+          education
+          experience
+          jobDescription {
+            jobDescription
+          }
+          profile {
+            profile
+          }
+        }
+      }
+      allContentfulBenefits(sort: { fields: createdAt }) {
+        nodes {
+          title
+          imageUrl
+        }
+      }
+    }
+  `);
+
+  return (
+    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Careers'}} >
+      <HomeWrapper>
+        <PageWrapper>
+          <TopSectionWrapper>
+            <div className="container lg-container">
+              <h1>Wanna work on right things?</h1>
+              <p>Come join us and grow with us!</p>
+            </div>
+          </TopSectionWrapper>
+
+          <BenefitsSection
+            title="Benefits @ Pentafox"
+            description="Thoughtfully packaged benefits that enhance the lifestyle for every employee keeping in mind their physical and mental wellbeing. Financial wellness is also competitive enough to make it easy for every employee to take good care of self and family (now, and in the future) and so we can build for everyone, together."
+            data={queryData.allContentfulBenefits.nodes}
+          />
+
+          <div className="container lg-container">
+            <CareersContent>
+              <h2 className="heading text-center">Current opportunities</h2>
+              <p className="text-center">
+                We are proud to be an equal opportunity workplace and an
+                affirmative action employer.
+              </p>
+
+              <JobsList data={queryData.allContentfulJobs.nodes} />
+
+              <div className="job-email text-center">
+                <p>
+                  Email your CV to{" "}
+                  <a href="mailto:jobs@pentafox.in" title="Email us">
+                    jobs@pentafox.in
+                  </a>{" "}
+                  with &lt;Job-Title&gt; as subject.
+                </p>
+              </div>
+            </CareersContent>
+          </div>
+        </PageWrapper>
+      </HomeWrapper>
+    </LayoutCommon>
+  );
+};
+
+export default Careers;
