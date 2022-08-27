@@ -13,7 +13,7 @@ const BenefitsSection = ({ title, description, data }) => {
             {data.map((item, i) => {
               return (
                 <Group sx={{display: 'flex', alignItems: 'center'}}>
-                  <Image src={item?.imageUrl} width={30} height={30} />
+                  <Image src={item?.imageUrl} width={37} />
                   <Text>{item.title}</Text>
                 </Group>
               );

@@ -1,4 +1,4 @@
-import { Anchor, Center, Image, Text } from "@mantine/core";
+import { Anchor, Box, Center, Image, Text } from "@mantine/core";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React, { Fragment } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -19,6 +19,13 @@ const Footer = () => {
         nodes {
           name
           address
+        }
+      }
+      allContentfulSocialLink(sort: { fields: createdAt }) {
+        nodes {
+          socialLink
+          socialIcon
+          title
         }
       }
     }
@@ -59,6 +66,17 @@ const Footer = () => {
                 </p>
               </div>
             </div>
+            {isMobileDevice ? null : (
+              <Box pt='sm'>
+                <ul className="list-unstyled social-icons mb-40">
+                  {
+                    queryData.allContentfulSocialLink?.nodes?.map((link, item) => (
+                      <li key={item}><a href={link.socialLink} target="_blank"><Image src={link.socialIcon} width={17} /></a></li>
+                    ))
+                  }
+                </ul>
+              </Box>
+            )}
           </div>
           <div className="col-12 col-sm-6 col-md-6">
             <p className="mb-40">
@@ -72,6 +90,15 @@ const Footer = () => {
                 ))}
               </div>
             </p>
+            {isMobileDevice ? (
+              <ul className="list-unstyled social-icons mb-40">
+                {
+                  queryData.allContentfulSocialLink?.nodes?.map((link, item) => (
+                    <li key={item}><a href={link.socialLink} target="_blank"><Image src={link.socialIcon} width={17} /></a></li>
+                  ))
+                }
+              </ul>
+            ): null}
           </div>
         </div>
 
