@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpentafox_web=self.webpackChunkpentafox_web||[]).push([[737],{5468:function(e,n,t){t.r(n);var u=t(7294),a=t(4723);n.default=function(){return u.createElement(a.x,null,"Products")}}}]);
-//# sourceMappingURL=component---src-pages-products-js-a9d107d9824a5134ace2.js.map
