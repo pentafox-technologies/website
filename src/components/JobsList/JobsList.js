@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { ModalBody } from "../Modal/Modal.css";
 import MarkdownIt from "markdown-it";
-import { Modal, Title } from "@mantine/core";
+import { Anchor, Box, Button, Modal, Title } from "@mantine/core";
 
 ReactModal.defaultStyles.overlay.backgroundColor = "rgba(0,0,0,.3)";
 ReactModal.defaultStyles.overlay.zIndex = 50;
@@ -82,6 +82,9 @@ const JobsList = ({ data }) => {
                 }}
               />
             )}
+            <Anchor href={`mailto:jobs@pentafox.in?subject=Job Application - ${selectedJob?.title}`}>
+              <Button mt='xl' color='blue'>Apply Now</Button>
+            </Anchor>
         </ModalBody>
       </Modal>
     </>

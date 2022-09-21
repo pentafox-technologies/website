@@ -7,7 +7,7 @@ module.exports = {
   pathPrefix: "/website/",
   siteMetadata: {
     title: `pentafoxWeb`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://pentafox.in/`,
   },
   plugins: [
     {
@@ -31,6 +31,18 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Pentafox`,
+        short_name: `pentafox`,
+        start_url: `/`,
+        background_color: `#dc2908`,
+        theme_color: `#dc2908`,
+        display: `minimal-ui`,
+        icon: `src/images/logo-icon.svg`, // This path is relative to the root of the site.
+      },
     },
     {
       resolve: "gatsby-plugin-react-svg",

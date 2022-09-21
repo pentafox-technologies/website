@@ -165,9 +165,10 @@ const Head = ({
 );
 
 const HeadWithQuery = (props) => {
+  console.log(props);
   return (
     <Location>
-      {({ location }) => <Head {...props} location={location} />}
+      {({ location }) => <Head {...props.allContentfulSiteConfig.nodes[0]} location={location} />}
     </Location>
   );
 };
