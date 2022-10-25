@@ -1,80 +1,53 @@
 import { Box, Center } from "@mantine/core";
 import { graphql, useStaticQuery } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import React from "react";
 import { HeroSectionWrapper } from "./heroSection.css";
-
-const picList = ['platformImage', 'digitalStrategyImage', 'MLImage']
+import { getImage } from "gatsby-plugin-image";
+import { BgImage  } from "gbimage-bridge";
 
 const FigureWrapper = ({ children, id, ...props }) => {
+  const PlatformImage = getImage(props?.queryData?.platformImage)
+  const DigitalStrategyImage = getImage(props?.queryData?.digitalStrategyImage)
+  const MLImage = getImage(props?.queryData?.MLImage)
+  const imageHelper = [PlatformImage, DigitalStrategyImage, MLImage]
   return (
-    <BackgroundImage
+    <BgImage
       Tag="figure"
-      fluid={props.image}
+      image={imageHelper[id]}
       onClick={() => scrollTo(`#content-section-${id}`)}
     >
       {children}
-    </BackgroundImage>
+    </BgImage>
   );
 };
 
 const HeroSection = ({ contentData }) => {
   const queryData = useStaticQuery(graphql`
     query {
-      indexImage: file(relativePath: { eq: "landing.jpg" }) {
+      indexImage: file(relativePath: {eq: "landing.jpg"}) {
         childImageSharp {
-          fluid(
-            maxHeight: 800
-            quality: 90
-            traceSVG: { color: "#292733", turnPolicy: TURNPOLICY_MINORITY }
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
         }
       }
       platformImage: file(relativePath: { eq: "platform-banner.jpg" }) {
         childImageSharp {
-          fluid(
-            maxHeight: 500
-            quality: 90
-            traceSVG: { color: "#292733", turnPolicy: TURNPOLICY_MINORITY }
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
         }
       }
       digitalStrategyImage: file(relativePath: { eq: "digital-banner.jpg" }) {
         childImageSharp {
-          fluid(
-            maxHeight: 500
-            quality: 90
-            traceSVG: { color: "#292733", turnPolicy: TURNPOLICY_MINORITY }
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
         }
       }
       MLImage: file(relativePath: { eq: "cv-banner.jpg" }) {
         childImageSharp {
-          fluid(
-            maxHeight: 500
-            quality: 90
-            traceSVG: { color: "#292733", turnPolicy: TURNPOLICY_MINORITY }
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
         }
       }
       ProductImage: file(relativePath: { eq: "platform-banner-1.jpg" }) {
         childImageSharp {
-          fluid(
-            maxHeight: 500
-            quality: 90
-            traceSVG: { color: "#292733", turnPolicy: TURNPOLICY_MINORITY }
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
         }
       }
       allContentfulLangingContent {
@@ -90,12 +63,13 @@ const HeroSection = ({ contentData }) => {
     }
   `);
 
+  const IndexImage = getImage(queryData?.indexImage)
   return (
     <HeroSectionWrapper>
       <div className="left-col">
-        <BackgroundImage
+        <BgImage
           Tag="figure"
-          fluid={queryData.indexImage.childImageSharp.fluid}
+          image={IndexImage}
         >
             <figcaption>
               <Center>
@@ -118,7 +92,7 @@ const HeroSection = ({ contentData }) => {
                 </Box>
               </Center>
             </figcaption>
-        </BackgroundImage>
+        </BgImage>
       </div>
       <div className="right-col">
         {contentData?.map((item, index) => {
@@ -126,7 +100,7 @@ const HeroSection = ({ contentData }) => {
             <FigureWrapper
               key={index}
               id={index}
-              image={queryData?.[picList[index]].childImageSharp.fluid}
+              queryData={queryData}
             >
               <figcaption>
                 <h2>{item.title}</h2>

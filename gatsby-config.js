@@ -4,7 +4,7 @@ require("dotenv").config({
 
 
 module.exports = {
-  pathPrefix: "/website/",
+  pathPrefix: "/website",
   siteMetadata: {
     title: `pentafoxWeb`,
     siteUrl: `https://pentafox.in/`,
@@ -74,5 +74,8 @@ module.exports = {
         display: "swap",
       },
     },
+    {
+      resolve: 'gatsby-plugin-force-file-loader'
+    }
   ],
 };

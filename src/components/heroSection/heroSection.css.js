@@ -110,7 +110,7 @@ export const HeroSectionWrapper = styled.div`
         height: 100vh;
         min-height: 700px;
       }
-      &:after {
+      &:before &:after {
         background: linear-gradient(180deg, #e64545 0%, #a22121 100%);
       }
 
@@ -183,7 +183,7 @@ export const HeroSectionWrapper = styled.div`
         flex: 1 1;
       }
 
-      &:after {
+      &:before &:after {
         background: #f4a261;
         ${sm} {
           background: linear-gradient(180deg, #f4b061 0%, #bf7e31 100%);
@@ -194,13 +194,13 @@ export const HeroSectionWrapper = styled.div`
         ${xs} {
           height: 240px;
         }
-        &:after {
+        &:before &:after {
           background: linear-gradient(180deg, #a94026 0%, #e76f51 100%);
         }
       }
 
       &:last-child {
-        &:after {
+        &:before &:after {
           background: #f4b061;
 
           ${sm} {

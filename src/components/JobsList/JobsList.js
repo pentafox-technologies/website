@@ -82,9 +82,11 @@ const JobsList = ({ data }) => {
                 }}
               />
             )}
-            <Anchor href={`mailto:jobs@pentafox.in?subject=Job Application - ${selectedJob?.title}`}>
-              <Button mt='xl' color='blue'>Apply Now</Button>
-            </Anchor>
+            <Box mt="xl" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <Anchor href={`mailto:jobs@pentafox.in?subject=Job Application - ${selectedJob?.title}`}>
+                <Button color='blue'>Apply Now</Button>
+              </Anchor>
+            </Box>
         </ModalBody>
       </Modal>
     </>
