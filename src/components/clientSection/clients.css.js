@@ -10,7 +10,7 @@ export const ClientLogoSection = styled.div`
     padding: 50px 0;
     // margin-bottom: 120px;
     p {
-      width: 70%;
+      width: 60%;
       margin: 0 auto;
       margin-top: 15px;
       margin-bottom: 40px;
@@ -37,15 +37,10 @@ export const ClientLogoSection = styled.div`
       transition: all .35s ease-in-out;
 
       img {
-        filter: grayscale(90%);
         height: 38px;
         ${sm} {
           height: 45px;
         }
-      }
-
-      &:hover img {
-        filter: none;
       }
     }
   }

@@ -1,3 +1,5 @@
+import { Image } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import { ClientLogoSection } from "./clients.css";
 
@@ -6,6 +8,7 @@ const Clients = ({
   partnerSectionData,
   clientsAndPartnersData,
 }) => {
+  const sm = useMediaQuery('(min-width: 768px)')
   return (
     <div>
       <ClientLogoSection>
@@ -21,7 +24,7 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <img title={item.name} alt={item.name} src={item.logoUrl} />
+                    <Image title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
                   </li>
                 );
               })}
@@ -41,7 +44,7 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <img title={item.name} alt={item.name} src={item.logoUrl} />
+                    <Image title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
                   </li>
                 );
               })}

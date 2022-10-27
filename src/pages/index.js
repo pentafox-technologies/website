@@ -5,7 +5,6 @@ import LayoutHome from "../components/layout/layoutHome";
 import HeroSection from "../components/heroSection/heroSection";
 import ContentSection from "../components/contentSection/contentSection";
 import Clients from "../components/clientSection/clients";
-import { Text, Title } from "@mantine/core";
 
 const IndexPage = () => {
   const queryData = useStaticQuery(graphql`
@@ -50,6 +49,7 @@ const IndexPage = () => {
         name
         logoUrl
         parentSection
+        size
       }
     }
   }

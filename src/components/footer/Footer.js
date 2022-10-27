@@ -15,7 +15,7 @@ const Footer = () => {
           mail
         }
       }
-      allContentfulLocations(sort: { fields: createdAt }) {
+      allContentfulLocations(sort: {fields: contentful_id}) {
         nodes {
           name
           address
