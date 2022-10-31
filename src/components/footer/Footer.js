@@ -52,7 +52,7 @@ const Footer = () => {
               <div className="col-6">
                 <p className="mb-2">
                   <span>Feel like talking</span>
-                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mobile}`}>
+                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mobile}`} style={{fontFamily: 'Varela Round'}}>
                     {queryData.allContentfulContact.nodes[0]?.mobile}
                   </Anchor>
                 </p>
@@ -60,7 +60,7 @@ const Footer = () => {
               <div className="col-6">
                 <p className="mb-2">
                   <span>Need help?</span>
-                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mail}`}>
+                  <Anchor href={`mailto:${queryData.allContentfulContact.nodes[0]?.mail}`} style={{fontFamily: 'Varela Round'}}>
                     {queryData.allContentfulContact.nodes[0]?.mail}
                   </Anchor>
                 </p>
@@ -104,11 +104,11 @@ const Footer = () => {
 
         <div className="btm-link">
           <div className="left-col">
-            <Link to="/" className="pr-3 text-white">
+            <Link to="/" className="pr-3 text-white" style={{textDecoration: 'none', marginRight: 8}}>
               Home
             </Link>
-            {"   "}&#124;{"   "}
-            <Link to="/careers" className="pl-3 text-white">
+            {"    "}&#124;{"    "}
+            <Link to="/careers" className="pl-3 text-white" style={{textDecoration: 'none', marginLeft: 8}}>
               Careers
             </Link>
             {/* <Link to="/products" className="pl-3 text-white">

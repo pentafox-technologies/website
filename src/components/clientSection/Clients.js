@@ -24,7 +24,7 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <Image title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
+                    <img title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
                   </li>
                 );
               })}
@@ -44,7 +44,7 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <Image title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
+                    <img title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
                   </li>
                 );
               })}
