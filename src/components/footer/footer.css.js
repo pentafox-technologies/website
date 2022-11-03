@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { xs, sm } from '../../helpers/device';
-import { theme } from '../../helpers/theme';
+import { xs, sm } from 'helpers/device';
+import { theme } from 'helpers/theme';
 
 export const FooterWrapper = styled.footer`
   background: #292733;
@@ -25,7 +25,7 @@ export const FooterWrapper = styled.footer`
     }
     .location-address {
       margin-bottom: 0;
-      color: #959595;
+      color: #b8b6b6;
       font-size: 13px;
     }
   }
@@ -93,6 +93,36 @@ export const FooterWrapper = styled.footer`
     }
   }
 
+  .form-group-checkbox {
+    &:last-child {
+      margin-bottom: 24px;
+    }
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    label {
+      color: ${theme.white};
+      font-size: 12px;
+      margin-left: 10px;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none;
+    }
+    input {
+      margin-top: 2px;
+    }
+
+    .error-label {
+      color: rgb(202, 61, 53);
+    }
+
+    a {
+      color: ${theme.white};
+      text-decoration: none;
+      border-bottom: 0.2px solid ${theme.white};
+    }
+  }
+
   .form-group {
     &:last-child {
       margin-bottom: 24px;
@@ -102,6 +132,12 @@ export const FooterWrapper = styled.footer`
       input {
         border-color: #f44336;
         box-shadow: 0 2px 10px 0 rgba(244, 67, 54, 0.5);
+      }
+    }
+
+    .error-label {
+      &::placeholder {
+        color: rgb(202, 61, 53);
       }
     }
 
@@ -116,6 +152,7 @@ export const FooterWrapper = styled.footer`
       line-height: 140%;
       font-weight: 600;
       color: #19181D;
+      margin-bottom: 10px;
 
       ${sm}{
         height: 48px;
@@ -123,7 +160,27 @@ export const FooterWrapper = styled.footer`
       }
 
       &::placeholder {
-        color: #19181D;
+        color: rgb(146, 146, 146);
+      }
+    }
+
+    textarea {
+      width: 100%;
+      background: ${theme.white};
+      border: 1px solid #ECEAEA;
+      border-radius: 2px;
+      padding: 16px;
+      font-size: 12px;
+      line-height: 140%;
+      font-weight: 600;
+      color: #19181D;
+
+      ${sm}{
+        font-size: 16px;
+      }
+
+      &::placeholder {
+        color: rgb(146, 146, 146);
       }
     }
 
@@ -206,6 +263,10 @@ export const FooterWrapper = styled.footer`
 
     ${sm}{
       font-size: 16px;
+    }
+
+    &:disabled {
+      background: rgb(146, 146, 146);
     }
   }
 
