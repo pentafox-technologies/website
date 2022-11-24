@@ -2,12 +2,9 @@ import {
   Anchor,
   Box,
   Button,
-  Center,
   Image,
-  Text,
 } from "@mantine/core";
 import { graphql, Link, navigate, useStaticQuery } from "gatsby";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import React, { useRef, useState } from "react";
 import IsMobile from "../../helpers/IsMobile";
 import { FooterWrapper } from "./footer.css";
@@ -138,7 +135,6 @@ const Footer = () => {
               <div className="location-grid">
                 {queryData.allContentfulLocations.nodes.map((item, i) => (
                   <div key={i}>
-                    {console.log(item)}
                     <p className="location-title">{item.name}</p>
                     <p className="location-address">{item.address.split('\\n').map(str => { return <p className='location-address'>{str}</p>})}</p>
                   </div>
@@ -321,7 +317,8 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
-          <div className="right-col">
+          <div className="right-col">© 2022 Pentafox Technologies. All Rights Reserved.</div>
+          {/* <div className="right-col">
             <Center inline>
               <Text>Designed by</Text>
               <Image
@@ -340,7 +337,7 @@ const Footer = () => {
                 }}
               />
             </Center>
-          </div>
+          </div> */}
         </div>
       </div>
     </FooterWrapper>
