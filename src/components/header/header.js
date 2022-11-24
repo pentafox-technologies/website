@@ -15,7 +15,7 @@ const Header = ({ showCareers, showDarkLogo=true }) => {
           {
             showDarkLogo ?
               <LogoDarkSVG height={isMobileDevice ? '30' : '42'} />
-              : <LogoSVG height={isMobileDevice ? '30' : '42'} />
+              : <LogoSVG height={isMobileDevice ? '30' : '60'} width="200" />
           }
         </Link>
         {

@@ -113,7 +113,7 @@ export const FooterWrapper = styled.footer`
     }
 
     .error-label {
-      color: rgb(202, 61, 53);
+      color: rgb(220, 43, 43);
     }
 
     a {
@@ -136,8 +136,9 @@ export const FooterWrapper = styled.footer`
     }
 
     .error-label {
+      color: rgb(220, 43, 43);
       &::placeholder {
-        color: rgb(202, 61, 53);
+        color: rgb(220, 43, 43);
       }
     }
 
@@ -174,9 +175,10 @@ export const FooterWrapper = styled.footer`
       line-height: 140%;
       font-weight: 600;
       color: #19181D;
+      resize: none;
 
       ${sm}{
-        font-size: 16px;
+        font-size: 14px;
       }
 
       &::placeholder {

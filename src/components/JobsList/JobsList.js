@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import ReactModal from "react-modal";
-import { ModalBody, ModalHeader } from "../Modal/Modal.css";
+import { ModalBody } from "../Modal/Modal.css";
 import MarkdownIt from "markdown-it";
 import { Anchor, Box, Button, Modal, Title } from "@mantine/core";
 
-// ReactModal.defaultStyles.overlay.backgroundColor = "rgba(0,0,0,.3)";
-// ReactModal.defaultStyles.overlay.zIndex = 50;
-// ReactModal.defaultStyles.content.margin = "auto";
-// ReactModal.defaultStyles.content.maxWidth = 900;
 
 const JobMeta = ({ data }) => {
   if (!data?.profile) {
@@ -35,7 +30,7 @@ const JobMeta = ({ data }) => {
 };
 
 const JobsList = ({ data }) => {
-  const [selectedJob, setSelectedJob] = useState({});
+  const [selectedJob, setSelectedJob] = useState(false);
 
   const md = new MarkdownIt({
     html: true,
@@ -65,27 +60,13 @@ const JobsList = ({ data }) => {
           );
         })}
       </div>
-      {/* <ReactModal
-        isOpen={selectedJob.title}
-        onRequestClose={() => setSelectedJob({})}
-        >
-        <ModalHeader>
-          <h1>{selectedJob.title}</h1>
-          <span onClick={() => setSelectedJob({})} />
-        </ModalHeader>
-        <ModalBody>
-          <JobMeta data={selectedJob?.description?.childrenMarkdownRemark?.[0]?.frontmatter} />
-          <p dangerouslySetInnerHTML={{ __html: selectedJob?.description?.childrenMarkdownRemark?.[0]?.html }} />
-        </ModalBody>
-      </ReactModal> */}
       <Modal
-        opened={selectedJob?.title}
-        onClose={() => setSelectedJob({})}
-        title={<Title order={3}>{selectedJob?.title}</Title>}
+        opened={selectedJob}
+        onClose={() => setSelectedJob(false)}
+        title={<Title order={3} style={{fontFamily: 'Outfit, sans-serif', fontWeight: 500}}>{selectedJob?.title}</Title>}
         size='xl'
         overlayOpacity={0.55}
         overlayBlur={3}
-        overflow="inside"
       >
         <ModalBody>
           <JobMeta data={selectedJob} />
