@@ -5,7 +5,7 @@ require("dotenv").config({
 
 
 module.exports = {
-  pathPrefix: "/website/",
+  pathPrefix: "",
   siteMetadata: {
     ...siteConfig
   },
@@ -74,6 +74,16 @@ module.exports = {
     //     // cookieDomain: "pentafox.in",
     //   },
     // },
+    {
+      resolve: `gatsby-plugin-clarity`,
+      options: {
+      clarity_project_id: 'exnovfb8i4',
+      // Boolean value for enabling clarity while developing
+      // true will enable clarity tracking code on both development and production environments
+      // false will enable clarity tracking code on production environment only
+      enable_on_dev_env: true
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

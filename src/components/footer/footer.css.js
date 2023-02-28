@@ -137,6 +137,7 @@ export const FooterWrapper = styled.footer`
 
     .error-label {
       color: rgb(220, 43, 43);
+      background-color : #FFE9E9;
       &::placeholder {
         color: rgb(220, 43, 43);
       }
@@ -265,6 +266,33 @@ export const FooterWrapper = styled.footer`
 
     ${sm}{
       font-size: 16px;
+    }
+
+    &:disabled {
+      background: rgb(146, 146, 146);
+    }
+  }
+
+  .appointment-btn {
+    background: transparent;
+    border: 1.5px solid #21C997;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 140%;
+    color: #21C997;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    padding: 12px;
+    margin-bottom: 40px;
+
+    ${sm}{
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: #FFFFFF;
+      border: 1.5px solid #FFF;
     }
 
     &:disabled {

@@ -7,6 +7,8 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { URL } from "../../services/requestUrl";
 import { useForm } from "@mantine/form";
 import PentafoxLogo from "../../images/logo-pf-white.svg"
+import { PopupButton } from "react-calendly";
+import { document } from 'browser-monads';
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
@@ -139,7 +141,7 @@ const Footer = () => {
                 <p className="mb-2">
                   <span>Feel like talking</span>
                   <Anchor
-                    href={`mailto:${queryData.allContentfulContact.nodes[0]?.mobile}`}
+                    href={`tel:${queryData.allContentfulContact.nodes[0]?.mobile}`}
                     style={{ fontFamily: "Varela Round" }}
                   >
                     {queryData.allContentfulContact.nodes[0]?.mobile}
@@ -214,7 +216,6 @@ const Footer = () => {
               <div className="form-group">
                 <textarea
                   placeholder="Whats on your mind..."
-                  maxLength={5}
                   className={form?.errors?.message && "error-label"}
                   {...form.getInputProps("message")}
                 />
@@ -231,8 +232,8 @@ const Footer = () => {
                     className={form?.errors?.is_privacy && "error-label"}
                   >
                     I confirm, I have read and agree to{" "}
-                    <span>
-                      <a href={`${window.location.href}/privacy`} target="_blank">Pentafox's Privacy Policy</a>
+                    <span onClick={handlePrivacyStatement}>
+                      <a>Pentafox's Privacy Policy</a>
                     </span>{" "}
                     and consent to share my information
                   </label>
@@ -265,13 +266,19 @@ const Footer = () => {
                   sx={{
                     "&[data-disabled]": { opacity: 0.5, color: "#BABABA" },
                   }}
-                  disabled={!captchaToken}
+                  // disabled={!captchaToken}
                   loading={loading}
                   type="submit"
                 >
                   Send Request
                 </Button>
               </Box>
+              <PopupButton
+                url="https://calendly.com/vignesh-sankaran"
+                className="btn appointment-btn"
+                rootElement={document.getElementById("___gatsby")}
+                text="Talk to our Experts"
+              />
             </form>
           </div>
         </div>
@@ -305,29 +312,10 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
-          <div className="right-col">
-            © 2022 Pentafox Technologies. All Rights Reserved.
-          </div>
-          {/* <div className="right-col">
-            <Center inline>
-              <Text>Designed by</Text>
-              <Image
-                href="https://prodjar.com/"
-                component="a"
-                target="_blank"
-                src="https://i.imgur.com/hTb0x0M.png"
-                width={60}
-                ml="xs"
-                onClick={() => {
-                  trackCustomEvent({
-                    category: "Projar",
-                    action: "Click",
-                    label: "Prodjar Credits",
-                  });
-                }}
-              />
-            </Center>
-          </div> */}
+          <Box className="right-col" sx={{textAlign: 'right', color: 'rgba(255, 255, 255, 0.5)'}}>
+          © 2023 Pentafox Technologies Private Limited. All rights reserved.<br/>
+          The content available on the website is protected by copyright laws.
+          </Box>
         </div>
       </div>
     </FooterWrapper>
