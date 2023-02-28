@@ -5,6 +5,13 @@ import LayoutHome from "../components/layout/layoutHome";
 import HeroSection from "../components/heroSection/heroSection";
 import ContentSection from "../components/contentSection/contentSection";
 import Clients from "../components/clientSection/clients";
+import { HeaderData } from "../components/head/Head";
+
+export const Head = () => {
+  return (
+    <HeaderData />
+  )
+}
 
 const IndexPage = () => {
   const queryData = useStaticQuery(graphql`
@@ -56,7 +63,7 @@ const IndexPage = () => {
   `);
 
   return (
-    <LayoutHome>
+    <LayoutHome showCareers={false}>
       <HomeWrapper>
         <HeroSection contentData={queryData.allContentfulServices.nodes} />
         {queryData.allContentfulServices.nodes?.map((item, index) => {

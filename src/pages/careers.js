@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import BenefitsSection from "../components/Benefits/BenefitsSection";
+import { HeaderData } from "../components/head/Head";
 import { HomeWrapper } from "../components/home/home.css";
 import JobsList from "../components/JobsList/JobsList";
 import LayoutCommon from "../components/layout/layoutCommon";
@@ -8,6 +9,12 @@ import { CareersContent } from "../components/pageWrapper/careers.css";
 import PageWrapper, {
   TopSectionWrapper,
 } from "../components/pageWrapper/PageWrapper";
+
+export const Head = () => {
+  return (
+    <HeaderData pageTitle="Careers" />
+  )
+}
 
 const Careers = () => {
   const queryData = useStaticQuery(graphql`

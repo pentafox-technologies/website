@@ -1,4 +1,3 @@
-import { Image } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import { ClientLogoSection } from "./clients.css";
@@ -24,7 +23,9 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <img title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
+                    <a>
+                      <img title={item.name} alt={item.name} src={item.logoUrl} style={{width: 155, objectFit: 'contain', height: 70}} />
+                    </a>
                   </li>
                 );
               })}
@@ -44,7 +45,7 @@ const Clients = ({
               .map((item, i) => {
                 return (
                   <li key={i}>
-                    <img title={item.name} alt={item.name} src={item.logoUrl} height={!sm ? item.size/1.6 : item.size} />
+                    <img title={item.name} alt={item.name} src={item.logoUrl} style={{width: 155, objectFit: 'contain', height: 70}} />
                   </li>
                 );
               })}

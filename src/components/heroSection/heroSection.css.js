@@ -75,7 +75,7 @@ export const HeroSectionWrapper = styled.div`
         h2 {
           font-size: 18px;
           line-height: 26px;
-          font-weight: 700;
+          font-weight: 500;
           margin: 0;
 
           ${md} {
@@ -121,7 +121,7 @@ export const HeroSectionWrapper = styled.div`
         }
 
         h2 {
-          font-weight: 700;
+          font-weight: 500;
           font-size: 28px;
           line-height: 32px;
           margin-bottom: 8px;
@@ -152,6 +152,35 @@ export const HeroSectionWrapper = styled.div`
                 box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
               }
             }
+          }
+        }
+
+        .appointment-btn {
+          display: inline-block;
+          background: #FFF;
+          color: #000;
+          opacity: 0.8;
+          color: rgb(110, 12, 15);
+          padding: 5px 12px;
+          border: 1px solid #FFFFFF;
+          cursor: pointer;
+          ${md}{
+            font-size: 16px;
+            line-height: 140%;
+            padding: 10px 22px;
+            transition: box-shadow .4s;
+
+            &:hover {
+              box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.5);
+            }
+
+            &:focus {
+              outline: none
+            }
+          }
+
+          ${xs}{
+            margin-top: 20px;
           }
         }
       }

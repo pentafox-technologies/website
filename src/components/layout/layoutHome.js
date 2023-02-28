@@ -17,31 +17,8 @@ const LayoutHome = ({
   hideLink,
   showCareers = true,
 }) => {
-  const queryData = useStaticQuery(graphql`
-    query {
-      allContentfulSiteConfig {
-        nodes {
-          siteTitle
-          siteTitleShort
-          siteDescription
-          siteUrl
-          themeColor
-          backgroundColor
-          social {
-            social {
-              fbAppId
-              linkedin
-              twitter
-            }
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <>
-      <HeadWithQuery {...queryData} />
       <Header showCareers={showCareers} showDarkLogo={false} />
       <div className="content-wrap">
         <main>{children}</main>

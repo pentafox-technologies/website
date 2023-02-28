@@ -2,6 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Location } from "@reach/router";
 import schemaGenerator from "../../helpers/schemaGenerator";
+import { useStaticQuery } from "gatsby";
+import siteConfig from "../../../site-config";
 
 const Head = ({
   siteTitle,
@@ -16,7 +18,7 @@ const Head = ({
   location,
   canonical = siteUrl + (location.pathname || ""),
 }) => (
-  <Helmet>
+  <>
     <html lang="en" />
 
     <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
@@ -44,22 +46,22 @@ const Head = ({
 
     <meta content="website" property="og:type" />
     <meta content={siteTitle} property="og:site_name" />
-    <meta content={social?.social.fbAppId} property="fb:app_id" />
+    <meta content={social?.fbAppId} property="fb:app_id" />
     <meta content="summary_large_image" name="twitter:card" />
-    <meta content={`@${social?.social?.twitter}`} name="twitter:site" />
-    <meta content={`@${social?.social?.twitter}`} name="twitter:creator" />
+    <meta content={`@${social?.twitter}`} name="twitter:site" />
+    <meta content={`@${social?.twitter}`} name="twitter:creator" />
     <meta content={pageTitleFull} name="twitter:text:title" />
     <meta content={canonical} property="og:url" />
     <meta content={canonical} name="twitter:url" />
     <link rel="canonical" href={canonical} />
 
-    <meta content={imageUrl || `${siteUrl}/social.png`} property="og:image" />
+    <meta content={imageUrl || `${siteUrl}/pentafox.png`} property="og:image" />
     <meta content="1024" property="og:image:width" />
     <meta content="512" property="og:image:height" />
-    <meta content={imageUrl || `${siteUrl}/social.png`} name="twitter:image" />
+    <meta content={imageUrl || `${siteUrl}/pentafox.png`} name="twitter:image" />
     <meta content="1024" name="twitter:image:width" />
     <meta content="512" name="twitter:image:height" />
-    <meta content={imageUrl || `${siteUrl}/social.png`} property="og:image" />
+    <meta content={imageUrl || `${siteUrl}/pentafox.png`} property="og:image" />
     <meta content="1024" property="og:image:width" />
     <meta content="512" property="og:image:height" />
 
@@ -161,16 +163,13 @@ const Head = ({
         })
       )}
     </script>
-  </Helmet>
+  </>
 );
 
-const HeadWithQuery = (props) => {
-  console.log(props);
+export const HeaderData = ({pageTitle}) => {
   return (
     <Location>
-      {({ location }) => <Head {...props.allContentfulSiteConfig.nodes[0]} location={location} />}
+      {({ location }) => <Head {...siteConfig} location={location} pageTitle={pageTitle} />}
     </Location>
-  );
-};
-
-export default HeadWithQuery;
+  )
+}

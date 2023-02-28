@@ -5,6 +5,8 @@ import React from "react";
 import { HeroSectionWrapper } from "./heroSection.css";
 import { getImage } from "gatsby-plugin-image";
 import { BgImage  } from "gbimage-bridge";
+import { PopupButton } from "react-calendly";
+import { document } from 'browser-monads';
 
 const FigureWrapper = ({ children, id, ...props }) => {
   const PlatformImage = getImage(props?.queryData?.platformImage)
@@ -86,9 +88,25 @@ const HeroSection = ({ contentData }) => {
                   <span
                     className="know-more"
                     onClick={() => scrollTo(`#content-section-0`)}
+                    style={{marginRight: 20}}
                   >
                     Know More
                   </span>
+                  <PopupButton
+                    url="https://calendly.com/vignesh-sankaran"
+                    className="appointment-btn"
+                    rootElement={document.getElementById('___gatsby')}
+                    text={
+                      <div>
+                        Talk to our Experts
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={13} fill="rgb(110, 12, 15)" style={{marginLeft: 12}}>
+                          <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                        </svg>
+                        
+                        {/* <FontAwesomeIcon icon="fa-solid fa-arrow-right" /> */}
+                      </div>
+                    }
+                  />
                 </Box>
               </Center>
             </figcaption>
