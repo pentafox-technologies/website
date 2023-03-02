@@ -4,6 +4,7 @@ import { sm, md } from '../../helpers/device';
 export const ContentSectionWrapper = styled.div`
   padding-top: 32px;
   padding-bottom: 32px;
+  max-width: 1200px;
   ${sm}{
     padding-top: 60px;
     padding-bottom: 60px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, createStyles, Image } from '@mantine/core';
+import { Box, Center, createStyles, Image } from '@mantine/core';
 import { ContentSectionWrapper } from './contentSection.css';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -37,50 +37,52 @@ const ContentSection = ({
   const { classes } = useStyles();
   const matches = useMediaQuery('(max-width: 990px)')
   return (
-    <ContentSectionWrapper id={`content-section-${id}`} rightSideStyle={rightSide}>
-      <div className="container lg-container">
-        <div className="middle-content">
-          <div className="left-col">
-            <h3>{heading}</h3>
-            <p>{description}</p>
+    <Center>
+      <ContentSectionWrapper id={`content-section-${id}`} rightSideStyle={rightSide}>
+        <div className="container lg-container">
+          <div className="middle-content">
+            <div className="left-col">
+              <h3>{heading}</h3>
+              <p>{description}</p>
 
-            {listWithIcons ?
-              <ul className="clearfix list-unstyled list-card">
-                {category.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        <img src={item.icon} width={40} style={{position: 'absolute', top: 0, left: 0}} />
-                        <span>{item.title}</span>
-                        {item.description}
-                      </li>
-                    );
-                  })}
-              </ul>
-            : null}
-          </div>
+              {listWithIcons ?
+                <ul className="clearfix list-unstyled list-card">
+                  {category.map((item, i) => {
+                      return (
+                        <li key={i}>
+                          <img src={item.icon} width={40} style={{position: 'absolute', top: 0, left: 0}} />
+                          <span>{item.title}</span>
+                          {item.description}
+                        </li>
+                      );
+                    })}
+                </ul>
+              : null}
+            </div>
 
-          <div className="right-col">
-            <div className="image-card">
-              <Box className={classes.leftImg}>
-                <Image
-                  src={image1}
-                  height={matches ? 120 : 220}
-                  radius='sm'
-                />
-              </Box>
-              <Box className={classes.rightImg}>
-                <Image
-                  src={image2}
-                  // width={220}
-                  height={matches ? 140 : 300}
-                  radius='sm'
-                />
-              </Box>
+            <div className="right-col">
+              <div className="image-card">
+                <Box className={classes.leftImg}>
+                  <Image
+                    src={image1}
+                    height={matches ? 120 : 220}
+                    radius='sm'
+                  />
+                </Box>
+                <Box className={classes.rightImg}>
+                  <Image
+                    src={image2}
+                    // width={220}
+                    height={matches ? 140 : 300}
+                    radius='sm'
+                  />
+                </Box>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </ContentSectionWrapper>
+      </ContentSectionWrapper>
+    </Center>
   );
 };
 
