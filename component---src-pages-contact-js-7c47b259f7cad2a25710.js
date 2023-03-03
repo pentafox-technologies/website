@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpentafox_web=self.webpackChunkpentafox_web||[]).push([[501],{5791:function(e,n,t){t.r(n);var u=t(7294);n.default=function(){return u.createElement("div",null,"contact")}}}]);
+//# sourceMappingURL=component---src-pages-contact-js-7c47b259f7cad2a25710.js.map

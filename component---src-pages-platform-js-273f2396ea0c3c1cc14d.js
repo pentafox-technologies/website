@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpentafox_web=self.webpackChunkpentafox_web||[]).push([[107],{9675:function(e,n,t){t.r(n);var u=t(7294);n.default=function(){return u.createElement("div",null,"platform")}}}]);
+//# sourceMappingURL=component---src-pages-platform-js-273f2396ea0c3c1cc14d.js.map

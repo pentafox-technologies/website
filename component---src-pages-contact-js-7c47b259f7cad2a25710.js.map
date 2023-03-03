@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-contact-js-7c47b259f7cad2a25710.js","mappings":"sIAQA,UANgB,WACd,OACE,qCAEJ,C","sources":["webpack://pentafox-web/./src/pages/contact.js"],"sourcesContent":["import React from 'react'\n\nconst contact = () => {\n  return (\n    <div>contact</div>\n  )\n}\n\nexport default contact"],"names":[],"sourceRoot":""}

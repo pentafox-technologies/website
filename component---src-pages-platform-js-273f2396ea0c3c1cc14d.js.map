@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-platform-js-273f2396ea0c3c1cc14d.js","mappings":"sIAQA,UANiB,WACf,OACE,sCAEJ,C","sources":["webpack://pentafox-web/./src/pages/platform.js"],"sourcesContent":["import React from 'react'\n\nconst platform = () => {\n  return (\n    <div>platform</div>\n  )\n}\n\nexport default platform"],"names":[],"sourceRoot":""}
