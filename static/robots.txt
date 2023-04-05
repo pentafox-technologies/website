@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://pentafox.in/sitemap.xml

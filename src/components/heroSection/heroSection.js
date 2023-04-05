@@ -29,27 +29,27 @@ const HeroSection = ({ contentData }) => {
     query {
       indexImage: file(relativePath: {eq: "landing.jpg"}) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       platformImage: file(relativePath: { eq: "platform-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       digitalStrategyImage: file(relativePath: { eq: "digital-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       MLImage: file(relativePath: { eq: "cv-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       ProductImage: file(relativePath: { eq: "platform-banner-1.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       allContentfulLangingContent {
@@ -63,7 +63,7 @@ const HeroSection = ({ contentData }) => {
         }
       }
     }
-  `);
+  `, {forceReload: true});
 
   const IndexImage = getImage(queryData?.indexImage)
   return (
