@@ -16,10 +16,11 @@ const LayoutCommon = ({
   headProps = {},
   hideLink,
   showCareers = true,
+  showDarkLogo = false
 }) => {
   return (
     <>
-      <Header showCareers={showCareers} showDarkLogo={false} />
+      <Header showCareers={showCareers} showDarkLogo={showDarkLogo} />
       <div className="content-wrap">
         <main>{children}</main>
       </div>
