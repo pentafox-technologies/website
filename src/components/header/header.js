@@ -2,7 +2,7 @@ import React from 'react';
 import IsMobile from '../../helpers/IsMobile';
 import { HeaderWrapper } from './header.css';
 import LogoSVG from '../../images/logo-pf-white.svg';
-import LogoDarkSVG from '../../images/logo-pf-dark.svg';
+import LogoRedSVG from '../../images/logo-pf-red.svg';
 import { Link } from 'gatsby';
 
 const isMobileDevice = IsMobile();
@@ -14,7 +14,7 @@ const Header = ({ showCareers, showDarkLogo=true }) => {
         <Link to="/">
           {
             showDarkLogo ?
-              <LogoDarkSVG height={isMobileDevice ? '30' : '42'} />
+              <LogoRedSVG height={isMobileDevice ? '30' : '60'} width="200" />
               : <LogoSVG height={isMobileDevice ? '30' : '60'} width="200" />
           }
         </Link>
