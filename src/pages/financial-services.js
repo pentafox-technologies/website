@@ -7,12 +7,19 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { data } from "../../data/financialServicesData";
 import AppoinmentButton from "../components/button/AppoinmentButton";
 import { ContentSectionWrapper } from "../components/contentSection/contentSection.css";
+import { HeaderData } from "../components/head/Head";
 import { HomeWrapper } from "../components/home/home.css";
 import LayoutCommon from "../components/layout/layoutCommon";
 import AlternateLayout from "../components/pageWrapper/AlternateLayout";
 import PageWrapper from "../components/pageWrapper/PageWrapper";
 import apiCall from "../services/contentfulApiCall";
 import { financialStyles } from "../styles/financials.css";
+
+export const Head = () => {
+  return (
+    <HeaderData pageTitle="Financial Services" />
+  )
+}
 
 const FinancialServices = () => {
   const graph = useRef(null);
@@ -22,7 +29,7 @@ const FinancialServices = () => {
   const bottomToTopScroll = useRef(null);
   const [pageData, setPageData] = useState([])
 
-  const queryData = useStaticQuery(graphql`
+  const financialsData = useStaticQuery(graphql`
     query MyQuery {
       allContentfulFinancialServices {
         nodes {
@@ -38,8 +45,11 @@ const FinancialServices = () => {
           iconUrl
         }
       }
-    }`)
+    }
+  `)
 
+  // We are getting product data from contentful using API to avoid data fetching issues from Grapgql and combined the data from contentful
+  // and its resp images using identifiers.
   useMemo(() => {
     const combinedArray = [];
     apiCall('ourProducts')
@@ -59,6 +69,7 @@ const FinancialServices = () => {
     .catch(e => console.log(e))
   }, [])
 
+  // Tech Stack Section Icons positioning
   useEffect(() => {
     const ciclegraph = graph.current;
     const circleElements = ciclegraph.childNodes;
@@ -84,12 +95,14 @@ const FinancialServices = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // HeroSection Illustration Animation
     gsap.from(rightToLeftASAP.current, {
       opacity: 0,
       x: 200,
       duration: 1,
     });
 
+    // ContactUs Section Animation
     gsap.from(bottomToTopScroll.current, {
       opacity: 0.3,
       y: 100,
@@ -102,6 +115,7 @@ const FinancialServices = () => {
       },
     });
 
+    // OurProducts Section Animation
     gsap.from(rightToLeftScroll.current, {
       opacity: 0.2,
       x: -200,
@@ -114,6 +128,7 @@ const FinancialServices = () => {
       },
     });
 
+    // Tech Stack Section Animation
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: graph.current,
@@ -141,6 +156,7 @@ const FinancialServices = () => {
 
   }, []);
 
+  // OurProducts Image bounce Animation
   useEffect(() => {
     const mainImage = document.querySelectorAll(".main-image");
     const secondaryImage = document.querySelectorAll(".secondary-image");
@@ -181,13 +197,13 @@ const FinancialServices = () => {
             {/* <div className={classes.background} /> */}
             <Box className={classes.landingContainer}>
               <Box className={classes.textContainer} sx={{ zIndex: 99 }}>
-                <h1 className={classes.landingHeroText} dangerouslySetInnerHTML={{ __html: queryData?.allContentfulFinancialServices?.nodes[0].heroText }} />
+                <h1 className={classes.landingHeroText} dangerouslySetInnerHTML={{ __html: financialsData?.allContentfulFinancialServices?.nodes[0].heroText }} />
                 <Box>
                   <p
                     className={classes.landingDescriptionText}
                     style={{ lineHeight: 2 }}
                   >
-                    {queryData?.allContentfulFinancialServices?.nodes[0].heroDescription.heroDescription}
+                    {financialsData?.allContentfulFinancialServices?.nodes[0].heroDescription.heroDescription}
                   </p>
                 </Box>
                 <Box mt="xl">
@@ -259,9 +275,10 @@ const FinancialServices = () => {
               <div className="container lg-container">
                 <div className="middle-content" style={{display: 'flex', justifyContent: 'center', marginTop: '20%'}}>
                   <Box className={classes.circlegraph} ref={graph}>
-                    {queryData?.allContentfulTechStack?.nodes?.map((icon, index) => {
+                    {financialsData?.allContentfulTechStack?.nodes?.map((icon, index) => {
                       return (
                         <img
+                          key={index}
                           src={icon.iconUrl}
                           id={"circle"}
                           className={classes.circle}
@@ -292,8 +309,6 @@ const FinancialServices = () => {
                 <p className={classes.contactUsSubtext}>
                   Book a free demo with us.
                 </p>
-              </Box>
-              <Box>
                 <AppoinmentButton />
               </Box>
             </Box>

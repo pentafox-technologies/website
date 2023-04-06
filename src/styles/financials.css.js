@@ -194,7 +194,7 @@ export const financialStyles = createStyles((theme) => ({
     }
   },
   contactUsIllustration: {
-    position: "absolute", bottom: 0, right: -20,
+    position: "absolute", bottom: 0, right: -100,
     [`@media (max-width: 992px)`]: {
       display: 'none'
     }
@@ -212,7 +212,7 @@ export const financialStyles = createStyles((theme) => ({
     fontSize: "1.8rem",
     color: "#FFF",
     lineHeight: 0,
-    marginTop: 20,
+    marginTop: 2,
     [`@media (max-width: 830px)`]: {
       fontSize: '1.5rem !important'
     },
@@ -222,7 +222,7 @@ export const financialStyles = createStyles((theme) => ({
   },
   scrollDown: {
     position: 'absolute',
-    bottom: '50px',
+    bottom: '30px',
     left: '50%',
     transform: 'translateX(-50%)',
     cursor: 'pointer'
