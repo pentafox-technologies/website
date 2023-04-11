@@ -74,7 +74,6 @@ const HeroSection = ({ contentData }) => {
           image={IndexImage}
         >
             <figcaption>
-              <Center>
                 <Box sx={{ maxWidth: 650 }}>
                   <h2>
                     {queryData.allContentfulLangingContent.nodes[0]?.landingTitle}
@@ -108,7 +107,6 @@ const HeroSection = ({ contentData }) => {
                     }
                   />
                 </Box>
-              </Center>
             </figcaption>
         </BgImage>
       </div>
