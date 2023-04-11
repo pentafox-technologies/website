@@ -45,6 +45,7 @@
     "gatsby-transformer-sharp": "^4.18.1",
     "gbimage-bridge": "^0.2.2",
     "gh-pages": "^4.0.0",
+    "gsap": "^3.11.5",
     "intersection-observer": "^0.12.2",
     "markdown-it": "^13.0.1",
     "react": "^18.1.0",

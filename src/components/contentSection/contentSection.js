@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Center, createStyles, Image } from '@mantine/core';
 import { ContentSectionWrapper } from './contentSection.css';
 import { useMediaQuery } from '@mantine/hooks';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
 
 const useStyles = createStyles((theme) => ({
   leftImg: {
@@ -36,6 +38,37 @@ const ContentSection = ({
 }) => {
   const { classes } = useStyles();
   const matches = useMediaQuery('(max-width: 990px)')
+  const animContainer = useRef(null);
+  const animListItem = useRef(null);
+
+  useEffect(() => {
+    const listItems = animListItem?.current?.querySelectorAll(".list-item");
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(animContainer.current, {
+      opacity: 0.1,
+      y: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: animContainer.current,
+        start: "top 90%",
+        end: "+=100",
+        scrub: false,
+      },
+    });
+
+    gsap.from(listItems, {
+      opacity: 0,
+      y: 100,
+      ease: "power4.out",
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: animListItem.current.children,
+        start: "top 90%",
+      },
+    });
+  }, []);
+
   return (
     <Center>
       <ContentSectionWrapper id={`content-section-${id}`} rightSideStyle={rightSide}>
@@ -46,10 +79,10 @@ const ContentSection = ({
               <p>{description}</p>
 
               {listWithIcons ?
-                <ul className="clearfix list-unstyled list-card">
+                <ul className="clearfix list-unstyled list-card" ref={animListItem}>
                   {category.map((item, i) => {
                       return (
-                        <li key={i}>
+                        <li key={i} className="list-item">
                           <img src={item.icon} width={40} style={{position: 'absolute', top: 0, left: 0}} />
                           <span>{item.title}</span>
                           {item.description}
@@ -61,7 +94,7 @@ const ContentSection = ({
             </div>
 
             <div className="right-col">
-              <div className="image-card">
+              <div className="image-card" ref={animContainer}>
                 <Box className={classes.leftImg}>
                   <Image
                     src={image1}

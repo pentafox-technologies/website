@@ -57,6 +57,7 @@ const IndexPage = () => {
         logoUrl
         parentSection
         size
+        order
       }
     }
   }
@@ -89,7 +90,7 @@ const IndexPage = () => {
           clientSectionData={queryData.allContentfulClientContent.nodes[0]}
           partnerSectionData={queryData.allContentfulPartnerContent.nodes[0]}
           clientsAndPartnersData={
-            queryData.allContentfulClientsAndPartners.nodes
+            queryData?.allContentfulClientsAndPartners?.nodes?.sort((a,b) => a.order - b.order)
           }
         />
       </HomeWrapper>

@@ -29,27 +29,27 @@ const HeroSection = ({ contentData }) => {
     query {
       indexImage: file(relativePath: {eq: "landing.jpg"}) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       platformImage: file(relativePath: { eq: "platform-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       digitalStrategyImage: file(relativePath: { eq: "digital-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       MLImage: file(relativePath: { eq: "cv-banner.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       ProductImage: file(relativePath: { eq: "platform-banner-1.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1500, quality: 50, webpOptions: {quality: 70})
+          gatsbyImageData(width: 1500, quality: 50)
         }
       }
       allContentfulLangingContent {
@@ -63,7 +63,7 @@ const HeroSection = ({ contentData }) => {
         }
       }
     }
-  `);
+  `, {forceReload: true});
 
   const IndexImage = getImage(queryData?.indexImage)
   return (
@@ -74,7 +74,6 @@ const HeroSection = ({ contentData }) => {
           image={IndexImage}
         >
             <figcaption>
-              <Center>
                 <Box sx={{ maxWidth: 650 }}>
                   <h2>
                     {queryData.allContentfulLangingContent.nodes[0]?.landingTitle}
@@ -97,7 +96,7 @@ const HeroSection = ({ contentData }) => {
                     className="appointment-btn"
                     rootElement={document.getElementById('___gatsby')}
                     text={
-                      <div>
+                      <div style={{fontFamily: 'Varela Round'}}>
                         Talk to our Experts
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={13} fill="rgb(110, 12, 15)" style={{marginLeft: 12}}>
                           <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
@@ -108,7 +107,6 @@ const HeroSection = ({ contentData }) => {
                     }
                   />
                 </Box>
-              </Center>
             </figcaption>
         </BgImage>
       </div>
