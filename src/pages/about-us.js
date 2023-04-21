@@ -1,7 +1,7 @@
 import { Box, Center, Container, Grid, Image } from "@mantine/core";
 import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import OutfitWrapper from "../components/FontWrapperComp/OutfitWrapper";
 import VarelaWrapper from "../components/FontWrapperComp/VarelaWrapper";
 import { HomeWrapper } from "../components/home/home.css";
@@ -115,7 +115,7 @@ const AboutUs = () => {
           fullName
           designation
           profileImage {
-            id
+            # id
             url
           }
         }
@@ -131,8 +131,6 @@ const AboutUs = () => {
       }
     }
   `);
-
-  console.log(queryData);
 
   return (
     <LayoutCommon
@@ -183,7 +181,7 @@ const AboutUs = () => {
                   <StaticImage
                     quality={100}
                     src={
-                      "../images/Illustrations/SVG/DrawKit Vector Illustration Team Work (6).svg"
+                      "../images/Illustrations/DrawKit Vector Illustration Team Work (6).svg"
                     }
                     placeholder="tracedSVG"
                     backgroundColor="transparent"
