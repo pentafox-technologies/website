@@ -308,6 +308,14 @@ const Footer = () => {
             >
               Privacy
             </Link>
+            {"    "}&#124;{"    "}
+            <Link
+              to="/internship"
+              className="pl-3 text-white"
+              style={{ textDecoration: "none", marginLeft: 8 }}
+            >
+              Internship
+            </Link>
             {/* <Link to="/products" className="pl-3 text-white">
               Products
             </Link> */}
