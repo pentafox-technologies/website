@@ -99,6 +99,15 @@ const Footer = () => {
           title
         }
       }
+      allContentfulStaticPage(sort: {fields: createdAt}) {
+        nodes {
+          title
+          slug
+          shortDescription {
+            shortDescription
+          }
+        }
+      }
     }
   `);
 
@@ -304,7 +313,7 @@ const Footer = () => {
             <Link
               to="/privacy"
               className="pl-3 text-white"
-              style={{ textDecoration: "none", marginLeft: 8 }}
+              style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Privacy
             </Link>
@@ -312,10 +321,34 @@ const Footer = () => {
             <Link
               to="/internship"
               className="pl-3 text-white"
-              style={{ textDecoration: "none", marginLeft: 8 }}
+              style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Internship
             </Link>
+            {/* {"    "}&#124;{"    "} */}
+            {
+              queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
+                return (
+                  <>
+                    {"    "}&#124;{"    "}
+                    <Link
+                      to={`/${item?.slug}`}
+                      className="pl-3 text-white"
+                      style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
+                    >
+                      {item?.title}
+                    </Link>
+                  </>
+                )
+              })
+            }
+            {/* <Link
+              to="/terms"
+              className="pl-3 text-white"
+              style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
+            >
+              Terms & Conditions
+            </Link> */}
             {/* <Link to="/products" className="pl-3 text-white">
               Products
             </Link> */}
