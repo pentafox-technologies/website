@@ -36,7 +36,7 @@ function isToday(date) {
 
 const ApplyButton = ({ variant="light" }) => {
   
-  if (isToday(new Date('2023-07-10'))) {
+  if (isToday(new Date('2023-08-10'))) {
     if (variant === "dark") return null
 
     return <Button
