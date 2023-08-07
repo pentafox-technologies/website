@@ -10,6 +10,21 @@ import React from "react";
 import Footer from "../footer/Footer";
 import HeadWithQuery, { HeaderData } from "../head/Head";
 import Header from "../header/header";
+import { MantineProvider } from "@mantine/core";
+
+const themeObj = {
+  fontFamily: "'Varela Round', sans-serif !important",
+  fontSizes: {
+    xs: 12,
+    sm: 13,
+    md: 14,
+    lg: 18,
+    xl: 20,
+  },
+  headings: {
+    fontFamily: "'Outfit', sans-serif !important",
+  },
+}
 
 const LayoutCommon = ({
   children,
@@ -19,13 +34,13 @@ const LayoutCommon = ({
   showDarkLogo = false
 }) => {
   return (
-    <>
-      <Header showCareers={showCareers} showDarkLogo={showDarkLogo} />
-      <div className="content-wrap" style={{position: 'relative'}}>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={themeObj}>
+      <Header showCareers={showCareers} showDarkLogo={false} />
+      <div className="content-wrap">
         <main>{children}</main>
       </div>
       <Footer />
-    </>
+    </MantineProvider>
   );
 };
 
