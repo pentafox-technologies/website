@@ -5,12 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import Footer from "../footer/Footer";
-import HeadWithQuery, { HeaderData } from "../head/Head";
-import Header from "../header/header";
 import { MantineProvider } from "@mantine/core";
+import HeaderBar from "../header/header";
 
 const themeObj = {
   fontFamily: "'Varela Round', sans-serif !important",
@@ -31,12 +29,15 @@ const LayoutCommon = ({
   headProps = {},
   hideLink,
   showCareers = true,
-  showDarkLogo = false
+  showDarkLogo = false,
+  headerColor = '#FFFFFF',
+  lightLinks = false,
+  showHome = true
 }) => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={themeObj}>
-      <Header showCareers={showCareers} showDarkLogo={false} />
-      <div className="content-wrap">
+      <HeaderBar showCareers={showCareers} showDarkLogo={showDarkLogo} headerColor={headerColor} lightLinks={lightLinks} showHome={showHome} />
+      <div className="content-wrap" style={{position: 'relative'}}>
         <main>{children}</main>
       </div>
       <Footer />

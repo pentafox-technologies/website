@@ -304,14 +304,14 @@ const Footer = () => {
             >
               Home
             </Link>
-            {"    "}&#124;{"    "}
+            {/* {"    "}&#124;{"    "}
             <Link
               to="/careers"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Careers
-            </Link>
+            </Link> */}
             {"    "}&#124;{"    "}
             <Link
               to="/privacy"
@@ -320,14 +320,14 @@ const Footer = () => {
             >
               Privacy
             </Link>
-            {"    "}&#124;{"    "}
+            {/* {"    "}&#124;{"    "}
             <Link
               to="/internship"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Internship
-            </Link>
+            </Link> */}
             {/* {"    "}&#124;{"    "} */}
             {
               queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {

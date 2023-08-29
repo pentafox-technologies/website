@@ -33,6 +33,8 @@ const Privacy = () => {
       hideLink
       showCareers={false}
       showDarkLogo={false}
+      headerColor="rgb(230,68,68)"
+      lightLinks
       headProps={{
         pageTitle: "Privacy Statement",
       }}

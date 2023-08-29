@@ -1,72 +1,41 @@
-import { Box, Container } from "@mantine/core";
-import { StaticImage } from "gatsby-plugin-image";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { PopupButton } from "react-calendly";
-import { caseStudyData, cloudEngineering, mlData } from "../../data/portfolioData";
-import { HeaderData } from "../components/head/Head";
-import { HomeWrapper } from "../components/home/home.css";
-import LayoutCommon from "../components/layout/layoutCommon";
-import PageWrapper from "../components/pageWrapper/PageWrapper";
-import PortfolioLayout from "../components/pageWrapper/PortfolioLayout";
-import SectionTitle from "../components/Title/SectionTitle";
-import apiCall from "../services/contentfulApiCall";
-import { portfolioStyles } from "../styles/portfolio.css";
-import { gsap } from "gsap";
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { portfolioStyles } from '../styles/portfolio.css';
+import apiCall from '../services/contentfulApiCall';
+import { gsap } from 'gsap';
+import LayoutCommon from '../components/layout/layoutCommon';
+import { mlData } from '../../data/portfolioData';
+import { HomeWrapper } from '../components/home/home.css';
+import PageWrapper from '../components/pageWrapper/PageWrapper';
+import { Box, Container } from '@mantine/core';
+import SectionTitle from '../components/Title/SectionTitle';
+import PortfolioLayout from '../components/pageWrapper/PortfolioLayout';
+import { PopupButton } from 'react-calendly';
+import { Link } from 'gatsby';
+import { IconArrowLeft } from '@tabler/icons-react';
+import PageLinkButton from '../components/button/PageLinkButton';
 
-export const Head = () => {
-  return (
-    <HeaderData pageTitle="Portfolio" />
-  )
-}
-
-const Portfolio = () => {
-  const { classes } = portfolioStyles();
+const MachineLearning = () => {
   const arrowRef = useRef(null);
-  const [portfolioPageData, setPortfolioPageData] = useState([])
-  const [cloudEngineeringData, setCloudEngineeringData] = useState([])
+  const { classes } = portfolioStyles();
   const [mlEngineeringData, setMlEngineeringData] = useState([])
 
   useMemo(() => {
-    apiCall('caseStudies')
-    .then((studyData) => {
-      setPortfolioPageData(caseStudyData.map((obj2) => {
-        const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-        return {
-          identifier: obj2.identifier,
-          image: obj2.image,
-          title: obj1?.fields.title,
-          description: obj1?.fields.description,
-          descriptionPoints: obj1?.fields.descriptionPoints,
-          skillset: obj1?.fields.skillset
-        };
-      }))
-      
-      setCloudEngineeringData(cloudEngineering.map((obj2) => {
-        const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-        return {
-          identifier: obj2.identifier,
-          image: obj2.image,
-          title: obj1?.fields.title,
-          description: obj1?.fields.description,
-          descriptionPoints: obj1?.fields.descriptionPoints,
-          skillset: obj1?.fields.skillset
-        };
-      }))
-      
-      setMlEngineeringData(mlData.map((obj2) => {
-        const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-        return {
-          identifier: obj2.identifier,
-          image: obj2.image,
-          title: obj1?.fields.title,
-          description: obj1?.fields.description,
-          descriptionPoints: obj1?.fields.descriptionPoints,
-          skillset: obj1?.fields.skillset
-        };
-      }))
-    })
-    .catch(e => console.log(e))
-  }, [])
+    apiCall("caseStudies")
+      .then((studyData) => {
+        setMlEngineeringData(mlData.map((obj2) => {
+          const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
+          return {
+            identifier: obj2.identifier,
+            image: obj2.image,
+            title: obj1?.fields.title,
+            description: obj1?.fields.description,
+            descriptionPoints: obj1?.fields.descriptionPoints,
+            skillset: obj1?.fields.skillset
+          };
+        }))
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   useEffect(() => {
     const mainImage = document.querySelectorAll(".main-image");
@@ -87,7 +56,7 @@ const Portfolio = () => {
       yoyo: true,
       ease: "sine.inOut",
     });
-  }, [portfolioPageData])
+  }, [mlEngineeringData]);
 
   useEffect(() => {
     const arrow = arrowRef.current;
@@ -99,7 +68,7 @@ const Portfolio = () => {
         { opacity: 1, scale: 1.1, duration: 0.2, ease: "back.out(4)" }
       );
     };
-  
+
     const hideArrow = () => {
       gsap.set(arrow, { opacity: 0, scale: 0.5 });
     };
@@ -112,57 +81,25 @@ const Portfolio = () => {
       parent.removeEventListener("mouseenter", animateArrow);
       parent.removeEventListener("mouseleave", hideArrow);
     };
-  }, [])
+  }, []);
 
   return (
     <LayoutCommon
       hideLink
       showCareers={false}
       showDarkLogo
-      headProps={{ pageTitle: "Portfolio" }}
+      headProps={{ pageTitle: "Machine Learning" }}
     >
       <HomeWrapper>
-        <PageWrapper style={{position: 'relative'}}>
-
-          {/* CaseStudies Section */}
-          <Container
-            size={1200}
-            py={40}
-            px={0}
-          >
-            <SectionTitle title={`Digital Mobility`} index='01' reverse subText='#Embrace Digital Mobility' />
-            {portfolioPageData?.map((item, index) => (
-              <Box sx={{minHeight: '60vh', display: 'flex', alignItems: 'center'}}>
-                <PortfolioLayout 
-                  key={index}
-                  id={index}
-                  section="digital-mobility"
-                  rightSide={index % 2}
-                  heading={item.title}
-                  description={item.description}
-                  list={item.descriptionPoints}
-                  skillset={item.skillset}
-                  imageComponent={item.image}
-                  />
-              </Box>
-            ))}
-            <SectionTitle title={`Cloud Engineering`} index='02' subText='#Embrace the power of cloud' />
-            {cloudEngineeringData?.map((item, index) => (
-              <Box sx={{minHeight: '60vh', display: 'flex', alignItems: 'center'}}>
-                <PortfolioLayout 
-                  key={index}
-                  id={index}
-                  section="cloud-engineering"
-                  rightSide={index % 2}
-                  heading={item.title}
-                  description={item.description}
-                  list={item.descriptionPoints}
-                  skillset={item.skillset}
-                  imageComponent={item.image}
-                  />
-              </Box>
-            ))}
-            <SectionTitle title={`Machine Learning`} index='03' reverse subText='#Unlocking the Power of Machine Learning' />
+        <PageWrapper>
+          <Container size={1200} py={40} px={0}>
+            <SectionTitle 
+              title={`Machine Learning`}
+              index='03'
+              subText='#Unlocking the Power of Machine Learning' 
+              sectionDescription="In a data-driven world, machine learning serves as a driving force behind innovation. From healthcare to finance, from manufacturing to entertainment, the applications are limitless. Our machine learning solutions empower businesses to make smarter decisions, automate processes, and create personalized experiences that resonate with users."
+              showDescription={true}
+            />
             {mlEngineeringData?.map((item, index) => (
               <Box sx={{minHeight: '60vh', display: 'flex', alignItems: 'center'}}>
                 <PortfolioLayout 
@@ -179,13 +116,9 @@ const Portfolio = () => {
               </Box>
             ))}
           </Container>
-          {/* <Container
-            size={1200}
-            py={40}
-            px={0}
-          >
-            <SectionTitle title={"Our Testimonial"} index="03" subText='#Trusted by Clients' />
-          </Container> */}
+          <Container size={1200} py={40} px={0} sx={{display: 'flex', justifyContent: 'space-between', marginBottom: 40}}>
+            <PageLinkButton routeLink="/cloud-engineering" title="Cloud Engineering" subTitle="Embrace the power of cloud" leftArrow={true} />
+          </Container>
           <Container
             size={1200}
             py={40}
@@ -223,7 +156,7 @@ const Portfolio = () => {
         </PageWrapper>
       </HomeWrapper>
     </LayoutCommon>
-  );
-};
+  )
+}
 
-export default Portfolio;
+export default MachineLearning

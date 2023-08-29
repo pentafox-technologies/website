@@ -47,7 +47,7 @@ const Careers = () => {
   `);
 
   return (
-    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Careers'}} >
+    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Careers'}} headerColor="rgb(230,68,68)" lightLinks >
       <HomeWrapper>
         <PageWrapper>
           <TopSectionWrapper>

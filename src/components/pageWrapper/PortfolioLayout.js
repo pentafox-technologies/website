@@ -4,6 +4,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { ContentSectionWrapper } from "../contentSection/contentSection.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { IconCheck } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   leftImg: {
@@ -46,6 +47,7 @@ const PortfolioLayout = ({
   list,
   imageComponent,
   skillset,
+  section
 }) => {
   const { classes } = useStyles();
   const matches = useMediaQuery("(max-width: 990px)");
@@ -82,7 +84,7 @@ const PortfolioLayout = ({
 
   return (
     <ContentSectionWrapper
-      id={`content-section-${id}`}
+      id={`content-section-${id}-${section}`}
       rightSideStyle={rightSide}
     >
       <div className="container lg-container">
@@ -106,21 +108,7 @@ const PortfolioLayout = ({
                     alignItems: "center",
                   }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-check"
-                    width="20"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#DC2908"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M5 12l5 5l10 -10" />
-                  </svg>
+                  <IconCheck size={16} color="rgba(220, 41, 8, 1)" />
                 </div>
               }
             >

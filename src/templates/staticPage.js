@@ -26,7 +26,7 @@ const StaticPage = (props) => {
   const richTextComponents = documentToReactComponents(contentJson)
   
   return (
-    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{ pageTitle: 'title'}} >
+    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{ pageTitle: 'title'}} headerColor='rgb(230,68,68)' lightLinks >
       <HomeWrapper>
         <PageWrapper>
           <TopSectionWrapper>

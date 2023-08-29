@@ -1,8 +1,9 @@
-import { Box } from '@mantine/core'
+import { Box, Button } from '@mantine/core'
 import React from 'react'
 import { sectionTitleStyles } from './SectionTitle.css'
+import VarelaWrapper from '../FontWrapperComp/VarelaWrapper'
 
-const SectionTitle = ({title, index, reverse, subText}) => {
+const SectionTitle = ({title, index, reverse, subText, sectionDescription, showDescription = false}) => {
   const { classes } = sectionTitleStyles() 
   const titleText = title.split(' ')
   return (
@@ -19,6 +20,20 @@ const SectionTitle = ({title, index, reverse, subText}) => {
           <h1 className={classes.indexText}>{index}</h1>
         </div>
       </div>
+      {
+        showDescription && (
+          <>
+            <div style={{marginTop: 25, display: 'flex', alignItems: 'center', justifyContent: reverse ? 'flex-end' : 'flex-start'}}>
+              <VarelaWrapper style={{fontSize: 18, textAlign: reverse ? 'right' : 'left', width: '60%', lineHeight: 1.8, color: 'rgba(0,0,0,0.6)'}}>
+                {sectionDescription}
+              </VarelaWrapper>
+            </div>
+            <div style={{ display: 'flex', justifyContent: reverse ? 'flex-end' : 'flex-start', marginTop: 25 }}>
+              <Button size='lg' color='red'>Explore</Button>
+            </div>
+          </>
+        )
+      }
     </Box>
   )
 }

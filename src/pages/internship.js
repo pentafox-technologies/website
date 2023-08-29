@@ -91,7 +91,7 @@ const ApplyButton = ({ variant="light" }) => {
 
 const Internship = () => {
   return (
-    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Internship'}} >
+    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Internship'}} headerColor="rgb(230,68,68)" lightLinks >
       <HomeWrapper>
         <PageWrapper>
           <TopSectionWrapper>

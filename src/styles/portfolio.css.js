@@ -83,21 +83,25 @@ export const portfolioStyles = createStyles((theme) => ({
     },
   },
   appointmentBtn: {
-    display: "inline-block",
-    background: "#FFF",
-    // background: "rgba(255,245,245)",
+    // display: "inline-block",
+    // background: "#FFF",
+    background: "rgba(255,245,245)",
+    // background: 'rgb(255, 245, 245)',
     opacity: 0.8,
     color: "rgb(110, 12, 15)",
-    padding: "5px 12px",
+    // padding: "5px 12px",
     // border: "1px solid rgba(110, 12, 15, 0.1)",
-    border: "1px solid rgb(110, 12, 15)",
+    // border: "1px solid rgb(110, 12, 15)",
+    border: 'none',
     cursor: "pointer",
-    transition: "box-shadow .4s",
+    // transition: "box-shadow .4s",
     fontSize: 12,
     marginTop: 10,
-    ":hover": {
-      boxShadow: "2px 2px 2px 0 rgba(110, 12, 15, 0.2)",
-    },
+    padding: 0,
+    // padding: '0px',
+    // ":hover": {
+    //   boxShadow: "2px 2px 2px 0 rgba(110, 12, 15, 0.2)",
+    // },
     ":focus": {
       outline: "none",
     },
@@ -105,7 +109,7 @@ export const portfolioStyles = createStyles((theme) => ({
     [`@media (min-width: 992px)`]: {
       fontSize: 16,
       lineHeight: "140%",
-      padding: "10px 22px",
+      // padding: "10px 22px",
     },
   },
   imgBackground: {

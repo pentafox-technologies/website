@@ -6,6 +6,7 @@ import HeroSection from "../components/heroSection/heroSection";
 import ContentSection from "../components/contentSection/contentSection";
 import Clients from "../components/clientSection/clients";
 import { HeaderData } from "../components/head/Head";
+import LayoutCommon from "../components/layout/layoutCommon";
 
 export const Head = () => {
   return (
@@ -25,6 +26,8 @@ const IndexPage = () => {
         shortDescription
         image1
         image2
+        discoverLabel
+        portfolioRoute
       }
     }
     allContentfulSubServices(sort: { fields: createdAt }) {
@@ -64,7 +67,7 @@ const IndexPage = () => {
   `);
 
   return (
-    <LayoutHome showCareers={false}>
+    <LayoutCommon showCareers={false} showDarkLogo headerColor="rgb(255, 245, 245)" showHome={false}>
       <HomeWrapper>
         <HeroSection contentData={queryData.allContentfulServices.nodes} />
         {queryData.allContentfulServices.nodes?.map((item, index) => {
@@ -83,6 +86,8 @@ const IndexPage = () => {
               )}
               image1={item?.image1}
               image2={item?.image2}
+              discoverLabel={item?.discoverLabel}
+              route={item?.portfolioRoute}
             />
           );
         })}
@@ -94,7 +99,7 @@ const IndexPage = () => {
           }
         />
       </HomeWrapper>
-    </LayoutHome>
+    </LayoutCommon>
   );
 };
 
