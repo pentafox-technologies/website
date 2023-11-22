@@ -1,6 +1,7 @@
 import { Box } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { Link } from "gatsby";
+import { window } from "browser-monads";
 import React from "react";
 
 const PageLinkButton = ({routeLink, title, subTitle, leftArrow}) => {

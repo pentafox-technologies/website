@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { sm, md } from '../../helpers/device';
+import { sm, md, xs } from '../../helpers/device';
 
 export const ContentSectionWrapper = styled.div`
   padding-top: 32px;
@@ -125,6 +125,10 @@ export const ContentSectionWrapper = styled.div`
         ${md}{
           width: 412px;
           min-height: 350px;
+        }
+
+        ${xs}{
+          margin-top: 60px
         }
 
         &:before, &:after {

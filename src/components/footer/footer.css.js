@@ -155,6 +155,7 @@ export const FooterWrapper = styled.footer`
       font-weight: 600;
       color: #19181D;
       margin-bottom: 10px;
+      fontFamily: Varela Round;
 
       ${sm}{
         height: 48px;

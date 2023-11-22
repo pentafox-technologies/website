@@ -206,6 +206,7 @@ const Footer = () => {
                   label="Name"
                   placeholder="Name"
                   className={form?.errors?.name && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("name")}
                 />
               </div>
@@ -214,6 +215,7 @@ const Footer = () => {
                   label="Email"
                   placeholder="Email"
                   className={form?.errors?.email && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("email")}
                 />
               </div>
@@ -222,6 +224,7 @@ const Footer = () => {
                   label="Mobile"
                   placeholder="Mobile"
                   className={form?.errors?.mobile && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("mobile")}
                 />
               </div>
@@ -229,6 +232,7 @@ const Footer = () => {
                 <textarea
                   placeholder="Whats on your mind..."
                   className={form?.errors?.message && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("message")}
                 />
               </div>
@@ -312,14 +316,14 @@ const Footer = () => {
             >
               Careers
             </Link> */}
-            {"    "}&#124;{"    "}
-            <Link
+            {/* {"    "}&#124;{"    "} */}
+            {/* <Link
               to="/privacy"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Privacy
-            </Link>
+            </Link> */}
             {/* {"    "}&#124;{"    "}
             <Link
               to="/internship"

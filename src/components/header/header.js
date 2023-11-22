@@ -35,9 +35,73 @@ import {
   IconFileDescription,
   IconNotebook
 } from '@tabler/icons-react';
+import styled from 'styled-components';
 
 const isMobileDevice = IsMobile();
 
+const HeaderWrapper = styled.div`
+  .header {
+    max-width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  .header-links {
+    display: flex;
+    height: 100%;
+    aitems: center;
+    justify-content: flex-end;
+    @media (max-width: 770px) {
+      display: none;
+    }
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px; /* Adjust the padding as needed */
+    padding-right: 16px; /* Adjust the padding as needed */
+    text-decoration: none;
+    color: #000; /* Replace with your desired color */
+    font-weight: 500;
+    font-size: 14px; /* Adjust the font size as needed */
+
+    @media (max-width: 770px) {
+      height: 60px; /* Adjust the height as needed */
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+  }
+  .lightLinks {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px; /* Adjust the padding as needed */
+    padding-right: 16px; /* Adjust the padding as needed */
+    text-decoration: none;
+    color: #fff; /* Replace with your desired color */
+    font-weight: 500;
+    font-size: 14px; /* Adjust the font size as needed */
+
+    @media (max-width: 770px) {
+      height: 120px; /* Adjust the height as needed */
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+  }
+  .hidden-burger {
+    @media (min-width: 770px) {
+      display: none;
+    }
+  }
+`
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -79,10 +143,6 @@ const useStyles = createStyles((theme) => ({
       alignItems: 'center',
       width: '100%',
     },
-
-    ...theme.fn.hover({
-      // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    }),
   },
 
   subLink: {
@@ -126,7 +186,7 @@ const mockdata = [
   {
     icon: IconCurrencyRipple,
     title: 'Digital Mobility',
-    description: 'Embrace Digital Mobility',
+    description: 'Maximise digital footprint',
     pageRoute: '/digital-mobility',
     // sectionId: '#content-section-0-digital-mobility',
   },
@@ -139,8 +199,8 @@ const mockdata = [
   },
   {
     icon: IconBrain,
-    title: 'Machine Learning',
-    description: 'Unlocking the Power of Machine Learning',
+    title: 'Applied AI',
+    description: 'Realise growth with Intelligence',
     pageRoute: '/machine-learning',
     // sectionId: '#content-section-2-machine-learning',
   }
@@ -150,21 +210,21 @@ const landingdata = [
   {
     icon: IconServerCog,
     title: 'Platform Engineering',
-    description: 'Embrace Digital Mobility',
+    description: 'Scale with the power of cloud',
     pageRoute: '/',
     sectionId: '#content-section-0',
   },
   {
     icon: IconChartBar,
     title: 'Digital Strategy',
-    description: 'Empowering Innovation through Cloud Engineering',
+    description: 'Maximise digital footprint',
     pageRoute: '/',
     sectionId: '#content-section-1',
   },
   {
     icon: IconBrain,
-    title: 'Machine Learning',
-    description: 'Unlocking the Power of Machine Learning',
+    title: 'Applied AI',
+    description: 'Realise growth with Intelligence',
     pageRoute: '/',
     sectionId: '#content-section-2',
   }
@@ -174,21 +234,21 @@ const companydata = [
   {
     icon: IconUsersGroup,
     title: 'About',
-    description: 'Learn more about our mission, values and team',
+    description: 'Our Vision, Values and Team',
     pageRoute: '/about-us',
     // sectionId: '#content-section-0',
   },
   {
     icon: IconFileDescription,
     title: 'Careers',
-    description: "See what's its like to work with at Pentafox and explore open positions",
+    description: "Grow with us",
     pageRoute: '/careers',
     // sectionId: '#content-section-0',
   },
   {
     icon: IconNotebook,
     title: 'Internship',
-    description: "Join our 4-Week Internship program and gain hands-on experience",
+    description: "Experience Technology",
     pageRoute: '/internship',
     // sectionId: '#content-section-0',
   },
@@ -210,7 +270,7 @@ const HeaderBar = ({ showDarkLogo=true, headerColor = '#FFFFFF', lightLinks = fa
         <UnstyledButton className={classes.subLink} key={item.title}>
           <Group noWrap align="flex-start">
             <ThemeIcon size={34} variant="default" radius="md">
-              <item.icon size={20} color='red' />
+              <item.icon size={20} style={{color: '#CD0E11'}} />
             </ThemeIcon>
             <div>
               <Text size="sm" fw={600}>
@@ -227,154 +287,91 @@ const HeaderBar = ({ showDarkLogo=true, headerColor = '#FFFFFF', lightLinks = fa
   };
 
   return (
-    <Box>
-      <Header height={90} 
+    <HeaderWrapper>
+      <Box
       style={{backgroundColor: headerColor}}
       withBorder={false}>
-        <Container size={1200} style={{height: '100%'}}>
-          <Group position="apart" sx={{ height: '100%' }}>
-            <Link to="/">
-              {
-                showDarkLogo ?
-                  <LogoRedSVG height={isMobileDevice ? '30' : '60'} width="200" />
-                  : <LogoSVG height={isMobileDevice ? '30' : '60'} width="200" />
-              }
-            </Link>
+        <Box className='header'>
+          {/* <Container size={1200} style={{height: '100%'}}> */}
+            <div className='header-content'>
+              {/* <Group position="apart" sx={{ height: '100%' }}> */}
+                <Link to="/">
+                  {
+                    showDarkLogo ?
+                      <LogoRedSVG height={isMobileDevice ? '30' : '60'} width="200" />
+                      : <LogoSVG height={isMobileDevice ? '30' : '60'} width="200" />
+                  }
+                </Link>
 
-            <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-              {/* <Link to='/' className={lightLinks ? classes.lightLinks : classes.link}>
-                <h5>
-                  Products
-                </h5>
-              </Link> */}
-              {
-                showHome && (
-                  <Link to='/' className={lightLinks ? classes.lightLinks : classes.link}>
+                <div className="header-links">
+                  {
+                    showHome && (
+                      <Link to='/' className={lightLinks ? 'lightLinks' : 'link'}>
+                        <h5>
+                          Home
+                        </h5>
+                      </Link>
+                    )
+                  }
+                  <HoverCard width={600} position="bottom-end" radius="md" shadow="md" withinPortal offset={-20}>
+                    <HoverCard.Target>
+                      <a href="#" className={lightLinks ? 'lightLinks' : 'link'}>
+                        <h5>
+                          <Center inline>
+                            <Box component="span" mr={5}>
+                              Solutions
+                            </Box>
+                            <IconChevronDown size={16} />
+                          </Center>
+                        </h5>
+                      </a>
+                    </HoverCard.Target>
+
+                    <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
+                      <SimpleGrid cols={2} spacing={10}>
+                        {
+                          landingdata?.map((item) => (
+                            <NavigationLinks key={item.title} item={item} />
+                          ))
+                        }
+                      </SimpleGrid>
+                    </HoverCard.Dropdown>
+                  </HoverCard>
+                  <Link to='/portfolio' className={lightLinks ? 'lightLinks' : 'link'}>
                     <h5>
-                      Home
+                      Portfolio
                     </h5>
                   </Link>
-                )
-              }
-              <HoverCard width={600} position="bottom-end" radius="md" shadow="md" withinPortal>
-                <HoverCard.Target>
-                  <a href="#" className={lightLinks ? classes.lightLinks : classes.link}>
-                    <h5>
-                      <Center inline>
-                        <Box component="span" mr={5}>
-                          Solutions
-                        </Box>
-                        <IconChevronDown size={16} />
-                      </Center>
-                    </h5>
-                  </a>
-                </HoverCard.Target>
+                  <HoverCard width={600} position="bottom-end" radius="md" shadow="md" withinPortal offset={-20}>
+                    <HoverCard.Target>
+                      <a href="#" className={lightLinks ? 'lightLinks' : 'link'}>
+                        <h5>
+                          <Center inline>
+                            <Box component="span" mr={5}>
+                              Company
+                            </Box>
+                            <IconChevronDown size={16} />
+                          </Center>
+                        </h5>
+                      </a>
+                    </HoverCard.Target>
 
-                <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
-                  <Group position="apart" px="md">
-                    <Text fw={900}>Solutions</Text>
-                    {/* <Anchor href="#" fz="xs">
-                      View all
-                    </Anchor> */}
-                  </Group>
+                    <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
+                      <SimpleGrid cols={2} spacing={10}>
+                        {
+                          companydata?.map((item) => (
+                            <NavigationLinks key={item.title} item={item} />
+                          ))
+                        }
+                      </SimpleGrid>
+                    </HoverCard.Dropdown>
+                  </HoverCard>
+                </div>
 
-                  <Divider
-                    my="sm"
-                    mx="-md"
-                    color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
-                  />
-
-                  <SimpleGrid cols={2} spacing={10}>
-                    {
-                      landingdata?.map((item) => (
-                        <NavigationLinks key={item.title} item={item} />
-                      ))
-                    }
-                  </SimpleGrid>
-
-                  {/* <Divider
-                    my="sm"
-                    mx="-md"
-                    color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
-                  />
-                  <Group position="apart" px="md">
-                    <Text fw={900}>Portfolio</Text>
-                    <Link to='/portfolio'>
-                      <Anchor href="#" fz="xs">
-                        View all
-                      </Anchor>
-                    </Link>
-                  </Group>
-                  <Divider
-                    my="sm"
-                    mx="-md"
-                    color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
-                  /> */}
-
-                  {/* <SimpleGrid cols={2} spacing={10}>
-                    {
-                      mockdata?.map((item) => (
-                        <NavigationLinks key={item.title} item={item} />
-                      ))
-                    }
-                  </SimpleGrid> */}
-                </HoverCard.Dropdown>
-              </HoverCard>
-              <Link to='/portfolio' className={lightLinks ? classes.lightLinks : classes.link}>
-                <h5>
-                  Portfolio
-                </h5>
-              </Link>
-              {/* <a href="#" className={lightLinks ? classes.lightLinks : classes.link}>
-                <h5>
-                  Resources
-                </h5>
-              </a> */}
-              {/* <a href="#" className={lightLinks ? classes.lightLinks : classes.link}>
-                <h5>
-                  Company
-                </h5>
-              </a> */}
-              <HoverCard width={600} position="bottom-end" radius="md" shadow="md" withinPortal>
-                <HoverCard.Target>
-                  <a href="#" className={lightLinks ? classes.lightLinks : classes.link}>
-                    <h5>
-                      <Center inline>
-                        <Box component="span" mr={5}>
-                          Company
-                        </Box>
-                        <IconChevronDown size={16} />
-                      </Center>
-                    </h5>
-                  </a>
-                </HoverCard.Target>
-
-                <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
-                  <Group position="apart" px="md">
-                    <Text fw={900}>Company</Text>
-                  </Group>
-
-                  <Divider
-                    my="sm"
-                    mx="-md"
-                    color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
-                  />
-
-                  <SimpleGrid cols={2} spacing={10}>
-                    {
-                      companydata?.map((item) => (
-                        <NavigationLinks key={item.title} item={item} />
-                      ))
-                    }
-                  </SimpleGrid>
-                </HoverCard.Dropdown>
-              </HoverCard>
-            </Group>
-
-            <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
-          </Group>
-        </Container>
-      </Header>
+                <Burger opened={drawerOpened} onClick={toggleDrawer} className='hidden-burger' />
+            </div>
+        </Box>
+      </Box>
 
       <Drawer
         opened={drawerOpened}
@@ -440,18 +437,10 @@ const HeaderBar = ({ showDarkLogo=true, headerColor = '#FFFFFF', lightLinks = fa
               ))
             }
           </Collapse>
-
-          {/* <a href="#" className={classes.link}>
-            Learn
-          </a>
-          <a href="#" className={classes.link}>
-            Academy
-          </a> */}
-
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
         </ScrollArea>
       </Drawer>
-    </Box>
+    </HeaderWrapper>
   );
 }
 

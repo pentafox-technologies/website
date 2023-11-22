@@ -31,7 +31,8 @@ const useStyles = createStyles((theme) => ({
   },
   description: {
     fontSize: "1.2rem",
-    color: "rgba(0,0,0,0.6)",
+    color: "rgba(0,0,0,0.8)",
+    lineHeight: 1.45,
     marginTop: 5,
     [theme.fn.smallerThan("md")]: {
       fontSize: "1rem",
@@ -117,7 +118,7 @@ const PortfolioLayout = ({
                   className="list-item"
                   key={key}
                   style={{
-                    color: "rgba(0,0,0,0.6)",
+                    color: "rgba(0,0,0,0.8)",
                     fontFamily: "Varela Round",
                   }}
                 >
@@ -127,7 +128,7 @@ const PortfolioLayout = ({
             </List>
             <Group mt={20} ref={animListItem}>
               {skillset?.map((skill, key) => (
-                <Badge color="red" key={key} className="list-item">
+                <Badge color="red" key={key} className="list-item" style={{color: '#CD0E11'}}>
                   {skill}
                 </Badge>
               ))}

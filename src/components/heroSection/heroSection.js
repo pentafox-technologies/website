@@ -7,7 +7,7 @@ import { StaticImage, getImage } from "gatsby-plugin-image";
 import { BgImage  } from "gbimage-bridge";
 import { PopupButton } from "react-calendly";
 import { document } from 'browser-monads';
-import { portfolioStyles } from "../../styles/portfolio.css";
+import { PortfolioWrapper, portfolioStyles } from "../../styles/portfolio.css";
 import SplitType from "split-type";
 import { gsap } from "gsap";
 import { IconSquareArrowRight } from "@tabler/icons-react";
@@ -30,32 +30,32 @@ const FigureWrapper = ({ children, id, ...props }) => {
 };
 
 const HeroSection = ({ contentData }) => {
-  const { classes } = portfolioStyles();
+  // const { classes } = portfolioStyles();
 
-  useEffect(() => {
-    // Initialize SplitType
-    let typeSplit = new SplitType('.hero-animation', {
-      types: 'lines, words, chars',
-      tagName: 'span',
-    });
+  // useEffect(() => {
+  //   // Initialize SplitType
+  //   let typeSplit = new SplitType('.hero-animation', {
+  //     types: 'lines, words, chars',
+  //     tagName: 'span',
+  //   });
 
-    // GSAP Animation
-    gsap.from('.hero-animation .char', {
-      y: '100%',
-      opacity: 0,
-      duration: 0.75,
-      ease: 'power4.out',
-      stagger: 0.15,
-    });
+  //   // GSAP Animation
+  //   gsap.from('.hero-animation .char', {
+  //     y: '100%',
+  //     opacity: 0,
+  //     duration: 0.35,
+  //     ease: 'power4.out',
+  //     stagger: 0.15,
+  //   });
 
-    gsap.from('.animate .mask', {
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      duration: 0.75,
-      ease: 'power4.out',
-      stagger: 0.15,
-    });
-  }, []);
+  //   gsap.from('.animate .mask', {
+  //     scaleY: 0,
+  //     transformOrigin: 'bottom',
+  //     duration: 0.35,
+  //     ease: 'power4.out',
+  //     stagger: 0.15,
+  //   });
+  // }, []);
 
   const queryData = useStaticQuery(graphql`
     query {
@@ -161,52 +161,51 @@ const HeroSection = ({ contentData }) => {
     // </HeroSectionWrapper>
 
 
-    <Box className={classes.landing}>
-      <div style={{position: 'absolute', width: '100%', bottom: 0, flex: 1}}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,288L720,288L1440,128L1440,320L720,320L0,320Z"></path></svg>
-      </div>
-      <Box className={classes.landingContainer}>
-        <Box className={classes.textContainer} style={{zIndex: 99}}>
-          <h1 className={classes.landingHeroText}>
-            Skyrocket your business with the power of <br/> <span style={{color: '#CD0E11'}} className="hero-animation">
-            <span className="mask">
-              Digital Transformation.
-            </span>
-            </span>
-          </h1>
-          <Box mt="lg">
-            <p
-              className={classes.landingDescriptionText}
-              style={{ lineHeight: 2 }}
-            >
-              Our goal is to modernize businesses of all kinds by
-              leveraging the power of the Cloud and incorporating embedded
-              intelligence from a diverse set of AI/ML capabilities, with
-              a focus on delivering effective product solutions.
-            </p>
+    <PortfolioWrapper>
+      <Box className='landing'>
+        <div style={{position: 'absolute', width: '100%', bottom: 0, flex: 1}}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,288L720,288L1440,128L1440,320L720,320L0,320Z"></path></svg>
+        </div>
+        <Box className='landingContainer'>
+          <Box className='textContainer' style={{zIndex: 99}}>
+            <h1 className='landingHeroText'>
+              Skyrocket your business with the power of <br/> <span style={{color: '#CD0E11'}}>
+              <span>
+                Digital Transformation.
+              </span>
+              </span>
+            </h1>
+            <Box mt="lg">
+              <p
+                className='landingDescriptionText'
+                style={{ lineHeight: 1.45 }}
+              >
+                Our goal is to modernize businesses of all kinds by leveraging the power of the Cloud and Artificial Intelligence to deliver state-of-the-art product solutions.
+              </p>
+            </Box>
+            <Box mt="xl">
+              <PopupButton
+                url="https://calendly.com/vignesh-sankaran"
+                className='appointmentBtn'
+                rootElement={document.getElementById("___gatsby")}
+                text={
+                  <div>
+                    Talk to our Experts
+                    <IconSquareArrowRightFilled style={{marginLeft: 12}} />
+                  </div>
+                }
+              />
+            </Box>
           </Box>
-          <Box mt="xl">
-            <PopupButton
-              url="https://calendly.com/vignesh-sankaran"
-              className={classes.appointmentBtn}
-              rootElement={document.getElementById("___gatsby")}
-              text={
-                <div>
-                  Talk to our Experts
-                  <IconSquareArrowRightFilled style={{marginLeft: 12}} />
-                </div>
-              }
+          <Box className='landingImage'>
+            <StaticImage
+              src="../../images/portfolio_landing.png"
+              placeholder="blurred"
             />
           </Box>
         </Box>
-        <Box className={classes.landingImage}>
-          <StaticImage
-            src="../../images/portfolio_landing.png"
-            placeholder="blurred"
-          />
-        </Box>
       </Box>
-    </Box>
+    </PortfolioWrapper>
   );
 };
 

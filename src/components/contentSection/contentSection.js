@@ -4,7 +4,7 @@ import { ContentSectionWrapper } from './contentSection.css';
 import { useMediaQuery } from '@mantine/hooks';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
-import { IconArrowRight } from '@tabler/icons-react';
+import { IconArrowRight, IconCircleArrowRightFilled } from '@tabler/icons-react';
 import { Link } from 'gatsby';
 
 const useStyles = createStyles((theme) => ({
@@ -96,9 +96,9 @@ const ContentSection = ({
                 </ul>
               : null}
 
-              <Link to={route} style={{color: '#CD0E11', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10}}>
+              <Link to={route} style={{color: '#CD0E11', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10, textDecoration: 'none'}}>
                 <h6 style={{margin: 0, fontSize: 16}}>{discoverLabel}</h6>
-                <IconArrowRight size={22} />
+                <IconCircleArrowRightFilled size={22} />
               </Link>
             </div>
 

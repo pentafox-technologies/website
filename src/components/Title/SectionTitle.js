@@ -1,4 +1,4 @@
-import { Box, Button } from '@mantine/core'
+import { Box, Button, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
 import { sectionTitleStyles } from './SectionTitle.css'
 import VarelaWrapper from '../FontWrapperComp/VarelaWrapper'
@@ -24,12 +24,12 @@ const SectionTitle = ({title, index, reverse, subText, sectionDescription, showD
         showDescription && (
           <>
             <div style={{marginTop: 25, display: 'flex', alignItems: 'center', justifyContent: reverse ? 'flex-end' : 'flex-start'}}>
-              <VarelaWrapper style={{fontSize: 18, textAlign: reverse ? 'right' : 'left', width: '60%', lineHeight: 1.8, color: 'rgba(0,0,0,0.6)'}}>
+              <VarelaWrapper style={{fontSize: 18, textAlign: reverse ? 'right' : 'left', width: '60%', lineHeight: 1.45}}>
                 {sectionDescription}
               </VarelaWrapper>
             </div>
             <div style={{ display: 'flex', justifyContent: reverse ? 'flex-end' : 'flex-start', marginTop: 25 }}>
-              <Button size='lg' color='red'>Explore</Button>
+              <Button size='lg' color='red' style={{backgroundColor: '#CD0E11'}}>Explore</Button>
             </div>
           </>
         )

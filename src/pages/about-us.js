@@ -1,13 +1,14 @@
-import { Box, Center, Container, Grid, Image } from "@mantine/core";
+import { Box, Container, Grid, Image } from "@mantine/core";
 import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import OutfitWrapper from "../components/FontWrapperComp/OutfitWrapper";
 import VarelaWrapper from "../components/FontWrapperComp/VarelaWrapper";
 import { HomeWrapper } from "../components/home/home.css";
 import LayoutCommon from "../components/layout/layoutCommon";
 import PageWrapper from "../components/pageWrapper/PageWrapper";
 import SectionTitle from "../components/Title/SectionTitle";
+import { window } from "browser-monads";
 
 const Values = ({ title, value, image }) => {
   return (
@@ -89,49 +90,48 @@ const ImageWrapper = ({ image, name, designation }) => {
 const AboutUs = () => {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    let scrollPosition = 0;
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   let scrollPosition = 0;
 
-    const interval = setInterval(() => {
-      const scrollWidth = container.scrollWidth;
-      const containerWidth = container.clientWidth;
+  //   const interval = setInterval(() => {
+  //     const scrollWidth = container.scrollWidth;
+  //     const containerWidth = container.clientWidth;
 
-      if (scrollPosition >= scrollWidth - containerWidth) {
-        scrollPosition = 0;
-      } else {
-        scrollPosition += 1;
-      }
+  //     if (scrollPosition >= scrollWidth - containerWidth) {
+  //       scrollPosition = 0;
+  //     } else {
+  //       scrollPosition += 1;
+  //     }
 
-      container.scrollLeft = scrollPosition;
-    }, 25);
+  //     container.scrollLeft = scrollPosition;
+  //   }, 25);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const queryData = useStaticQuery(graphql`
-    query MyQuery {
-      allContentfulTeam(sort: { fields: createdAt }) {
-        nodes {
-          fullName
-          designation
-          profileImage {
-            # id
-            url
-          }
-        }
-      }
-      allContentfulOurValues(sort: { fields: createdAt }) {
-        nodes {
-          title
-          iconImage
-          description {
-            description
-          }
-        }
-      }
-    }
-  `);
+  // const queryData = useStaticQuery(graphql`
+  //   query MyQuery {
+  //     allContentfulTeam(sort: { fields: createdAt }) {
+  //       nodes {
+  //         fullName
+  //         designation
+  //         profileImage {
+  //           url
+  //         }
+  //       }
+  //     }
+  //     allContentfulOurValues(sort: { fields: createdAt }) {
+  //       nodes {
+  //         title
+  //         iconImage
+  //         description {
+  //           description
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   return (
     <LayoutCommon
@@ -288,7 +288,9 @@ const AboutUs = () => {
               </Grid.Col>
             </Grid>
           </Container> */}
-          <Box sx={{ backgroundColor: "#F4F4F4" }} py={90}>
+          {/* <Box 
+          // sx={{ backgroundColor: "#F4F4F4" }} 
+          py={90}>
             <Container size={1300}>
               <Grid justify="space-evenly" align="space-evenly">
                 <Grid.Col md={3.5} my={15}>
@@ -317,8 +319,9 @@ const AboutUs = () => {
                 )}
               </Grid>
             </Container>
-          </Box>
-          <Box>
+          </Box> */}
+
+          {/* <Box>
             <Container size={1300} py={60} style={{position: 'relative'}}>
               <Center sx={{ flexDirection: "column" }}>
                 <OutfitWrapper style={{ fontSize: 35, fontWeight: 600 }}>
@@ -350,9 +353,8 @@ const AboutUs = () => {
                   })}
                 </Box>
               <div style={{ position: 'absolute', width: '10%', right: 0, top: 0, height: '100%', zIndex: 99, background: 'linear-gradient(-90deg, rgba(255,255,255,0.986453956582633) 19%, rgba(255,255,255,0.4486388305322129) 58%, rgba(255,255,255,0) 100%)'}} />
-              {/* </div> */}
             </Container>
-          </Box>
+          </Box> */}
         </PageWrapper>
       </HomeWrapper>
     </LayoutCommon>
