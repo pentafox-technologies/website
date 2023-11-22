@@ -33,6 +33,33 @@ export const replaceRenderer = ({
   replaceBodyHTMLString(html);
 };
 
+export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadComponents, setPostBodyComponents }) => {
+  setPreBodyComponents([
+    <div id='preloader'>
+      {/* <img src="pentafox.png" alt="logo" style={{"width": 180}} /> */}
+      {/* <img id="loader-img" src="/arya-pulses-icon.png" alt="logo" style={{"width": 80}} /> */}
+      {/* <div className="preloader_animation"></div> */}
+    </div>
+  ])
+
+  setBodyAttributes({
+    className: 'preloader_active'
+  })
+
+  setHeadComponents([
+    <>
+      <link as='script' rel="preload" href="/scripts/preloader.js" />
+      <noscript>
+        <link rel="stylesheet" href="/scripts/preloader.css" defer />
+      </noscript>
+    </>
+  ])
+
+  setPostBodyComponents([
+    <script src="/scripts/preloader.js" />
+  ])
+}
+
 // export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
 //   const html = renderToString(bodyComponent);
 //   setHeadComponents([<ServerStyles html={html} server={stylesServer} />]);

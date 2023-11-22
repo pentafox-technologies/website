@@ -108,7 +108,7 @@ module.exports = {
         background_color: `#dc2908`,
         theme_color: `#dc2908`,
         display: `minimal-ui`,
-        icon: `src/images/logo-icon.svg`, // This path is relative to the root of the site.
+        icon: `src/images/social.png`, // This path is relative to the root of the site.
       },
     },
     {

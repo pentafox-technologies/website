@@ -113,6 +113,9 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
+      <div style={{ width: '100%', height: 200, top: 0, zIndex: 99}}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+      </div>
       <div className="container lg-container">
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>
           <div className="col-12 col-sm-6 col-md-6">
@@ -203,6 +206,7 @@ const Footer = () => {
                   label="Name"
                   placeholder="Name"
                   className={form?.errors?.name && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("name")}
                 />
               </div>
@@ -211,6 +215,7 @@ const Footer = () => {
                   label="Email"
                   placeholder="Email"
                   className={form?.errors?.email && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("email")}
                 />
               </div>
@@ -219,6 +224,7 @@ const Footer = () => {
                   label="Mobile"
                   placeholder="Mobile"
                   className={form?.errors?.mobile && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("mobile")}
                 />
               </div>
@@ -226,6 +232,7 @@ const Footer = () => {
                 <textarea
                   placeholder="Whats on your mind..."
                   className={form?.errors?.message && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("message")}
                 />
               </div>
@@ -301,30 +308,30 @@ const Footer = () => {
             >
               Home
             </Link>
-            {"    "}&#124;{"    "}
+            {/* {"    "}&#124;{"    "}
             <Link
               to="/careers"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Careers
-            </Link>
-            {"    "}&#124;{"    "}
-            <Link
+            </Link> */}
+            {/* {"    "}&#124;{"    "} */}
+            {/* <Link
               to="/privacy"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Privacy
-            </Link>
-            {"    "}&#124;{"    "}
+            </Link> */}
+            {/* {"    "}&#124;{"    "}
             <Link
               to="/internship"
               className="pl-3 text-white"
               style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
             >
               Internship
-            </Link>
+            </Link> */}
             {/* {"    "}&#124;{"    "} */}
             {
               queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {

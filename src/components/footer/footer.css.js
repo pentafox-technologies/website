@@ -6,7 +6,7 @@ export const FooterWrapper = styled.footer`
   background: #292733;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 32px;
+  // padding-top: 32px;
   /* margin-top: 32px; */
 
   .section-title {
@@ -31,7 +31,7 @@ export const FooterWrapper = styled.footer`
   }
 
   ${sm}{
-    padding: 56px 0 32px;
+    // padding: 56px 0 32px;
   }
 
   p {
@@ -155,6 +155,7 @@ export const FooterWrapper = styled.footer`
       font-weight: 600;
       color: #19181D;
       margin-bottom: 10px;
+      fontFamily: Varela Round;
 
       ${sm}{
         height: 48px;
