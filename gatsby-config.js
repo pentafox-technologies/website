@@ -108,7 +108,7 @@ module.exports = {
         background_color: `#dc2908`,
         theme_color: `#dc2908`,
         display: `minimal-ui`,
-        icon: `src/images/logo-icon.svg`, // This path is relative to the root of the site.
+        icon: `src/images/social.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -137,6 +137,7 @@ module.exports = {
           `Montserrat: 300,400,500,600,700`,
           `Outfit: 300,400,500,600,700`,
           `Varela Round: 400`,
+          `Kalam: 300,400,700`,
         ],
         display: "swap",
       },
