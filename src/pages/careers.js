@@ -9,6 +9,7 @@ import { CareersContent } from "../components/pageWrapper/careers.css";
 import PageWrapper, {
   TopSectionWrapper,
 } from "../components/pageWrapper/PageWrapper";
+import { Container, Text, Title } from "@mantine/core";
 
 export const Head = () => {
   return (
@@ -47,15 +48,26 @@ const Careers = () => {
   `);
 
   return (
-    <LayoutCommon hideLink showCareers={false} showDarkLogo={false} headProps={{pageTitle: 'Careers'}} headerColor="rgb(230,68,68)" lightLinks >
+    <LayoutCommon hideLink showCareers={false} showDarkLogo={true} headProps={{pageTitle: 'Careers'}} showBanner={true} >
       <HomeWrapper>
         <PageWrapper>
-          <TopSectionWrapper>
-            <div className="container lg-container">
+          {/* <TopSectionWrapper> */}
+
+          <Container size={1200}
+            py={40}
+            px={0}
+            style={{height: '50vh', display: 'flex', alignItems: 'center', margin: '0 auto'}}>
+            <div style={{textAlign: 'center', width: '100%'}}>
+              <Title variant="gradient" gradient={{ from: 'red', to: 'pink', deg: 90 }} size={52}>Wanna work on right things?</Title>
+              <Text size={24}>Come join us and grow with us!</Text>
+            </div>
+          </Container>
+
+            {/* <div className="container lg-container">
               <h1>Wanna work on right things?</h1>
               <p>Come join us and grow with us!</p>
-            </div>
-          </TopSectionWrapper>
+            </div> */}
+          {/* </TopSectionWrapper> */}
 
           <BenefitsSection
             title="Benefits @ Pentafox"

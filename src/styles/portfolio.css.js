@@ -304,4 +304,92 @@ export const PortfolioWrapper = styled.div`
       font-size: 3.3rem;
     }
   }
+
+  // .banner {
+  //   border: 1px solid red;
+  //   min-width: 900px;
+  //   margin: auto; /* This centers the container horizontally */
+  //   border-radius: 6px;
+  //   padding: 10px;
+  //   background-color: rgba(220, 41, 8, 0.8);
+  //   position: absolute;
+  //   top: 0;
+  //   left: 50%; /* Position the left edge at the horizontal center */
+  //   transform: translateX(-50%); /* Move back by half of its own width */
+  //   z-index: 999;
+  //   color: white;
+  //   font-size: 16px;
+  //   // padding-left: 20px;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
+
+  .banner {
+    border: 1px solid red;
+    min-width: 320px; /* Set a minimum width for smaller screens */
+    max-width: 900px; /* Set a maximum width for larger screens */
+    width: 80%; /* Set a default width */
+    margin: auto; /* This centers the container horizontally */
+    border-radius: 6px;
+    padding: 10px;
+    background-color: rgba(220, 41, 8, 0.8);
+    position: absolute;
+    top: 0;
+    left: 50%; /* Position the left edge at the horizontal center */
+    transform: translateX(-50%); /* Move back by half of its own width */
+    z-index: 999;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    @media (max-width: 600px) {
+      font-size: 14px; /* Adjust font size for smaller screens */
+      padding: 8px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  .bannerText {
+    display: flex;
+    aligntems: center;
+  }
+
+  .bannerBtn {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #cd0e11;
+    border: none;
+    cursor: pointer;
+    font-size: 12;
+    margin-top: 10;
+    padding: 0;
+    font-family: 'Varela Round';
+    border-radius: 3px;
+    padding: 0px 5px;
+  }
+`;
+
+export const FundedWrapper = styled.div`
+  .letsTalk {
+    font-size: 14rem;
+    font-weight: 900;
+    position: relative;
+
+    @media (max-width: 1400px) {
+      font-size: 10rem;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 8rem;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 5rem;
+    }
+
+    @media (max-width: 550px) {
+      font-size: 3.3rem;
+    }
+  }
 `;

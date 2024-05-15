@@ -1,5 +1,5 @@
-import { Box, Center } from "@mantine/core";
-import { graphql, useStaticQuery } from "gatsby";
+import { ActionIcon, Box, Button, Center, CloseButton, Text, Title } from "@mantine/core";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import React, { useEffect } from "react";
 import { HeroSectionWrapper } from "./heroSection.css";
@@ -10,8 +10,9 @@ import { document } from 'browser-monads';
 import { PortfolioWrapper, portfolioStyles } from "../../styles/portfolio.css";
 import SplitType from "split-type";
 import { gsap } from "gsap";
-import { IconSquareArrowRight } from "@tabler/icons-react";
+import { IconSparkles, IconSquareArrowRight } from "@tabler/icons-react";
 import { IconSquareArrowRightFilled } from "@tabler/icons-react";
+import { navigate } from '@reach/router';
 
 const FigureWrapper = ({ children, id, ...props }) => {
   const PlatformImage = getImage(props?.queryData?.platformImage)
@@ -162,6 +163,22 @@ const HeroSection = ({ contentData }) => {
 
 
     <PortfolioWrapper>
+      {/* <div className="banner">
+        <div className="bannerText">
+          <div>
+            <IconSparkles />
+          </div>
+          <Text pl={10}>
+            Pentafox Technologies Secures Seed Invvestment from Pentagon Group, Mumbai. 🎉
+          </Text>
+        </div>
+        <div className="bannerBtn" onClick={() => navigate('/funded')}>
+          <Text size={14}>
+            Read more
+          </Text>
+        </div>
+      </div> */}
+
       <Box className='landing'>
         <div style={{position: 'absolute', width: '100%', bottom: 0, flex: 1}}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,288L720,288L1440,128L1440,320L720,320L0,320Z"></path></svg>

@@ -32,11 +32,12 @@ const LayoutCommon = ({
   showDarkLogo = false,
   headerColor = '#FFFFFF',
   lightLinks = false,
-  showHome = true
+  showHome = true,
+  showBanner = true
 }) => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={themeObj}>
-      <HeaderBar showCareers={showCareers} showDarkLogo={showDarkLogo} headerColor={headerColor} lightLinks={lightLinks} showHome={showHome} />
+      <HeaderBar showCareers={showCareers} showDarkLogo={showDarkLogo} headerColor={headerColor} lightLinks={lightLinks} showHome={showHome} showBanner={showBanner} />
       <div className="content-wrap" style={{position: 'relative'}}>
         <main>{children}</main>
       </div>

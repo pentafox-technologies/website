@@ -196,7 +196,7 @@ const AboutUs = () => {
             size={1200}
             py={40}
             px={0}
-            style={{height: '100vh', display: 'flex', alignItems: 'center'}}
+            style={{height: '80vh', display: 'flex', alignItems: 'center'}}
           >
             <div>
               <SectionTitle title={"About Us"} />
