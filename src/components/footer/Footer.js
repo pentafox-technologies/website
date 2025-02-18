@@ -300,6 +300,12 @@ const Footer = () => {
         </div>
 
         <div className="btm-link">
+          <div style={{paddingTop: 20, paddingBottom: 20}}>
+            <img src="https://i.imgur.com/brwBGIo.png" style={{objectFit: 'cover'}} alt="Pentafox Logo" height="100" width="200" />
+          </div>
+        </div>
+
+        <div className="btm-link">
           <div className="left-col">
             <Link
               to="/"
