@@ -6,7 +6,7 @@ import { FooterWrapper } from "./footer.css";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { URL } from "../../services/requestUrl";
 import { useForm } from "@mantine/form";
-import PentafoxLogo from "../../images/logo-pf-white.svg"
+import PentafoxLogo from "../../images/logo-pf-white-1.svg"
 import { PopupButton } from "react-calendly";
 import { document } from 'browser-monads';
 
@@ -120,7 +120,7 @@ const Footer = () => {
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>
           <div className="col-12 col-sm-6 col-md-6">
             <Box mb='xl'>
-              <PentafoxLogo height="60" width="200" />
+              <PentafoxLogo height="140" width="140" />
             </Box>
             <p className="mb-40">
               <span className="section-title">Our Locations</span>
@@ -299,13 +299,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="btm-link">
+        <div className="btm-link" style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
           <div style={{paddingTop: 20, paddingBottom: 20}}>
             <img src="https://i.imgur.com/brwBGIo.png" style={{objectFit: 'cover'}} alt="Pentafox Logo" height="100" width="200" />
           </div>
         </div>
 
-        <div className="btm-link">
+        <div className="btm">
           <div className="left-col">
             <Link
               to="/"

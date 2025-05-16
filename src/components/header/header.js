@@ -1,7 +1,7 @@
 import React from "react";
 import IsMobile from "../../helpers/IsMobile";
-import LogoSVG from "../../images/logo-pf-white.svg";
-import LogoRedSVG from "../../images/logo-pf-red.svg";
+import LogoSVG from "../../images/logo-pf-white-1.svg";
+import LogoRedSVG from "../../images/logo-pf-red-1.svg";
 import { Link, navigate } from "gatsby";
 
 import {
@@ -13,7 +13,6 @@ import {
   Text,
   SimpleGrid,
   ThemeIcon,
-  Anchor,
   Divider,
   Center,
   Box,
@@ -385,9 +384,9 @@ const HeaderBar = ({
             {/* <Group position="apart" sx={{ height: '100%' }}> */}
             <Link to="/">
               {showDarkLogo ? (
-                <LogoRedSVG height={isMobileDevice ? "30" : "60"} width="200" />
+                <LogoRedSVG height={isMobileDevice ? "60" : "90"} width="auto" />
               ) : (
-                <LogoSVG height={isMobileDevice ? "30" : "60"} width="200" />
+                <LogoSVG height={isMobileDevice ? "60" : "90"} width="auto" />
               )}
             </Link>
 

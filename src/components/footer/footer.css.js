@@ -340,4 +340,43 @@ export const FooterWrapper = styled.footer`
       }
     }
   }
+
+  .btm {
+    color: #757575;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+
+    ${xs}{
+      .right-col {
+        flex: 1 !important;
+        font-size: 9px;
+        line-height: 150%;
+      }
+    }
+
+    a {
+      color: #757575;
+
+      &.prodjar-link {
+        display: inline-block;
+        min-width: 64px;
+        margin-left: 6px;
+        &:before {
+          background-size: contain;
+          background-position: center left;
+        }
+      }
+    }
+
+    .right-col {
+      ${xs}{
+        flex: 1 1 100%;
+        text-align: right;
+      }
+      ${sm}{
+        margin-left: auto;
+      }
+    }
+  }
 `;
