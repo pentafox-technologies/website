@@ -297,6 +297,39 @@ const Footer = () => {
               />
             </form>
           </div>
+          <div className="col-12 col-sm-6 col-md-6">
+            <p className="mb-2">
+              <span className="bold">For Grievances:</span>
+              <br/>
+              Send an email to: grievanceofficer@pentafox.in
+              <br/>
+              Call at +91 90037 91579
+            </p>
+            <p className="mb-2">
+              <span className="bold">Registered & Corporate Office:</span>
+              <br/>
+              Pentafox Technologies Private Limited
+              <br/>
+              No. 59, Journalist Colony, Kottivakkam, Thiruvannamalai,
+              <br/>
+              Tamil Nadu 600041
+              <br/>
+            </p>
+          </div>
+          <div className="col-12 col-sm-6 col-md-6">
+            <p className="mb-2">
+              <span className="bold">Escalation:</span>
+              <br/>
+              If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI
+              <br/>
+              Integrated Ombudsman Contact Details:
+            </p>
+            <p className="mb-2">
+              <span className="bold">1. Complaints can be filed online on https://cms.rbi.org.in</span>
+              <br/>
+              <span className="bold">2. Physical letter can be sent to the ‘Centralised Receipt and Processing Centre’ set up at Reserve Bank of India, 4th Floor, Sector 17, Chandigarh – 160017.</span>
+            </p>
+          </div>
         </div>
 
         <div className="btm-link" style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
