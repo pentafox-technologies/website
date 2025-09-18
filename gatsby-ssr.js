@@ -52,6 +52,9 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
       <noscript>
         <link rel="stylesheet" href="/scripts/preloader.css" defer />
       </noscript>
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+
     </>
   ])
 

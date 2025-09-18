@@ -351,7 +351,7 @@ const HeaderBar = ({
   return (
     <HeaderWrapper>
       <Box style={{ backgroundColor: headerColor }} withBorder={false}>
-        {showBanner && (
+        {/* {showBanner && (
           <div className="banner" onClick={() => navigate("/funded")}>
             <div className="bannerContent">
               <div className="bannerText">
@@ -377,7 +377,7 @@ const HeaderBar = ({
               </div>
             </div>
           </div>
-        )}
+        )} */}
         <Box className="header">
           {/* <Container size={1200} style={{height: '100%'}}> */}
           <div className="header-content">

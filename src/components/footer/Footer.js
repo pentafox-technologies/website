@@ -32,7 +32,7 @@ const Footer = () => {
       mobile: (value) =>
         /^[7-9][0-9]{9}$/.test(value) ? null : "Invalid Mobile",
       is_privacy: (value) => (value ? null : "Required"),
-      message: (value) => (value? null : "Required"),
+      message: (value) => (value ? null : "Required"),
     },
   });
 
@@ -113,7 +113,7 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <div style={{ width: '100%', height: 200, top: 0, zIndex: 99}}>
+      <div style={{ width: '100%', height: 200, top: 0, zIndex: 99 }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
       </div>
       <div className="container lg-container">
@@ -298,43 +298,70 @@ const Footer = () => {
             </form>
           </div>
           <div className="col-12 col-sm-6 col-md-6">
-            <p className="mb-2">
-              <span className="bold">For Grievances:</span>
-              <br/>
-              Send an email to: grievanceofficer@pentafox.in
-              <br/>
-              Call at +91 90037 91579
+            <p className="mb-4">
+              <span className="bold mb-2">Customer Grievances:</span>
+              <p style={{ color: "#b8b6b6" }}>
+                Redressal Officer: Mr. Sriram Murugesh
+                <br />
+                Pentafox Technologies Private Limited,
+                <br />
+                No. 66-A4, 3rd Floor, Jeyam Towers, Erode
+                <br />
+                Tamil Nadu 638001
+                <br />
+                (Or)
+                <br />
+                Send an email to: grievanceofficer@pentafox.in
+                <br />
+                Call at +91 90037 91579
+              </p>
             </p>
-            <p className="mb-2">
-              <span className="bold">Registered & Corporate Office:</span>
-              <br/>
-              Pentafox Technologies Private Limited
-              <br/>
-              No. 59, Journalist Colony, Kottivakkam, Thiruvannamalai,
-              <br/>
-              Tamil Nadu 600041
-              <br/>
+            <p className="mb-4">
+              <span className="bold mb-2">Address Registered & Corporate Office:</span>
+              <p style={{ color: "#b8b6b6" }}>
+                Pentafox Technologies Private Limited
+                <br />
+                NO.59,Journalist colony, Kottivakkam, Thiruvanmiyur
+                <br/>
+                Chennai - 600041, Tamil Nadu, INDIA
+              </p>
             </p>
           </div>
           <div className="col-12 col-sm-6 col-md-6">
             <p className="mb-2">
-              <span className="bold">Escalation:</span>
-              <br/>
-              If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI
-              <br/>
-              Integrated Ombudsman Contact Details:
+              <span className="bold mb-2">Escalation:</span>
+              <p style={{ color: "#b8b6b6" }}>
+                If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI Integrated Ombudsman
+                <br /><br/>
+                Contact Details:
+              </p>
             </p>
-            <p className="mb-2">
-              <span className="bold">1. Complaints can be filed online on https://cms.rbi.org.in</span>
-              <br/>
-              <span className="bold">2. Physical letter can be sent to the ‘Centralised Receipt and Processing Centre’ set up at Reserve Bank of India, 4th Floor, Sector 17, Chandigarh – 160017.</span>
-            </p>
+
+            <div className="mb-4 ">
+              <p style={{ color: "#b8b6b6" }}>
+                1. Complaints can be filed online on{" "}
+                <a
+                  href="https://cms.rbi.org.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#FFFFFF", textDecoration: "underline" }}
+                >
+                  https://cms.rbi.org.in
+                </a>
+              </p>
+              <p style={{ color: "#b8b6b6" }}>
+                2. Physical letter can be sent to the ‘Centralised Receipt and Processing
+                Centre’ set up at Reserve Bank of India, 4th Floor, Sector 17, Chandigarh –
+                160017.
+              </p>
+            </div>
+
           </div>
         </div>
 
-        <div className="btm-link" style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-          <div style={{paddingTop: 20, paddingBottom: 20}}>
-            <img src="https://i.imgur.com/brwBGIo.png" style={{objectFit: 'cover'}} alt="Pentafox Logo" height="100" width="200" />
+        <div className="btm-link" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <div style={{ paddingTop: 20, paddingBottom: 20 }}>
+            <img src="https://i.imgur.com/brwBGIo.png" style={{ objectFit: 'cover' }} alt="Pentafox Logo" height="100" width="200" />
           </div>
         </div>
 
@@ -399,9 +426,9 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
-          <Box className="right-col" sx={{textAlign: 'right', color: 'rgba(255, 255, 255, 0.5)'}}>
-          © 2023 Pentafox Technologies Private Limited. All rights reserved.<br/>
-          The content available on the website is protected by copyright laws.
+          <Box className="right-col" sx={{ textAlign: 'right', color: 'rgba(255, 255, 255, 0.5)' }}>
+            © 2023 Pentafox Technologies Private Limited. All rights reserved.<br />
+            The content available on the website is protected by copyright laws.
           </Box>
         </div>
       </div>
