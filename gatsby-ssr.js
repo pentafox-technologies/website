@@ -54,12 +54,12 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
       </noscript>
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      
-       {/* 🛰️ Apollo Tracker Script (Inline) */}
-       <script
-      key="apollo-tracker"
-      dangerouslySetInnerHTML={{
-        __html: `
+
+      {/* 🛰️ Apollo Tracker Script (Inline) */}
+      <script
+        key="apollo-tracker"
+        dangerouslySetInnerHTML={{
+          __html: `
           (function initApollo(){
             var n = Math.random().toString(36).substring(7);
             var o = document.createElement("script");
@@ -74,8 +74,8 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
             document.head.appendChild(o);
           })();
         `,
-      }}
-    />,
+        }}
+      />,
     </>
   ])
 
