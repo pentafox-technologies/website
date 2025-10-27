@@ -75,7 +75,7 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
           })();
         `,
       }}
-    />,
+    />
     </>
   ])
 

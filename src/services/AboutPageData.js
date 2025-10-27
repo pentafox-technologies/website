@@ -1,40 +1,40 @@
 //head_section
-import teamImage from "../../public/about_assets/team_members.png";
-import star1 from "../../public/about_assets/Star1.png";
-import star2 from "../../public/about_assets/Star2.png";
-import star3 from "../../public/about_assets/Star3.png";
-import star4 from "../../public/about_assets/Star4.png";
+import teamImage from "../../src/about_assets/team_members.png";
+import star1 from "../../src/about_assets/Star1.png";
+import star2 from "../../src/about_assets/Star2.png";
+import star3 from "../../src/about_assets/Star3.png";
+import star4 from "../../src/about_assets/Star4.png";
 
 //Journey_section
-import First from "../../public/about_assets/Third.png";
-import Second from "../../public/about_assets/Second.png";
-import Third from "../../public/about_assets/First.png";
-import above from "../../public/about_assets/above.png";
-import parent from "../../public/about_assets/parent.png";
-import child from "../../public/about_assets/child.png";
+import First from "../../src/about_assets/Third.png";
+import Second from "../../src/about_assets/Second.png";
+import Third from "../../src/about_assets/First.png";
+import above from "../../src/about_assets/above.png";
+import parent from "../../src/about_assets/parent.png";
+import child from "../../src/about_assets/child.png";
 
 //leadership_section
-import leadershipImage from "../../public/about_assets/Founders.png";
-import Founder_name1 from "../../public/about_assets/Founder_name1.png";
-import Founder_name2 from "../../public/about_assets/Founder_name2.png";
-import Founder_name3 from "../../public/about_assets/Founder_name3.png";
+import leadershipImage from "../../src/about_assets/Founders.png";
+import Founder_name1 from "../../src/about_assets/Founder_name1.png";
+import Founder_name2 from "../../src/about_assets/Founder_name2.png";
+import Founder_name3 from "../../src/about_assets/Founder_name3.png";
 
 //teams_section
-import Employee1 from "../../public/about_assets/Employee_asset1.png";
-import Employee2 from "../../public/about_assets/Employee_asset2.png";
-import Employee3 from "../../public/about_assets/Employee_asset3.png";
-import Employee4 from "../../public/about_assets/Employee_asset4.png";
-import Employee5 from "../../public/about_assets/Employee_asset5.png";
-import Employee6 from "../../public/about_assets/Employee_asset6.png";
-import Employee7 from "../../public/about_assets/Employee_asset7.png";
-import Employee8 from "../../public/about_assets/Employee_asset8.png";
+import Employee1 from "../../src/about_assets/Employee_asset1.png";
+import Employee2 from "../../src/about_assets/Employee_asset2.png";
+import Employee3 from "../../src/about_assets/Employee_asset3.png";
+import Employee4 from "../../src/about_assets/Employee_asset4.png";
+import Employee5 from "../../src/about_assets/Employee_asset5.png";
+import Employee6 from "../../src/about_assets/Employee_asset6.png";
+import Employee7 from "../../src/about_assets/Employee_asset7.png";
+import Employee8 from "../../src/about_assets/Employee_asset8.png";
 
 //pentafox_section
-import Events1 from "../../public/about_assets/Event_Frame1.png";
-import Events2 from "../../public/about_assets/Event_Frame2.png";
-import Events3 from "../../public/about_assets/Event_Frame3.png";
-import Events4 from "../../public/about_assets/Event_Frame4.png";
-import Events5 from "../../public/about_assets/Event_Frame5.png";
+import Events1 from "../../src/about_assets/Event_Frame1.png";
+import Events2 from "../../src/about_assets/Event_Frame2.png";
+import Events3 from "../../src/about_assets/Event_Frame3.png";
+import Events4 from "../../src/about_assets/Event_Frame4.png";
+import Events5 from "../../src/about_assets/Event_Frame5.png";
 
 const aboutPageData = {
     headSectionData: {
