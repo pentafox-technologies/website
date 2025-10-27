@@ -1,0 +1,456 @@
+import React, { useState, useEffect, useRef } from "react";
+import {
+  IconHeart,
+  IconTrophy,
+  IconThumbUp,
+  IconStar,
+  IconRocket,
+  IconTarget,
+  IconBulb,
+  IconBolt,
+  IconAward,
+  IconChartLine,
+  IconTrendingUp,
+} from "@tabler/icons-react";
+import { motion, AnimatePresence } from "framer-motion";
+import "./about.css";
+
+const iconMap = {
+  IconHeart,
+  IconTrophy,
+  IconThumbUp,
+  IconStar,
+  IconRocket,
+  IconTarget,
+  IconBulb,
+  IconBolt,
+  IconAward,
+  IconChartLine,
+};
+
+function JourneySection({ data }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [rotationAngle, setRotationAngle] = useState(
+    window.innerWidth < 768 ? 0 : 90
+  );
+  const [scrollDirection, setScrollDirection] = useState("down");
+  const [showLetters, setShowLetters] = useState(false);
+  const [showYear, setShowYear] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [insideSection, setInsideSection] = useState(false);
+
+  const sectionRef = useRef(null);
+  const lastScrollTime = useRef(0);
+  const scrollCooldown = 500; // ms throttle
+  const touchStartY = useRef(null);
+
+  const isMobile = windowWidth < 768;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setRotationAngle(window.innerWidth < 768 ? 0 : 90);
+      setActiveIndex(0);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const scale = windowWidth < 428 ? 0.8 : windowWidth < 768 ? 0.9 : 1;
+  const logoScale = windowWidth < 428 ? 0.95 : windowWidth < 768 ? 0.98 : 1;
+  const circleRadius = 285 * scale;
+  const anglePerStep = 360 / data.steps.length;
+
+  const smoothRotateToIndex = (nextIndex) => {
+    const current = activeIndex;
+    let diff = nextIndex - current;
+    if (Math.abs(diff) > data.steps.length / 2) {
+      diff = diff > 0 ? diff - data.steps.length : diff + data.steps.length;
+    }
+    const newRotation = rotationAngle - diff * anglePerStep;
+    setRotationAngle(newRotation);
+    setActiveIndex(nextIndex);
+  };
+
+  const handleIconClick = (index) => {
+    setScrollDirection(index > activeIndex ? "down" : "up");
+    smoothRotateToIndex(index);
+  };
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const nowIsCooldownOk = () => {
+      const now = Date.now();
+      if (now - lastScrollTime.current < scrollCooldown) return false;
+      lastScrollTime.current = now;
+      return true;
+    };
+
+    const wheelHandler = (e) => {
+      if (!insideSection) return;
+
+      if (e.deltaY > 0) {
+        // going down
+        if (activeIndex === data.steps.length - 1) {
+          // last step → release scroll lock
+          setInsideSection(false);
+          return;
+        }
+        if (!nowIsCooldownOk()) return;
+        e.preventDefault();
+        setScrollDirection("down");
+        smoothRotateToIndex(activeIndex + 1);
+      } else if (e.deltaY < 0) {
+        // going up
+        if (activeIndex === 0) {
+          // first step → release scroll lock
+          setInsideSection(false);
+          return;
+        }
+        if (!nowIsCooldownOk()) return;
+        e.preventDefault();
+        setScrollDirection("up");
+        smoothRotateToIndex(activeIndex - 1);
+      }
+    };
+
+    const touchStart = (e) => {
+      if (e.touches && e.touches.length) {
+        touchStartY.current = e.touches[0].clientY;
+        setInsideSection(true);
+      }
+    };
+
+    const touchMove = (e) => {
+      if (!insideSection || !touchStartY.current) return;
+
+      const currentY = e.touches[0].clientY;
+      const delta = touchStartY.current - currentY;
+
+      if (Math.abs(delta) < 10) return;
+
+      if (delta > 0) {
+        // swipe up (scroll down)
+        if (activeIndex === data.steps.length - 1) {
+          setInsideSection(false);
+          touchStartY.current = null;
+          return;
+        }
+        if (!nowIsCooldownOk()) return;
+        e.preventDefault();
+        setScrollDirection("down");
+        smoothRotateToIndex(activeIndex + 1);
+      } else {
+        // swipe down (scroll up)
+        if (activeIndex === 0) {
+          setInsideSection(false);
+          touchStartY.current = null;
+          return;
+        }
+        if (!nowIsCooldownOk()) return;
+        e.preventDefault();
+        setScrollDirection("up");
+        smoothRotateToIndex(activeIndex - 1);
+      }
+
+      touchStartY.current = currentY;
+    };
+
+    node.addEventListener("wheel", wheelHandler, { passive: false });
+    node.addEventListener("touchstart", touchStart, { passive: true });
+    node.addEventListener("touchmove", touchMove, { passive: false });
+
+    return () => {
+      node.removeEventListener("wheel", wheelHandler);
+      node.removeEventListener("touchstart", touchStart);
+      node.removeEventListener("touchmove", touchMove);
+    };
+  }, [insideSection, activeIndex, rotationAngle, data.steps.length]);
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    if (insideSection) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overscrollBehavior = "none";
+    } else {
+      document.body.style.overflow = prev || "";
+      document.documentElement.style.overscrollBehavior = "";
+    }
+    return () => {
+      document.body.style.overflow = prev || "";
+      document.documentElement.style.overscrollBehavior = "";
+    };
+  }, [insideSection]);
+
+  useEffect(() => {
+    const lettersTimer = setTimeout(
+      () => setShowLetters(true),
+      data.letters.length * 230
+    );
+    const yearTimer = setTimeout(
+      () => setShowYear(true),
+      300 + data.letters.length * 300
+    );
+    return () => {
+      clearTimeout(lettersTimer);
+      clearTimeout(yearTimer);
+    };
+  }, [data.letters]);
+
+  const letterMotionVariants = {
+    hidden: { y: -30, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+    jump: { y: [0, -20, 0] },
+  };
+
+  const getYearDigits = (year) => year.toString().split("");
+
+  return (
+    <div
+      ref={sectionRef}
+      onMouseEnter={() => setInsideSection(true)}
+      style={{
+        width: "100%",
+        minHeight: "100vh",
+        background: "linear-gradient(to right, #fff 50%, #FFF5F5 100%)",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "50px 0",
+      }}
+    >
+      {/* --- Heading --- */}
+      <div style={{ textAlign: "center", marginBottom: "55px" }}>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          style={{
+            fontSize: "38px",
+            fontWeight: 500,
+            color: "#000000",
+            marginBottom: "10px",
+          }}
+        >
+          {data.heading}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          style={{ fontSize: "18px", color: "#656565" }}
+        >
+          {data.subheading}
+        </motion.p>
+      </div>
+
+      {/* --- Main Layout --- */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "90%",
+          gap: "50px",
+          flexWrap: "wrap",
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
+        {/* Right side content */}
+        <div
+          style={{
+            flex: 1,
+            minWidth: "350px",
+            maxWidth: "600px",
+            zIndex: 5,
+            order: isMobile ? 1 : 2,
+            textAlign: isMobile ? "center" : "left",
+            paddingLeft: isMobile ? "0px" : "60px",
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeIndex}-${scrollDirection}`}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.2,
+                    staggerDirection: scrollDirection === "down" ? 1 : -1,
+                  },
+                },
+                exit: { transition: { staggerChildren: 0.1 } },
+              }}
+            >
+              <motion.h3
+                style={{
+                  fontSize: "30px",
+                  fontWeight: 700,
+                  color: "#000",
+                  marginBottom: "10px",
+                }}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: scrollDirection === "down" ? 20 : -20,
+                  },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                {data.steps[activeIndex].title}
+              </motion.h3>
+
+              <motion.h4
+                style={{
+                  fontSize: "20px",
+                  fontWeight: 500,
+                  color: "#444",
+                  marginBottom: "10px",
+                }}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: scrollDirection === "down" ? 20 : -20,
+                  },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                {data.steps[activeIndex].subtitle}
+              </motion.h4>
+
+              <motion.ul
+                style={{
+                  fontSize: "15px",
+                  color: "#656565",
+                  lineHeight: 1.8,
+                  paddingLeft: isMobile ? "118px" : "0px",
+                  textAlign: "left",
+                  width: isMobile ? "100%" : "auto",
+                }}
+              >
+                {data.steps[activeIndex].points.map((point, idx) => (
+                  <motion.li
+                    key={idx}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: scrollDirection === "down" ? 20 : -20,
+                      },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ duration: 0.4 }}
+                    className="flex flex-row items-center gap-2"
+                  >
+                    {point} <IconTrendingUp size={14} color="#EA0707" />
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Left side: Circle & Icons */}
+        <div
+          style={{
+            flex: 1,
+            minWidth: "320px",
+            maxWidth: "550px",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            transform: `scale(${scale})`,
+            transformOrigin: "center",
+            order: isMobile ? 2 : 1,
+          }}
+        >
+          {/* --- Circle with icons --- */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "auto",
+              width: `${circleRadius * 2 + 80}px`,
+              height: `${circleRadius * 2 + 80}px`,
+              overflow: "visible",
+            }}
+          >
+            <motion.svg
+              width={circleRadius * 2 + 80}
+              height={circleRadius * 2 + 80}
+              style={{
+                overflow: "visible",
+                position: "absolute",
+                top: 0,
+                left: 0,
+              }}
+            >
+              <circle
+                cx={circleRadius + 40}
+                cy={circleRadius + 40}
+                r={circleRadius}
+                fill="transparent"
+                stroke="#ef4444"
+                strokeWidth="3"
+              />
+              <motion.g
+                style={{
+                  transformOrigin: `${circleRadius + 40}px ${circleRadius + 40}px`,
+                }}
+                animate={{ rotate: rotationAngle }}
+                transition={{ type: "spring", stiffness: 60, damping: 15 }}
+              >
+                {data.steps.map((step, index) => {
+                  const angle =
+                    (index / data.steps.length) * 2 * Math.PI - Math.PI / 2;
+                  const x = circleRadius + 40 + circleRadius * Math.cos(angle);
+                  const y = circleRadius + 40 + circleRadius * Math.sin(angle);
+                  const Icon = iconMap[step.icon];
+                  const isActive = index === activeIndex;
+                  return (
+                    <g
+                      key={index}
+                      onClick={() => handleIconClick(index)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r={32}
+                        fill={isActive ? "#FF5F5F4D" : "transparent"}
+                        stroke="none"
+                      />
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r={22}
+                        fill={isActive ? "#ef4444" : "#fff"}
+                        stroke="#ef4444"
+                        strokeWidth="2"
+                      />
+                      <g transform={`translate(${x - 12}, ${y - 12})`}>
+                        <Icon size={24} color={isActive ? "#fff" : "#ef4444"} />
+                      </g>
+                    </g>
+                  );
+                })}
+              </motion.g>
+            </motion.svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default JourneySection;

@@ -1,0 +1,734 @@
+import React, { useState, useEffect } from "react";
+import { Tabs } from "@mantine/core";
+import { IconSquareArrowDownFilled, IconSquareArrowUpFilled } from "@tabler/icons-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+function TeamsSection({ data }) {
+  const [viewAll, setViewAll] = useState(false);
+  const [activeTab, setActiveTab] = useState("View all");
+
+  const getGridColumns = () => {
+    if (window.innerWidth < 640) return "1fr";
+    if (window.innerWidth < 1024) return "repeat(2, 1fr)";
+    if (window.innerWidth < 1280) return "repeat(3, 1fr)";
+    return "repeat(4, 1fr)";
+  };
+
+  const [gridColumns, setGridColumns] = useState(getGridColumns());
+
+  useEffect(() => {
+    const handleResize = () => setGridColumns(getGridColumns());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.08 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  };
+
+  const tabContentVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.2 } },
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setViewAll(false);
+  };
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      style={{ backgroundColor: "#fff", padding: "70px 20px", textAlign: "center" }}
+    >
+      {/* Header */}
+      <motion.div variants={itemVariants}>
+        <h2>{data.title}</h2>
+        <p
+          style={{
+            fontSize: "16px",
+            maxWidth: "700px",
+            margin: "0 auto",
+            lineHeight: "1.6",
+            color: "#656565",
+          }}
+        >
+          {data.description}
+        </p>
+      </motion.div>
+
+      <motion.div variants={itemVariants} style={{ marginTop: 30 }}>
+        <Tabs value={activeTab} onTabChange={handleTabChange} variant="unstyled">
+          <Tabs.List style={{ display: "flex", justifyContent: "center", gap: "20px", flexWrap: "wrap" }}>
+            {data.categories.map((cat) => (
+              <Tabs.Tab
+                key={cat}
+                value={cat}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: "500",
+                  fontSize: "15px",
+                  padding: "5px 15px",
+                  borderRadius: activeTab === cat ? "60px" : "0px",
+                  border: activeTab === cat ? "1px solid #F10404" : "none",
+                  color: activeTab === cat ? "#F10404" : "#333",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                {cat}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+        </Tabs>
+
+        <AnimatePresence mode="wait">
+          {data.categories.map((cat) => {
+            if (cat !== activeTab) return null;
+
+            const filteredData =
+              cat === "View all"
+                ? data.members
+                : data.members.filter((m) => m.category === cat);
+
+            const firstEight = filteredData.slice(0, 8);
+            const remaining = filteredData.slice(8);
+
+            return (
+              <motion.div
+                key={cat}
+                variants={tabContentVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                style={{ marginTop: 20 }}
+              >
+                {/* First 8 cards */}
+                <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: gridColumns,
+                    gap: "20px",
+                    justifyItems: "center",
+                  }}
+                >
+                  {firstEight.map((m) => (
+                    <motion.div key={m.id} variants={itemVariants} style={{ width: "100%", maxWidth: "230px", textAlign: "left" }}>
+                      <img src={m.img} alt={m.name} style={{ width: "100%", borderRadius: "10px" }} className="mb-3" />
+                      <p style={{ fontSize: "16px", fontWeight: "bold", marginBottom: "4px" }}>{m.name}</p>
+                      <p style={{ fontSize: "14px", color: "#14121999" }}>{m.role}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                <AnimatePresence>
+                  {viewAll &&
+                    remaining.length > 0 && (
+                      <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: gridColumns,
+                          gap: "20px",
+                          justifyItems: "center",
+                          marginTop: 20,
+                        }}
+                      >
+                        {remaining.map((m) => (
+                          <motion.div key={m.id} variants={itemVariants} style={{ width: "100%", maxWidth: "230px", textAlign: "left" }}>
+                            <img src={m.img} alt={m.name} style={{ width: "100%", borderRadius: "10px" }} className="mb-3" />
+                            <p style={{ fontSize: "16px", fontWeight: "bold", marginBottom: "4px" }}>{m.name}</p>
+                            <p style={{ fontSize: "14px", color: "#14121999" }}>{m.role}</p>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* View More*/}
+                {remaining.length > 0 && (
+                  <div
+                    style={{
+                      marginTop: "30px",
+                      cursor: "pointer",
+                      color: "red",
+                      fontWeight: "500",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                    onClick={() => setViewAll(!viewAll)}
+                  >
+                    {viewAll ? "View Less" : "View More"}
+                    {viewAll ? <IconSquareArrowUpFilled size={20} /> : <IconSquareArrowDownFilled size={20} />}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default TeamsSection;
+
+
+//second chnage in jouery section|
+import React, { useState, useEffect, useRef } from "react";
+import {
+  IconHeart,
+  IconTrophy,
+  IconThumbUp,
+  IconStar,
+  IconRocket,
+  IconTarget,
+  IconBulb,
+  IconBolt,
+  IconAward,
+  IconChartLine,
+  IconTrendingUp,
+} from "@tabler/icons-react";
+import { motion, AnimatePresence } from "framer-motion";
+import "./about.css";
+
+const iconMap = {
+  IconHeart,
+  IconTrophy,
+  IconThumbUp,
+  IconStar,
+  IconRocket,
+  IconTarget,
+  IconBulb,
+  IconBolt,
+  IconAward,
+  IconChartLine,
+};
+
+function JourneySection({ data }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [rotationAngle, setRotationAngle] = useState(
+    window.innerWidth < 768 ? 0 : 90
+  );
+  const [scrollDirection, setScrollDirection] = useState("down");
+  const [showLetters, setShowLetters] = useState(false);
+  const [showYear, setShowYear] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const lastScrollTime = useRef(0);
+  const scrollCooldown = 600;
+  const circleRef = useRef(null);
+
+  const isMobile = windowWidth < 768;
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setRotationAngle(window.innerWidth < 768 ? 0 : 90);
+      setActiveIndex(0); // reset center
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Scaling
+  const scale = windowWidth < 428 ? 0.8 : windowWidth < 768 ? 0.9 : 1;
+  const logoScale = windowWidth < 428 ? 0.95 : windowWidth < 768 ? 0.98 : 1;
+  const circleRadius = 285 * scale;
+  const anglePerStep = 360 / data.steps.length;
+
+  const smoothRotateToIndex = (nextIndex) => {
+    const current = activeIndex;
+    let diff = nextIndex - current;
+    if (Math.abs(diff) > data.steps.length / 2)
+      diff = diff > 0 ? diff - data.steps.length : diff + data.steps.length;
+    const newRotation = rotationAngle - diff * anglePerStep;
+    setRotationAngle(newRotation);
+    setActiveIndex(nextIndex);
+  };
+
+  const handleWheel = (e) => {
+    const rect = circleRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
+    const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if (!(insideX && insideY)) return;
+    e.preventDefault();
+    const now = Date.now();
+    if (now - lastScrollTime.current < scrollCooldown) return;
+    lastScrollTime.current = now;
+
+    if (e.deltaY > 0) {
+      setScrollDirection("down");
+      smoothRotateToIndex((activeIndex + 1) % data.steps.length);
+    } else if (e.deltaY < 0) {
+      setScrollDirection("up");
+      smoothRotateToIndex(
+        (activeIndex - 1 + data.steps.length) % data.steps.length
+      );
+    }
+  };
+
+  const handleIconClick = (index) => {
+    setScrollDirection(index > activeIndex ? "down" : "up");
+    smoothRotateToIndex(index);
+  };
+
+  useEffect(() => {
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [activeIndex, rotationAngle]);
+
+  useEffect(() => {
+    const lettersTimer = setTimeout(
+      () => setShowLetters(true),
+      data.letters.length * 230
+    );
+    const yearTimer = setTimeout(
+      () => setShowYear(true),
+      300 + data.letters.length * 300
+    );
+    return () => {
+      clearTimeout(lettersTimer);
+      clearTimeout(yearTimer);
+    };
+  }, []);
+
+  const letterMotionVariants = {
+    hidden: { y: -30, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+    jump: { y: [0, -20, 0] },
+  };
+
+  const getYearDigits = (year) => year.toString().split("");
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        minHeight: "100vh",
+        background: "linear-gradient(to right, #fff 50%, #FFF5F5 100%)",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "50px 0",
+      }}
+    >
+      {/* Heading */}
+      <div style={{ textAlign: "center", marginBottom: "55px" }}>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          style={{
+            fontSize: "38px",
+            fontWeight: 500,
+            color: "#000000",
+            marginBottom: "10px",
+          }}
+        >
+          {data.heading}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          style={{ fontSize: "18px", color: "#656565" }}
+        >
+          {data.subheading}
+        </motion.p>
+      </div>
+
+      {/* Main wrapper */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "90%",
+          gap: "50px",
+          flexWrap: "wrap",
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
+        {/* Right side content */}
+        <div
+          style={{
+            flex: 1,
+            minWidth: "350px",
+            maxWidth: "600px",
+            zIndex: 5,
+            order: isMobile ? 1 : 2,
+            textAlign: isMobile ? "center" : "left",
+            paddingLeft: isMobile ? "0px" : "60px",
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeIndex}-${scrollDirection}`}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.2,
+                    staggerDirection: scrollDirection === "down" ? 1 : -1,
+                  },
+                },
+                exit: { transition: { staggerChildren: 0.1 } },
+              }}
+            >
+              <motion.h3
+                style={{
+                  fontSize: "30px",
+                  fontWeight: 700,
+                  color: "#000",
+                  marginBottom: "10px",
+                }}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: scrollDirection === "down" ? 20 : -20,
+                  },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                {data.steps[activeIndex].title}
+              </motion.h3>
+
+              <motion.h4
+                style={{
+                  fontSize: "20px",
+                  fontWeight: 500,
+                  color: "#444",
+                  marginBottom: "10px",
+                }}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: scrollDirection === "down" ? 20 : -20,
+                  },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                {data.steps[activeIndex].subtitle}
+              </motion.h4>
+
+              <motion.ul
+                style={{
+                  fontSize: "15px",
+                  color: "#656565",
+                  lineHeight: 1.8,
+                  paddingLeft: isMobile ? "118px" : "0px",
+                  textAlign: "left",
+                  width: isMobile ? "100%" : "auto",
+                }}
+              >
+                {data.steps[activeIndex].points.map((point, idx) => (
+                  <motion.li
+                    key={idx}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: scrollDirection === "down" ? 20 : -20,
+                      },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ duration: 0.4 }}
+                    className="flex flex-row items-center gap-2"
+                  >
+                    {point} <IconTrendingUp size={14} color="#EA0707" />
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Left side circle + images */}
+        <div
+          style={{
+            flex: 1,
+            minWidth: "320px",
+            maxWidth: "550px",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            transform: `scale(${scale})`,
+            transformOrigin: "center",
+            order: isMobile ? 2 : 1,
+          }}
+        >
+          <div
+            style={{
+              width: `${450 * logoScale}px`,
+              height: `${450 * logoScale}px`,
+              position: "relative",
+              zIndex: 1, // keep under icons
+              pointerEvents: "none", // 🔑 allows clicks through images
+            }}
+          >
+            <img
+              src={data.images.first}
+              alt="first"
+              style={{
+                position: "absolute",
+                width: `${430 * logoScale}px`,
+                height: `${400 * logoScale}px`,
+                objectFit: "contain",
+                borderRadius: "50%",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+            <img
+              src={data.images.second}
+              alt="second"
+              style={{
+                position: "absolute",
+                width: `${352 * logoScale}px`,
+                height: `${360 * logoScale}px`,
+                objectFit: "contain",
+                borderRadius: "50%",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+            <img
+              src={data.images.third}
+              alt="third"
+              style={{
+                position: "absolute",
+                width: `${430 * logoScale}px`,
+                height: `${430 * logoScale}px`,
+                objectFit: "contain",
+                borderRadius: "50%",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+            <img
+              src={data.images.above}
+              alt="Above"
+              style={{
+                position: "absolute",
+                width: `${260 * logoScale}px`,
+                height: `${260 * logoScale}px`,
+                objectFit: "contain",
+                borderRadius: "50%",
+                zIndex: 1,
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+            {/* Parent & Child */}
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: `${225 * logoScale}px`,
+                height: `${225 * logoScale}px`,
+                zIndex: 2,
+              }}
+            >
+              <img
+                src={data.images.parent}
+                alt="Parent"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: `${145 * logoScale}px`,
+                  height: `${145 * logoScale}px`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={data.images.child}
+                  alt="Child"
+                  style={{
+                    width: "150%",
+                    height: "150%",
+                    objectFit: "contain",
+                  }}
+                />
+                <AnimatePresence>
+                  {showYear && (
+                    <motion.div
+                      key={activeIndex}
+                      style={{
+                        position: "absolute",
+                        display: "flex",
+                        top: "56%",
+                        left: "49%",
+                        transform: "translate(-50%, -50%)",
+                        fontWeight: "bold",
+                        fontSize: "25px",
+                        color: "#ffffff",
+                      }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {getYearDigits(data.steps[activeIndex].year).map(
+                        (digit, idx) => (
+                          <motion.span key={idx}>{digit}</motion.span>
+                        )
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Letters */}
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                display: "flex",
+                gap: "2px",
+                zIndex: 3,
+              }}
+            >
+              {data.letters.split("").map((letter, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterMotionVariants}
+                  initial="hidden"
+                  animate={showLetters ? "jump" : "visible"}
+                  transition={{ delay: index * 0.15, duration: 0.3 }}
+                  style={{ color: "#ffffff", fontWeight: "bold", fontSize: "19px" }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          {/* Outside Circle with icons */}
+          <div
+            ref={circleRef}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "auto",
+              width: `${circleRadius * 2 + 80}px`,
+              height: `${circleRadius * 2 + 80}px`,
+              overflow: "hidden",
+              clipPath: isMobile
+                ? "inset(0 0 70% 0)" // mobile: top only
+                : "inset(0 0 0 70%)", // desktop: right only
+            }}
+          >
+            <motion.svg
+              width={circleRadius * 2 + 80}
+              height={circleRadius * 2 + 80}
+              style={{
+                overflow: "visible",
+                position: "absolute",
+                top: 0,
+                left: 0,
+              }}
+            >
+              <circle
+                cx={circleRadius + 40}
+                cy={circleRadius + 40}
+                r={circleRadius}
+                fill="transparent"
+                stroke="#ef4444"
+                strokeWidth="3"
+              />
+              <motion.g
+                style={{
+                  transformOrigin: `${circleRadius + 40}px ${circleRadius + 40}px`,
+                }}
+                animate={{ rotate: rotationAngle }}
+                transition={{ type: "spring", stiffness: 60, damping: 15 }}
+              >
+                {data.steps.map((step, index) => {
+                  const angle = (index / data.steps.length) * 2 * Math.PI - Math.PI / 2;
+                  const x = circleRadius + 40 + circleRadius * Math.cos(angle);
+                  const y = circleRadius + 40 + circleRadius * Math.sin(angle);
+                  const Icon = iconMap[step.icon];
+                  const isActive = index === activeIndex;
+                  return (
+                    <g
+                      key={index}
+                      onClick={() => handleIconClick(index)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r={32}
+                        fill={isActive ? "#FF5F5F4D" : "transparent"}
+                        stroke="none"
+                      />
+                      <circle
+                        cx={x}
+                        cy={y}
+                        r={22}
+                        fill={isActive ? "#ef4444" : "#fff"}
+                        stroke="#ef4444"
+                        strokeWidth="2"
+                      />
+                      <g transform={`translate(${x - 12}, ${y - 12})`}>
+                        <Icon size={24} color={isActive ? "#fff" : "#ef4444"} />
+                      </g>
+                    </g>
+                  );
+                })}
+              </motion.g>
+            </motion.svg>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default JourneySection;

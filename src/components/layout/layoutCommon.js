@@ -41,7 +41,7 @@ const LayoutCommon = ({
       <div className="content-wrap" style={{position: 'relative'}}>
         <main>{children}</main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </MantineProvider>
   );
 };
