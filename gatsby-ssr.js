@@ -54,7 +54,28 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
       </noscript>
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-
+      
+       {/* 🛰️ Apollo Tracker Script (Inline) */}
+       <script
+      key="apollo-tracker"
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function initApollo(){
+            var n = Math.random().toString(36).substring(7);
+            var o = document.createElement("script");
+            o.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + n;
+            o.async = true;
+            o.defer = true;
+            o.onload = function(){
+              if (window.trackingFunctions && window.trackingFunctions.onLoad) {
+                window.trackingFunctions.onLoad({ appId: "68f751a0746f23001d72a9bc" });
+              }
+            };
+            document.head.appendChild(o);
+          })();
+        `,
+      }}
+    />,
     </>
   ])
 
