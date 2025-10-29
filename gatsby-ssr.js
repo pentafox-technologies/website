@@ -55,7 +55,7 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 
-      {/* 🛰️ Apollo Tracker Script (Inline) */}
+      {/* Tracker Script */}
       <script
         key="apollo-tracker"
         dangerouslySetInnerHTML={{
@@ -73,9 +73,9 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
             };
             document.head.appendChild(o);
           })();
-        `,
+        `
         }}
-      />,
+      />
     </>
   ])
 

@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "npm run build && gh-pages -d public"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.0",
