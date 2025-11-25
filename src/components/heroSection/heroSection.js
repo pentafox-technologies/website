@@ -4,7 +4,7 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import React, { useEffect } from "react";
 import { HeroSectionWrapper } from "./heroSection.css";
 import { StaticImage, getImage } from "gatsby-plugin-image";
-import { BgImage  } from "gbimage-bridge";
+import { BgImage } from "gbimage-bridge";
 import { PopupButton } from "react-calendly";
 import { document } from 'browser-monads';
 import { PortfolioWrapper, portfolioStyles } from "../../styles/portfolio.css";
@@ -96,7 +96,7 @@ const HeroSection = ({ contentData }) => {
         }
       }
     }
-  `, {forceReload: true});
+  `, { forceReload: true });
 
   const IndexImage = getImage(queryData?.indexImage)
   return (
@@ -134,7 +134,7 @@ const HeroSection = ({ contentData }) => {
     //                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={13} fill="rgb(110, 12, 15)" style={{marginLeft: 12}}>
     //                       <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
     //                     </svg>
-                        
+
     //                     {/* <FontAwesomeIcon icon="fa-solid fa-arrow-right" /> */}
     //                   </div>
     //                 }
@@ -180,16 +180,16 @@ const HeroSection = ({ contentData }) => {
       </div> */}
 
       <Box className='landing'>
-        <div style={{position: 'absolute', width: '100%', bottom: 0, flex: 1}}>
+        <div style={{ position: 'absolute', width: '100%', bottom: 0, flex: 1 }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,288L720,288L1440,128L1440,320L720,320L0,320Z"></path></svg>
         </div>
         <Box className='landingContainer'>
-          <Box className='textContainer' style={{zIndex: 99}}>
+          <Box className='textContainer' style={{ zIndex: 99 }}>
             <h1 className='landingHeroText'>
-              Skyrocket your business with the power of <br/> <span style={{color: '#CD0E11'}}>
-              <span>
-                Digital Transformation.
-              </span>
+              Skyrocket your business with the power of <br /> <span style={{ color: '#CD0E11' }}>
+                <span>
+                  Digital Transformation.
+                </span>
               </span>
             </h1>
             <Box mt="lg">
@@ -201,7 +201,7 @@ const HeroSection = ({ contentData }) => {
               </p>
             </Box>
             <Box mt="xl">
-              <PopupButton
+              {/* <PopupButton
                 url="https://calendly.com/vignesh-sankaran"
                 className='appointmentBtn'
                 rootElement={document.getElementById("___gatsby")}
@@ -211,7 +211,19 @@ const HeroSection = ({ contentData }) => {
                     <IconSquareArrowRightFilled style={{marginLeft: 12}} />
                   </div>
                 }
+              /> */}
+              <PopupButton
+                url="https://calendly.com/vignesh-sankaran"
+                className='appointmentBtn'
+                rootElement={document.getElementById("___gatsby")}
+                text={
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    Talk to our Experts
+                    <IconSquareArrowRightFilled size={20} />
+                  </div>
+                }
               />
+
             </Box>
           </Box>
           <Box className='landingImage'>

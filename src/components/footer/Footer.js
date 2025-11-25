@@ -9,6 +9,7 @@ import { useForm } from "@mantine/form";
 import PentafoxLogo from "../../images/logo-pf-white-1.svg"
 import { PopupButton } from "react-calendly";
 import { document } from 'browser-monads';
+import { useMediaQuery } from "@mantine/hooks";
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
@@ -17,6 +18,7 @@ const Footer = () => {
   const [captchaToken, setCaptchaToken] = useState();
   const captchaRef = useRef();
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const form = useForm({
     initialValues: {
       name: "",
@@ -322,7 +324,7 @@ const Footer = () => {
                 Pentafox Technologies Private Limited
                 <br />
                 NO.59,Journalist colony, Kottivakkam, Thiruvanmiyur
-                <br/>
+                <br />
                 Chennai - 600041, Tamil Nadu, INDIA
               </p>
             </p>
@@ -332,7 +334,7 @@ const Footer = () => {
               <span className="bold mb-2">Escalation:</span>
               <p style={{ color: "#b8b6b6" }}>
                 If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI Integrated Ombudsman
-                <br /><br/>
+                <br /><br />
                 Contact Details:
               </p>
             </p>
@@ -359,13 +361,38 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="btm-link" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+        <div
+          className="btm-link"
+          style={{
+            display: "flex",
+            justifyContent: isMobile ? "center" : "flex-end",
+            alignItems: "center",
+          }}
+        >
           <div style={{ paddingTop: 20, paddingBottom: 20 }}>
-            <img src="https://i.imgur.com/brwBGIo.png" style={{ objectFit: 'cover' }} alt="Pentafox Logo" height="100" width="200" />
+            <img
+              src="https://i.imgur.com/brwBGIo.png"
+              alt="Pentafox Logo"
+              height="100"
+              width="200"
+              style={{ objectFit: "cover" }}
+            />
           </div>
         </div>
 
-        <div className="btm">
+        {/* BOTTOM SECTION */}
+        <div
+          className="btm"
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            justifyContent: "space-between",
+            alignItems: isMobile ? "center" : "flex-start",
+            textAlign: isMobile ? "center" : "left",
+            gap: isMobile ? 20 : 0,
+          }}
+        >
+          {/* LEFT COL */}
           <div className="left-col">
             <Link
               to="/"
@@ -426,8 +453,17 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
-          <Box className="right-col" sx={{ textAlign: 'right', color: 'rgba(255, 255, 255, 0.5)' }}>
-            © 2023 Pentafox Technologies Private Limited. All rights reserved.<br />
+
+          {/* RIGHT COL */}
+          <Box
+            className="right-col"
+            sx={{
+              textAlign: isMobile ? "center" : "right",
+              color: "rgba(255, 255, 255, 0.5)",
+            }}
+          >
+            © 2023 Pentafox Technologies Private Limited. All rights reserved.
+            <br />
             The content available on the website is protected by copyright laws.
           </Box>
         </div>
