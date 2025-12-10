@@ -384,7 +384,10 @@ const HeaderBar = ({
             {/* <Group position="apart" sx={{ height: '100%' }}> */}
             <Link to="/">
               {showDarkLogo ? (
-                <LogoRedSVG height={isMobileDevice ? "60" : "90"} width="auto" />
+                <LogoRedSVG
+                  height={isMobileDevice ? "60" : "90"}
+                  width="auto"
+                />
               ) : (
                 <LogoSVG height={isMobileDevice ? "60" : "90"} width="auto" />
               )}
@@ -462,6 +465,13 @@ const HeaderBar = ({
                   </SimpleGrid>
                 </HoverCard.Dropdown>
               </HoverCard>
+
+              <Link
+                to="/contact-us"
+                className={lightLinks ? "lightLinks" : "link"}
+              >
+                <h5>Contact Us</h5>
+              </Link>
             </div>
 
             <Burger
