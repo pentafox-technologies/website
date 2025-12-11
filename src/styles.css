@@ -40,3 +40,7 @@ h6 {
   max-height: 100vh !important;
   height: 100vh !important;
 }
+
+input[type="checkbox"] {
+  accent-color: green;
+}
