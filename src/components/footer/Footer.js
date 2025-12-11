@@ -6,9 +6,9 @@ import { FooterWrapper } from "./footer.css";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { URL } from "../../services/requestUrl";
 import { useForm } from "@mantine/form";
-import PentafoxLogo from "../../images/logo-pf-white-1.svg"
+import PentafoxLogo from "../../images/logo-pf-white-1.svg";
 import { PopupButton } from "react-calendly";
-import { document } from 'browser-monads';
+import { document } from "browser-monads";
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
@@ -99,7 +99,7 @@ const Footer = () => {
           title
         }
       }
-      allContentfulStaticPage(sort: {fields: createdAt}) {
+      allContentfulStaticPage(sort: { fields: createdAt }) {
         nodes {
           title
           slug
@@ -113,13 +113,19 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <div style={{ width: '100%', height: 200, top: 0, zIndex: 99 }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+      <div style={{ width: "100%", height: 200, top: 0, zIndex: 99 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#ffffff"
+            fill-opacity="1"
+            d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          ></path>
+        </svg>
       </div>
       <div className="container lg-container">
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>
           <div className="col-12 col-sm-6 col-md-6">
-            <Box mb='xl'>
+            <Box mb="xl">
               <PentafoxLogo height="140" width="140" />
             </Box>
             <p className="mb-40">
@@ -273,7 +279,7 @@ const Footer = () => {
                   onExpire={() => setCaptchaToken()}
                 />
               </div>
-              <Box mt="md" mb='xl'>
+              <Box mt="md" mb="xl">
                 <Button
                   size="lg"
                   fullWidth
@@ -317,12 +323,14 @@ const Footer = () => {
               </p>
             </p>
             <p className="mb-4">
-              <span className="bold mb-2">Address Registered & Corporate Office:</span>
+              <span className="bold mb-2">
+                Address Registered & Corporate Office:
+              </span>
               <p style={{ color: "#b8b6b6" }}>
                 Pentafox Technologies Private Limited
                 <br />
                 NO.59,Journalist colony, Kottivakkam, Thiruvanmiyur
-                <br/>
+                <br />
                 Chennai - 600041, Tamil Nadu, INDIA
               </p>
             </p>
@@ -331,8 +339,12 @@ const Footer = () => {
             <p className="mb-2">
               <span className="bold mb-2">Escalation:</span>
               <p style={{ color: "#b8b6b6" }}>
-                If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI Integrated Ombudsman
-                <br /><br/>
+                If the customer’s query or complaint is not resolved within a
+                period of one month from date of complaint the customer may also
+                approach the RBI Ombudsman / Regional Office of Dept. of
+                Supervision – RBI Integrated Ombudsman
+                <br />
+                <br />
                 Contact Details:
               </p>
             </p>
@@ -350,18 +362,30 @@ const Footer = () => {
                 </a>
               </p>
               <p style={{ color: "#b8b6b6" }}>
-                2. Physical letter can be sent to the ‘Centralised Receipt and Processing
-                Centre’ set up at Reserve Bank of India, 4th Floor, Sector 17, Chandigarh –
-                160017.
+                2. Physical letter can be sent to the ‘Centralised Receipt and
+                Processing Centre’ set up at Reserve Bank of India, 4th Floor,
+                Sector 17, Chandigarh – 160017.
               </p>
             </div>
-
           </div>
         </div>
 
-        <div className="btm-link" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+        <div
+          className="btm-link"
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
           <div style={{ paddingTop: 20, paddingBottom: 20 }}>
-            <img src="https://i.imgur.com/brwBGIo.png" style={{ objectFit: 'cover' }} alt="Pentafox Logo" height="100" width="200" />
+            <img
+              src="https://i.imgur.com/brwBGIo.png"
+              style={{ objectFit: "cover" }}
+              alt="Pentafox Logo"
+              height="100"
+              width="200"
+            />
           </div>
         </div>
 
@@ -399,22 +423,24 @@ const Footer = () => {
               Internship
             </Link> */}
             {/* {"    "}&#124;{"    "} */}
-            {
-              queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
-                return (
-                  <>
-                    {"    "}&#124;{"    "}
-                    <Link
-                      to={`/${item?.slug}`}
-                      className="pl-3 text-white"
-                      style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
-                    >
-                      {item?.title}
-                    </Link>
-                  </>
-                )
-              })
-            }
+            {queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
+              return (
+                <>
+                  {"    "}&#124;{"    "}
+                  <Link
+                    to={`/${item?.slug}`}
+                    className="pl-3 text-white"
+                    style={{
+                      textDecoration: "none",
+                      marginLeft: 8,
+                      marginRight: 8,
+                    }}
+                  >
+                    {item?.title}
+                  </Link>
+                </>
+              );
+            })}
             {/* <Link
               to="/terms"
               className="pl-3 text-white"
@@ -426,8 +452,12 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
-          <Box className="right-col" sx={{ textAlign: 'right', color: 'rgba(255, 255, 255, 0.5)' }}>
-            © 2023 Pentafox Technologies Private Limited. All rights reserved.<br />
+          <Box
+            className="right-col"
+            sx={{ textAlign: "right", color: "rgba(255, 255, 255, 0.5)" }}
+          >
+            © 2023 Pentafox Technologies Private Limited. All rights reserved.
+            <br />
             The content available on the website is protected by copyright laws.
           </Box>
         </div>
