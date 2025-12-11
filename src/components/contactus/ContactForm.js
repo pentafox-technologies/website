@@ -1,15 +1,11 @@
-// src/components/contact/ContactForm.jsx
 import React, { useRef, useState } from "react";
-// import { ContactFormWrapper } from "./";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { Box, Button } from "@mantine/core";
+import { Anchor, Box, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { navigate } from "gatsby";
 import { PopupButton } from "react-calendly";
 import { URL } from "../../services/requestUrl";
-import { FooterWrapper } from "../footer/footer.css";
 import { ContactFormWrapper } from "./contactus.css";
-import { IconMail, IconPhone } from "@tabler/icons-react";
+import { graphql, Link, navigate, useStaticQuery } from "gatsby";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -71,7 +67,39 @@ const ContactForm = () => {
     navigate("/privacy");
   };
 
-  /* ------------------ WALANE-style UI ------------------ */
+  const queryData = useStaticQuery(graphql`
+    query {
+      allContentfulContact {
+        nodes {
+          mobile
+          mail
+        }
+      }
+      allContentfulLocations(sort: { fields: contentful_id }) {
+        nodes {
+          name
+          address
+        }
+      }
+      allContentfulSocialLink(sort: { fields: createdAt }) {
+        nodes {
+          socialLink
+          socialIcon
+          title
+        }
+      }
+      allContentfulStaticPage(sort: { fields: createdAt }) {
+        nodes {
+          title
+          slug
+          shortDescription {
+            shortDescription
+          }
+        }
+      }
+    }
+  `);
+
   const styles = {
     pageWrap: {
       maxWidth: "1200px",
@@ -83,10 +111,11 @@ const ContactForm = () => {
       fontSize: "36px",
       fontWeight: "700",
       marginBottom: "10px",
+      color: "#dc2b2b",
     },
     subtitle: {
       textAlign: "center",
-      color: "#666",
+      color: "#757575",
       marginBottom: "40px",
       fontSize: "16px",
     },
@@ -95,12 +124,12 @@ const ContactForm = () => {
       background: "#ffffff",
       borderRadius: "22px",
       overflow: "hidden",
-      boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+      marginTop: "20px",
     },
     leftPanel: {
       width: "50%",
-      //   background: "#F4ECFF",
-      background: "#fff5f5",
+      background: "rgb(255, 245, 245)",
       padding: "50px",
     },
     rightPanel: {
@@ -123,9 +152,9 @@ const ContactForm = () => {
       alignItems: "center",
     },
     iconSquare: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       width: "50px",
       height: "50px",
       background: "#fff5f5",
@@ -137,42 +166,86 @@ const ContactForm = () => {
   return (
     <ContactFormWrapper>
       <div style={styles.pageWrap}>
-        <h1 style={styles.title}>Get in Touch</h1>
-        <p style={styles.subtitle}>
+        <p className="heading-txt mb-24" style={{ textAlign: "center" }}>
+          <span className="bold">Get in Touch</span>
+        </p>
+        <p className="mb-3" style={{ color: "#757575", textAlign: "center" }}>
           We'd love to hear from you! Fill in your details and our team will
           connect with you soon.
         </p>
+        {/* <p
+          className="heading-txt mb-34"
+          style={{ textAlign: "center", fontSize: "10px", color: "#757575 " }}
+        >
+          <span
+            style={{ color: "#757575", fontSize: "15px", marginTop: "0px" }}
+          >
+            We'd love to hear from you! Fill in your details and our team will
+            connect with you soon.
+          </span>
+        </p> */}
 
         {/* CARD */}
         <div style={styles.card}>
           {/* LEFT SIDE */}
           <div style={styles.leftPanel}>
-            <h2 style={{ marginBottom: 20 }}>Don’t be a stranger</h2>
-            <p style={{ marginBottom: 30 }}>
-              We’re always open to new ideas, collaborations and opportunities.
-            </p>
-
-            <div style={styles.infoRow}>
-              {/* <div style={styles.iconCircle}> */}
-              <div style={styles.iconSquare}>
-                <IconPhone color="red" stroke={1.5} />
-              </div>
-              {/* </div> */}
-              <div>
-                <strong>Feel like talking</strong>
-                <p>+91 90037 91579</p>
-              </div>
+            <div style={{ marginBottom: "40px" }}>
+              <p className="heading-txt mb-24" style={{ color: "#757575" }}>
+                <span className="bold" style={{ display: "block" }}>
+                  Don’t be a stranger
+                </span>
+                just say hello!
+              </p>
+              <p className="mb-3" style={{ color: "#757575" }}>
+                Feel free to get in touch with us.
+                <br />
+                We are always open to discussing new projects, creative
+                <br />
+                ideas or opportunity to be part of your visions.
+              </p>
             </div>
-
-            <div style={styles.infoRow}>
-              {/* <div style={styles.iconCircle}> */}
-              <div style={styles.iconSquare}>
-                <IconMail color="red" stroke={1.5} />
+            <div style={{ marginBottom: "50px" }}>
+              <p className="mb-40">
+                <p className="heading-txt mb-24" style={{ color: "#757575", fontSize: "15px" }}>
+                  Our Locations
+                </p>
+                {/* <span style={{ color: "#757575" }}>Our Locations</span> */}
+                <div className="location-grid">
+                  {queryData.allContentfulLocations.nodes.map((item, i) => (
+                    <div key={i}>
+                      <p className="location-title">{item.name}</p>
+                      <p className="location-address">
+                        {item.address.split("\\n").map((str) => {
+                          return <p className="location-address">{str}</p>;
+                        })}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </p>
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <p style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: "red" }}>Feel like talking</span>
+                  <Anchor
+                    href={`tel:${queryData.allContentfulContact.nodes[0]?.mobile}`}
+                    style={{ fontFamily: "Varela Round" }}
+                  >
+                    {queryData.allContentfulContact.nodes[0]?.mobile}
+                  </Anchor>
+                </p>
               </div>
-              {/* </div> */}
-              <div>
-                <strong>Need help?</strong>
-                <p>hello@pentafox.in</p>
+              <div className="col-6">
+                <p style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: "red" }}>Need help?</span>
+                  <Anchor
+                    href={`mailto:${queryData.allContentfulContact.nodes[0]?.mail}`}
+                    style={{ fontFamily: "Varela Round" }}
+                  >
+                    {queryData.allContentfulContact.nodes[0]?.mail}
+                  </Anchor>
+                </p>
               </div>
             </div>
           </div>
@@ -285,4 +358,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
