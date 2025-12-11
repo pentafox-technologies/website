@@ -189,7 +189,7 @@ const ContactForm = () => {
         <div style={styles.card}>
           {/* LEFT SIDE */}
           <div style={styles.leftPanel}>
-            <div style={{ marginBottom: "40px" }}>
+            <div style={{ marginBottom: "50px" }}>
               <p className="heading-txt mb-24" style={{ color: "#757575" }}>
                 <span className="bold" style={{ display: "block" }}>
                   Don’t be a stranger

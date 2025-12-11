@@ -21,6 +21,8 @@ import {
   Collapse,
   ScrollArea,
   Container,
+  Badge,
+  Button,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -55,8 +57,9 @@ const HeaderWrapper = styled.div`
   .header-links {
     display: flex;
     height: 100%;
-    aitems: center;
-    justify-content: flex-end;
+    align-items: center;
+    // justify-content: flex-end;
+    justify-content: space-between;
     @media (max-width: 770px) {
       display: none;
     }
@@ -146,6 +149,20 @@ const HeaderWrapper = styled.div`
     font-family: "Varela Round";
     border-radius: 3px;
     padding: 0px 5px;
+  }
+
+  .contactUs {
+  background: #cd0e11;
+  color: white;
+  padding: 8px 20px;
+                    margin-top: 10px;
+                    border-radius: 35px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    transition: all 0.2s ease-in;
+                    &:hover {
+                      background: #b60d0f;
+                    },
   }
 `;
 
@@ -470,7 +487,24 @@ const HeaderBar = ({
                 to="/contact-us"
                 className={lightLinks ? "lightLinks" : "link"}
               >
-                <h5>Contact Us</h5>
+                <p className="contactUs">Contact Us</p>
+                {/* <Button
+                  bg="#cd0e11"
+                  onClick={() => navigate("/contact-us")}
+                  radius="xl"
+                  styles={{
+                    root: {
+                      backgroundColor: "#cd0e11",
+                      transition: "0.2s",
+
+                      "&:hover": {
+                        backgroundColor: "#b60d0f", // darker hover color
+                      },
+                    },
+                  }}
+                >
+                  Contact Us
+                </Button> */}
               </Link>
             </div>
 
