@@ -5,9 +5,10 @@ import { useForm } from "@mantine/form";
 import { PopupButton } from "react-calendly";
 import { URL } from "../../services/requestUrl";
 import { ContactFormWrapper } from "./contactus.css";
-import { graphql, navigate, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import portfolio from "../../images/pentafox_portfolio.pdf";
 import { IconDownload } from "@tabler/icons-react";
+import { document } from "browser-monads";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
