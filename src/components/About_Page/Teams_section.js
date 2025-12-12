@@ -4,23 +4,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 function TeamsSection({ data }) {
-  const [activeTab, setActiveTab] = useState("View all");
-  const [currentPage, setCurrentPage] = useState(0);
-  const [columns, setColumns] = useState(getGridColumns());
-  const [direction, setDirection] = useState(1);
-
+  const isBrowser = typeof window !== "undefined";
   function getGridColumns() {
+    if (!isBrowser) return 3;
     if (window.innerWidth < 640) return 2;
     if (window.innerWidth < 1024) return 3;
     if (window.innerWidth < 1280) return 4;
     return 6;
   }
 
+  const [activeTab, setActiveTab] = useState("View all");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [columns, setColumns] = useState(getGridColumns());
+
   useEffect(() => {
+    if (!isBrowser) return;
     const handleResize = () => setColumns(getGridColumns());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isBrowser]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);

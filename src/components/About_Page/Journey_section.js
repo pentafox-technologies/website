@@ -29,12 +29,13 @@ const iconMap = {
 };
 
 function JourneySection({ data }) {
+  const isBrowser = typeof window !== "undefined";
   const [activeIndex, setActiveIndex] = useState(0);
-  const [rotationAngle, setRotationAngle] = useState(window.innerWidth < 768 ? 0 : 90);
+  const [rotationAngle, setRotationAngle] = useState(isBrowser && window.innerWidth < 768 ? 0 : 90);
   const [scrollDirection, setScrollDirection] = useState("down");
   const [showLetters, setShowLetters] = useState(false);
   const [showYear, setShowYear] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(isBrowser ? window.innerWidth : 1024);
   const lastScrollTime = useRef(0);
   const scrollCooldown = 600;
   const circleRef = useRef(null);
@@ -45,14 +46,18 @@ function JourneySection({ data }) {
 
   // Handle resize
   useEffect(() => {
+    if (!isBrowser) return;
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       setRotationAngle(window.innerWidth < 768 ? 0 : 90);
       setActiveIndex(0);
     };
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+
+  }, [isBrowser]);
 
   const scale = windowWidth < 428 ? 0.8 : windowWidth < 768 ? 0.9 : 1;
   const logoScale = windowWidth < 428 ? 0.95 : windowWidth < 768 ? 0.98 : 1;
