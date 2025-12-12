@@ -12,7 +12,7 @@ export const ContactFormWrapper = styled.div`
   .page-wrap {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px 20px 40px;
   }
 
   /* TITLE (merged) */
@@ -219,7 +219,7 @@ export const ContactFormWrapper = styled.div`
   }
 
   a {
-    color: #666;
+    color: #dc2b2b;
     font-weight: 600;
   }
 
@@ -279,6 +279,21 @@ export const ContactFormWrapper = styled.div`
     font-size: 16px;
     ${xs} {
       font-size: 14px;
+    }
+  }
+
+  .download-portfolio-desktop {
+    display: in-line;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .download-portfolio-mobile {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: inline-block;
     }
   }
 `;

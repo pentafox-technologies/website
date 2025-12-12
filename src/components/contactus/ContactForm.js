@@ -7,6 +7,7 @@ import { URL } from "../../services/requestUrl";
 import { ContactFormWrapper } from "./contactus.css";
 import { graphql, navigate, useStaticQuery } from "gatsby";
 import portfolio from "../../images/pentafox_portfolio.pdf";
+import { IconDownload } from "@tabler/icons-react";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -66,7 +67,8 @@ const ContactForm = () => {
   /* ------------------ PRIVACY NAVIGATION ------------------ */
   const handlePrivacyStatement = (event) => {
     event.preventDefault();
-    navigate("/privacy");
+    window.open("https://pentafox.in/privacy");
+    // navigate("/privacy");
   };
 
   /* ------------------ CONTENTFUL DATA ------------------ */
@@ -129,8 +131,6 @@ const ContactForm = () => {
               </p>
 
               <p>
-                Feel free to get in touch with us.
-                <br />
                 We are always open to discussing new projects, creative ideas,
                 <br />
                 or opportunities to be part of your visions.
@@ -139,15 +139,29 @@ const ContactForm = () => {
 
             <div className="spacing-between-container">
               <p className="heading-txt">
-                <span style={{ fontSize: "15px" }}>
+                <span style={{ fontSize: "15px", color: "#666" }}>
                   Do you want to know more about us?{" "}
                 </span>
+                {/* visible desktop mode */}
                 <a
                   href={portfolio}
                   style={{ fontSize: "15px" }}
                   download={"pentafox_portfolio.pdf"}
+                  className="download-portfolio-desktop"
                 >
-                  download
+                  Download Portfolio
+                </a>
+                {/* visible mobile mode */}
+                <a
+                  href={portfolio}
+                  style={{ fontSize: "15px", textDecoration: "none" }}
+                  download={"pentafox_portfolio.pdf"}
+                  className="download-portfolio-mobile"
+                >
+                  <IconDownload stroke={1.5} size={20} />{" "}
+                  <span style={{ fontSize: "16px", textDecoration: "none" }}>
+                    Portfolio
+                  </span>
                 </a>
               </p>
             </div>
@@ -286,7 +300,6 @@ const ContactForm = () => {
                   // disabled={!captchaToken}
                   loading={loading}
                   type="submit"
-                  
                 >
                   Send Request
                 </Button>
