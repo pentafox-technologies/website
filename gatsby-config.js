@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        spaceId: process.env.GATSBY_SPACE_ID,
-        accessToken: process.env.GATSBY_ACCESS_TOKEN,
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
     {
@@ -108,7 +108,7 @@ module.exports = {
         background_color: `#dc2908`,
         theme_color: `#dc2908`,
         display: `minimal-ui`,
-        icon: `./static/social.png`, // This path is relative to the root of the site.
+        icon: `public/social.png`, // This path is relative to the root of the site.
       },
     },
     {

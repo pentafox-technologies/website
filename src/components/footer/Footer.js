@@ -1,4 +1,4 @@
-import { Anchor, Box, Button, Image } from "@mantine/core";
+import { Anchor, Box, Button, Image, Select } from "@mantine/core";
 import { graphql, Link, navigate, useStaticQuery } from "gatsby";
 import React, { useRef, useState } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -9,6 +9,7 @@ import { useForm } from "@mantine/form";
 import PentafoxLogo from "../../images/logo-pf-white-1.svg";
 import { PopupButton } from "react-calendly";
 import { document } from "browser-monads";
+import { useMediaQuery } from "@mantine/hooks";
 
 const Footer = () => {
   const isMobileDevice = IsMobile();
@@ -17,12 +18,14 @@ const Footer = () => {
   const [captchaToken, setCaptchaToken] = useState();
   const captchaRef = useRef();
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const form = useForm({
     initialValues: {
       name: "",
       email: "",
       mobile: "",
       message: "",
+      project_sevices: null,
       is_comms: false,
       is_privacy: false,
     },
@@ -52,7 +55,7 @@ const Footer = () => {
         name: data?.name,
         email: data?.email,
         phone: data?.mobile,
-        desc: data?.message,
+        desc: `${data.project_sevices}:${data.message}`,
         is_privacy: data?.is_privacy,
         is_comms: data?.is_comms,
         captcha_token: captchaToken,
@@ -235,6 +238,33 @@ const Footer = () => {
                 />
               </div>
               <div className="form-group">
+                <Select
+                  placeholder="Select Services"
+                  className={form?.errors?.project_sevices && "error-label"}
+                  {...form.getInputProps("project_sevices")}
+                  data={[
+                    {
+                      value: "Whatsapp business automation - walane.ai",
+                      label: "Whatsapp business automation - walane.ai",
+                    },
+                    {
+                      value: "KYC / ID verification APIs - FastKYC.com",
+                      label: "KYC / ID verification APIs - FastKYC.com",
+                    },
+                    {
+                      value: "Cloud / Infra services",
+                      label: "Cloud / Infra services",
+                    },
+                    { value: "Gen AI Solutions", label: "Gen AI Solutions" },
+                    {
+                      value: "UI / UX Video Editing",
+                      label: "UI / UX Video Editing",
+                    },
+                    { value: "Others", label: "Others" },
+                  ]}
+                />
+              </div>
+              <div className="form-group">
                 <textarea
                   placeholder="Whats on your mind..."
                   className={form?.errors?.message && "error-label"}
@@ -374,22 +404,34 @@ const Footer = () => {
           className="btm-link"
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: isMobile ? "center" : "flex-end",
             alignItems: "center",
           }}
         >
           <div style={{ paddingTop: 20, paddingBottom: 20 }}>
             <img
               src="https://i.imgur.com/brwBGIo.png"
-              style={{ objectFit: "cover" }}
               alt="Pentafox Logo"
               height="100"
               width="200"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
 
-        <div className="btm">
+        {/* BOTTOM SECTION */}
+        <div
+          className="btm"
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            justifyContent: "space-between",
+            alignItems: isMobile ? "center" : "flex-start",
+            textAlign: isMobile ? "center" : "left",
+            gap: isMobile ? 20 : 0,
+          }}
+        >
+          {/* LEFT COL */}
           <div className="left-col">
             <Link
               to="/"
@@ -452,9 +494,14 @@ const Footer = () => {
               Products
             </Link> */}
           </div>
+
+          {/* RIGHT COL */}
           <Box
             className="right-col"
-            sx={{ textAlign: "right", color: "rgba(255, 255, 255, 0.5)" }}
+            sx={{
+              textAlign: isMobile ? "center" : "right",
+              color: "rgba(255, 255, 255, 0.5)",
+            }}
           >
             © 2023 Pentafox Technologies Private Limited. All rights reserved.
             <br />

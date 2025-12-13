@@ -368,33 +368,6 @@ const HeaderBar = ({
   return (
     <HeaderWrapper>
       <Box style={{ backgroundColor: headerColor }} withBorder={false}>
-        {/* {showBanner && (
-          <div className="banner" onClick={() => navigate("/funded")}>
-            <div className="bannerContent">
-              <div className="bannerText">
-                <div>
-                  <IconSparkles />
-                </div>
-                <Text pl={10}>
-                  Pentafox Technologies Secures Seed Investment from Pentagon
-                  Group, Mumbai. 🎉
-                </Text>
-              </div>
-              <div
-                className="bannerBtn"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <Text>READ MORE</Text>
-                <IconArrowRight size={16} />
-              </div>
-            </div>
-          </div>
-        )} */}
         <Box className="header">
           {/* <Container size={1200} style={{height: '100%'}}> */}
           <div className="header-content">

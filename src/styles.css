@@ -44,3 +44,8 @@ h6 {
 input[type="checkbox"] {
   accent-color: green;
 }
+
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

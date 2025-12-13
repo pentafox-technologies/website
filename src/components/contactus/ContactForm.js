@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { Anchor, Box, Button } from "@mantine/core";
+import { Anchor, Box, Button, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { PopupButton } from "react-calendly";
 import { URL } from "../../services/requestUrl";
@@ -22,6 +22,7 @@ const ContactForm = () => {
       email: "",
       mobile: "",
       message: "",
+      project_sevices: null,
       is_comms: false,
       is_privacy: false,
     },
@@ -29,7 +30,7 @@ const ContactForm = () => {
       name: (value) => (value.length < 2 ? "Enter a Valid Name" : null),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       mobile: (value) =>
-        /^[7-9][0-9]{9}$/.test(value) ? null : "Invalid Mobile",
+        /^[6-9]{1}[0-9]{9}$/.test(value) ? null : "Invalid Mobile",
       is_privacy: (value) => (value ? null : "Required"),
       message: (value) => (value ? null : "Required"),
     },
@@ -46,7 +47,7 @@ const ContactForm = () => {
         name: data.name,
         email: data.email,
         phone: data.mobile,
-        desc: data.message,
+        desc: `${data.project_sevices}:${data.message}`,
         is_privacy: data.is_privacy,
         is_comms: data.is_comms,
         captcha_token: captchaToken,
@@ -110,14 +111,14 @@ const ContactForm = () => {
     <ContactFormWrapper>
       <div className="page-wrap">
         {/* TITLE */}
-        <p className="heading-txt mb-24" style={{ textAlign: "center" }}>
+        {/* <p className="heading-txt mb-24" style={{ textAlign: "center" }}>
           <span className="bold">Get in Touch</span>
         </p>
 
         <p className="subtitle" style={{ textAlign: "center" }}>
           We'd love to hear from you! Fill in your details and our team will
           connect with you soon.
-        </p>
+        </p> */}
 
         {/* CARD WRAPPER */}
         <div className="card">
@@ -153,7 +154,7 @@ const ContactForm = () => {
                   Download Portfolio
                 </a>
                 {/* visible mobile mode */}
-                <a
+                {/* <a
                   href={portfolio}
                   style={{ fontSize: "15px", textDecoration: "none" }}
                   download={"pentafox_portfolio.pdf"}
@@ -163,7 +164,7 @@ const ContactForm = () => {
                   <span style={{ fontSize: "16px", textDecoration: "none" }}>
                     Portfolio
                   </span>
-                </a>
+                </a> */}
               </p>
             </div>
 
@@ -238,6 +239,34 @@ const ContactForm = () => {
                   placeholder="Mobile"
                   className={form?.errors?.mobile && "error-label"}
                   {...form.getInputProps("mobile")}
+                />
+              </div>
+
+              <div className="form-group">
+                <Select
+                  placeholder="Select Services"
+                  className={form?.errors?.project_sevices && "error-label"}
+                  {...form.getInputProps("project_sevices")}
+                  data={[
+                    {
+                      value: "Whatsapp business automation - walane.ai",
+                      label: "Whatsapp business automation - walane.ai",
+                    },
+                    {
+                      value: "KYC / ID verification APIs - FastKYC.com",
+                      label: "KYC / ID verification APIs - FastKYC.com",
+                    },
+                    {
+                      value: "Cloud / Infra services",
+                      label: "Cloud / Infra services",
+                    },
+                    { value: "Gen AI Solutions", label: "Gen AI Solutions" },
+                    {
+                      value: "UI / UX Video Editing",
+                      label: "UI / UX Video Editing",
+                    },
+                    { value: "Others", label: "Others" },
+                  ]}
                 />
               </div>
 
