@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { xs, sm } from 'helpers/device';
-import { theme } from 'helpers/theme';
+import styled from "styled-components";
+import { xs, sm } from "helpers/device";
+import { theme } from "helpers/theme";
 
 export const FooterWrapper = styled.footer`
   background: #292733;
@@ -30,7 +30,7 @@ export const FooterWrapper = styled.footer`
     }
   }
 
-  ${sm}{
+  ${sm} {
     // padding: 56px 0 32px;
   }
 
@@ -56,7 +56,7 @@ export const FooterWrapper = styled.footer`
       }
 
       span {
-        color: #DC2B2B;
+        color: #dc2b2b;
         font-size: 20px;
         line-height: 120%;
 
@@ -68,11 +68,11 @@ export const FooterWrapper = styled.footer`
 
     a {
       color: ${theme.white};
+      cursor: pointer;
     }
   }
 
   ul {
-
     &.social-icons {
       li {
         display: inline-block;
@@ -83,7 +83,7 @@ export const FooterWrapper = styled.footer`
         }
 
         a {
-          color: #FFFFFF;
+          color: #ffffff;
 
           i {
             font-size: 18px;
@@ -120,6 +120,7 @@ export const FooterWrapper = styled.footer`
       color: ${theme.white};
       text-decoration: none;
       border-bottom: 0.2px solid ${theme.white};
+      cursor: pointer;
     }
   }
 
@@ -137,7 +138,7 @@ export const FooterWrapper = styled.footer`
 
     .error-label {
       color: rgb(220, 43, 43);
-      background-color : #FFE9E9;
+      background-color: #ffe9e9;
       &::placeholder {
         color: rgb(220, 43, 43);
       }
@@ -147,17 +148,17 @@ export const FooterWrapper = styled.footer`
       width: 100%;
       height: 40px;
       background: ${theme.white};
-      border: 1px solid #ECEAEA;
+      border: 1px solid #eceaea;
       border-radius: 2px;
       padding: 16px;
       font-size: 12px;
       line-height: 140%;
       font-weight: 600;
-      color: #19181D;
+      color: #19181d;
       margin-bottom: 10px;
-      fontFamily: Varela Round;
+      fontfamily: Varela Round;
 
-      ${sm}{
+      ${sm} {
         height: 48px;
         font-size: 14px;
       }
@@ -170,16 +171,16 @@ export const FooterWrapper = styled.footer`
     textarea {
       width: 100%;
       background: ${theme.white};
-      border: 1px solid #ECEAEA;
+      border: 1px solid #eceaea;
       border-radius: 2px;
       padding: 16px;
       font-size: 12px;
       line-height: 140%;
       font-weight: 600;
-      color: #19181D;
+      color: #19181d;
       resize: none;
 
-      ${sm}{
+      ${sm} {
         font-size: 14px;
       }
 
@@ -189,12 +190,12 @@ export const FooterWrapper = styled.footer`
     }
 
     &.custom-file {
-      ${xs}{
+      ${xs} {
         height: 40px;
       }
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
@@ -225,7 +226,7 @@ export const FooterWrapper = styled.footer`
         font-size: 12px;
         line-height: 140%;
         font-weight: 600;
-        ${sm}{
+        ${sm} {
           font-size: 14px;
         }
       }
@@ -246,7 +247,7 @@ export const FooterWrapper = styled.footer`
         border-radius: 0 2px 2px 0;
         font-size: 12px;
         line-height: 140%;
-        ${sm}{
+        ${sm} {
           font-size: 14px;
         }
       }
@@ -254,18 +255,18 @@ export const FooterWrapper = styled.footer`
   }
 
   .send-btn {
-    background: #21C997;
+    background: #21c997;
     border-radius: 2px;
     font-size: 12px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: 600;
     width: 100%;
     display: block;
     padding: 12px;
     margin-bottom: 40px;
 
-    ${sm}{
+    ${sm} {
       font-size: 16px;
     }
 
@@ -276,24 +277,24 @@ export const FooterWrapper = styled.footer`
 
   .appointment-btn {
     background: transparent;
-    border: 1.5px solid #21C997;
+    border: 1.5px solid #21c997;
     border-radius: 2px;
     font-size: 12px;
     line-height: 140%;
-    color: #21C997;
+    color: #21c997;
     font-weight: 600;
     width: 100%;
     display: block;
     padding: 12px;
     margin-bottom: 40px;
 
-    ${sm}{
+    ${sm} {
       font-size: 16px;
     }
 
     &:hover {
-      color: #FFFFFF;
-      border: 1.5px solid #FFF;
+      color: #ffffff;
+      border: 1.5px solid #fff;
     }
 
     &:disabled {
@@ -308,7 +309,7 @@ export const FooterWrapper = styled.footer`
     display: flex;
     align-items: center;
 
-    ${xs}{
+    ${xs} {
       .right-col {
         flex: 1 !important;
         font-size: 9px;
@@ -331,11 +332,11 @@ export const FooterWrapper = styled.footer`
     }
 
     .right-col {
-      ${xs}{
+      ${xs} {
         flex: 1 1 100%;
         text-align: right;
       }
-      ${sm}{
+      ${sm} {
         margin-left: auto;
       }
     }
@@ -347,7 +348,7 @@ export const FooterWrapper = styled.footer`
     display: flex;
     align-items: center;
 
-    ${xs}{
+    ${xs} {
       .right-col {
         flex: 1 !important;
         font-size: 9px;
@@ -370,13 +371,21 @@ export const FooterWrapper = styled.footer`
     }
 
     .right-col {
-      ${xs}{
+      ${xs} {
         flex: 1 1 100%;
         text-align: right;
       }
-      ${sm}{
+      ${sm} {
         margin-left: auto;
       }
+    }
+  }
+
+  .submit-btn {
+    font-family: Varela Round;
+    font-size: 16px;
+    ${xs} {
+      font-size: 14px;
     }
   }
 `;

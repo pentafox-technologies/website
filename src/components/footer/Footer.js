@@ -41,7 +41,8 @@ const Footer = () => {
 
   const handlePrivacyStatement = (event) => {
     event.preventDefault();
-    navigate("/privacy");
+    window.open("https://pentafox.in/privacy");
+    // navigate("/privacy");
   };
 
   const handleSubmit = (data) => {
@@ -262,6 +263,16 @@ const Footer = () => {
                     },
                     { value: "Others", label: "Others" },
                   ]}
+                  styles={{
+                    item: {
+                      "&[data-selected]": {
+                        backgroundColor: "#d85b5bff",
+                      },
+                      "&[data-selected]:hover": {
+                        backgroundColor: "rgba(250, 90, 90, 1)",
+                      },
+                    },
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -314,6 +325,7 @@ const Footer = () => {
                   size="lg"
                   fullWidth
                   color="teal"
+                  className="submit-btn"
                   style={{ fontFamily: "Varela Round" }}
                   sx={{
                     "&[data-disabled]": { opacity: 0.5, color: "#BABABA" },

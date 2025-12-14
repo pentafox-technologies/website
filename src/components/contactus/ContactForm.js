@@ -7,7 +7,6 @@ import { URL } from "../../services/requestUrl";
 import { ContactFormWrapper } from "./contactus.css";
 import { graphql, useStaticQuery } from "gatsby";
 import portfolio from "../../images/pentafox_portfolio.pdf";
-import { IconDownload } from "@tabler/icons-react";
 import { document } from "browser-monads";
 
 const ContactForm = () => {
@@ -267,6 +266,16 @@ const ContactForm = () => {
                     },
                     { value: "Others", label: "Others" },
                   ]}
+                  styles={{
+                    item: {
+                      "&[data-selected]": {
+                        backgroundColor: "#d85b5bff",
+                      },
+                      "&[data-selected]:hover": {
+                        backgroundColor: "rgba(250, 90, 90, 1)",
+                      },
+                    },
+                  }}
                 />
               </div>
 

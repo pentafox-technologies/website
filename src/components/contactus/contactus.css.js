@@ -138,7 +138,7 @@ export const ContactFormWrapper = styled.div`
   }
 
   .spacing-between-container {
-    margin-bottom: 30px;
+    margin-bottom: 45px;
   }
 
   /* ------------------------------ */
