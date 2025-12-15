@@ -40,6 +40,7 @@ import {
   IconHelp,
   IconSettings,
   IconLogout,
+  IconX,
 } from "@tabler/icons-react";
 import styled from "styled-components";
 
@@ -316,13 +317,11 @@ const useStyles = createStyles((theme) => ({
   drawerCloseButton: {
     width: "36px",
     height: "36px",
-    backgroundColor: "rgba(240, 98, 98, 0.42)",
-    borderRadius: "50%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "white",
-    fontSize: "20px",
+    color: "gray",
+    fontSize: "25px",
     border: "none",
     cursor: "pointer",
   },
@@ -659,9 +658,9 @@ const HeaderBar = ({
             <Link to="/">
               <LogoRedSVG height={isMobileDevice ? "60" : "90"} width="auto" />
             </Link>
-            <button onClick={closeDrawer} className={classes.drawerCloseButton}>
-              ×
-            </button>
+            <div onClick={closeDrawer} className={classes.drawerCloseButton}>
+              <IconX size={22} />
+            </div>
           </div>
         </div>
 

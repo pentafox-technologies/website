@@ -235,44 +235,68 @@ const ContactForm = () => {
 
               <div className="form-group">
                 <input
+                  type="tel"
                   placeholder="Mobile"
+                  inputMode="numeric"
+                  maxLength={10}
+                  value={form.values.mobile}
+                  onChange={(e) => {
+                    const onlyNumbers = e.target.value.replace(/\D/g, "");
+                    form.setFieldValue("mobile", onlyNumbers);
+                  }}
                   className={form?.errors?.mobile && "error-label"}
-                  {...form.getInputProps("mobile")}
+                  style={{ fontFamily: "Varela Round" }}
                 />
               </div>
 
               <div className="form-group">
                 <Select
-                  placeholder="Select Services"
+                  placeholder="Select Products / Services"
                   className={form?.errors?.project_sevices && "error-label"}
                   {...form.getInputProps("project_sevices")}
                   data={[
                     {
                       value: "Whatsapp business automation - walane.ai",
                       label: "Whatsapp business automation - walane.ai",
+                      group: "Products",
                     },
                     {
                       value: "KYC / ID verification APIs - FastKYC.com",
                       label: "KYC / ID verification APIs - FastKYC.com",
+                      group: "Products",
                     },
                     {
                       value: "Cloud / Infra services",
                       label: "Cloud / Infra services",
+                      group: "Services",
                     },
-                    { value: "Gen AI Solutions", label: "Gen AI Solutions" },
                     {
-                      value: "UI / UX Video Editing",
-                      label: "UI / UX Video Editing",
+                      value: "Gen AI Solutions",
+                      label: "Gen AI Solutions",
+                      group: "Services",
+                    },
+                    {
+                      value: "UI / UX, Digital Video Production",
+                      label: "UI / UX, Digital Video Production",
+                      group: "Services",
                     },
                     { value: "Others", label: "Others" },
                   ]}
                   styles={{
+                    input: {
+                      "&[data-placeholder-shown]": {
+                        color: "#757575d3",
+                        fontWeight: 500,
+                      },
+                    },
                     item: {
                       "&[data-selected]": {
                         backgroundColor: "#d85b5bff",
+                        fontFamily: "Varela Round",
                       },
                       "&[data-selected]:hover": {
                         backgroundColor: "rgba(250, 90, 90, 1)",
+                        fontFamily: "Varela Round",
                       },
                     },
                   }}

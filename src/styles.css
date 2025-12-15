@@ -45,6 +45,12 @@ input[type="checkbox"] {
   accent-color: green;
 }
 
+input,
+textarea,
+.mantine-Select-input {
+  font-family: "Varela Round", sans-serif !important;
+}
+
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;

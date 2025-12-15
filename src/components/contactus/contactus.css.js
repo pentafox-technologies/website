@@ -120,17 +120,6 @@ export const ContactFormWrapper = styled.div`
     font-weight: 600;
   }
 
-  input::placeholder,
-  textarea::placeholder {
-    color: #757575d3;
-  }
-
-  input:focus,
-  textarea:focus {
-    border-color: #757575e9 !important;
-    outline: none;
-  }
-
   .link {
     text-decoration: under-line;
     cursor: pointer;
@@ -181,14 +170,31 @@ export const ContactFormWrapper = styled.div`
       border-radius: 2px;
       padding: 16px;
       font-size: 12px;
-      font-weight: 600;
-      color: #19181d;
+      font-weight: 500;
+      // color: #19181d;
       margin-bottom: 10px;
 
       ${sm} {
         height: 48px;
         font-size: 14px;
       }
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #757575d3;
+      font-weight: 500;
+    }
+
+    .mantine-Select-input[data-placeholder-shown] {
+      color: #757575d3;
+      font-weight: 500;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #757575e9 !important;
+      outline: none;
     }
 
     textarea {
@@ -199,8 +205,8 @@ export const ContactFormWrapper = styled.div`
       padding: 16px;
       font-size: 12px;
       line-height: 140%;
-      font-weight: 600;
-      color: #19181d;
+      font-weight: 500;
+      // color: #19181d;
       resize: none;
 
       ${sm} {
