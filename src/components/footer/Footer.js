@@ -53,41 +53,40 @@ const Footer = () => {
       return;
     }
     if (!captchaError && captchaToken) {
-      alert("success");
-      // const requestOptions = {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "x-api-key": process.env.GATSBY_API_KEY,
-      //   },
-      //   body: JSON.stringify({
-      //     name: data?.name,
-      //     email: data?.email,
-      //     phone: data?.mobile,
-      //     desc: `${data.project_sevices}:${data.message}`,
-      //     is_privacy: data?.is_privacy,
-      //     is_comms: data?.is_comms,
-      //     captcha_token: captchaToken,
-      //   }),
-      // };
-      // setLoading(true);
-      // fetch(`${URL.base}${URL.contact}`, requestOptions)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     if (data === "Success") {
-      //       setRes(true);
-      //     }
-      //     setLoading(false);
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     setLoading(false);
-      //   });
-      // setTimeout(() => {
-      //   form.reset();
-      //   captchaRef.current.resetCaptcha();
-      //   setCaptchaToken();
-      // }, 6000);
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.GATSBY_API_KEY,
+        },
+        body: JSON.stringify({
+          name: data?.name,
+          email: data?.email,
+          phone: data?.mobile,
+          desc: `${data.project_sevices}:${data.message}`,
+          is_privacy: data?.is_privacy,
+          is_comms: data?.is_comms,
+          captcha_token: captchaToken,
+        }),
+      };
+      setLoading(true);
+      fetch(`${URL.base}${URL.contact}`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data === "Success") {
+            setRes(true);
+          }
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+      setTimeout(() => {
+        form.reset();
+        captchaRef.current.resetCaptcha();
+        setCaptchaToken();
+      }, 6000);
     }
   };
 
