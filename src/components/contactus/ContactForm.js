@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { Anchor, Box, Button, Select } from "@mantine/core";
 import { useForm } from "@mantine/form";
@@ -12,6 +12,7 @@ import { document } from "browser-monads";
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaError, setCaptchaError] = useState(false);
   const captchaRef = useRef();
 
   /* ------------------ FORM LOGIC ------------------ */
@@ -32,37 +33,45 @@ const ContactForm = () => {
         /^[6-9]{1}[0-9]{9}$/.test(value) ? null : "Invalid Mobile",
       is_privacy: (value) => (value ? null : "Required"),
       message: (value) => (value ? null : "Required"),
+      project_sevices: (value) => (value ? false : true),
     },
   });
 
   const handleSubmit = (data) => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.GATSBY_API_KEY,
-      },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        phone: data.mobile,
-        desc: `${data.project_sevices}:${data.message}`,
-        is_privacy: data.is_privacy,
-        is_comms: data.is_comms,
-        captcha_token: captchaToken,
-      }),
-    };
+    if (!captchaToken) {
+      setCaptchaError(true);
+      return;
+    }
+    if (!captchaError && captchaToken) {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.GATSBY_API_KEY,
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.mobile,
+          desc: `${data.project_sevices}:${data.message}`,
+          is_privacy: data.is_privacy,
+          is_comms: data.is_comms,
+          captcha_token: captchaToken,
+        }),
+      };
 
-    setLoading(true);
+      setLoading(true);
 
-    fetch(`${URL.base}${URL.contact}`, requestOptions)
-      .then((res) => res.json())
-      .then(() => {
-        form.reset();
-        captchaRef.current.resetCaptcha();
-        setCaptchaToken(null);
-      })
-      .finally(() => setLoading(false));
+      fetch(`${URL.base}${URL.contact}`, requestOptions)
+        .then((res) => res.json())
+        .then(() => {
+          form.reset();
+          captchaRef.current.resetCaptcha();
+          setCaptchaToken(null);
+          setCaptchaError(false);
+        })
+        .finally(() => setLoading(false));
+    }
   };
 
   /* ------------------ PRIVACY NAVIGATION ------------------ */
@@ -147,7 +156,7 @@ const ContactForm = () => {
                 <a
                   href={portfolio}
                   style={{ fontSize: "15px" }}
-                  download={"pentafox_portfolio.pdf"}
+                  download={"Pentafox Portfolio.pdf"}
                   className="download-portfolio-desktop"
                 >
                   Download Portfolio
@@ -252,7 +261,11 @@ const ContactForm = () => {
               <div className="form-group">
                 <Select
                   placeholder="Select Products / Services"
-                  className={form?.errors?.project_sevices && "error-label"}
+                  classNames={{
+                    input: form.errors.project_sevices
+                      ? "form-input-error error-label"
+                      : "",
+                  }}
                   {...form.getInputProps("project_sevices")}
                   data={[
                     {
@@ -282,13 +295,8 @@ const ContactForm = () => {
                     },
                     { value: "Others", label: "Others" },
                   ]}
+                  style={{ marginBottom: "30px" }}
                   styles={{
-                    input: {
-                      "&[data-placeholder-shown]": {
-                        color: "#757575d3",
-                        fontWeight: 500,
-                      },
-                    },
                     item: {
                       "&[data-selected]": {
                         backgroundColor: "#d85b5bff",
@@ -346,9 +354,28 @@ const ContactForm = () => {
                 <HCaptcha
                   ref={captchaRef}
                   sitekey={process.env.GATSBY_CAPTCHA_TOKEN}
-                  onVerify={(token) => setCaptchaToken(token)}
-                  onExpire={() => setCaptchaToken(null)}
+                  onVerify={(token) => {
+                    setCaptchaToken(token);
+                    setCaptchaError(false);
+                  }}
+                  onExpire={() => {
+                    setCaptchaToken(null);
+                  }}
+                  onError={() => {
+                    setCaptchaError(true);
+                  }}
                 />
+                {captchaError && (
+                  <p
+                    style={{
+                      color: "rgb(220, 43, 43)",
+                      fontSize: 13,
+                      marginTop: 8,
+                    }}
+                  >
+                    Please verify that you are human
+                  </p>
+                )}
               </div>
 
               <Box mt="md">

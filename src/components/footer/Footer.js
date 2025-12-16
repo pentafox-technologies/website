@@ -16,6 +16,7 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [res, setRes] = useState(false);
   const [captchaToken, setCaptchaToken] = useState();
+  const [captchaError, setCaptchaError] = useState(false);
   const captchaRef = useRef();
 
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -33,9 +34,10 @@ const Footer = () => {
       name: (value) => (value.length < 2 ? "Enter a Valid Name" : null),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       mobile: (value) =>
-        /^[7-9][0-9]{9}$/.test(value) ? null : "Invalid Mobile",
+        /^[6-9]{1}[0-9]{9}$/.test(value) ? null : "Invalid Mobile",
       is_privacy: (value) => (value ? null : "Required"),
       message: (value) => (value ? null : "Required"),
+      project_sevices: (value) => (value ? false : true),
     },
   });
 
@@ -46,40 +48,47 @@ const Footer = () => {
   };
 
   const handleSubmit = (data) => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.GATSBY_API_KEY,
-      },
-      body: JSON.stringify({
-        name: data?.name,
-        email: data?.email,
-        phone: data?.mobile,
-        desc: `${data.project_sevices}:${data.message}`,
-        is_privacy: data?.is_privacy,
-        is_comms: data?.is_comms,
-        captcha_token: captchaToken,
-      }),
-    };
-    setLoading(true);
-    fetch(`${URL.base}${URL.contact}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data === "Success") {
-          setRes(true);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
-    setTimeout(() => {
-      form.reset();
-      captchaRef.current.resetCaptcha();
-      setCaptchaToken();
-    }, 6000);
+    if (!captchaToken) {
+      setCaptchaError(true);
+      return;
+    }
+    if (!captchaError && captchaToken) {
+      alert("success");
+      // const requestOptions = {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "x-api-key": process.env.GATSBY_API_KEY,
+      //   },
+      //   body: JSON.stringify({
+      //     name: data?.name,
+      //     email: data?.email,
+      //     phone: data?.mobile,
+      //     desc: `${data.project_sevices}:${data.message}`,
+      //     is_privacy: data?.is_privacy,
+      //     is_comms: data?.is_comms,
+      //     captcha_token: captchaToken,
+      //   }),
+      // };
+      // setLoading(true);
+      // fetch(`${URL.base}${URL.contact}`, requestOptions)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     if (data === "Success") {
+      //       setRes(true);
+      //     }
+      //     setLoading(false);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     setLoading(false);
+      //   });
+      // setTimeout(() => {
+      //   form.reset();
+      //   captchaRef.current.resetCaptcha();
+      //   setCaptchaToken();
+      // }, 6000);
+    }
   };
 
   const queryData = useStaticQuery(graphql`
@@ -254,7 +263,10 @@ const Footer = () => {
               <div className="form-group">
                 <Select
                   placeholder="Select Products / Services"
-                  className={form?.errors?.project_sevices && "error-label"}
+                  className={
+                    form?.errors?.project_sevices &&
+                    "form-input-error error-label"
+                  }
                   {...form.getInputProps("project_sevices")}
                   data={[
                     {
@@ -347,9 +359,26 @@ const Footer = () => {
                 <HCaptcha
                   ref={captchaRef}
                   sitekey={process.env.GATSBY_CAPTCHA_TOKEN}
-                  onVerify={(token) => setCaptchaToken(token)}
-                  onExpire={() => setCaptchaToken()}
+                  onVerify={(token) => {
+                    setCaptchaToken(token);
+                    setCaptchaError(false);
+                  }}
+                  onExpire={() => setCaptchaToken(null)}
+                  onError={() => {
+                    setCaptchaError(true);
+                  }}
                 />
+                {captchaError && (
+                  <p
+                    style={{
+                      color: "rgb(220, 43, 43)",
+                      fontSize: 13,
+                      marginTop: 8,
+                    }}
+                  >
+                    Please verify that you are human
+                  </p>
+                )}
               </div>
               <Box mt="md" mb="xl">
                 <Button

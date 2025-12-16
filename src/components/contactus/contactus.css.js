@@ -8,6 +8,11 @@ export const ContactFormWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 
+  :root {
+    --error-red: rgb(220, 43, 43);
+    --error-bg: #ffe9e9;
+  }
+
   /* PAGE WRAP (merged from JS styles) */
   .page-wrap {
     max-width: 1200px;
@@ -186,11 +191,6 @@ export const ContactFormWrapper = styled.div`
       font-weight: 500;
     }
 
-    .mantine-Select-input[data-placeholder-shown] {
-      color: #757575d3;
-      font-weight: 500;
-    }
-
     input:focus,
     textarea:focus {
       border-color: #757575e9 !important;
@@ -286,6 +286,10 @@ export const ContactFormWrapper = styled.div`
     ${xs} {
       font-size: 14px;
     }
+  }
+
+  .form-input-error {
+    background-color: #ffe9e9 !important;
   }
 
   // .download-portfolio-desktop {

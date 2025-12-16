@@ -136,6 +136,12 @@ export const FooterWrapper = styled.footer`
       }
     }
 
+    input::placeholder,
+    textarea::placeholder {
+      color: #757575d3;
+      font-weight: 500;
+    }
+
     .error-label {
       color: rgb(220, 43, 43);
       background-color: #ffe9e9;
@@ -387,5 +393,9 @@ export const FooterWrapper = styled.footer`
     ${xs} {
       font-size: 14px;
     }
+  }
+
+  .form-input-error {
+    background-color: #ffe9e9 !important;
   }
 `;
