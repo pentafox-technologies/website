@@ -253,7 +253,7 @@ const Footer = () => {
               </div>
               <div className="form-group">
                 <Select
-                  placeholder="Select Services"
+                  placeholder="Select Products / Services"
                   className={form?.errors?.project_sevices && "error-label"}
                   {...form.getInputProps("project_sevices")}
                   data={[
@@ -293,11 +293,13 @@ const Footer = () => {
                     },
                     item: {
                       "&[data-selected]": {
-                        backgroundColor: "#d85b5bff",
+                        // backgroundColor: "#d85b5bff",
+                        backgroundColor: "#757575",
                         fontFamily: "Varela Round",
                       },
                       "&[data-selected]:hover": {
-                        backgroundColor: "rgba(250, 90, 90, 1)",
+                        // backgroundColor: "#d85b5bff",
+                        backgroundColor: "#757575",
                         fontFamily: "Varela Round",
                       },
                     },

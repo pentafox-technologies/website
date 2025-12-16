@@ -295,7 +295,7 @@ const ContactForm = () => {
                         fontFamily: "Varela Round",
                       },
                       "&[data-selected]:hover": {
-                        backgroundColor: "rgba(250, 90, 90, 1)",
+                        backgroundColor: "#d85b5bff",
                         fontFamily: "Varela Round",
                       },
                     },
