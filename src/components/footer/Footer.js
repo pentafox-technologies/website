@@ -70,23 +70,16 @@ const Footer = () => {
         }),
       };
       setLoading(true);
+
       fetch(`${URL.base}${URL.contact}`, requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data === "Success") {
-            setRes(true);
-          }
-          setLoading(false);
+        .then((res) => res.json())
+        .then(() => {
+          form.reset();
+          captchaRef.current.resetCaptcha();
+          setCaptchaToken(null);
+          setCaptchaError(false);
         })
-        .catch((error) => {
-          console.log(error);
-          setLoading(false);
-        });
-      setTimeout(() => {
-        form.reset();
-        captchaRef.current.resetCaptcha();
-        setCaptchaToken();
-      }, 6000);
+        .finally(() => setLoading(false));
     }
   };
 
@@ -381,6 +374,8 @@ const Footer = () => {
               </div>
               <Box mt="md" mb="xl">
                 <Button
+                  type="submit"
+                  onClick={() => (!captchaToken ? setCaptchaError(true) : null)}
                   size="lg"
                   fullWidth
                   color="teal"
@@ -391,7 +386,6 @@ const Footer = () => {
                   }}
                   // disabled={!captchaToken}
                   loading={loading}
-                  type="submit"
                 >
                   Send Request
                 </Button>

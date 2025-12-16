@@ -295,7 +295,7 @@ const ContactForm = () => {
                     },
                     { value: "Others", label: "Others" },
                   ]}
-                  style={{ marginBottom: "30px" }}
+                  style={{ marginBottom: "20px" }}
                   styles={{
                     item: {
                       "&[data-selected]": {
@@ -380,6 +380,8 @@ const ContactForm = () => {
 
               <Box mt="md">
                 <Button
+                  type="submit"
+                  onClick={() => (!captchaToken ? setCaptchaError(true) : null)}
                   size="md"
                   fullWidth
                   color="teal"
@@ -389,7 +391,6 @@ const ContactForm = () => {
                   }}
                   // disabled={!captchaToken}
                   loading={loading}
-                  type="submit"
                 >
                   Send Request
                 </Button>
