@@ -6,13 +6,13 @@ import { PopupButton } from "react-calendly";
 import { URL } from "../../services/requestUrl";
 import { ContactFormWrapper } from "./contactus.css";
 import { graphql, useStaticQuery } from "gatsby";
-import portfolio from "../../images/pentafox_portfolio.pdf";
+import portfolio from "../../images/pentafox-portfolio.pdf";
 import { document } from "browser-monads";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [captchaToken, setCaptchaToken] = useState(null);
-  const [captchaError, setCaptchaError] = useState(false);
+  const [captchaError, setCaptchaError] = useState(false);    
   const captchaRef = useRef();
 
   /* ------------------ FORM LOGIC ------------------ */
