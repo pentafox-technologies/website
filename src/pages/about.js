@@ -114,7 +114,7 @@ const AboutUs = () => {
             <HeadSection data={aboutPageData.headSectionData} />
             <Journey data={aboutPageData.journeyData} />
             <Corevalues data={aboutPageData.coreValuesData} />
-            <Leadership data={aboutPageData.leadershipData} />
+            <Leadership data={aboutPageData.leadershipData} /> 
             <Teams data={aboutPageData.teamData} />
             <Pendafox data={aboutPageData.pentafoxData} />
           </>

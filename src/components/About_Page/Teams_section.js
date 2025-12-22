@@ -5,6 +5,7 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 function TeamsSection({ data }) {
   const isBrowser = typeof window !== "undefined";
+
   function getGridColumns() {
     if (!isBrowser) return 3;
     if (window.innerWidth < 640) return 2;
@@ -31,25 +32,39 @@ function TeamsSection({ data }) {
   };
 
   const MemberCard = ({ member }) => {
-    const [hovered, setHovered] = React.useState(false);
+    const [hovered, setHovered] = useState(false);
     const frontImage = Array.isArray(member.img) ? member.img[0] : member.img;
     const backImage =
       member.img2 || (Array.isArray(member.img) && member.img[1]) || frontImage;
 
     return (
       <div
-        className="w-full max-w-[230px] text-left"
+        style={{ width: "100%", maxWidth: "230px", textAlign: "left" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <div className="relative w-full pt-[100%] rounded-xl overflow-hidden">
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            paddingTop: "100%",
+            borderRadius: "12px",
+            overflow: "hidden",
+          }}
+        >
           <motion.img
             src={frontImage}
             alt={member.name}
             initial={{ opacity: 1 }}
             animate={{ opacity: hovered ? 0 : 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
           />
           <motion.img
             src={backImage}
@@ -57,32 +72,82 @@ function TeamsSection({ data }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
           />
         </div>
-        <p className="mt-3 text-[16px] font-bold">{member.name}</p>
-        <p className="text-[14px] text-gray-500" style={{ marginTop: "-18px" }}>{member.role}</p>
+
+        <p
+          style={{
+            marginTop: "12px",
+            fontSize: "16px",
+            fontWeight: "700",
+          }}
+        >
+          {member.name}
+        </p>
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#6b7280",
+            marginTop: "-18px",
+          }}
+        >
+          {member.role}
+        </p>
       </div>
     );
   };
 
   const pageVariants = {
     enter: (dir) => ({ opacity: 0, y: dir > 0 ? 50 : -50 }),
-    center: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeInOut" } },
-    exit: (dir) => ({ opacity: 0, y: dir > 0 ? -50 : 50, transition: { duration: 0.5, ease: "easeInOut" } }),
+    center: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    exit: (dir) => ({
+      opacity: 0,
+      y: dir > 0 ? -50 : 50,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    }),
   };
 
   return (
-    <div className="bg-white py-16 px-5 text-center">
-      <h2 className="text-2xl font-bold">{data.title}</h2>
-      <p className="text-gray-600 max-w-[700px] mx-auto mt-2 leading-relaxed">
+    <div
+      style={{
+        backgroundColor: "#fff",
+        padding: "64px 20px",
+        textAlign: "center",
+      }}
+    >
+      <h2 style={{ fontSize: "24px", fontWeight: "700" }}>{data.title}</h2>
+      <p
+        style={{
+          color: "#4b5563",
+          maxWidth: "700px",
+          margin: "8px auto 0",
+          lineHeight: "1.7",
+        }}
+      >
         {data.description}
       </p>
 
-      {/* Tabs (unchanged) */}
+      {/* Tabs */}
       <Tabs value={activeTab} onTabChange={handleTabChange} variant="unstyled">
         <Tabs.List
-          style={{ display: "flex", justifyContent: "center", gap: "20px", flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            flexWrap: "wrap",
+            marginTop: "24px",
+          }}
         >
           {data.categories.map((cat) => (
             <Tabs.Tab
@@ -90,7 +155,7 @@ function TeamsSection({ data }) {
               value={cat}
               style={{
                 cursor: "pointer",
-                fontWeight: "500",
+                fontWeight: 500,
                 fontSize: "15px",
                 padding: "5px 15px",
                 borderRadius: activeTab === cat ? "60px" : "0px",
@@ -119,7 +184,7 @@ function TeamsSection({ data }) {
         const currentItems = filteredData.slice(start, start + itemsPerPage);
 
         return (
-          <div key={cat} className="relative mt-8">
+          <div key={cat} style={{ position: "relative", marginTop: "32px" }}>
             {/* Left Arrow */}
             {currentPage > 0 && (
               <button
@@ -127,9 +192,23 @@ function TeamsSection({ data }) {
                   setDirection(-1);
                   setCurrentPage((p) => p - 1);
                 }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white  w-10 h-10 flex items-center justify-center shadow-lg z-10 hover:bg-red-700 transition"
                 style={{
-                  borderRadius: "100px"
+                  position: "absolute",
+                  left: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "100px",
+                  backgroundColor: "#374151",
+                  color: "#fff",
+                  border: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 10px 15px rgba(0,0,0,0.2)",
+                  cursor: "pointer",
+                  zIndex: 10,
                 }}
               >
                 <IconChevronLeft size={23} />
@@ -143,10 +222,23 @@ function TeamsSection({ data }) {
                   setDirection(1);
                   setCurrentPage((p) => p + 1);
                 }}
-                className="absolute  right-0 top-1/2 -translate-y-1/2 bg-gray-700 text-white  w-10 h-10 flex items-center justify-center shadow-lg z-10 hover:bg-red-700 transition"
                 style={{
+                  position: "absolute",
+                  right: 0,
+                  top: "50%",
+                  transform: "translateY(calc(-50% - 43px))",
+                  width: "40px",
+                  height: "40px",
                   borderRadius: "50px",
-                  marginTop: "-43px"
+                  backgroundColor: "#374151",
+                  color: "#fff",
+                  border: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 10px 15px rgba(0,0,0,0.2)",
+                  cursor: "pointer",
+                  zIndex: 10,
                 }}
               >
                 <IconChevronRight size={23} />
@@ -161,8 +253,12 @@ function TeamsSection({ data }) {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="grid gap-5 justify-items-center"
-                style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+                style={{
+                  display: "grid",
+                  gap: "20px",
+                  justifyItems: "center",
+                  gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                }}
               >
                 {currentItems.map((m) => (
                   <MemberCard key={m.id} member={m} />
@@ -172,7 +268,14 @@ function TeamsSection({ data }) {
 
             {/* Pagination Dots */}
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-6">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "8px",
+                  marginTop: "24px",
+                }}
+              >
                 {Array.from({ length: totalPages }).map((_, idx) => (
                   <button
                     key={idx}
@@ -180,12 +283,14 @@ function TeamsSection({ data }) {
                       setDirection(idx > currentPage ? 1 : -1);
                       setCurrentPage(idx);
                     }}
-                    className={`w-3 h-3 rounded-full ${idx === currentPage ? "bg-red-600" : "bg-gray-300"
-                      }`}
                     style={{
-                      borderRadius: "50px",
                       width: "10px",
-                      height: "10px"
+                      height: "10px",
+                      borderRadius: "50px",
+                      border: "none",
+                      backgroundColor:
+                        idx === currentPage ? "#dc2626" : "#d1d5db",
+                      cursor: "pointer",
                     }}
                   />
                 ))}
