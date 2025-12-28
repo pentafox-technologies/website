@@ -706,29 +706,16 @@ const HeaderBar = ({
             {/* Portfolio Section */}
             <div>
               <UnstyledButton
-                onClick={() => handleToggleSubNav("portfolio")}
+                onClick={() => navigate("/portfolio")}
                 className={classes.drawerMenuItem}
               >
-                <span className={classes.mobileNavHeading}>Portfolio</span>
-                <IconChevronDown
-                  size={18}
-                  style={{
-                    transition: "transform 200ms",
-                    transform: portfolioOpened
-                      ? "rotate(180deg)"
-                      : "rotate(0deg)",
-                    color: "#878787",
-                  }}
-                />
+                <span
+                  className={classes.mobileNavHeading}
+                  // onClick={() => navigate("/portfolio")}
+                >
+                  Portfolio
+                </span>
               </UnstyledButton>
-
-              <Collapse in={portfolioOpened}>
-                <div className={classes.drawerCollapseContent}>
-                  {mockdata.map((item) => (
-                    <NavigationLinks key={item.title} item={item} />
-                  ))}
-                </div>
-              </Collapse>
             </div>
 
             {/* Company Section */}

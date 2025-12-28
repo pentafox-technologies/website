@@ -1,6 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./about.css";
 import {
   IconBulb,
   IconUsers,
@@ -12,74 +10,122 @@ import {
 import { motion } from "framer-motion";
 
 const iconMap = {
-  IconBulb: IconBulb,
-  IconUsers: IconUsers,
-  IconHeartHandshake: IconHeartHandshake,
-  IconStar: IconStar,
-  IconShieldLock: IconShieldLock,
-  IconLeaf: IconLeaf,
+  IconBulb,
+  IconUsers,
+  IconHeartHandshake,
+  IconStar,
+  IconShieldLock,
+  IconLeaf,
 };
 
 function CoreValues({ data }) {
   const titleVariants = {
     hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: "easeOut" },
+    },
   };
 
   const subtitleVariants = {
     hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut", delay: 0.3 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: "easeOut", delay: 0.3 },
+    },
   };
 
   const containerVariants = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.3, delayChildren: 0.3, when: "beforeChildren" },
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.3,
+        when: "beforeChildren",
+      },
     },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const iconVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.2 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+    },
   };
 
   const ValueCard = ({ value }) => {
     const Icon = iconMap[value.icon];
 
     return (
-      <motion.div className="col-md-4 col-sm-6" variants={cardVariants}>
-        <div className="p-4 h-100 d-flex align-items-start">
+      <motion.div
+        variants={cardVariants}
+        style={{
+          flex: "1 1 300px",
+          maxWidth: "360px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            height: "100%",
+          }}
+        >
           <motion.div
             variants={iconVariants}
-            className="d-flex align-items-center justify-content-center rounded-4 me-3"
             style={{
               width: "64px",
               height: "64px",
               backgroundColor: "#FFF5F5",
+              borderRadius: "16px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: "16px",
               flexShrink: 0,
             }}
           >
-            <Icon size={32} stroke={1.5} className="text-danger" />
+            <Icon size={32} stroke={1.5} color="#DC3545" />
           </motion.div>
 
           <motion.div variants={textVariants}>
-            <h5 className="fw-bold mb-2">{value.title}</h5>
-            <p
-              className="mb-0"
+            <h5
               style={{
+                fontWeight: 700,
+                marginBottom: "8px",
+              }}
+            >
+              {value.title}
+            </h5>
+            <p
+              style={{
+                margin: 0,
                 color: "#14121999",
                 fontSize: "14px",
-                fontWeight: "500",
+                fontWeight: 500,
+                lineHeight: "1.6",
               }}
             >
               {value.text}
@@ -91,10 +137,25 @@ function CoreValues({ data }) {
   };
 
   return (
-    <section className="py-20 bg-white text-center">
-      <div className="container">
+    <section
+      style={{
+        backgroundColor: "#ffffff",
+        textAlign: "center",
+        padding: "80px 20px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1180px",
+          margin: "0 auto",
+        }}
+      >
         <motion.h2
-          className="font-medium mb-3 core-title"
+          style={{
+            fontWeight: 500,
+            marginTop: "40px",
+            marginBottom: "12px",
+          }}
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
@@ -104,8 +165,17 @@ function CoreValues({ data }) {
         </motion.h2>
 
         <motion.p
-          className="font-medium mb-5 text-[#656565]"
-          style={{ fontSize: "16px", maxWidth: "700px", margin: "0 auto" }}
+          style={{
+            fontWeight: 500,
+            marginTop: "12px",
+            marginBottom: "48px",
+            color: "#656565",
+            fontSize: "16px",
+            maxWidth: "700px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            lineHeight: "1.6",
+          }}
           variants={subtitleVariants}
           initial="hidden"
           whileInView="visible"
@@ -114,12 +184,19 @@ function CoreValues({ data }) {
           {data.subtitle}
         </motion.p>
 
+        {/* CARDS */}
         <motion.div
-          className="row g-4 lg:g-5 text-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "48px",
+            justifyContent: "center",
+            textAlign: "left",
+          }}
         >
           {data.values.map((value, index) => (
             <ValueCard key={index} value={value} />

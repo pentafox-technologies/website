@@ -1,40 +1,40 @@
 //head_section
-import teamImage from "../../src/about_assets/team_members.png";
-import star1 from "../../src/about_assets/Star1.png";
-import star2 from "../../src/about_assets/Star2.png";
-import star3 from "../../src/about_assets/Star3.png";
-import star4 from "../../src/about_assets/Star4.png";
+import teamImage from "../about_assets/team_members.png";
+import star1 from "../about_assets/Star1.png";
+import star2 from "../about_assets/Star2.png";
+import star3 from "../about_assets/Star3.png";
+import star4 from "../about_assets/Star4.png";
 
 //Journey_section
-import First from "../../src/about_assets/Third.png";
-import Second from "../../src/about_assets/Second.png";
-import Third from "../../src/about_assets/First.png";
-import above from "../../src/about_assets/above.png";
-import parent from "../../src/about_assets/parent.png";
-import child from "../../src/about_assets/child.png";
+import First from "../about_assets/Third.png";
+import Second from "../about_assets/Second.png";
+import Third from "../about_assets/First.png";
+import above from "../about_assets/above.png";
+import parent from "../about_assets/parent.png";
+import child from "../about_assets/child.png";
 
 //leadership_section
-import leadershipImage from "../../src/about_assets/Founders.png";
-import Founder_name1 from "../../src/about_assets/Founder_name1.png";
-import Founder_name2 from "../../src/about_assets/Founder_name2.png";
-import Founder_name3 from "../../src/about_assets/Founder_name3.png";
+import leadershipImage from "../about_assets/Founders.png";
+import Founder_name1 from "../about_assets/Founder_name1.png";
+import Founder_name2 from "../about_assets/Founder_name2.png";
+import Founder_name3 from "../about_assets/Founder_name3.png";
 
 //teams_section
-import Employee1 from "../../src/about_assets/Employee_asset1.png";
-import Employee2 from "../../src/about_assets/Employee_asset2.png";
-import Employee3 from "../../src/about_assets/Employee_asset3.png";
-import Employee4 from "../../src/about_assets/Employee_asset4.png";
-import Employee5 from "../../src/about_assets/Employee_asset5.png";
-import Employee6 from "../../src/about_assets/Employee_asset6.png";
-import Employee7 from "../../src/about_assets/Employee_asset7.png";
-import Employee8 from "../../src/about_assets/Employee_asset8.png";
+import Employee1 from "../about_assets/Employee_asset1.png";
+import Employee2 from "../about_assets/Employee_asset2.png";
+import Employee3 from "../about_assets/Employee_asset3.png";
+import Employee4 from "../about_assets/Employee_asset4.png";
+import Employee5 from "../about_assets/Employee_asset5.png";
+import Employee6 from "../about_assets/Employee_asset6.png";
+import Employee7 from "../about_assets/Employee_asset7.png";
+import Employee8 from "../about_assets/Employee_asset8.png";
 
 //pentafox_section
-import Events1 from "../../src/about_assets/Event_Frame1.png";
-import Events2 from "../../src/about_assets/Event_Frame2.png";
-import Events3 from "../../src/about_assets/Event_Frame3.png";
-import Events4 from "../../src/about_assets/Event_Frame4.png";
-import Events5 from "../../src/about_assets/Event_Frame5.png";
+import Events1 from "../about_assets/Event_Frame1.png";
+import Events2 from "../about_assets/Event_Frame2.png";
+import Events3 from "../about_assets/Event_Frame3.png";
+import Events4 from "../about_assets/Event_Frame4.png";
+import Events5 from "../about_assets/Event_Frame5.png";
 
 const aboutPageData = {
     headSectionData: {
@@ -139,7 +139,7 @@ const aboutPageData = {
             { id: 1, name: "Employee name", role: "Role", category: "Management", img: [Employee1, Employee8] },
             { id: 2, name: "Employee name", role: "Role", category: "Development", img: [Employee2, Employee5] },
             { id: 3, name: "Employee name", role: "Role", category: "Design", img: [Employee3, Employee7] },
-            { id: 4, name: "Employee name", role: "Role", category: "Sales", img: [Employee4, Employee3] },
+            { id: 4, name: "Employee name", role: "Role", category: "Sales", img: [Employee4, Employee2] },
             { id: 5, name: "Employee name", role: "Role", category: "Operations", img: [Employee5, Employee4] },
             { id: 6, name: "Employee name", role: "Role", category: "Development", img: [Employee6, Employee2] },
             { id: 7, name: "Employee name", role: "Role", category: "Design", img: [Employee7, Employee3] },

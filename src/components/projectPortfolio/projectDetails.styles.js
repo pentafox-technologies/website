@@ -1,0 +1,394 @@
+import styled from "styled-components";
+export const Wrapper = styled.div`
+  background: white;
+  padding: 0px 0;
+  font-family: "Varela Round", sans-serif;
+
+  /* ------ color variables -------- */
+  --primary-red: #dc2b2b;
+  --dark-red: #b91c1c;
+  --light-red: #ffe9e9;
+  --soft-light-red: #fffafa;
+  --bg-soft-red: rgb(255, 245, 245);
+  --white: #ffffff;
+  --accent-green: #10b981;
+  --green-light: #e5f7f1ff;
+  --gray-light: #f1f4f99f;
+  --gray-medium: #6b7280;
+  --gray-dark: #374151;
+  --challenge-indication-color: #ef4444ba;
+  --solution-indication-color: #10b981ba;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 60px;
+    background: var(--bg-soft-red);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--primary-red);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 20px auto 0;
+    color: var(--gray-medium);
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 60px;
+    // background: red;
+  }
+
+  .project-section-title {
+    display: block;
+    text-align: start;
+    padding-bottom: 5px;
+  }
+
+  /* GRID */
+  .challenge-solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .content {
+    color: var(--gray-medium);
+  }
+
+  .challenge-box,
+  .solution-box {
+    background: var(--gray-light);
+    padding: 20px;
+    border-radius: var(--radius);
+    border-top: 5px solid;
+
+    // background: var(--bg-soft-red);
+    // box-shadow: 3px 3px 7px #d1cdcd83;
+    // border-radius: var(--radius);
+    // box-shadow: var(--shadow);
+  }
+
+  .challenge-box {
+    border-color: var(--challenge-indication-color);
+    // background: var(--bg-soft-red);
+  }
+
+  .solution-box {
+    border-color: var(--solution-indication-color);
+    // background: var(--green-light);
+  }
+
+  .challenge-list,
+  .solution-list {
+    list-style: none; /* remove bullets */
+    padding: 0; /* remove default ul padding */
+    margin: 16px 0 0 0;
+  }
+
+  .challenge-list li,
+  .solution-list li {
+    padding: 0; /* no left padding */
+    margin: 0 0 14px 0;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .list-icon {
+    flex-shrink: 0; /* prevent icon collapse */
+    margin-top: 4px;
+  }
+
+  .challenge-list-icon-color {
+    color: var(--challenge-indication-color);
+  }
+  .solution-list-icon-color {
+    color: var(--solution-indication-color);
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 567px));
+    // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+  }
+
+  .capability-card {
+    display: flex;
+    background: var(--gray-light);
+    padding: 15px;
+    font-weight: 600;
+    border-radius: var(--radius);
+
+    // box-shadow: var(--shadow);
+  }
+
+  .card-icon {
+    width: 10%;
+  }
+
+  .card-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-medium);
+    font-weight: 500;
+  }
+  .card-container-heading {
+    font-weight: 700;
+    color: black;
+  }
+
+  /* METRICS */
+  .impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 567px));
+    // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .metric-card {
+    background: var(--gray-light);
+    padding: 15px;
+    text-align: center;
+    border-radius: var(--radius);
+    // border-top: 5px solid var(--accent-green);
+  }
+
+  .metric-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+  }
+
+  /* OUTCOMES */
+  .outcomes-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .outcomes-list li {
+    display: flex;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    background: var(--gray-light);
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent-green);
+  }
+
+  .outcome-card-icon {
+    width: 5%;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark-red);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    padding: 30px 0;
+
+    .hero {
+      padding: 60px 15px;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+    }
+  }
+`;
+
+// import styled from "styled-components";
+
+// export const ProjectDetailsStyles = styled.div`
+//   padding: 60px 0;
+//   font-family: Varela Round, sans-serif !important;
+//   :root {
+//     /* Brand Red */
+//     --primary-red: #dc2b2b;
+//     --dark-red: #b91c1c;
+//     --light-red: #ffe9e9;
+
+//     /* Backgrounds */
+//     --bg-soft-red: rgb(255, 245, 245);
+//     --white: #ffffff;
+
+//     /* Accent */
+//     --accent-red: #dc2b2b;
+//     /* --accent-green: #10b981; */
+
+//     /* Neutrals */
+//     --gray-light: #fffafa;
+//     --gray-medium: #6b7280;
+//     --gray-dark: #374151;
+//     --accent-green: #10b981;
+
+//     /* UI */
+//     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+//     --radius: 8px;
+//   }
+
+// //   :root {
+// //   --accent-green: #10b981;
+// //   --gray-light: #f8fafc;
+// //   --gray-medium: #64748b;
+// //   --gray-dark: #334155;
+// //   --white: #ffffff;
+// // }
+
+//   body {
+//     background: var(--gray-light);
+//     color: var(--gray-dark);
+//     line-height: 1.6;
+//   }
+
+//   .container {
+//     max-width: 1200px;
+//     margin: auto;
+//     padding: 0 20px;
+//   }
+
+//   .hero {
+//     /* background: linear-gradient(135deg, var(--dark-red), var(--dark-red)); */
+//     padding: 80px 0;
+//     text-align: center;
+//     border-radius: 0 0 40px 40px;
+//     margin-bottom: 60px;
+//   }
+
+//   .hero h1 {
+//     font-size: 2.8rem;
+//     font-weight: 800;
+//     color: var(--primary-red);
+//   }
+
+//   .subtitle {
+//     font-size: 1.2rem;
+//     opacity: 0.9;
+//     max-width: 800px;
+//     margin: auto;
+//   }
+
+//   .section {
+//     margin-bottom: 80px;
+//   }
+
+//   .project-section-title {
+//     font-size: 1.8rem;
+//     border-bottom: 3px solid var(--accent-green);
+//     display: inline-block;
+//     margin-bottom: 30px;
+//   }
+
+//   .challenge-solution-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//     gap: 30px;
+//   }
+
+//   .box {
+//     background: white;
+//     padding: 30px;
+//     border-radius: var(--radius);
+//     box-shadow: var(--shadow);
+//   }
+
+//   .challenge-box,
+//   .solution-box {
+//     background: white;
+//     padding: 30px;
+//     border-radius: var(--radius);
+//     box-shadow: var(--shadow);
+//     border-top: 5px solid;
+//   }
+
+//   .challenge-box {
+//     border-color: #ef4444;
+//   }
+
+//   .solution-box {
+//     border-color: var(--accent-green);
+//   }
+
+//   .capabilities-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//     gap: 25px;
+//   }
+
+//   .capability-card {
+//     background: white;
+//     padding: 25px;
+//     border-radius: var(--radius);
+//     box-shadow: var(--shadow);
+//   }
+
+//   .impact-metrics {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+//     gap: 25px;
+//   }
+
+//   .metric-card {
+//     background: white;
+//     padding: 30px;
+//     text-align: center;
+//     border-top: 5px solid var(--accent-green);
+//     border-radius: var(--radius);
+//   }
+
+//   .metric-value {
+//     font-size: 2.5rem;
+//     font-weight: 800;
+//     /* color: var(--primary-red); */
+//   }
+
+//   .outcomes-list {
+//     list-style: none;
+//     padding: 0;
+//   }
+
+//   .outcomes-list li {
+//     background: white;
+//     padding: 20px;
+//     margin-bottom: 15px;
+//     border-left: 4px solid var(--accent-green);
+//     border-radius: var(--radius);
+//   }
+
+//   .footer {
+//     background: var(--dark-red);
+//     color: white;
+//     text-align: center;
+//     padding: 40px 0;
+//     margin-top: 60px;
+//   }
+
+//   .footer-title {
+//     font-size: 1.2rem;
+//   }
+// `;

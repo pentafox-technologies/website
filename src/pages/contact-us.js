@@ -1,6 +1,5 @@
 import React from "react";
 import LayoutCommon from "../components/layout/layoutCommon";
-import { Box } from "@mantine/core";
 import ContactForm from "../components/contactus/ContactForm";
 
 const ContactUs = () => {
@@ -12,11 +11,11 @@ const ContactUs = () => {
       headProps={{ pageTitle: "Contact Us" }}
       isFooter={false}
     >
-      <div className="contact-container">
-        <div className="contact-right">
+      {/* <div className="contact-container"> */}
+        {/* <div className="contact-right"> */}
             <ContactForm />
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
     </LayoutCommon>
   );
 };

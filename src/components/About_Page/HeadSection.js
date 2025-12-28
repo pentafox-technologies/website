@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IconSquareArrowRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { Link } from "gatsby";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function HeadSection({ data }) {
+  const [showStars, setShowStars] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowStars(window.innerWidth >= 1200);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const contentVariant = {
     hidden: { opacity: 0, y: 50 },
     visible: (delay = 0) => ({
@@ -20,50 +31,68 @@ function HeadSection({ data }) {
 
   return (
     <section
-      className="w-100 position-relative overflow-hidden pb-5"
       style={{
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
+        paddingBottom: "3rem",
         background:
           "linear-gradient(to top, #FFF5F5 70%, rgba(255, 245, 245, 0) 100%)",
         padding: "20px",
       }}
     >
       <div
-        className="position-relative mx-auto d-flex flex-column align-items-center text-center"
         style={{
+          position: "relative",
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
           width: "100%",
           maxWidth: "1180px",
           minHeight: "100vh",
           padding: "20px",
         }}
       >
+        {/* Background Image */}
         <motion.img
           src={data.images.team}
           alt="Team"
-          className="position-absolute top-0 start-0 w-100 h-100 rounded-2xl object-cover md:object-fill"
           style={{
-            zIndex: 0,
-
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
             objectPosition: "center",
+            borderRadius: "16px",
+            zIndex: 0,
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         />
 
+        {/* Content */}
         <motion.div
-          className="position-relative text-dark mt-13 md:mt-23 lg:mt-26"
-          style={{ zIndex: 1 }}
+          style={{
+            position: "relative",
+            zIndex: 1,
+            marginTop: "100px",
+            color: "#000",
+          }}
           initial="hidden"
           animate="visible"
           variants={contentVariant}
           custom={0.2}
         >
           <motion.h1
-            className="fw-medium mb-4 mx-auto"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               maxWidth: "800px",
               lineHeight: "1.3",
+              margin: "0 auto 1rem",
+              fontWeight: 500,
             }}
             variants={contentVariant}
             custom={0.4}
@@ -72,10 +101,11 @@ function HeadSection({ data }) {
           </motion.h1>
 
           <motion.p
-            className="mx-auto mb-2 px-2"
             style={{
               fontSize: "clamp(1rem, 2vw, 1.3rem)",
               maxWidth: "700px",
+              margin: "0 auto 0.5rem",
+              padding: "0 0.5rem",
               color: "#656565",
               lineHeight: "1.6",
             }}
@@ -85,14 +115,19 @@ function HeadSection({ data }) {
             {data.description}
           </motion.p>
 
-          <Link to={data.ctaLink}>
+          {/* CTA */}
+          <Link to={data.ctaLink} style={{ textDecoration: "none" }}>
             <motion.div
-              className="d-inline-flex align-items-center justify-content-center gap-2 mt-2"
               style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                marginTop: "0.5rem",
                 cursor: "pointer",
                 color: "#CD0E11",
                 fontSize: "clamp(1rem, 2vw, 1.3rem)",
-                fontWeight: "500",
+                fontWeight: 500,
               }}
               whileHover={{ scale: 1.2 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -104,78 +139,66 @@ function HeadSection({ data }) {
             </motion.div>
           </Link>
 
-          <motion.img
-            src={data.images.star1}
-            alt="Star 1"
-            className="position-absolute d-none d-xl-block"
-            style={{
-              top: "-59px",
-              right: "-66px",
-              width: "30px",
-              height: "30px",
-            }}
-            animate={{ scale: [1, 1.4, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              delay: 0,
-            }}
-          />
-          <motion.img
-            src={data.images.star2}
-            alt="Star 2"
-            className="position-absolute d-none d-xl-block"
-            style={{
-              top: "-39px",
-              right: "-48px",
-              width: "40px",
-              height: "40px",
-            }}
-            animate={{ scale: [1, 1.4, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              delay: 1,
-            }}
-          />
-          <motion.img
-            src={data.images.star3}
-            alt="Star 3"
-            className="position-absolute d-none d-xl-block"
-            style={{
-              top: "182px",
-              left: "-188px",
-              width: "30px",
-              height: "30px",
-            }}
-            animate={{ scale: [1, 1.4, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              delay: 1,
-            }}
-          />
-          <motion.img
-            src={data.images.star4}
-            alt="Star 4"
-            className="position-absolute d-none d-xl-block"
-            style={{
-              top: "198px",
-              left: "-224px",
-              width: "45px",
-              height: "45px",
-            }}
-            animate={{ scale: [1, 1.4, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              delay: 0,
-            }}
-          />
+          {/* Decorative Stars (Desktop Only) */}
+          {showStars && (
+            <>
+              <motion.img
+                src={data.images.star1}
+                alt="Star 1"
+                style={{
+                  position: "absolute",
+                  top: "-59px",
+                  right: "-66px",
+                  width: "30px",
+                  height: "30px",
+                }}
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+
+              <motion.img
+                src={data.images.star2}
+                alt="Star 2"
+                style={{
+                  position: "absolute",
+                  top: "-39px",
+                  right: "-48px",
+                  width: "40px",
+                  height: "40px",
+                }}
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              />
+
+              <motion.img
+                src={data.images.star3}
+                alt="Star 3"
+                style={{
+                  position: "absolute",
+                  top: "178px",
+                  left: "-188px",
+                  width: "30px",
+                  height: "30px",
+                }}
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              />
+
+              <motion.img
+                src={data.images.star4}
+                alt="Star 4"
+                style={{
+                  position: "absolute",
+                  top: "194px",
+                  left: "-224px",
+                  width: "45px",
+                  height: "45px",
+                }}
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </>
+          )}
         </motion.div>
       </div>
     </section>
