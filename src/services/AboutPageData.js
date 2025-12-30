@@ -36,136 +36,416 @@ import Events3 from "../about_assets/Event_Frame3.png";
 import Events4 from "../about_assets/Event_Frame4.png";
 import Events5 from "../about_assets/Event_Frame5.png";
 
-const aboutPageData = {
-    headSectionData: {
-        heading: "Driven by Innovation, Powered by People",
-        description:
-            "Your trusted digital transformation partner — modernizing businesses with cloud, AI, and human-centered innovation.",
-        ctaText: "Let’s transform together",
-        ctaLink: "/careers",
-        images: {
-            team: teamImage,
-            star1: star1,
-            star2: star2,
-            star3: star3,
-            star4: star4,
-        },
+// portfolio
+import project_image from "../about_assets/generated-project-image.png";
+
+export const aboutPageData = {
+  headSectionData: {
+    heading: "Driven by Innovation, Powered by People",
+    description:
+      "Your trusted digital transformation partner — modernizing businesses with cloud, AI, and human-centered innovation.",
+    ctaText: "Let’s transform together",
+    ctaLink: "/careers",
+    images: {
+      team: teamImage,
+      star1: star1,
+      star2: star2,
+      star3: star3,
+      star4: star4,
     },
-    journeyData: {
-        heading: "Our Journey",
-        subheading: "Shaping Tomorrow, Step by Step",
-        letters: "Pentafox",
-        images: {
-            first: First,
-            second: Second,
-            third: Third,
-            above: above,
-            parent: parent,
-            child: child,
-        },
-        steps: [
-            { year: 2016, icon: "IconHeart", title: "Innovation", subtitle: "Driving digital ecosystems.", points: ["Tech + People", "Creative Flow", "Impact Delivery"] },
-            { year: 2017, icon: "IconTrophy", title: "Our Mission", subtitle: "Delivering value at scale.", points: ["Excellence", "Client Focus", "Scalable Tech"] },
-            { year: 2018, icon: "IconThumbUp", title: "Trust First", subtitle: "People-first always.", points: ["Integrity", "Well-being", "Empathy"] },
-            { year: 2019, icon: "IconStar", title: "Quality", subtitle: "Exceptional delivery.", points: ["QA Processes", "Design Systems", "Testing Culture"] },
-            { year: 2020, icon: "IconRocket", title: "Speed", subtitle: "Go-to-market fast.", points: ["Agile Teams", "Rapid Prototyping", "Automation"] },
-            { year: 2021, icon: "IconTarget", title: "Focus", subtitle: "Sharp strategic goals.", points: ["OKRs", "KPIs", "Clarity in Vision"] },
-            { year: 2022, icon: "IconBulb", title: "Ideas", subtitle: "Innovation at the core.", points: ["Hackathons", "Feedback Loops", "Product Labs"] },
-            { year: 2023, icon: "IconBolt", title: "Power", subtitle: "Boosting capabilities.", points: ["Infrastructure", "Cloud Ops", "Performance"] },
-            { year: 2024, icon: "IconAward", title: "Recognition", subtitle: "We value achievement.", points: ["Internal Awards", "External Certifications", "Peer Reviews"] },
-            { year: 2025, icon: "IconChartLine", title: "Growth", subtitle: "Scale without compromise.", points: ["Hiring Smart", "Retention", "Expansion"] },
-        ],
+  },
+  journeyData: {
+    heading: "Our Journey",
+    subheading: "Shaping Tomorrow, Step by Step",
+    letters: "Pentafox",
+    images: {
+      first: First,
+      second: Second,
+      third: Third,
+      above: above,
+      parent: parent,
+      child: child,
     },
-    coreValuesData: {
-        title: "Our Core Values",
-        subtitle:
-            "Shaping Tomorrow At Pentafox, our values guide every decision, partnership, and solution we deliver. Step by Step",
-        values: [
-            {
-                icon: "IconBulb",
-                title: "Innovation First",
-                text: "Driving progress through new technologies.",
-            },
-            {
-                icon: "IconUsers",
-                title: "People-Centered",
-                text: "Putting clients and users at the heart of every solution.",
-            },
-            {
-                icon: "IconShieldLock",
-                title: "Integrity & Trust",
-                text: "Building transparency and accountability in all we do.",
-            },
-            {
-                icon: "IconHeartHandshake",
-                title: "Collaboration",
-                text: "Achieving more together through teamwork and partnerships.",
-            },
-            {
-                icon: "IconStar",
-                title: "Excellence in Execution",
-                text: "Delivering measurable results with quality.",
-            },
-            {
-                icon: "IconLeaf",
-                title: "Sustainability & Responsibility",
-                text: "Creating solutions with long-term positive impact.",
-            },
-        ],
-    },
-    leadershipData: {
-        title: "Our Leadership",
-        description:
-            "Behind every transformation we deliver is a team of visionary leaders driving innovation and excellence.",
-        mainImage: leadershipImage,
-        founders: [
-            { img: Founder_name1, alt: "Founder 1" },
-            { img: Founder_name2, alt: "Founder 2" },
-            { img: Founder_name3, alt: "Founder 3" },
-        ],
-        rightSection: {
-            title: "Leading with Vision",
-            text: `At Pentafox, our leaders bring together technology expertise and strategic foresight
+    steps: [
+      {
+        year: 2016,
+        icon: "IconHeart",
+        title: "Innovation",
+        subtitle: "Driving digital ecosystems.",
+        points: ["Tech + People", "Creative Flow", "Impact Delivery"],
+      },
+      {
+        year: 2017,
+        icon: "IconTrophy",
+        title: "Our Mission",
+        subtitle: "Delivering value at scale.",
+        points: ["Excellence", "Client Focus", "Scalable Tech"],
+      },
+      {
+        year: 2018,
+        icon: "IconThumbUp",
+        title: "Trust First",
+        subtitle: "People-first always.",
+        points: ["Integrity", "Well-being", "Empathy"],
+      },
+      {
+        year: 2019,
+        icon: "IconStar",
+        title: "Quality",
+        subtitle: "Exceptional delivery.",
+        points: ["QA Processes", "Design Systems", "Testing Culture"],
+      },
+      {
+        year: 2020,
+        icon: "IconRocket",
+        title: "Speed",
+        subtitle: "Go-to-market fast.",
+        points: ["Agile Teams", "Rapid Prototyping", "Automation"],
+      },
+      {
+        year: 2021,
+        icon: "IconTarget",
+        title: "Focus",
+        subtitle: "Sharp strategic goals.",
+        points: ["OKRs", "KPIs", "Clarity in Vision"],
+      },
+      {
+        year: 2022,
+        icon: "IconBulb",
+        title: "Ideas",
+        subtitle: "Innovation at the core.",
+        points: ["Hackathons", "Feedback Loops", "Product Labs"],
+      },
+      {
+        year: 2023,
+        icon: "IconBolt",
+        title: "Power",
+        subtitle: "Boosting capabilities.",
+        points: ["Infrastructure", "Cloud Ops", "Performance"],
+      },
+      {
+        year: 2024,
+        icon: "IconAward",
+        title: "Recognition",
+        subtitle: "We value achievement.",
+        points: ["Internal Awards", "External Certifications", "Peer Reviews"],
+      },
+      {
+        year: 2025,
+        icon: "IconChartLine",
+        title: "Growth",
+        subtitle: "Scale without compromise.",
+        points: ["Hiring Smart", "Retention", "Expansion"],
+      },
+    ],
+  },
+  coreValuesData: {
+    title: "Our Core Values",
+    subtitle:
+      "Shaping Tomorrow At Pentafox, our values guide every decision, partnership, and solution we deliver. Step by Step",
+    values: [
+      {
+        icon: "IconBulb",
+        title: "Innovation First",
+        text: "Driving progress through new technologies.",
+      },
+      {
+        icon: "IconUsers",
+        title: "People-Centered",
+        text: "Putting clients and users at the heart of every solution.",
+      },
+      {
+        icon: "IconShieldLock",
+        title: "Integrity & Trust",
+        text: "Building transparency and accountability in all we do.",
+      },
+      {
+        icon: "IconHeartHandshake",
+        title: "Collaboration",
+        text: "Achieving more together through teamwork and partnerships.",
+      },
+      {
+        icon: "IconStar",
+        title: "Excellence in Execution",
+        text: "Delivering measurable results with quality.",
+      },
+      {
+        icon: "IconLeaf",
+        title: "Sustainability & Responsibility",
+        text: "Creating solutions with long-term positive impact.",
+      },
+    ],
+  },
+  leadershipData: {
+    title: "Our Leadership",
+    description:
+      "Behind every transformation we deliver is a team of visionary leaders driving innovation and excellence.",
+    mainImage: leadershipImage,
+    founders: [
+      { img: Founder_name1, alt: "Founder 1" },
+      { img: Founder_name2, alt: "Founder 2" },
+      { img: Founder_name3, alt: "Founder 3" },
+    ],
+    rightSection: {
+      title: "Leading with Vision",
+      text: `At Pentafox, our leaders bring together technology expertise and strategic foresight
     to guide organizations through their digital transformation journey. With a focus on innovation,
     collaboration, and excellence, they inspire our teams to deliver meaningful impact for every client we serve.`,
-        },
     },
-    teamData: {
-        title: "Meet our team",
-        description:
-            "Meet our diverse team of world-class creators, designers and problem solvers",
-        categories: ["View all", "Management", "Development", "Design", "Sales", "Operations"],
-        members: [
-            { id: 1, name: "Employee name", role: "Role", category: "Management", img: [Employee1, Employee8] },
-            { id: 2, name: "Employee name", role: "Role", category: "Development", img: [Employee2, Employee5] },
-            { id: 3, name: "Employee name", role: "Role", category: "Design", img: [Employee3, Employee7] },
-            { id: 4, name: "Employee name", role: "Role", category: "Sales", img: [Employee4, Employee2] },
-            { id: 5, name: "Employee name", role: "Role", category: "Operations", img: [Employee5, Employee4] },
-            { id: 6, name: "Employee name", role: "Role", category: "Development", img: [Employee6, Employee2] },
-            { id: 7, name: "Employee name", role: "Role", category: "Design", img: [Employee7, Employee3] },
-            { id: 8, name: "Employee name", role: "Role", category: "Sales", img: [Employee8, Employee1] },
-            { id: 9, name: "Employee name", role: "Role", category: "Management", img: [Employee4, Employee2] },
-            { id: 10, name: "Employee name", role: "Role", category: "Development", img: [Employee7, Employee3] },
-            { id: 11, name: "Employee name", role: "Role", category: "Operations", img: [Employee3, Employee7] },
-            { id: 12, name: "Employee name", role: "Role", category: "Sales", img: [Employee6, Employee2] },
-            { id: 13, name: "Employee name", role: "Role", category: "Operations", img: [Employee2, Employee5] },
-            { id: 14, name: "Employee name", role: "Role", category: "Development", img: [Employee5, Employee4] },
-            { id: 15, name: "Employee name", role: "Role", category: "Development", img: [Employee1, Employee8] },
-        ],
-    },
-    pentafoxData: {
-        title: "Life at Pentafox",
-        subtitle: "Shaping Tomorrow, Step by Step",
-        topImages: [
-            { src: Events1, alt: "Event 1" },
-            { src: Events2, alt: "Event 2" },
-        ],
-        bottomImages: [
-            { src: Events3, alt: "Event 3" },
-            { src: Events4, alt: "Event 4" },
-            { src: Events5, alt: "Event 5" },
-        ],
-    }
-}
+  },
+  teamData: {
+    title: "Meet our team",
+    description:
+      "Meet our diverse team of world-class creators, designers and problem solvers",
+    categories: [
+      "View all",
+      "Management",
+      "Development",
+      "Design",
+      "Sales",
+      "Operations",
+    ],
+    members: [
+      {
+        id: 1,
+        name: "Employee name",
+        role: "Role",
+        category: "Management",
+        img: [Employee1, Employee8],
+      },
+      {
+        id: 2,
+        name: "Employee name",
+        role: "Role",
+        category: "Development",
+        img: [Employee2, Employee5],
+      },
+      {
+        id: 3,
+        name: "Employee name",
+        role: "Role",
+        category: "Design",
+        img: [Employee3, Employee7],
+      },
+      {
+        id: 4,
+        name: "Employee name",
+        role: "Role",
+        category: "Sales",
+        img: [Employee4, Employee2],
+      },
+      {
+        id: 5,
+        name: "Employee name",
+        role: "Role",
+        category: "Operations",
+        img: [Employee5, Employee4],
+      },
+      {
+        id: 6,
+        name: "Employee name",
+        role: "Role",
+        category: "Development",
+        img: [Employee6, Employee2],
+      },
+      {
+        id: 7,
+        name: "Employee name",
+        role: "Role",
+        category: "Design",
+        img: [Employee7, Employee3],
+      },
+      {
+        id: 8,
+        name: "Employee name",
+        role: "Role",
+        category: "Sales",
+        img: [Employee8, Employee1],
+      },
+      {
+        id: 9,
+        name: "Employee name",
+        role: "Role",
+        category: "Management",
+        img: [Employee4, Employee2],
+      },
+      {
+        id: 10,
+        name: "Employee name",
+        role: "Role",
+        category: "Development",
+        img: [Employee7, Employee3],
+      },
+      {
+        id: 11,
+        name: "Employee name",
+        role: "Role",
+        category: "Operations",
+        img: [Employee3, Employee7],
+      },
+      {
+        id: 12,
+        name: "Employee name",
+        role: "Role",
+        category: "Sales",
+        img: [Employee6, Employee2],
+      },
+      {
+        id: 13,
+        name: "Employee name",
+        role: "Role",
+        category: "Operations",
+        img: [Employee2, Employee5],
+      },
+      {
+        id: 14,
+        name: "Employee name",
+        role: "Role",
+        category: "Development",
+        img: [Employee5, Employee4],
+      },
+      {
+        id: 15,
+        name: "Employee name",
+        role: "Role",
+        category: "Development",
+        img: [Employee1, Employee8],
+      },
+    ],
+  },
+  pentafoxData: {
+    title: "Life at Pentafox",
+    subtitle: "Shaping Tomorrow, Step by Step",
+    topImages: [
+      { src: Events1, alt: "Event 1" },
+      { src: Events2, alt: "Event 2" },
+    ],
+    bottomImages: [
+      { src: Events3, alt: "Event 3" },
+      { src: Events4, alt: "Event 4" },
+      { src: Events5, alt: "Event 5" },
+    ],
+  },
+};
 
-export default aboutPageData;
+export const portfolioProjectData = [
+  {
+    id: "alfa-lite",
+    category: "sutherland - AI & analytics",
+    filter: "ai",
+    name: "ALFA Lite – AI-Powered Chatbot",
+    project_image: project_image,
+
+    // project_image: null,
+    overview:
+      "An AI-driven business analytics chatbot platform that makes enterprise data accessible and actionable through natural language, voice commands, and document-based insights.",
+    impact:
+      "Transformed data interaction for 11,000+ active users in Customer Service Operations.",
+    core_tech:
+      "Conversational AI, Voice Analytics, Azure Cognitive Services, and personalized interactions.",
+    in_detail: {
+      description:
+        "An AI-powered conversational analytics platform that transforms how enterprises access and understand business data.",
+      client: "Enterprise Customer Service Operations",
+      timeline: "Ongoing Platform Development & Optimization",
+      technologies:
+        "Microsoft Azure, Conversational AI, NLP, Speech Recognition, BI Integrations",
+      challenge: {
+        content:
+          "Traditional business intelligence tools were complex, time-consuming, and inaccessible to non-technical users, slowing decision-making across large operational teams.",
+        key_points: [
+          "Complex dashboards requiring technical expertise",
+          "Slow access to actionable business insights",
+          "Limited accessibility for non-technical users",
+          "Manual effort required to analyze reports and documents",
+        ],
+      },
+      solution: {
+        content:
+          "ALFA Lite introduces a conversational, AI-driven approach to analytics—allowing users to interact with enterprise data through natural language queries, voice commands, and document-based insights within a secure Azure-powered environment.",
+        key_points: [
+          "Natural language-based data interaction",
+          "Voice-assisted analytics for hands-free access",
+          "AI-driven document intelligence for PDFs and Excel files",
+          "Seamless integration with enterprise data sources",
+        ],
+      },
+      core_capability: [
+        {
+          // icon: "C",
+          heading: "Conversational Query Answering",
+          content:
+            "Users can ask questions in natural language and receive instant, contextual insights without navigating complex dashboards.",
+        },
+        {
+          // icon: "V",
+          heading: "Voice-Assisted Analytics",
+          content:
+            "Hands-free insight retrieval using voice commands, improving accessibility and productivity.",
+        },
+        {
+          // icon: "D",
+          heading: "Document Analysis",
+          content:
+            "AI-powered extraction and interpretation of data from PDFs and Excel files for faster understanding.",
+        },
+        {
+          // icon: "P",
+          heading: "Personalized Interactions",
+          content:
+            "Context-aware responses tailored to individual user roles, preferences, and access levels.",
+        },
+        {
+          // icon: "E",
+          heading: "External Database Connectivity",
+          content:
+            "Secure integration with enterprise databases and systems for real-time intelligence.",
+        },
+      ],
+      business_impact: [
+        {
+          value: "11,000+",
+          content:
+            "Active users across Customer Service Operations leveraging AI-driven analytics",
+        },
+        {
+          value: "Faster",
+          content:
+            "Decision-making enabled through instant conversational insights",
+        },
+        {
+          value: "Improved",
+          content:
+            "Operational efficiency by reducing dependency on traditional BI tools",
+        },
+        {
+          value: "Secure",
+          content:
+            "Enterprise-grade scalability and data protection powered by Microsoft Azure",
+        },
+      ],
+      key_outcomes: [
+        {
+          heading: "Democratized Data Access",
+          content:
+            "Empowered non-technical users to interact with business data effortlessly using conversational AI.",
+        },
+        {
+          heading: "Accelerated Decision-Making",
+          content:
+            "Enabled teams to obtain real-time insights instantly without complex reporting workflows.",
+        },
+        {
+          heading: "Enhanced User Experience",
+          content:
+            "Introduced intuitive voice and chat-based analytics tailored to user roles.",
+        },
+        {
+          heading: "Scalable & Secure Platform",
+          content:
+            "Built on Microsoft Azure to ensure enterprise-grade security, reliability, and scalability.",
+        },
+      ],
+    },
+  },
+];

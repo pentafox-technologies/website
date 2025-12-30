@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { portfolioProjectDetails } from "../../services/portfolioProjectDetails";
 import { ProjectPortfolioWrapper } from "./projectPortfolio.styles";
 import {
@@ -8,11 +8,43 @@ import {
 import { Button } from "@mantine/core";
 import { navigate } from "gatsby";
 
+const FILTERS = [
+  { label: "Our Products", value: "product" },
+  { label: "AI & Analytics", value: "ai" },
+  { label: "Aviation", value: "aviation" },
+  { label: "Banking & Fintech", value: "banking" },
+  { label: "Cloud", value: "cloud" },
+  { label: "Machine Learning", value: "machine-learning" },
+  // { label: "Health Care", value: "health-care" },
+  { label: "Others", value: "others" },
+];
+
 const ProjectPortfolio = () => {
+  const [activeFilter, setActiveFilter] = useState("product");
+
+  const filteredProjects = portfolioProjectDetails.filter(
+    (project) => project.filter === activeFilter
+  );
+
   return (
     <ProjectPortfolioWrapper>
+      {/* FILTER TABS (UNCHANGED UI) */}
+      <div className="filter-tabs">
+        {FILTERS.map((filter) => (
+          <div
+            key={filter.value}
+            className={`filter-tab ${
+              activeFilter === filter.value ? "active" : ""
+            }`}
+            onClick={() => setActiveFilter(filter.value)}
+          >
+            {filter.label}
+          </div>
+        ))}
+      </div>
+
       <div className="container">
-        {portfolioProjectDetails.map((project, index) => {
+        {filteredProjects.map((project, index) => {
           const reverse = index % 2 === 0;
 
           return (
@@ -21,11 +53,13 @@ const ProjectPortfolio = () => {
               reverse={reverse}
             >
               <div className="portfolio-row">
-                {/* IMAGE (TOP ON MOBILE) */}
+                {/* IMAGE */}
                 <div className="left-col image-wrapper">
-                  <img src={project?.project_image} alt={project?.name} />
+                  <img
+                    src={project?.project_image}
+                    alt={project?.name}
+                  />
                 </div>
-
                 {/* CONTENT */}
                 <div className="right-col">
                   <span className="category">{project?.category}</span>
@@ -35,37 +69,39 @@ const ProjectPortfolio = () => {
                   <div className="meta">
                     <div className="meta-row">
                       <IconCircleCheckFilled size={18} color="#05ff01" />
-
                       <span>
                         <span className="label">Impact:</span>
-                        {project.impact}
+                        {project?.impact}
                       </span>
                     </div>
 
                     <div className="meta-row">
                       <IconCircleCheckFilled size={18} color="#05ff01" />
-
                       <span>
                         <span className="label">Core Tech:</span>
-                        {project.core_tech}
+                        {project?.core_tech}
                       </span>
                     </div>
                   </div>
-
-                  <Button
-                    onClick={() => navigate(`/portfolio/${project.id}`)}
-                    rightIcon={<IconArrowNarrowRight size={18} color="white" />}
-                    styles={{
-                      root: {
-                        backgroundColor: "#cd0e11",
-                        "&:hover": {
-                          backgroundColor: "#b80c0f",
-                        },
-                      },
-                    }}
-                  >
-                    View Case Study
-                  </Button>
+                  {project?.in_detail &&
+                    Object.entries(project?.in_detail).length && (
+                      <Button
+                        onClick={() => navigate(`/portfolio/${project.id}`)}
+                        rightIcon={
+                          <IconArrowNarrowRight size={18} color="white" />
+                        }
+                        styles={{
+                          root: {
+                            backgroundColor: "#cd0e11",
+                            "&:hover": {
+                              backgroundColor: "#b80c0f",
+                            },
+                          },
+                        }}
+                      >
+                        View Case Study
+                      </Button>
+                    )}
                 </div>
               </div>
             </ProjectPortfolioWrapper>
@@ -77,6 +113,120 @@ const ProjectPortfolio = () => {
 };
 
 export default ProjectPortfolio;
+
+// import React, { useState } from "react";
+// import { portfolioProjectDetails } from "../../services/portfolioProjectDetails";
+// import { ProjectPortfolioWrapper } from "./projectPortfolio.styles";
+// import {
+//   IconArrowNarrowRight,
+//   IconCircleCheckFilled,
+// } from "@tabler/icons-react";
+// import { Button } from "@mantine/core";
+// import { navigate } from "gatsby";
+
+// const FILTERS = [
+//   { label: "All Projects", value: "all" },
+//   { label: "Banking & Fintech", value: "banking" },
+//   { label: "AI & Analytics", value: "ai" },
+//   { label: "Aviation", value: "aviation" },
+//   { label: "Own Products", value: "product" },
+// ];
+
+// const ProjectPortfolio = () => {
+//   const [activeFilter, setActiveFilter] = useState("all");
+
+//   const filteredProjects =
+//     activeFilter === "all"
+//       ? portfolioProjectDetails
+//       : portfolioProjectDetails.filter(
+//           (project) => project.filter === activeFilter
+//         );
+//   return (
+//     <>
+//       {/* FILTER TABS */}
+//       <div className="filter-tabs">
+//         {FILTERS.map((filter) => (
+//           <div
+//             key={filter.value}
+//             className={`filter-tab ${
+//               activeFilter === filter.value ? "active" : ""
+//             }`}
+//             onClick={() => setActiveFilter(filter.value)}
+//           >
+//             {filter.label}
+//           </div>
+//         ))}
+//       </div>
+//       <ProjectPortfolioWrapper>
+//         <div className="container">
+//           {filteredProjects.map((project, index) => {
+//             const reverse = index % 2 === 0;
+
+//             return (
+//               <ProjectPortfolioWrapper
+//                 key={project.id || index}
+//                 reverse={reverse}
+//               >
+//                 <div className="portfolio-row">
+//                   {/* IMAGE (TOP ON MOBILE) */}
+//                   <div className="left-col image-wrapper">
+//                     <img src={project?.project_image} alt={project?.name} />
+//                   </div>
+
+//                   {/* CONTENT */}
+//                   <div className="right-col">
+//                     <span className="category">{project?.category}</span>
+//                     <h3>{project?.name}</h3>
+//                     <p className="overview">{project?.overview}</p>
+
+//                     <div className="meta">
+//                       <div className="meta-row">
+//                         <IconCircleCheckFilled size={18} color="#05ff01" />
+
+//                         <span>
+//                           <span className="label">Impact:</span>
+//                           {project.impact}
+//                         </span>
+//                       </div>
+
+//                       <div className="meta-row">
+//                         <IconCircleCheckFilled size={18} color="#05ff01" />
+
+//                         <span>
+//                           <span className="label">Core Tech:</span>
+//                           {project.core_tech}
+//                         </span>
+//                       </div>
+//                     </div>
+
+//                     <Button
+//                       onClick={() => navigate(`/portfolio/${project.id}`)}
+//                       rightIcon={
+//                         <IconArrowNarrowRight size={18} color="white" />
+//                       }
+//                       styles={{
+//                         root: {
+//                           backgroundColor: "#cd0e11",
+//                           "&:hover": {
+//                             backgroundColor: "#b80c0f",
+//                           },
+//                         },
+//                       }}
+//                     >
+//                       View Case Study
+//                     </Button>
+//                   </div>
+//                 </div>
+//               </ProjectPortfolioWrapper>
+//             );
+//           })}
+//         </div>
+//       </ProjectPortfolioWrapper>
+//     </>
+//   );
+// };
+
+// export default ProjectPortfolio;
 
 // import React from "react";
 // import { Container, Grid, Box, Text } from "@mantine/core";

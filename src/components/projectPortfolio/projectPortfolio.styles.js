@@ -7,6 +7,35 @@ export const ProjectPortfolioWrapper = styled.section`
   position: relative;
   z-index: 2;
 
+  .filter-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ffe9e9;
+  color: #dc2b2b;
+  transition: all 0.25s ease;
+}
+
+.filter-tab:hover {
+  background: #dc2b2baf;
+  color: white;
+}
+
+.filter-tab.active {
+  background: #dc2b2b;
+  color: white;
+}
+
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -87,8 +116,6 @@ export const ProjectPortfolioWrapper = styled.section`
 
   .link{
   text-decoration: none;}
-
-  
 
    .contactUs {
    display: inline;

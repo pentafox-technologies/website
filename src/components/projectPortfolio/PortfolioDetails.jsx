@@ -2,7 +2,7 @@ import React from "react";
 import { Wrapper } from "./projectDetails.styles";
 import LayoutCommon from "../layout/layoutCommon";
 import PageWrapper from "../pageWrapper/PageWrapper";
-import { portfolioProjectDetails } from "../../services/portfolioProjectDetails";
+import {portfolioProjectDetails} from "../../services/portfolioProjectDetails";
 import { IconCircleCheckFilled, IconCircleXFilled } from "@tabler/icons-react";
 
 export default function ProjectDetails({ pageContext }) {

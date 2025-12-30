@@ -7,9 +7,7 @@
 const path = require("path");
 const DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 
-const {
-  portfolioProjectDetails,
-} = require("./src/services/portfolioProjectDetails");
+const {portfolioProjectDetails} = require("./src/services/portfolioProjectDetails");
 
 exports.onCreateWebpackConfig = ({
   stage,
@@ -54,7 +52,6 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  // Portfolio Project Pages
   // Portfolio Project Pages
   portfolioProjectDetails.forEach((project) => {
     createPage({

@@ -19,7 +19,7 @@ import Teams from "../components/About_Page/Teams_section";
 import Pendafox from "../components/About_Page/Pendafox_section";
 
 //json
-import aboutPageData from "../services/AboutPageData";
+import {aboutPageData} from "../services/AboutPageData";
 
 const Values = ({ title, value, image }) => {
   return (
