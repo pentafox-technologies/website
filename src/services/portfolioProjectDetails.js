@@ -4,7 +4,7 @@ export const portfolioProjectDetails = [
     category: "sutherland - AI & analytics",
     filter: "ai",
     name: "ALFA Lite – AI-Powered Chatbot",
-    project_image: '/images/alfa-lite.png',
+    project_image: "/images/alfa-lite.png",
     overview:
       "An AI-driven business analytics chatbot platform that makes enterprise data accessible and actionable through natural language, voice commands, and document-based insights.",
     impact:
@@ -121,7 +121,7 @@ export const portfolioProjectDetails = [
     category: "sutherland - Document AI",
     filter: "ai",
     name: "ALFA SNAP – Intelligent Document Analytics",
-    project_image: null,
+    project_image: "/images/alfa-snap.png",
     overview:
       "An advanced, AI-assisted platform to streamline data-driven processes using document intelligence, powered by LLMs and Azure’s cognitive services.",
     impact:
@@ -244,114 +244,12 @@ export const portfolioProjectDetails = [
       ],
     },
   },
-  // {
-  //   id: "ncrp",
-  //   category: "KVB - Government Tech",
-  //   filter: "banking",
-  //   name: "NCRP Digital Web Application",
-  //   project_image: null,
-  //   overview:
-  //     "We transformed the manual, fragmented National Cybercrime Reporting Portal (NCRP) workflows into an integrated, API-driven web application, enabling faster decisions and full operational transparency.",
-  //   impact: "85% Reduction in Manual Effort & ~90% Automation Success Rate.",
-  //   core_tech:
-  //     "Secure workflow automation, real-time banking integration, and performance analytics.",
-  //   in_detail: {
-  //     description:
-  //       "Digitalizing National Cybercrime Response: A Secure, Automated Platform",
-  //     client: "Karur Vysya Bank (KVB) - Government Initiative",
-  //     timeline: "12 Months Development & Deployment",
-  //     technologies: "API integration, CBS, Workflow Automation",
-  //     challenge: {
-  //       content:
-  //         "Manual complaint processing for cybercrime financial fraud was slow, prone to error, and lacked visibility, creating bottlenecks for investigators and victims.",
-  //       key_points: [
-  //         "Fragmented workflows across multiple teams and systems",
-  //         "High manual effort with limited operational visibility",
-  //         "Fragmented workflows across multiple teams and systems",
-  //         "Fragmented workflows across multiple teams and systems",
-  //       ],
-  //     },
-  //     solution: {
-  //       content:
-  //         "A secure, web-based platform that serves as a central command center. It automates critical processes—from complaint validation to fund recovery—by integrating directly with the national cybercrime infrastructure (I4C) and Core Banking Systems (CBS).",
-  //       key_points: [],
-  //     },
-  //     core_capability: [
-  //       {
-  //         // icon: "A",
-  //         heading: "Automated Complaint Orchestration",
-  //         content:
-  //           "End-to-end workflow automation for validation, fund holds, and recovery.",
-  //       },
-  //       {
-  //         // icon: "A",
-  //         heading: "Real-Time Banking Integration",
-  //         content:
-  //           "Direct CBS connectivity for instant account verification and secure fund control.",
-  //       },
-  //       {
-  //         // icon: "R",
-  //         heading: "RUnified Operational Dashboard",
-  //         content:
-  //           "A single pane of glass for tracking complaint status, stages, and exceptions.",
-  //       },
-  //       {
-  //         // icon: "P",
-  //         heading: "Performance & Compliance Analytics",
-  //         content:
-  //           "Monitoring dashboards for system health, API performance, and audit trails.",
-  //       },
-  //     ],
-  //     business_impact: [
-  //       {
-  //         value: "85%",
-  //         content:
-  //           "Reduction in Manual Effort by eliminating legacy bottlenecks",
-  //       },
-  //       {
-  //         value: "~90%",
-  //         content: "Automation Success Rate via robust API integrations",
-  //       },
-  //       {
-  //         value: "11,276+",
-  //         content: "Cases Processed end-to-end with precision and speed",
-  //       },
-  //       {
-  //         value: "100%",
-  //         content:
-  //           "Full Regulatory Compliance achieved through real-time audit trails and controlled operations",
-  //       },
-  //     ],
-  //     key_outcomes: [
-  //       {
-  //         heading: "Full Regulatory Alignment",
-  //         content:
-  //           "Achieved complete compliance with NCRP and I4C standards, ensuring secure and compliant operations",
-  //       },
-  //       {
-  //         heading: "Dramatically Faster Turnaround",
-  //         content:
-  //           "Powered by real-time automation and streamlined workflows for rapid case resolution",
-  //       },
-  //       {
-  //         heading: "Enhanced Operational Transparency",
-  //         content:
-  //           "Full visibility into complaint lifecycle, stages, and exceptions with real-time tracking",
-  //       },
-  //       {
-  //         heading: "Scalable & Future-proof Architecture",
-  //         content:
-  //           "Built on modular, API-first principles for seamless integration with future systems",
-  //       },
-  //     ],
-  //   },
-  // },
   {
     id: "fastkyc",
     category: "Our Product - Fintech",
     filter: "product",
     name: "FastKYC – API-Driven Identity Verification Platform",
-    project_image: "../images/generated-project-image.png",
+    project_image: "/images/FastKYC.png",
     overview:
       "A secure, high-performance KYC verification platform built entirely on APIs to accelerate onboarding, strengthen compliance, and eliminate manual verification processes.",
     impact:
@@ -461,7 +359,7 @@ export const portfolioProjectDetails = [
     category: "Our Product - SAAS",
     filter: "product",
     name: "WALANE – Unified Customer Engagement",
-    project_image: null,
+    project_image: "/images/walane.png",
     overview:
       "WALANE transforms business communication by unifying sales, support, and marketing into a single messaging-led ecosystem, built on the world’s most used channels.",
     impact:
@@ -592,7 +490,7 @@ export const portfolioProjectDetails = [
     category: "banking - regulatory compliance",
     filter: "banking",
     name: "DICGC – Centralised Premium Computation & Filing Platform",
-    project_image: null,
+    project_image: "/images/DICGC.png",
     overview:
       "A secure, audit-ready web platform that digitizes and centralizes null premium computation, filings, approvals, and audit workflows for banks.",
     impact:
@@ -712,7 +610,7 @@ export const portfolioProjectDetails = [
     category: "aviation - operations & revenue",
     filter: "aviation",
     name: "IFS Application – In-flight Sales & Inventory Management Platform",
-    project_image: null,
+    project_image: "/images/IFS.png",
     overview:
       "A centralized, mobile-first in-flight sales platform that digitizes onboard transactions, inventory control, and revenue reporting for airlines with real-time operational visibility.",
     impact:
@@ -836,7 +734,7 @@ export const portfolioProjectDetails = [
     category: "aviation - passenger operations",
     filter: "aviation",
     name: "PRS – Passenger Reconciliation System",
-    project_image: null,
+    project_image: "/images/PRS.png",
     overview:
       "A digital passenger management platform that automates boarding, reconciliation, and de-boarding processes using mobile and web applications, ensuring accuracy, speed, and real-time visibility.",
     impact:
@@ -951,7 +849,7 @@ export const portfolioProjectDetails = [
     category: "aviation - pricing & revenue management",
     filter: "aviation",
     name: "Pricing Portal – Centralised Fare & Revenue Management Platform",
-    project_image: null,
+    project_image: "/images/Pricing-Portal.png",
     overview:
       "A centralised fare and revenue management platform that streamlines airline pricing workflows by enabling teams to upload, manage, analyse, and distribute fare data while integrating with external systems like IBS.",
     impact:
@@ -1051,9 +949,9 @@ export const portfolioProjectDetails = [
   {
     id: "breathalyzer-platform",
     category: "aviation - safety & compliance",
-    filter: "others",
+    filter: "aviation",
     name: "Breathalyzer Platform – Digital Safety & Compliance Solution",
-    project_image: null,
+    project_image: "/images/Breath-analyser.png",
     overview:
       "A digital safety and compliance platform for managing employee alcohol testing across aviation and ground-handling environments, replacing manual registers and email trails with a centralized, auditable web-based system.",
     impact:
@@ -1154,7 +1052,7 @@ export const portfolioProjectDetails = [
     category: "aviation - flight operations",
     filter: "aviation",
     name: "RedCap – Flight Operations Logging & Communication Platform",
-    project_image: null,
+    project_image: "/images/RedCap.png",
     overview:
       "A flight operations logging and real-time communication platform that digitizes daily workflows for Ground Ops, IOCC, and Engineering teams through structured flight logs, real-time updates, and automated WhatsApp notifications.",
     impact:
@@ -1261,7 +1159,7 @@ export const portfolioProjectDetails = [
     category: "saas - conversational commerce",
     filter: "aviation",
     name: "WhatsApp Ecom – Conversational Commerce Platform",
-    project_image: null,
+    project_image: "/images/Whatsapp-Ecom.png",
     overview:
       "A conversational commerce platform that brings the complete e-commerce journey into WhatsApp, enabling businesses to manage product catalogs, orders, payments, and customer engagement directly within chat-based flows.",
     impact:
@@ -1369,7 +1267,7 @@ export const portfolioProjectDetails = [
     category: "aviation - core flight operations",
     filter: "aviation",
     name: "CoreOps – Unified Flight Operations Platform",
-    project_image: null,
+    project_image: "/images/core-Ops.png",
     overview:
       "A unified operations platform that consolidates flight schedules, crew rosters, tech logs, dispatch documents, and ground ops data into a single operational backbone for IOCC, Dispatch, Pilots, and Ground Ops teams.",
     impact:
@@ -1482,7 +1380,7 @@ export const portfolioProjectDetails = [
     category: "aviation - travel desk & transport",
     filter: "aviation",
     name: "Enroute – Digital Travel Desk & Cab Management Platform",
-    project_image: null,
+    project_image: "/images/Enroute.png",
     overview:
       "A digital travel desk and cab management platform that automates crew and guest transportation workflows using real-time booking, assignment, and WhatsApp-based communication.",
     impact:
@@ -1585,7 +1483,7 @@ export const portfolioProjectDetails = [
     category: "fintech - digital lending",
     filter: "banking",
     name: "PetroMoney App – Digital Lending Platform for Fuel Retailers",
-    project_image: null,
+    project_image: "/images/petromoney.png",
     overview:
       "A scalable, mobile-first digital lending platform that enables fast, customized financing for fuel station owners, transforming petrol stations into digitally empowered commercial hubs.",
     impact:
@@ -1688,7 +1586,7 @@ export const portfolioProjectDetails = [
     category: "fintech - loan origination & integrations",
     filter: "banking",
     name: "FinTech Loan Origination System – API Integration & Route Manager",
-    project_image: null,
+    project_image: "/images/LMS.png",
     overview:
       "A configurable API route manager designed to accelerate loan origination by enabling seamless, plug-and-play integration with external financial services across the BFSI ecosystem.",
     impact:
@@ -1786,7 +1684,7 @@ export const portfolioProjectDetails = [
     category: "government - cybercrime & banking",
     filter: "banking",
     name: "NCRP Digital Web Application – KVB",
-    project_image: null,
+    project_image: "/images/NCRP.png",
     overview:
       "A secure, centralized web application that digitizes and automates National Cybercrime Reporting Portal (NCRP) workflows, enabling faster decisions, fund recovery, and complete operational transparency.",
     impact:
@@ -1860,7 +1758,7 @@ export const portfolioProjectDetails = [
           content: "Cases processed end-to-end",
         },
         {
-          value: "Full",
+          value: "100%",
           content: "Regulatory compliance with real-time audit trails",
         },
       ],
@@ -1892,469 +1790,469 @@ Cloud Engineering & Data Platforms */
     category: "telecom - data engineering & analytics",
     filter: "cloud",
     name: "Telco Data Lake – Customer 360 Platform",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A cloud-native data lake that consolidates multi-source telecom data into a single, trusted Customer 360 view, enabling advanced analytics and subscriber intelligence.",
     impact:
       "Unified customer visibility, faster analytics, and reliable, scalable data pipelines for large subscriber volumes.",
     core_tech:
       "ELT Pipelines, Cloud-Native Data Lake, Workflow Orchestration, BigQuery Analytics",
-    in_detail: {
-      description:
-        "The Telco Data Lake is a modern, cloud-native platform designed to ingest, transform, and orchestrate large-scale telecom data to deliver a unified Customer 360 view.",
-      client: "Telecom Operators & Analytics Teams",
-      timeline: "Production Deployment & Continuous Expansion",
-      technologies:
-        "Python 3, Google Cloud, BigQuery, Airbyte, DBT, Cloud Composer (Airflow 2.0)",
-      challenge: {
-        content:
-          "Telecom customer data was fragmented across multiple systems and formats, limiting visibility into subscriber behavior and slowing analytical insights.",
-        key_points: [
-          "Data fragmented across multiple telecom systems",
-          "Inconsistent data formats and sources",
-          "Limited visibility into subscriber behavior",
-          "Slow and unreliable analytical insights",
-        ],
-      },
-      solution: {
-        content:
-          "A modern ELT-based data lake architecture on Google Cloud that reliably ingests, transforms, and orchestrates telecom data from multiple sources.",
-        key_points: [
-          "ELT-based data pipelines using DBT",
-          "Custom data ingestion with Airbyte connectors",
-          "End-to-end orchestration using Cloud Composer",
-          "High-performance analytics on BigQuery",
-        ],
-      },
-      core_capability: [
-        {
-          // icon: "E",
-          heading: "ELT Data Pipelines",
-          content:
-            "Data acquisition, cleansing, and transformation pipelines implemented using DBT.",
-        },
-        {
-          // icon: "I",
-          heading: "Custom Data Ingestion",
-          content:
-            "Airbyte connectors for ingesting data from HTTP, FTP, JSON, and Mainframe sources.",
-        },
-        {
-          // icon: "O",
-          heading: "Pipeline Orchestration",
-          content:
-            "End-to-end workflow orchestration using Google Cloud Composer (Airflow 2.0).",
-        },
-        {
-          // icon: "A",
-          heading: "Cloud-Native Analytics",
-          content:
-            "High-performance querying and analytics on BigQuery for large-scale telecom datasets.",
-        },
-      ],
-      business_impact: [
-        {
-          value: "Unified",
-          content: "Customer 360 view across all telecom subscribers",
-        },
-        {
-          value: "Faster",
-          content: "Analytics with improved data reliability",
-        },
-        {
-          value: "Scalable",
-          content: "Pipelines capable of handling large subscriber volumes",
-        },
-      ],
-      key_outcomes: [
-        {
-          heading: "Improved Customer Intelligence",
-          content: "Enabled deeper subscriber insights and personalization.",
-        },
-        {
-          heading: "Reduced Data Silos",
-          content:
-            "Consolidated fragmented telecom data into a single platform.",
-        },
-        {
-          heading: "Cloud-Native Analytics Foundation",
-          content:
-            "Established a scalable base for advanced analytics and AI use cases.",
-        },
-      ],
-    },
+    // in_detail: {
+    //   description:
+    //     "The Telco Data Lake is a modern, cloud-native platform designed to ingest, transform, and orchestrate large-scale telecom data to deliver a unified Customer 360 view.",
+    //   client: "Telecom Operators & Analytics Teams",
+    //   timeline: "Production Deployment & Continuous Expansion",
+    //   technologies:
+    //     "Python 3, Google Cloud, BigQuery, Airbyte, DBT, Cloud Composer (Airflow 2.0)",
+    //   challenge: {
+    //     content:
+    //       "Telecom customer data was fragmented across multiple systems and formats, limiting visibility into subscriber behavior and slowing analytical insights.",
+    //     key_points: [
+    //       "Data fragmented across multiple telecom systems",
+    //       "Inconsistent data formats and sources",
+    //       "Limited visibility into subscriber behavior",
+    //       "Slow and unreliable analytical insights",
+    //     ],
+    //   },
+    //   solution: {
+    //     content:
+    //       "A modern ELT-based data lake architecture on Google Cloud that reliably ingests, transforms, and orchestrates telecom data from multiple sources.",
+    //     key_points: [
+    //       "ELT-based data pipelines using DBT",
+    //       "Custom data ingestion with Airbyte connectors",
+    //       "End-to-end orchestration using Cloud Composer",
+    //       "High-performance analytics on BigQuery",
+    //     ],
+    //   },
+    //   core_capability: [
+    //     {
+    //       // icon: "E",
+    //       heading: "ELT Data Pipelines",
+    //       content:
+    //         "Data acquisition, cleansing, and transformation pipelines implemented using DBT.",
+    //     },
+    //     {
+    //       // icon: "I",
+    //       heading: "Custom Data Ingestion",
+    //       content:
+    //         "Airbyte connectors for ingesting data from HTTP, FTP, JSON, and Mainframe sources.",
+    //     },
+    //     {
+    //       // icon: "O",
+    //       heading: "Pipeline Orchestration",
+    //       content:
+    //         "End-to-end workflow orchestration using Google Cloud Composer (Airflow 2.0).",
+    //     },
+    //     {
+    //       // icon: "A",
+    //       heading: "Cloud-Native Analytics",
+    //       content:
+    //         "High-performance querying and analytics on BigQuery for large-scale telecom datasets.",
+    //     },
+    //   ],
+    //   business_impact: [
+    //     {
+    //       value: "Unified",
+    //       content: "Customer 360 view across all telecom subscribers",
+    //     },
+    //     {
+    //       value: "Faster",
+    //       content: "Analytics with improved data reliability",
+    //     },
+    //     {
+    //       value: "Scalable",
+    //       content: "Pipelines capable of handling large subscriber volumes",
+    //     },
+    //   ],
+    //   key_outcomes: [
+    //     {
+    //       heading: "Improved Customer Intelligence",
+    //       content: "Enabled deeper subscriber insights and personalization.",
+    //     },
+    //     {
+    //       heading: "Reduced Data Silos",
+    //       content:
+    //         "Consolidated fragmented telecom data into a single platform.",
+    //     },
+    //     {
+    //       heading: "Cloud-Native Analytics Foundation",
+    //       content:
+    //         "Established a scalable base for advanced analytics and AI use cases.",
+    //     },
+    //   ],
+    // },
   },
   {
     id: "mssql-to-bigquery",
     category: "data engineering - cloud migration",
     filter: "cloud",
     name: "MSSQL to BigQuery – Cloud Data Migration",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A cloud data migration initiative that modernized enterprise data platforms by migrating MSSQL data to BigQuery, enabling scalable analytics, improved performance, and simplified data access.",
     impact:
       "Improved analytics performance and scalability while reducing operational overhead of legacy MSSQL environments.",
     core_tech:
       "Cloud Data Migration, BigQuery Analytics, Data Validation & Reconciliation, Analytics-Ready Data Modeling",
-    in_detail: {
-      description:
-        "This project focused on migrating enterprise data from legacy MSSQL systems to Google BigQuery using a structured, integrity-first approach to support modern analytics needs.",
-      client: "Enterprise Data & Analytics Teams",
-      timeline: "Completed Migration & Production Analytics Enablement",
-      technologies:
-        "MSSQL, Google BigQuery, Cloud Data Migration Tools, Validation & Reconciliation Frameworks",
-      challenge: {
-        content:
-          "Legacy MSSQL environments limited scalability and analytical performance, making it difficult to support growing data volumes and analytics demands.",
-        key_points: [
-          "Limited scalability of on-premise MSSQL systems",
-          "Performance constraints for analytics workloads",
-          "Difficulty supporting growing data volumes",
-          "Operational overhead of maintaining legacy databases",
-        ],
-      },
-      solution: {
-        content:
-          "A structured migration strategy that replicated MSSQL schemas and data into BigQuery while ensuring data accuracy, consistency, and minimal operational disruption.",
-        key_points: [
-          "End-to-end schema and data migration",
-          "Validation and reconciliation to ensure data integrity",
-          "Analytics-optimized data models in BigQuery",
-          "Minimal disruption during migration execution",
-        ],
-      },
-      core_capability: [
-        {
-          // icon: "M",
-          heading: "End-to-End Data Migration",
-          content:
-            "Replicated MSSQL schemas and data into BigQuery to enable cloud-scale analytics.",
-        },
-        {
-          // icon: "I",
-          heading: "Data Integrity Assurance",
-          content:
-            "Performed validation and reconciliation checks throughout the migration process.",
-        },
-        {
-          // icon: "P",
-          heading: "Performance Optimization",
-          content:
-            "Designed analytics-ready data models optimized for BigQuery workloads.",
-        },
-      ],
-      business_impact: [
-        {
-          value: "Improved",
-          content: "Analytics performance and platform scalability",
-        },
-        {
-          value: "Simplified",
-          content: "Data access for business and analytics teams",
-        },
-        {
-          value: "Reduced",
-          content: "Operational overhead of legacy MSSQL databases",
-        },
-      ],
-      key_outcomes: [
-        {
-          heading: "Cloud-Ready Data Ecosystem",
-          content:
-            "Established a modern, scalable analytics foundation on BigQuery.",
-        },
-        {
-          heading: "Faster Insight Generation",
-          content:
-            "Enabled quicker analytics and reporting through cloud-native performance.",
-        },
-        {
-          heading: "Future-Proof Analytics Platform",
-          content:
-            "Prepared the enterprise data platform for long-term growth and advanced analytics use cases.",
-        },
-      ],
-    },
+    // in_detail: {
+    //   description:
+    //     "This project focused on migrating enterprise data from legacy MSSQL systems to Google BigQuery using a structured, integrity-first approach to support modern analytics needs.",
+    //   client: "Enterprise Data & Analytics Teams",
+    //   timeline: "Completed Migration & Production Analytics Enablement",
+    //   technologies:
+    //     "MSSQL, Google BigQuery, Cloud Data Migration Tools, Validation & Reconciliation Frameworks",
+    //   challenge: {
+    //     content:
+    //       "Legacy MSSQL environments limited scalability and analytical performance, making it difficult to support growing data volumes and analytics demands.",
+    //     key_points: [
+    //       "Limited scalability of on-premise MSSQL systems",
+    //       "Performance constraints for analytics workloads",
+    //       "Difficulty supporting growing data volumes",
+    //       "Operational overhead of maintaining legacy databases",
+    //     ],
+    //   },
+    //   solution: {
+    //     content:
+    //       "A structured migration strategy that replicated MSSQL schemas and data into BigQuery while ensuring data accuracy, consistency, and minimal operational disruption.",
+    //     key_points: [
+    //       "End-to-end schema and data migration",
+    //       "Validation and reconciliation to ensure data integrity",
+    //       "Analytics-optimized data models in BigQuery",
+    //       "Minimal disruption during migration execution",
+    //     ],
+    //   },
+    //   core_capability: [
+    //     {
+    //       // icon: "M",
+    //       heading: "End-to-End Data Migration",
+    //       content:
+    //         "Replicated MSSQL schemas and data into BigQuery to enable cloud-scale analytics.",
+    //     },
+    //     {
+    //       // icon: "I",
+    //       heading: "Data Integrity Assurance",
+    //       content:
+    //         "Performed validation and reconciliation checks throughout the migration process.",
+    //     },
+    //     {
+    //       // icon: "P",
+    //       heading: "Performance Optimization",
+    //       content:
+    //         "Designed analytics-ready data models optimized for BigQuery workloads.",
+    //     },
+    //   ],
+    //   business_impact: [
+    //     {
+    //       value: "Improved",
+    //       content: "Analytics performance and platform scalability",
+    //     },
+    //     {
+    //       value: "Simplified",
+    //       content: "Data access for business and analytics teams",
+    //     },
+    //     {
+    //       value: "Reduced",
+    //       content: "Operational overhead of legacy MSSQL databases",
+    //     },
+    //   ],
+    //   key_outcomes: [
+    //     {
+    //       heading: "Cloud-Ready Data Ecosystem",
+    //       content:
+    //         "Established a modern, scalable analytics foundation on BigQuery.",
+    //     },
+    //     {
+    //       heading: "Faster Insight Generation",
+    //       content:
+    //         "Enabled quicker analytics and reporting through cloud-native performance.",
+    //     },
+    //     {
+    //       heading: "Future-Proof Analytics Platform",
+    //       content:
+    //         "Prepared the enterprise data platform for long-term growth and advanced analytics use cases.",
+    //     },
+    //   ],
+    // },
   },
   {
     id: "service-fabric-to-k8s",
     category: "cloud modernization - kubernetes migration",
     filter: "cloud",
     name: "Application Migration – Azure Service Fabric to EKS & AKS",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "An application modernization initiative that migrated enterprise workloads from Azure Service Fabric to Kubernetes on Amazon EKS and Azure AKS, enabling scalability, resilience, and operational flexibility.",
     impact:
       "Improved application scalability and resilience, reduced platform dependency, and enabled faster innovation cycles after migration.",
     core_tech:
       "Kubernetes Re-Platforming, Amazon EKS, Azure AKS, Container Orchestration, Data Integrity Validation",
-    in_detail: {
-      description:
-        "This project focused on re-platforming enterprise applications from Azure Service Fabric to Kubernetes, preserving application behavior and data integrity while modernizing the runtime environment.",
-      client: "Enterprise Application & Platform Teams",
-      timeline: "Completed Migration & Production Stabilization",
-      technologies:
-        "Azure Service Fabric, Kubernetes, Amazon EKS, Azure AKS, Containerized Deployments",
-      challenge: {
-        content:
-          "Applications built on Azure Service Fabric faced limitations in scalability, portability, and operational agility.",
-        key_points: [
-          "Limited scalability with legacy platform constraints",
-          "Tight coupling to Azure Service Fabric",
-          "Reduced portability across cloud environments",
-          "Operational complexity in managing Service Fabric workloads",
-        ],
-      },
-      solution: {
-        content:
-          "A controlled migration strategy that re-platformed applications onto Kubernetes while ensuring data integrity and preserving existing application behavior.",
-        key_points: [
-          "Re-platforming applications to Kubernetes",
-          "Support for both Amazon EKS and Azure AKS",
-          "Accurate data replication and validation",
-          "Standardized container orchestration and deployment",
-        ],
-      },
-      core_capability: [
-        {
-          // icon: "K",
-          heading: "Kubernetes Re-Platforming",
-          content:
-            "Migrated applications from Azure Service Fabric to Kubernetes running on Amazon EKS and Azure AKS.",
-        },
-        {
-          // icon: "D",
-          heading: "Data Integrity Management",
-          content:
-            "Ensured accurate data replication and validation throughout the migration process.",
-        },
-        {
-          // icon: "O",
-          heading: "Operational Simplification",
-          content:
-            "Standardized deployment and orchestration using Kubernetes-native patterns.",
-        },
-      ],
-      business_impact: [
-        {
-          value: "Improved",
-          content: "Application scalability and operational resilience",
-        },
-        {
-          value: "Reduced",
-          content: "Dependency on a single platform or runtime",
-        },
-        {
-          value: "Faster",
-          content: "Innovation cycles following Kubernetes adoption",
-        },
-      ],
-      key_outcomes: [
-        {
-          heading: "Kubernetes-Native Architecture",
-          content:
-            "Established a modern, container-based application architecture.",
-        },
-        {
-          heading: "Simplified Operations",
-          content:
-            "Reduced operational complexity with standardized Kubernetes deployments.",
-        },
-        {
-          heading: "Cloud-Agnostic Scalability",
-          content:
-            "Enabled scalable deployments across multiple cloud platforms.",
-        },
-      ],
-    },
+    // in_detail: {
+    //   description:
+    //     "This project focused on re-platforming enterprise applications from Azure Service Fabric to Kubernetes, preserving application behavior and data integrity while modernizing the runtime environment.",
+    //   client: "Enterprise Application & Platform Teams",
+    //   timeline: "Completed Migration & Production Stabilization",
+    //   technologies:
+    //     "Azure Service Fabric, Kubernetes, Amazon EKS, Azure AKS, Containerized Deployments",
+    //   challenge: {
+    //     content:
+    //       "Applications built on Azure Service Fabric faced limitations in scalability, portability, and operational agility.",
+    //     key_points: [
+    //       "Limited scalability with legacy platform constraints",
+    //       "Tight coupling to Azure Service Fabric",
+    //       "Reduced portability across cloud environments",
+    //       "Operational complexity in managing Service Fabric workloads",
+    //     ],
+    //   },
+    //   solution: {
+    //     content:
+    //       "A controlled migration strategy that re-platformed applications onto Kubernetes while ensuring data integrity and preserving existing application behavior.",
+    //     key_points: [
+    //       "Re-platforming applications to Kubernetes",
+    //       "Support for both Amazon EKS and Azure AKS",
+    //       "Accurate data replication and validation",
+    //       "Standardized container orchestration and deployment",
+    //     ],
+    //   },
+    //   core_capability: [
+    //     {
+    //       // icon: "K",
+    //       heading: "Kubernetes Re-Platforming",
+    //       content:
+    //         "Migrated applications from Azure Service Fabric to Kubernetes running on Amazon EKS and Azure AKS.",
+    //     },
+    //     {
+    //       // icon: "D",
+    //       heading: "Data Integrity Management",
+    //       content:
+    //         "Ensured accurate data replication and validation throughout the migration process.",
+    //     },
+    //     {
+    //       // icon: "O",
+    //       heading: "Operational Simplification",
+    //       content:
+    //         "Standardized deployment and orchestration using Kubernetes-native patterns.",
+    //     },
+    //   ],
+    //   business_impact: [
+    //     {
+    //       value: "Improved",
+    //       content: "Application scalability and operational resilience",
+    //     },
+    //     {
+    //       value: "Reduced",
+    //       content: "Dependency on a single platform or runtime",
+    //     },
+    //     {
+    //       value: "Faster",
+    //       content: "Innovation cycles following Kubernetes adoption",
+    //     },
+    //   ],
+    //   key_outcomes: [
+    //     {
+    //       heading: "Kubernetes-Native Architecture",
+    //       content:
+    //         "Established a modern, container-based application architecture.",
+    //     },
+    //     {
+    //       heading: "Simplified Operations",
+    //       content:
+    //         "Reduced operational complexity with standardized Kubernetes deployments.",
+    //     },
+    //     {
+    //       heading: "Cloud-Agnostic Scalability",
+    //       content:
+    //         "Enabled scalable deployments across multiple cloud platforms.",
+    //     },
+    //   ],
+    // },
   },
   {
     id: "automobile-customer-360",
     category: "automotive - data engineering & analytics",
     filter: "cloud",
     name: "Automobile Customer 360 – Data Engineering Platform",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A robust data engineering platform that cleanses, enriches, and unifies automotive customer data across multiple formats and systems to deliver accurate Customer 360 views.",
     impact:
       "Enabled clean, analytics-ready customer data, improved customer insights, and scalable processing for large automotive datasets.",
     core_tech:
       "AWS-Based Data Pipelines, PySpark Transformations, Data Quality & Validation, Scalable ETL Processing",
-    in_detail: {
-      description:
-        "The Automobile Customer 360 platform is designed to process, cleanse, and enrich multi-format automotive customer data, providing a unified and reliable foundation for analytics and personalization.",
-      client: "Automotive Enterprises & Analytics Teams",
-      timeline: "Production Deployment & Ongoing Data Processing",
-      technologies: "Python 3, PySpark, AWS Glue, Snowflake, Java",
-      challenge: {
-        content:
-          "Customer data existed in disparate formats and systems, limiting analytics accuracy and the ability to generate meaningful customer insights.",
-        key_points: [
-          "Customer data spread across multiple systems",
-          "Inconsistent and varied data formats",
-          "Poor data quality impacting analytics accuracy",
-          "Limited ability to build unified customer views",
-        ],
-      },
-      solution: {
-        content:
-          "A scalable AWS-based data processing pipeline that performs data cleansing, enrichment, feature engineering, and validation across multi-format automotive datasets.",
-        key_points: [
-          "Multi-format data ingestion and processing",
-          "Automated data cleansing and enrichment",
-          "Scalable transformations using PySpark on AWS Glue",
-          "Validation mechanisms for data quality assurance",
-        ],
-      },
-      core_capability: [
-        {
-          // icon: "M",
-          heading: "Multi-Format Data Processing",
-          content:
-            "Processes 7+ data formats including Mainframe data and raw S3 dumps within a unified pipeline.",
-        },
-        {
-          // icon: "C",
-          heading: "Data Cleansing & Enrichment",
-          content:
-            "Performs address validation and enrichment using Information IDV to improve data quality.",
-        },
-        {
-          // icon: "S",
-          heading: "Scalable Transformations",
-          content:
-            "Executes large-scale PySpark transformation jobs deployed on AWS Glue.",
-        },
-      ],
-      business_impact: [
-        {
-          value: "Clean",
-          content: "Enriched, analytics-ready customer data",
-        },
-        {
-          value: "Improved",
-          content: "Customer insights and segmentation accuracy",
-        },
-        {
-          value: "Scalable",
-          content: "Processing for large automotive data volumes",
-        },
-      ],
-      key_outcomes: [
-        {
-          heading: "Accurate Customer 360 Views",
-          content:
-            "Delivered reliable, unified customer profiles across automotive systems.",
-        },
-        {
-          heading: "Strong Data Quality Governance",
-          content:
-            "Established consistent validation and enrichment standards.",
-        },
-        {
-          heading: "Advanced Analytics Foundation",
-          content: "Enabled personalization and advanced analytics use cases.",
-        },
-      ],
-    },
+    // in_detail: {
+    //   description:
+    //     "The Automobile Customer 360 platform is designed to process, cleanse, and enrich multi-format automotive customer data, providing a unified and reliable foundation for analytics and personalization.",
+    //   client: "Automotive Enterprises & Analytics Teams",
+    //   timeline: "Production Deployment & Ongoing Data Processing",
+    //   technologies: "Python 3, PySpark, AWS Glue, Snowflake, Java",
+    //   challenge: {
+    //     content:
+    //       "Customer data existed in disparate formats and systems, limiting analytics accuracy and the ability to generate meaningful customer insights.",
+    //     key_points: [
+    //       "Customer data spread across multiple systems",
+    //       "Inconsistent and varied data formats",
+    //       "Poor data quality impacting analytics accuracy",
+    //       "Limited ability to build unified customer views",
+    //     ],
+    //   },
+    //   solution: {
+    //     content:
+    //       "A scalable AWS-based data processing pipeline that performs data cleansing, enrichment, feature engineering, and validation across multi-format automotive datasets.",
+    //     key_points: [
+    //       "Multi-format data ingestion and processing",
+    //       "Automated data cleansing and enrichment",
+    //       "Scalable transformations using PySpark on AWS Glue",
+    //       "Validation mechanisms for data quality assurance",
+    //     ],
+    //   },
+    //   core_capability: [
+    //     {
+    //       // icon: "M",
+    //       heading: "Multi-Format Data Processing",
+    //       content:
+    //         "Processes 7+ data formats including Mainframe data and raw S3 dumps within a unified pipeline.",
+    //     },
+    //     {
+    //       // icon: "C",
+    //       heading: "Data Cleansing & Enrichment",
+    //       content:
+    //         "Performs address validation and enrichment using Information IDV to improve data quality.",
+    //     },
+    //     {
+    //       // icon: "S",
+    //       heading: "Scalable Transformations",
+    //       content:
+    //         "Executes large-scale PySpark transformation jobs deployed on AWS Glue.",
+    //     },
+    //   ],
+    //   business_impact: [
+    //     {
+    //       value: "Clean",
+    //       content: "Enriched, analytics-ready customer data",
+    //     },
+    //     {
+    //       value: "Improved",
+    //       content: "Customer insights and segmentation accuracy",
+    //     },
+    //     {
+    //       value: "Scalable",
+    //       content: "Processing for large automotive data volumes",
+    //     },
+    //   ],
+    //   key_outcomes: [
+    //     {
+    //       heading: "Accurate Customer 360 Views",
+    //       content:
+    //         "Delivered reliable, unified customer profiles across automotive systems.",
+    //     },
+    //     {
+    //       heading: "Strong Data Quality Governance",
+    //       content:
+    //         "Established consistent validation and enrichment standards.",
+    //     },
+    //     {
+    //       heading: "Advanced Analytics Foundation",
+    //       content: "Enabled personalization and advanced analytics use cases.",
+    //     },
+    //   ],
+    // },
   },
   {
     id: "customer-engagement-mlops",
     category: "data & ai - mlops and analytics",
     filter: "cloud",
     name: "Customer Engagement Suite – MLOps & Analytics Platform",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A production-grade MLOps and analytics platform that operationalizes machine learning through continuous deployment, monitoring, and optimization of models for customer insights.",
     impact:
       "Enabled faster ML model deployment, reliable insight generation, and improved operational stability of machine learning workloads.",
     core_tech:
       "MLOps Platform, AutoML Framework, Model Lifecycle Management, Scalable ML Infrastructure",
-    in_detail: {
-      description:
-        "The Customer Engagement Suite is a custom-built MLOps platform designed to manage the complete machine learning lifecycle, from model training and deployment to monitoring and optimization at scale.",
-      client: "Enterprise Analytics & Customer Intelligence Teams",
-      timeline: "Production Deployment & Continuous Optimization",
-      technologies:
-        "Airflow, Amazon EMR, Amazon S3, Elastic Load Balancer (ELB)",
-      challenge: {
-        content:
-          "Machine learning models were difficult to deploy, manage, and scale in production environments, limiting their real-world business impact.",
-        key_points: [
-          "Complex and slow ML model deployment processes",
-          "Lack of standardized model lifecycle management",
-          "Difficulty scaling inference and training workloads",
-          "Operational instability of ML pipelines",
-        ],
-      },
-      solution: {
-        content:
-          "A custom AutoML and MLOps platform that manages model lifecycle, deployment, performance tuning, and large-scale inference through a unified control plane.",
-        key_points: [
-          "Custom AutoML framework for model generation",
-          "Centralized model control plane for orchestration",
-          "Scalable ML processing infrastructure",
-          "Resilience mechanisms for stable operations",
-        ],
-      },
-      core_capability: [
-        {
-          // icon: "A",
-          heading: "Custom AutoML Platform",
-          content:
-            "Supports parametric and non-parametric machine learning models with configurable training and tuning workflows.",
-        },
-        {
-          // icon: "C",
-          heading: "Model Control Plane",
-          content:
-            "Handles deployment, workflow orchestration, performance tuning, and lifecycle management of ML models.",
-        },
-        {
-          // icon: "S",
-          heading: "Scalable ML Infrastructure",
-          content:
-            "Uses EMR-based processing with S3-backed storage to support large-scale training and inference workloads.",
-        },
-        {
-          // icon: "R",
-          heading: "Resilience Engineering",
-          content:
-            "Implements custom rate-limiting mechanisms to overcome AWS exponential backoff challenges.",
-        },
-      ],
-      business_impact: [
-        {
-          value: "Faster",
-          content: "Deployment of machine learning models into production",
-        },
-        {
-          value: "Reliable",
-          content: "Generation of propensity scores and customer insights",
-        },
-        {
-          value: "Improved",
-          content: "Operational stability of ML workloads",
-        },
-      ],
-      key_outcomes: [
-        {
-          heading: "Production-Ready ML Pipelines",
-          content:
-            "Delivered stable, scalable pipelines for real-world ML deployment.",
-        },
-        {
-          heading: "Continuous Model Optimization",
-          content:
-            "Enabled ongoing performance tuning and optimization of deployed models.",
-        },
-        {
-          heading: "Enterprise-Grade MLOps Foundation",
-          content:
-            "Established a scalable and resilient MLOps platform for customer analytics.",
-        },
-      ],
-    },
+    // in_detail: {
+    //   description:
+    //     "The Customer Engagement Suite is a custom-built MLOps platform designed to manage the complete machine learning lifecycle, from model training and deployment to monitoring and optimization at scale.",
+    //   client: "Enterprise Analytics & Customer Intelligence Teams",
+    //   timeline: "Production Deployment & Continuous Optimization",
+    //   technologies:
+    //     "Airflow, Amazon EMR, Amazon S3, Elastic Load Balancer (ELB)",
+    //   challenge: {
+    //     content:
+    //       "Machine learning models were difficult to deploy, manage, and scale in production environments, limiting their real-world business impact.",
+    //     key_points: [
+    //       "Complex and slow ML model deployment processes",
+    //       "Lack of standardized model lifecycle management",
+    //       "Difficulty scaling inference and training workloads",
+    //       "Operational instability of ML pipelines",
+    //     ],
+    //   },
+    //   solution: {
+    //     content:
+    //       "A custom AutoML and MLOps platform that manages model lifecycle, deployment, performance tuning, and large-scale inference through a unified control plane.",
+    //     key_points: [
+    //       "Custom AutoML framework for model generation",
+    //       "Centralized model control plane for orchestration",
+    //       "Scalable ML processing infrastructure",
+    //       "Resilience mechanisms for stable operations",
+    //     ],
+    //   },
+    //   core_capability: [
+    //     {
+    //       // icon: "A",
+    //       heading: "Custom AutoML Platform",
+    //       content:
+    //         "Supports parametric and non-parametric machine learning models with configurable training and tuning workflows.",
+    //     },
+    //     {
+    //       // icon: "C",
+    //       heading: "Model Control Plane",
+    //       content:
+    //         "Handles deployment, workflow orchestration, performance tuning, and lifecycle management of ML models.",
+    //     },
+    //     {
+    //       // icon: "S",
+    //       heading: "Scalable ML Infrastructure",
+    //       content:
+    //         "Uses EMR-based processing with S3-backed storage to support large-scale training and inference workloads.",
+    //     },
+    //     {
+    //       // icon: "R",
+    //       heading: "Resilience Engineering",
+    //       content:
+    //         "Implements custom rate-limiting mechanisms to overcome AWS exponential backoff challenges.",
+    //     },
+    //   ],
+    //   business_impact: [
+    //     {
+    //       value: "Faster",
+    //       content: "Deployment of machine learning models into production",
+    //     },
+    //     {
+    //       value: "Reliable",
+    //       content: "Generation of propensity scores and customer insights",
+    //     },
+    //     {
+    //       value: "Improved",
+    //       content: "Operational stability of ML workloads",
+    //     },
+    //   ],
+    //   key_outcomes: [
+    //     {
+    //       heading: "Production-Ready ML Pipelines",
+    //       content:
+    //         "Delivered stable, scalable pipelines for real-world ML deployment.",
+    //     },
+    //     {
+    //       heading: "Continuous Model Optimization",
+    //       content:
+    //         "Enabled ongoing performance tuning and optimization of deployed models.",
+    //     },
+    //     {
+    //       heading: "Enterprise-Grade MLOps Foundation",
+    //       content:
+    //         "Established a scalable and resilient MLOps platform for customer analytics.",
+    //     },
+    //   ],
+    // },
   },
 
   // machine learning
@@ -2364,7 +2262,7 @@ Cloud Engineering & Data Platforms */
     category: "data & ai - mlops and analytics",
     filter: "machine-learning",
     name: "Digital Suite for MLOps",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "An advanced Digital Suite for MLOps that streamlines machine learning workflows, enhances collaboration, and enables scalable, production-ready ML operations.",
     impact:
@@ -2465,7 +2363,7 @@ Cloud Engineering & Data Platforms */
     category: "banking & fintech - conversational ai",
     filter: "machine-learning",
     name: "Conversational Assistant with Embedded Intelligence",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "An AI-powered conversational assistant that enables seamless financial interactions through WhatsApp, combining automation, intelligence, and secure digital banking experiences.",
     impact:
@@ -2566,7 +2464,7 @@ Cloud Engineering & Data Platforms */
     category: "engineering & ai - reliability and automation",
     filter: "machine-learning",
     name: "iRCA – Intelligent Root Cause Analysis Bot",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "An intelligent Root Cause Analysis (RCA) bot that proactively monitors production environments, detects anomalies, identifies root causes, and automates incident documentation and communication.",
     impact:
@@ -2669,7 +2567,7 @@ Cloud Engineering & Data Platforms */
     category: "telecom & digital platforms",
     filter: "others",
     name: "MyRepublic App – Digital Connectivity Experience",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A next-generation digital application designed to transform how users manage and experience internet connectivity through a seamless, intuitive, and personalized platform.",
     impact:
@@ -2770,7 +2668,7 @@ Cloud Engineering & Data Platforms */
     category: "healthcare & digital health",
     filter: "others",
     name: "EMR – Electronic Medical Records Platform",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A modern Electronic Medical Records (EMR) application designed to digitize and streamline patient data, appointments, prescriptions, and medical history within a secure healthcare environment.",
     impact:
@@ -2871,7 +2769,7 @@ Cloud Engineering & Data Platforms */
     category: "edtech & digital platforms",
     filter: "others",
     name: "Desikadaya – Integrated Learning & E-Commerce Platform",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A visionary digital learning platform that blends e-commerce, event booking, and an expansive educational hub to redefine how knowledge is discovered, accessed, and experienced.",
     impact:
@@ -2972,7 +2870,7 @@ Cloud Engineering & Data Platforms */
     category: "business & digital branding",
     filter: "others",
     name: "Arya Pulses – Global Pulses Business Website",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A professionally crafted business website that reflects Arya Pulses’ commitment to quality and showcases their journey of exporting premium pulses to global markets.",
     impact:
@@ -3073,7 +2971,7 @@ Cloud Engineering & Data Platforms */
     category: "bfsi & enterprise platforms",
     filter: "others",
     name: "Suraaj Consultants – Custom Route Manager Suite",
-    project_image: null,
+    project_image: "/images/generated-project-image.png",
     overview:
       "A custom-built Route Manager Suite designed to handle large-scale external API integrations, enabling seamless configuration, deployment, and consumption of third-party services within a BFSI financial platform.",
     impact:
@@ -3169,4 +3067,106 @@ Cloud Engineering & Data Platforms */
     //   ],
     // },
   },
+  // {
+  //   id: "ncrp",
+  //   category: "KVB - Government Tech",
+  //   filter: "banking",
+  //   name: "NCRP Digital Web Application",
+  //   project_image: "/images/generated-project-image.png",
+  //   overview:
+  //     "We transformed the manual, fragmented National Cybercrime Reporting Portal (NCRP) workflows into an integrated, API-driven web application, enabling faster decisions and full operational transparency.",
+  //   impact: "85% Reduction in Manual Effort & ~90% Automation Success Rate.",
+  //   core_tech:
+  //     "Secure workflow automation, real-time banking integration, and performance analytics.",
+  //   in_detail: {
+  //     description:
+  //       "Digitalizing National Cybercrime Response: A Secure, Automated Platform",
+  //     client: "Karur Vysya Bank (KVB) - Government Initiative",
+  //     timeline: "12 Months Development & Deployment",
+  //     technologies: "API integration, CBS, Workflow Automation",
+  //     challenge: {
+  //       content:
+  //         "Manual complaint processing for cybercrime financial fraud was slow, prone to error, and lacked visibility, creating bottlenecks for investigators and victims.",
+  //       key_points: [
+  //         "Fragmented workflows across multiple teams and systems",
+  //         "High manual effort with limited operational visibility",
+  //         "Fragmented workflows across multiple teams and systems",
+  //         "Fragmented workflows across multiple teams and systems",
+  //       ],
+  //     },
+  //     solution: {
+  //       content:
+  //         "A secure, web-based platform that serves as a central command center. It automates critical processes—from complaint validation to fund recovery—by integrating directly with the national cybercrime infrastructure (I4C) and Core Banking Systems (CBS).",
+  //       key_points: [],
+  //     },
+  //     core_capability: [
+  //       {
+  //         // icon: "A",
+  //         heading: "Automated Complaint Orchestration",
+  //         content:
+  //           "End-to-end workflow automation for validation, fund holds, and recovery.",
+  //       },
+  //       {
+  //         // icon: "A",
+  //         heading: "Real-Time Banking Integration",
+  //         content:
+  //           "Direct CBS connectivity for instant account verification and secure fund control.",
+  //       },
+  //       {
+  //         // icon: "R",
+  //         heading: "RUnified Operational Dashboard",
+  //         content:
+  //           "A single pane of glass for tracking complaint status, stages, and exceptions.",
+  //       },
+  //       {
+  //         // icon: "P",
+  //         heading: "Performance & Compliance Analytics",
+  //         content:
+  //           "Monitoring dashboards for system health, API performance, and audit trails.",
+  //       },
+  //     ],
+  //     business_impact: [
+  //       {
+  //         value: "85%",
+  //         content:
+  //           "Reduction in Manual Effort by eliminating legacy bottlenecks",
+  //       },
+  //       {
+  //         value: "~90%",
+  //         content: "Automation Success Rate via robust API integrations",
+  //       },
+  //       {
+  //         value: "11,276+",
+  //         content: "Cases Processed end-to-end with precision and speed",
+  //       },
+  //       {
+  //         value: "100%",
+  //         content:
+  //           "Full Regulatory Compliance achieved through real-time audit trails and controlled operations",
+  //       },
+  //     ],
+  //     key_outcomes: [
+  //       {
+  //         heading: "Full Regulatory Alignment",
+  //         content:
+  //           "Achieved complete compliance with NCRP and I4C standards, ensuring secure and compliant operations",
+  //       },
+  //       {
+  //         heading: "Dramatically Faster Turnaround",
+  //         content:
+  //           "Powered by real-time automation and streamlined workflows for rapid case resolution",
+  //       },
+  //       {
+  //         heading: "Enhanced Operational Transparency",
+  //         content:
+  //           "Full visibility into complaint lifecycle, stages, and exceptions with real-time tracking",
+  //       },
+  //       {
+  //         heading: "Scalable & Future-proof Architecture",
+  //         content:
+  //           "Built on modular, API-first principles for seamless integration with future systems",
+  //       },
+  //     ],
+  //   },
+  // },
 ];

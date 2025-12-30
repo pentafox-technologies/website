@@ -107,14 +107,14 @@ module.exports = {
       __key: "about-assets",
     },
     // portfolio
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "portfolio",
-        path: "./src/portfolio_assets/",
-      },
-      __key: "portfolio_assets",
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "portfolio",
+    //     path: "./src/portfolio_assets/",
+    //   },
+    //   __key: "portfolio_assets",
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

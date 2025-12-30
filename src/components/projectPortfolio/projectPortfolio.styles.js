@@ -93,9 +93,9 @@ export const ProjectPortfolioWrapper = styled.section`
   .image-wrapper img {
     width: 100%;
     height: clamp(220px, 40vw, 320px);
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    object-fit: contain;
+    // border-radius: 16px;
+    // box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   }
 
   /* TEXT */
