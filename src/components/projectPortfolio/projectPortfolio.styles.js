@@ -91,6 +91,7 @@ export const ProjectPortfolioWrapper = styled.section`
 
   /* IMAGE */
   .image-wrapper img {
+  position: relative;
     width: 100%;
     height: clamp(220px, 40vw, 320px);
     object-fit: contain;

@@ -576,7 +576,8 @@ const HeaderBar = ({
                 </HoverCard.Dropdown>
               </HoverCard>
               <Link
-                to="/portfolio"
+                to="/pentafox-portfolio"
+                // to="/portfolio"
                 className={lightLinks ? "lightLinks" : "link"}
               >
                 <h5>Portfolio</h5>
@@ -621,7 +622,7 @@ const HeaderBar = ({
             </div>
 
             <Burger
-              opened={drawerOpened}
+              // opened={drawerOpened}
               onClick={toggleDrawer}
               className="hidden-burger"
             />
@@ -706,12 +707,11 @@ const HeaderBar = ({
             {/* Portfolio Section */}
             <div>
               <UnstyledButton
-                onClick={() => navigate("/portfolio")}
+                onClick={() => navigate("/pentafox-portfolio")}
                 className={classes.drawerMenuItem}
               >
                 <span
                   className={classes.mobileNavHeading}
-                  // onClick={() => navigate("/portfolio")}
                 >
                   Portfolio
                 </span>
