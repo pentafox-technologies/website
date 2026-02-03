@@ -51,7 +51,6 @@ export const Wrapper = styled.div`
   /* SECTIONS */
   .section {
     margin-bottom: 60px;
-    // background: red;
   }
 
   .project-section-title {
@@ -69,6 +68,7 @@ export const Wrapper = styled.div`
 
   .content {
     color: var(--gray-medium);
+     font-size: 15px;
   }
 
   .challenge-box,
@@ -134,6 +134,7 @@ export const Wrapper = styled.div`
 
   .capability-card {
     display: flex;
+    align-items: center;
     background: var(--gray-light);
     padding: 15px;
     font-weight: 600;
@@ -142,8 +143,19 @@ export const Wrapper = styled.div`
     // box-shadow: var(--shadow);
   }
 
+  .capability-card.with-icon {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .capability-card.with-left-border {
+    border-left: 4px solid var(--accent-green);
+  }
+
   .card-icon {
-    width: 10%;
+    background: white;
+    border-radius: 7px;
+    padding: 1px;
   }
 
   .card-container {
