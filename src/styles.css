@@ -1,14 +1,14 @@
-html, 
+html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Varela Round", sans-serif !important;
-    font-size: 14px;
-    line-height: 1.45;
-    color: #19181D;
-    background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", sans-serif !important;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #19181d;
+  background-color: #ffffff;
 }
 
 h1,
@@ -18,13 +18,37 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 500;
 }
 
 ::selection {
   background-color: rgba(220, 41, 8, 0.8);
-  color: #FFF;
+  color: #fff;
+}
+
+/* Remove scrollbar from Calendly popup */
+.calendly-overlay,
+.calendly-overlay iframe,
+.calendly-popup-content,
+.calendly-overlay .calendly-popup {
+  overflow: hidden !important;
+}
+
+/* Make Calendly popup larger so content fits */
+.calendly-popup {
+  max-height: 100vh !important;
+  height: 100vh !important;
+}
+
+input[type="checkbox"] {
+  accent-color: green;
+}
+
+input,
+textarea,
+.mantine-Select-input {
+  font-family: "Varela Round", sans-serif !important;
 }
 
 @import "tailwindcss";

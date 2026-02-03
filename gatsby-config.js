@@ -1,13 +1,12 @@
-const siteConfig = require('./site-config');
+const siteConfig = require("./site-config");
 require("dotenv").config({
-  path: `.env`
-})
-
+  path: `.env`,
+});
 
 module.exports = {
   pathPrefix: "",
   siteMetadata: {
-    ...siteConfig
+    ...siteConfig,
   },
   plugins: [
     {
@@ -77,11 +76,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-clarity`,
       options: {
-        clarity_project_id: 'exnovfb8i4',
+        clarity_project_id: "exnovfb8i4",
         // Boolean value for enabling clarity while developing
         // true will enable clarity tracking code on both development and production environments
         // false will enable clarity tracking code on production environment only
-        enable_on_dev_env: true
+        enable_on_dev_env: true,
       },
     },
     "gatsby-plugin-image",
@@ -107,6 +106,15 @@ module.exports = {
       },
       __key: "about-assets",
     },
+    // portfolio
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "portfolio",
+    //     path: "./src/portfolio_assets/",
+    //   },
+    //   __key: "portfolio_assets",
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -123,9 +131,9 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /images/
-        }
-      }
+          include: /images/,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-purgecss`,
@@ -150,8 +158,8 @@ module.exports = {
         display: "swap",
       },
     },
-    {
-      resolve: 'gatsby-plugin-force-file-loader'
-    }
+    // {
+    //   resolve: "gatsby-plugin-force-file-loader",
+    // },
   ],
 };

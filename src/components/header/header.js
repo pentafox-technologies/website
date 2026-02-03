@@ -3,7 +3,6 @@ import IsMobile from "../../helpers/IsMobile";
 import LogoSVG from "../../images/logo-pf-white-1.svg";
 import LogoRedSVG from "../../images/logo-pf-red-1.svg";
 import { Link, navigate } from "gatsby";
-
 import {
   createStyles,
   Header,
@@ -21,6 +20,8 @@ import {
   Collapse,
   ScrollArea,
   Container,
+  Badge,
+  Button,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -35,6 +36,11 @@ import {
   IconNotebook,
   IconSparkles,
   IconArrowRight,
+  IconUserCircle,
+  IconHelp,
+  IconSettings,
+  IconLogout,
+  IconX,
 } from "@tabler/icons-react";
 import styled from "styled-components";
 
@@ -55,8 +61,9 @@ const HeaderWrapper = styled.div`
   .header-links {
     display: flex;
     height: 100%;
-    aitems: center;
-    justify-content: flex-end;
+    align-items: center;
+    // justify-content: flex-end;
+    justify-content: space-between;
     @media (max-width: 770px) {
       display: none;
     }
@@ -147,6 +154,61 @@ const HeaderWrapper = styled.div`
     border-radius: 3px;
     padding: 0px 5px;
   }
+
+  .contactUs {
+  background: #cd0e11;
+  color: white;
+  padding: 8px 20px;
+                    margin-top: 10px;
+                    border-radius: 35px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    transition: all 0.2s ease-in;
+                    &:hover {
+                      background: #b60d0f;
+                    },
+  }
+
+    .drawer-sub-link {
+    display: block;
+    padding: 12px 20px 12px 36px;
+    color: #212121;
+    text-decoration: none;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+      .contactUs {
+    background: #cd0e11;
+    color: white;
+    padding: 8px 20px;
+    margin-top: 10px;
+    border-radius: 35px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease-in;
+    &:hover {
+      background: #b60d0f;
+    }
+  }
+
+  .drawer-link {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    color: #212121;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
 `;
 
 const useStyles = createStyles((theme) => ({
@@ -232,6 +294,83 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+
+  // New drawer styles
+  drawerHeader: {
+    backgroundColor: "rgb(255, 245, 245)",
+    padding: "10px 10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottom: "1px solid rgba(255,255,255,0.2)",
+  },
+
+  drawerTitle: {
+    color: "white",
+    fontSize: "18px",
+    fontWeight: 600,
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+  },
+
+  drawerCloseButton: {
+    width: "36px",
+    height: "36px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "gray",
+    fontSize: "25px",
+    border: "none",
+    cursor: "pointer",
+  },
+
+  drawerMenuItem: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: "16px 20px",
+    fontSize: "16px",
+    fontWeight: 500,
+    color: "#212121",
+    borderBottom: "1px solid #f0f0f0",
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+
+    "&:hover": {
+      backgroundColor: "#fafafa",
+    },
+  },
+
+  drawerCollapseContent: {
+    backgroundColor: "#fafafa",
+  },
+
+  drawerFooter: {
+    padding: "20px",
+    backgroundColor: "#f8f8f8",
+    borderTop: "1px solid #f0f0f0",
+  },
+
+  mobileNavHeading: {
+    fontFamily: "Varela Round",
+    fontWeight: "bold",
+  },
+
+  mobileContactUsBtn: {
+    display: "block",
+    backgroundColor: "#cd0e11",
+    color: "white",
+    textAlign: "center",
+    padding: "12px",
+    borderRadius: "6px",
+    textDecoration: "none",
+    fontWeight: 500,
+    fontSize: "16px",
+  },
 }));
 
 const mockdata = [
@@ -315,10 +454,22 @@ const HeaderBar = ({
 }) => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
-  const [linksOpened, { toggle: toggleSolutions }] = useDisclosure(false);
-  const [portfolioOpened, { toggle: togglePortfolio }] = useDisclosure(false);
-  const [companyLinksOpened, { toggle: toggleCompany }] = useDisclosure(false);
+  // const [linksOpened, { toggle: toggleSolutions }] = useDisclosure(false);
+  const [portfolioOpened, { toggle: togglePortfolio, close: closePortfolio }] =
+    useDisclosure(false);
+  // const [companyLinksOpened, { toggle: toggleCompany }] = useDisclosure(false);
   const { classes, theme } = useStyles();
+  // new
+  const [solutionsOpened, { toggle: toggleSolutions, close: closeSolutions }] =
+    useDisclosure(false);
+  const [companyOpened, { toggle: toggleCompany, close: closeCompany }] =
+    useDisclosure(false);
+
+  const handleHomePage = (e) => {
+    e.preventDefault();
+    navigate("/");
+    closeDrawer();
+  };
 
   const NavigationLinks = ({ item }) => {
     // Construct the link dynamically based on whether pageRoute and sectionId are defined.
@@ -348,6 +499,28 @@ const HeaderBar = ({
     );
   };
 
+  const handleToggleSubNav = (type) => {
+    switch (type) {
+      case "solution":
+        toggleSolutions();
+        closeCompany();
+        closePortfolio();
+        break;
+      case "company":
+        toggleCompany();
+        closeSolutions();
+        closePortfolio();
+        break;
+      case "portfolio":
+        togglePortfolio();
+        closeSolutions();
+        closeCompany();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <HeaderWrapper>
       <Box style={{ backgroundColor: headerColor }} withBorder={false}>
@@ -357,7 +530,10 @@ const HeaderBar = ({
             {/* <Group position="apart" sx={{ height: '100%' }}> */}
             <Link to="/">
               {showDarkLogo ? (
-                <LogoRedSVG height={isMobileDevice ? "60" : "90"} width="auto" />
+                <LogoRedSVG
+                  height={isMobileDevice ? "60" : "90"}
+                  width="auto"
+                />
               ) : (
                 <LogoSVG height={isMobileDevice ? "60" : "90"} width="auto" />
               )}
@@ -400,7 +576,8 @@ const HeaderBar = ({
                 </HoverCard.Dropdown>
               </HoverCard>
               <Link
-                to="/portfolio"
+                to="/pentafox-portfolio"
+                // to="/portfolio"
                 className={lightLinks ? "lightLinks" : "link"}
               >
                 <h5>Portfolio</h5>
@@ -435,10 +612,17 @@ const HeaderBar = ({
                   </SimpleGrid>
                 </HoverCard.Dropdown>
               </HoverCard>
+
+              <Link
+                to="/contact-us"
+                className={lightLinks ? "lightLinks" : "link"}
+              >
+                <p className="contactUs">Contact Us</p>
+              </Link>
             </div>
 
             <Burger
-              opened={drawerOpened}
+              // opened={drawerOpened}
               onClick={toggleDrawer}
               className="hidden-burger"
             />
@@ -449,68 +633,172 @@ const HeaderBar = ({
       <Drawer
         opened={drawerOpened}
         onClose={closeDrawer}
-        size="100%"
-        padding="md"
-        title={<LogoRedSVG width="120" />}
-        className={classes.hiddenDesktop}
-        zIndex={1000000}
+        position="left"
+        size="300px"
+        padding={0}
+        withCloseButton={false}
+        styles={{
+          content: {
+            borderRadius: 0,
+          },
+          body: {
+            padding: 0,
+          },
+        }}
       >
-        <ScrollArea h={`calc(100vh - 90px)`} mx="-md">
-          <Divider
-            my="sm"
-            color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
-          />
+        {/* Header */}
+        <div className={classes.drawerHeader}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Link to="/">
+              <LogoRedSVG height={isMobileDevice ? "60" : "90"} width="auto" />
+            </Link>
+            <div onClick={closeDrawer} className={classes.drawerCloseButton}>
+              <IconX size={22} />
+            </div>
+          </div>
+        </div>
 
-          <Link>
-            <a href="/" className={classes.link}>
-              Home
-            </a>
-          </Link>
-          <UnstyledButton className={classes.link} onClick={toggleSolutions}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                Solutions
-              </Box>
-              <IconChevronDown size={16} color={theme.fn.primaryColor()} />
-            </Center>
-          </UnstyledButton>
-          <Collapse in={linksOpened}>
-            {landingdata?.map((item) => (
-              <NavigationLinks key={item.title} item={item} />
-            ))}
-          </Collapse>
+        <ScrollArea h="calc(100vh - 90px)">
+          <div style={{ padding: "8px 0" }}>
+            <div>
+              <UnstyledButton
+                onClick={handleHomePage}
+                className={classes.drawerMenuItem}
+              >
+                <span className={classes.mobileNavHeading}>Home</span>
+              </UnstyledButton>
+            </div>
 
-          <UnstyledButton className={classes.link} onClick={togglePortfolio}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                Portfolio
-              </Box>
-              <IconChevronDown size={16} color={theme.fn.primaryColor()} />
-            </Center>
-          </UnstyledButton>
-          <Collapse in={portfolioOpened}>
-            {mockdata?.map((item) => (
-              <NavigationLinks key={item.title} item={item} />
-            ))}
-          </Collapse>
+            {/* Solutions Section */}
+            <div>
+              <UnstyledButton
+                onClick={() => handleToggleSubNav("solution")}
+                className={classes.drawerMenuItem}
+              >
+                <span className={classes.mobileNavHeading}>Solutions</span>
+                <IconChevronDown
+                  size={18}
+                  style={{
+                    transition: "transform 200ms",
+                    transform: solutionsOpened
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                    color: "#878787",
+                  }}
+                />
+              </UnstyledButton>
 
-          <UnstyledButton className={classes.link} onClick={toggleCompany}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                Company
-              </Box>
-              <IconChevronDown size={16} color={theme.fn.primaryColor()} />
-            </Center>
-          </UnstyledButton>
-          <Collapse in={companyLinksOpened}>
-            {companydata?.map((item) => (
-              <NavigationLinks key={item.title} item={item} />
-            ))}
-          </Collapse>
-          <Divider
-            my="sm"
-            color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
-          />
+              <Collapse in={solutionsOpened}>
+                <div className={classes.drawerCollapseContent}>
+                  {landingdata.map((item) => (
+                    <NavigationLinks key={item.title} item={item} />
+                  ))}
+                </div>
+              </Collapse>
+            </div>
+
+            {/* Portfolio Section */}
+            <div>
+              <UnstyledButton
+                onClick={() => navigate("/pentafox-portfolio")}
+                className={classes.drawerMenuItem}
+              >
+                <span
+                  className={classes.mobileNavHeading}
+                >
+                  Portfolio
+                </span>
+              </UnstyledButton>
+            </div>
+
+            {/* Company Section */}
+            <div>
+              <UnstyledButton
+                onClick={() => handleToggleSubNav("company")}
+                className={classes.drawerMenuItem}
+              >
+                <span className={classes.mobileNavHeading}>Company</span>
+                <IconChevronDown
+                  size={18}
+                  style={{
+                    transition: "transform 200ms",
+                    transform: companyOpened
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                    color: "#878787",
+                  }}
+                />
+              </UnstyledButton>
+
+              <Collapse in={companyOpened}>
+                <div className={classes.drawerCollapseContent}>
+                  {companydata.map((item) => (
+                    <NavigationLinks key={item.title} item={item} />
+                  ))}
+                </div>
+              </Collapse>
+            </div>
+
+            {/* Contact Us Button */}
+            <div
+              style={{
+                padding: "16px 20px",
+                borderBottom: "1px solid #f0f0f0",
+              }}
+            >
+              <Link
+                to="/contact-us"
+                onClick={closeDrawer}
+                className={classes.mobileContactUsBtn}
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          {/* Footer */}
+          {/* <div className={classes.drawerFooter}>
+            <div
+              style={{
+                fontSize: "14px",
+                color: "#878787",
+                marginBottom: "8px",
+              }}
+            >
+              © {new Date().getFullYear()} Your Company
+            </div>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <Link
+                to="/privacy"
+                onClick={closeDrawer}
+                style={{
+                  fontSize: "14px",
+                  color: "#2874F0",
+                  textDecoration: "none",
+                }}
+              >
+                Privacy
+              </Link>
+              <Link
+                to="/terms"
+                onClick={closeDrawer}
+                style={{
+                  fontSize: "14px",
+                  color: "#2874F0",
+                  textDecoration: "none",
+                }}
+              >
+                Terms
+              </Link>
+            </div>
+          </div> */}
         </ScrollArea>
       </Drawer>
     </HeaderWrapper>

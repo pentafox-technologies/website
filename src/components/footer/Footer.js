@@ -1,4 +1,4 @@
-import { Anchor, Box, Button, Image } from "@mantine/core";
+import { Anchor, Box, Button, Image, Select } from "@mantine/core";
 import { graphql, Link, navigate, useStaticQuery } from "gatsby";
 import React, { useRef, useState } from "react";
 import IsMobile from "../../helpers/IsMobile";
@@ -6,9 +6,9 @@ import { FooterWrapper } from "./footer.css";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { URL } from "../../services/requestUrl";
 import { useForm } from "@mantine/form";
-import PentafoxLogo from "../../images/logo-pf-white-1.svg"
+import PentafoxLogo from "../../images/logo-pf-white-1.svg";
 import { PopupButton } from "react-calendly";
-import { document } from 'browser-monads';
+import { document } from "browser-monads";
 import { useMediaQuery } from "@mantine/hooks";
 
 const Footer = () => {
@@ -16,6 +16,7 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [res, setRes] = useState(false);
   const [captchaToken, setCaptchaToken] = useState();
+  const [captchaError, setCaptchaError] = useState(false);
   const captchaRef = useRef();
 
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -25,6 +26,7 @@ const Footer = () => {
       email: "",
       mobile: "",
       message: "",
+      project_sevices: null,
       is_comms: false,
       is_privacy: false,
     },
@@ -32,52 +34,53 @@ const Footer = () => {
       name: (value) => (value.length < 2 ? "Enter a Valid Name" : null),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       mobile: (value) =>
-        /^[7-9][0-9]{9}$/.test(value) ? null : "Invalid Mobile",
+        /^[6-9]{1}[0-9]{9}$/.test(value) ? null : "Invalid Mobile",
       is_privacy: (value) => (value ? null : "Required"),
       message: (value) => (value ? null : "Required"),
+      project_sevices: (value) => (value ? false : true),
     },
   });
 
   const handlePrivacyStatement = (event) => {
     event.preventDefault();
-    navigate("/privacy");
+    window.open("https://pentafox.in/privacy");
+    // navigate("/privacy");
   };
 
   const handleSubmit = (data) => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.GATSBY_API_KEY,
-      },
-      body: JSON.stringify({
-        name: data?.name,
-        email: data?.email,
-        phone: data?.mobile,
-        desc: data?.message,
-        is_privacy: data?.is_privacy,
-        is_comms: data?.is_comms,
-        captcha_token: captchaToken,
-      }),
-    };
-    setLoading(true);
-    fetch(`${URL.base}${URL.contact}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data === "Success") {
-          setRes(true);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
-    setTimeout(() => {
-      form.reset();
-      captchaRef.current.resetCaptcha();
-      setCaptchaToken();
-    }, 6000);
+    if (!captchaToken) {
+      setCaptchaError(true);
+      return;
+    }
+    if (!captchaError && captchaToken) {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.GATSBY_API_KEY,
+        },
+        body: JSON.stringify({
+          name: data?.name,
+          email: data?.email,
+          phone: data?.mobile,
+          desc: `${data.project_sevices}:${data.message}`,
+          is_privacy: data?.is_privacy,
+          is_comms: data?.is_comms,
+          captcha_token: captchaToken,
+        }),
+      };
+      setLoading(true);
+
+      fetch(`${URL.base}${URL.contact}`, requestOptions)
+        .then((res) => res.json())
+        .then(() => {
+          form.reset();
+          captchaRef.current.resetCaptcha();
+          setCaptchaToken(null);
+          setCaptchaError(false);
+        })
+        .finally(() => setLoading(false));
+    }
   };
 
   const queryData = useStaticQuery(graphql`
@@ -101,7 +104,7 @@ const Footer = () => {
           title
         }
       }
-      allContentfulStaticPage(sort: {fields: createdAt}) {
+      allContentfulStaticPage(sort: { fields: createdAt }) {
         nodes {
           title
           slug
@@ -115,13 +118,19 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <div style={{ width: '100%', height: 200, top: 0, zIndex: 99 }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+      <div style={{ width: "100%", height: 200, top: 0, zIndex: 99 }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#ffffff"
+            fill-opacity="1"
+            d="M0,32L48,32C96,32,192,32,288,48C384,64,480,96,576,101.3C672,107,768,85,864,64C960,43,1056,21,1152,26.7C1248,32,1344,64,1392,80L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          ></path>
+        </svg>
       </div>
       <div className="container lg-container">
         <div className={`row ${!isMobileDevice ? "vertical-bottom" : ""}`}>
           <div className="col-12 col-sm-6 col-md-6">
-            <Box mb='xl'>
+            <Box mb="xl">
               <PentafoxLogo height="140" width="140" />
             </Box>
             <p className="mb-40">
@@ -223,11 +232,82 @@ const Footer = () => {
               </div>
               <div className="form-group">
                 <input
+                  type="tel"
+                  placeholder="Mobile"
+                  inputMode="numeric"
+                  maxLength={10}
+                  value={form.values.mobile}
+                  onChange={(e) => {
+                    const onlyNumbers = e.target.value.replace(/\D/g, "");
+                    form.setFieldValue("mobile", onlyNumbers);
+                  }}
+                  className={form?.errors?.mobile && "error-label"}
+                  style={{ fontFamily: "Varela Round" }}
+                />
+                {/* <input
                   label="Mobile"
                   placeholder="Mobile"
                   className={form?.errors?.mobile && "error-label"}
                   style={{ fontFamily: "Varela Round" }}
                   {...form.getInputProps("mobile")}
+                /> */}
+              </div>
+              <div className="form-group">
+                <Select
+                  placeholder="Select Products / Services"
+                  className={
+                    form?.errors?.project_sevices &&
+                    "form-input-error error-label"
+                  }
+                  {...form.getInputProps("project_sevices")}
+                  data={[
+                    {
+                      value: "Whatsapp business automation - walane.ai",
+                      label: "Whatsapp business automation - walane.ai",
+                      group: "Products",
+                    },
+                    {
+                      value: "KYC / ID verification APIs - FastKYC.com",
+                      label: "KYC / ID verification APIs - FastKYC.com",
+                      group: "Products",
+                    },
+                    {
+                      value: "Cloud / Infra services",
+                      label: "Cloud / Infra services",
+                      group: "Services",
+                    },
+                    {
+                      value: "Gen AI Solutions",
+                      label: "Gen AI Solutions",
+                      group: "Services",
+                    },
+                    {
+                      value: "UI / UX, Digital Video Production",
+                      label: "UI / UX, Digital Video Production",
+                      group: "Services",
+                    },
+                    { value: "Others", label: "Others" },
+                  ]}
+                  styles={{
+                    input: {
+                      "&[data-placeholder-shown]": {
+                        color: "#757575d3",
+                        fontWeight: 500,
+                      },
+                    },
+                    item: {
+                      "&[data-selected]": {
+                        // backgroundColor: "#d85b5bff",
+                        backgroundColor: "#757575",
+                        fontFamily: "Varela Round",
+                      },
+                      "&[data-selected]:hover": {
+                        // backgroundColor: "#d85b5bff",
+                        backgroundColor: "#757575",
+                        fontFamily: "Varela Round",
+                      },
+                    },
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -271,22 +351,41 @@ const Footer = () => {
                 <HCaptcha
                   ref={captchaRef}
                   sitekey={process.env.GATSBY_CAPTCHA_TOKEN}
-                  onVerify={(token) => setCaptchaToken(token)}
-                  onExpire={() => setCaptchaToken()}
+                  onVerify={(token) => {
+                    setCaptchaToken(token);
+                    setCaptchaError(false);
+                  }}
+                  onExpire={() => setCaptchaToken(null)}
+                  onError={() => {
+                    setCaptchaError(true);
+                  }}
                 />
+                {captchaError && (
+                  <p
+                    style={{
+                      color: "rgb(220, 43, 43)",
+                      fontSize: 13,
+                      marginTop: 8,
+                    }}
+                  >
+                    Please verify that you are human
+                  </p>
+                )}
               </div>
-              <Box mt="md" mb='xl'>
+              <Box mt="md" mb="xl">
                 <Button
+                  type="submit"
+                  onClick={() => (!captchaToken ? setCaptchaError(true) : null)}
                   size="lg"
                   fullWidth
                   color="teal"
+                  className="submit-btn"
                   style={{ fontFamily: "Varela Round" }}
                   sx={{
                     "&[data-disabled]": { opacity: 0.5, color: "#BABABA" },
                   }}
                   // disabled={!captchaToken}
                   loading={loading}
-                  type="submit"
                 >
                   Send Request
                 </Button>
@@ -319,7 +418,9 @@ const Footer = () => {
               </p>
             </p>
             <p className="mb-4">
-              <span className="bold mb-2">Address Registered & Corporate Office:</span>
+              <span className="bold mb-2">
+                Address Registered & Corporate Office:
+              </span>
               <p style={{ color: "#b8b6b6" }}>
                 Pentafox Technologies Private Limited
                 <br />
@@ -333,8 +434,12 @@ const Footer = () => {
             <p className="mb-2">
               <span className="bold mb-2">Escalation:</span>
               <p style={{ color: "#b8b6b6" }}>
-                If the customer’s query or complaint is not resolved within a period of one month from date of complaint the customer may also approach the RBI Ombudsman / Regional Office of Dept. of Supervision – RBI Integrated Ombudsman
-                <br /><br />
+                If the customer’s query or complaint is not resolved within a
+                period of one month from date of complaint the customer may also
+                approach the RBI Ombudsman / Regional Office of Dept. of
+                Supervision – RBI Integrated Ombudsman
+                <br />
+                <br />
                 Contact Details:
               </p>
             </p>
@@ -352,12 +457,11 @@ const Footer = () => {
                 </a>
               </p>
               <p style={{ color: "#b8b6b6" }}>
-                2. Physical letter can be sent to the ‘Centralised Receipt and Processing
-                Centre’ set up at Reserve Bank of India, 4th Floor, Sector 17, Chandigarh –
-                160017.
+                2. Physical letter can be sent to the ‘Centralised Receipt and
+                Processing Centre’ set up at Reserve Bank of India, 4th Floor,
+                Sector 17, Chandigarh – 160017.
               </p>
             </div>
-
           </div>
         </div>
 
@@ -426,22 +530,24 @@ const Footer = () => {
               Internship
             </Link> */}
             {/* {"    "}&#124;{"    "} */}
-            {
-              queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
-                return (
-                  <>
-                    {"    "}&#124;{"    "}
-                    <Link
-                      to={`/${item?.slug}`}
-                      className="pl-3 text-white"
-                      style={{ textDecoration: "none", marginLeft: 8, marginRight: 8 }}
-                    >
-                      {item?.title}
-                    </Link>
-                  </>
-                )
-              })
-            }
+            {queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
+              return (
+                <>
+                  {"    "}&#124;{"    "}
+                  <Link
+                    to={`/${item?.slug}`}
+                    className="pl-3 text-white"
+                    style={{
+                      textDecoration: "none",
+                      marginLeft: 8,
+                      marginRight: 8,
+                    }}
+                  >
+                    {item?.title}
+                  </Link>
+                </>
+              );
+            })}
             {/* <Link
               to="/terms"
               className="pl-3 text-white"

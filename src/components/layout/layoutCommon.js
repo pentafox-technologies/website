@@ -22,7 +22,7 @@ const themeObj = {
   headings: {
     fontFamily: "'Outfit', sans-serif !important",
   },
-}
+};
 
 const LayoutCommon = ({
   children,
@@ -30,18 +30,26 @@ const LayoutCommon = ({
   hideLink,
   showCareers = true,
   showDarkLogo = false,
-  headerColor = '#FFFFFF',
+  headerColor = "#FFFFFF",
   lightLinks = false,
   showHome = true,
-  showBanner = true
+  showBanner = true,
+  isFooter = true,
 }) => {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={themeObj}>
-      <HeaderBar showCareers={showCareers} showDarkLogo={showDarkLogo} headerColor={headerColor} lightLinks={lightLinks} showHome={showHome} showBanner={showBanner} />
-      <div className="content-wrap" style={{position: 'relative'}}>
+      <HeaderBar
+        showCareers={showCareers}
+        showDarkLogo={showDarkLogo}
+        headerColor={headerColor}
+        lightLinks={lightLinks}
+        showHome={showHome}
+        showBanner={showBanner}
+      />
+      <div className="content-wrap" style={{ position: "relative" }}>
         <main>{children}</main>
       </div>
-      <Footer />
+      {isFooter && <Footer />}
     </MantineProvider>
   );
 };

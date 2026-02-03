@@ -71,6 +71,8 @@ const IndexPage = () => {
       <HomeWrapper>
         <HeroSection contentData={queryData.allContentfulServices.nodes} />
         {queryData.allContentfulServices.nodes?.map((item, index) => {
+          console.log(item);
+          
           return (
             <ContentSection
               key={index}

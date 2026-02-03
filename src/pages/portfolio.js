@@ -1,6 +1,5 @@
 import { Box, Container } from "@mantine/core";
 import { document } from 'browser-monads';
-import { StaticImage } from "gatsby-plugin-image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { PopupButton } from "react-calendly";
 import { caseStudyData, cloudEngineering, mlData } from "../../data/portfolioData";
@@ -10,7 +9,6 @@ import LayoutCommon from "../components/layout/layoutCommon";
 import PageWrapper from "../components/pageWrapper/PageWrapper";
 import PortfolioLayout from "../components/pageWrapper/PortfolioLayout";
 import SectionTitle from "../components/Title/SectionTitle";
-import apiCall from "../services/contentfulApiCall";
 import { PortfolioWrapper, portfolioStyles } from "../styles/portfolio.css";
 import { gsap } from "gsap";
 import { graphql, useStaticQuery } from "gatsby";
@@ -82,48 +80,6 @@ const Portfolio = () => {
     }))
 
   }, [queryData])
-
-  // useMemo(() => {
-  //   apiCall('caseStudies')
-  //   .then((studyData) => {
-  //     // setPortfolioPageData(caseStudyData.map((obj2) => {
-  //     //   const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-  //     //   return {
-  //     //     identifier: obj2.identifier,
-  //     //     image: obj2.image,
-  //     //     title: obj1?.fields.title,
-  //     //     description: obj1?.fields.description,
-  //     //     descriptionPoints: obj1?.fields.descriptionPoints,
-  //     //     skillset: obj1?.fields.skillset
-  //     //   };
-  //     // }))
-      
-  //     setCloudEngineeringData(cloudEngineering.map((obj2) => {
-  //       const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-  //       return {
-  //         identifier: obj2.identifier,
-  //         image: obj2.image,
-  //         title: obj1?.fields.title,
-  //         description: obj1?.fields.description,
-  //         descriptionPoints: obj1?.fields.descriptionPoints,
-  //         skillset: obj1?.fields.skillset
-  //       };
-  //     }))
-      
-  //     setMlEngineeringData(mlData.map((obj2) => {
-  //       const obj1 = studyData?.items?.find((obj1) => obj1?.fields.identifier === obj2?.identifier);
-  //       return {
-  //         identifier: obj2.identifier,
-  //         image: obj2.image,
-  //         title: obj1?.fields.title,
-  //         description: obj1?.fields.description,
-  //         descriptionPoints: obj1?.fields.descriptionPoints,
-  //         skillset: obj1?.fields.skillset
-  //       };
-  //     }))
-  //   })
-  //   .catch(e => console.log(e))
-  // }, [])
 
   useEffect(() => {
     const mainImage = document.querySelectorAll(".main-image");
@@ -236,13 +192,7 @@ const Portfolio = () => {
                 </Box>
               ))}
             </Container>
-            {/* <Container
-              size={1200}
-              py={40}
-              px={0}
-            >
-              <SectionTitle title={"Our Testimonial"} index="03" subText='#Trusted by Clients' />
-            </Container> */}
+
             <Container
               size={1200}
               py={40}
