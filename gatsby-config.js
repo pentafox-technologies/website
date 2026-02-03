@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        spaceId: process.env.GATSBY_SPACE_ID,
-        accessToken: process.env.GATSBY_ACCESS_TOKEN,
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
     {
@@ -77,11 +77,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-clarity`,
       options: {
-      clarity_project_id: 'exnovfb8i4',
-      // Boolean value for enabling clarity while developing
-      // true will enable clarity tracking code on both development and production environments
-      // false will enable clarity tracking code on production environment only
-      enable_on_dev_env: true
+        clarity_project_id: 'exnovfb8i4',
+        // Boolean value for enabling clarity while developing
+        // true will enable clarity tracking code on both development and production environments
+        // false will enable clarity tracking code on production environment only
+        enable_on_dev_env: true
       },
     },
     "gatsby-plugin-image",
@@ -98,6 +98,14 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "about-assets",
+        path: "./src/about_assets/",
+      },
+      __key: "about-assets",
     },
     {
       resolve: `gatsby-plugin-manifest`,

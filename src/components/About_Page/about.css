@@ -1,0 +1,36 @@
+.core-title {
+  font-size: 36px;
+}
+
+@media (max-width: 768px) {
+  .core-title {
+    font-size: 32px;
+  }
+}
+
+
+/* Journey Section */
+@keyframes rotateClockwise {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotateCounterClockwise {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+.rotate1 {
+  animation: rotateClockwise 30s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.rotate2 {
+  animation: rotateCounterClockwise 45s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.rotate3 {
+  animation: rotateClockwise 60s linear infinite;
+  transform-origin: 50% 50%;
+}

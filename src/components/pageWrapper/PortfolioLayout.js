@@ -48,53 +48,62 @@ const PortfolioLayout = ({
   list,
   imageComponent,
   skillset,
-  section
+  section,
 }) => {
   const { classes } = useStyles();
   const matches = useMediaQuery("(max-width: 990px)");
+
+  // Refs for animation
   const animContainer = useRef(null);
-  const animListItem = useRef(null);
+  const animListWrapper = useRef(null);
 
   useEffect(() => {
-    const listItems = animListItem?.current?.querySelectorAll(".list-item");
     gsap.registerPlugin(ScrollTrigger);
 
+    // Animate right/center content
     gsap.from(animContainer.current, {
-      opacity: 0.1,
-      y: 100,
+      opacity: 0,
+      y: 80,
       duration: 1,
+      ease: "power3.out",
       scrollTrigger: {
         trigger: animContainer.current,
-        start: "top 90%",
-        end: "+=100",
-        scrub: false,
+        start: "top 85%",
       },
     });
 
-    gsap.from(listItems, {
-      opacity: 0,
-      y: 100,
-      ease: "power4.out",
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: animListItem?.current?.children,
-        start: "top 90%",
-      },
-    });
+    // Stagger for list + badges
+    const items = animListWrapper.current?.querySelectorAll(".list-item");
+
+    if (items?.length) {
+      gsap.from(items, {
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: animListWrapper.current,
+          start: "top 90%",
+        },
+      });
+    }
   }, []);
 
   return (
     <ContentSectionWrapper
       id={`content-section-${id}-${section}`}
       rightSideStyle={rightSide}
+      style={{ overflow: "hidden" }}  // FINAL FIX: prevents bottom overflow
     >
       <div className="container lg-container">
         <div className="middle-content" style={{ gap: 35 }}>
-          <div className="left-col">
+          <div className="left-col" ref={animListWrapper}>
             <h3>{heading}</h3>
+
             <p className={classes.description}>{description}</p>
+
             <List
-              ref={animListItem}
               mt={20}
               spacing="md"
               icon={
@@ -109,33 +118,39 @@ const PortfolioLayout = ({
                     alignItems: "center",
                   }}
                 >
-                  <IconCheck size={16} color="rgba(220, 41, 8, 1)" />
+                  <IconCheck size={16} color="rgba(220,41,8,1)" />
                 </div>
               }
             >
-              {list?.map((listItem, key) => (
+              {list?.map((item, i) => (
                 <List.Item
+                  key={i}
                   className="list-item"
-                  key={key}
                   style={{
                     color: "rgba(0,0,0,0.8)",
                     fontFamily: "Varela Round",
                   }}
                 >
-                  {listItem}
+                  {item}
                 </List.Item>
               ))}
             </List>
-            <Group mt={20} ref={animListItem}>
-              {skillset?.map((skill, key) => (
-                <Badge color="red" key={key} className="list-item" style={{color: '#CD0E11'}}>
+
+            <Group mt={20}>
+              {skillset?.map((skill, i) => (
+                <Badge
+                  color="red"
+                  key={i}
+                  className="list-item"
+                  style={{ color: "#CD0E11" }}
+                >
                   {skill}
                 </Badge>
               ))}
             </Group>
           </div>
 
-          {/* Image Comp */}
+          {/* Right Column Animation */}
           <div className="right-col" ref={animContainer}>
             {imageComponent}
           </div>

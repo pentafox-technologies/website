@@ -26,3 +26,5 @@ h6 {
   background-color: rgba(220, 41, 8, 0.8);
   color: #FFF;
 }
+
+@import "tailwindcss";
