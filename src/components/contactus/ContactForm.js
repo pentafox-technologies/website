@@ -118,16 +118,6 @@ const ContactForm = () => {
   return (
     <ContactFormWrapper>
       <div className="page-wrap">
-        {/* TITLE */}
-        {/* <p className="heading-txt mb-24" style={{ textAlign: "center" }}>
-          <span className="bold">Get in Touch</span>
-        </p>
-
-        <p className="subtitle" style={{ textAlign: "center" }}>
-          We'd love to hear from you! Fill in your details and our team will
-          connect with you soon.
-        </p> */}
-
         {/* CARD WRAPPER */}
         <div className="card">
           {/* LEFT PANEL */}

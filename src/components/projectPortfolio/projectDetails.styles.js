@@ -62,8 +62,8 @@ export const Wrapper = styled.div`
   /* GRID */
   .challenge-solution-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 10px;
   }
 
   .content {
