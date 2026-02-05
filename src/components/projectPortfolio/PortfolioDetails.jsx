@@ -115,7 +115,7 @@ const RenderBadge = ({ heading, badgeList = [], Icon = IconCheck, key }) => {
     <PointsWrapper>
       <div
         className="header-section"
-        style={{ justifyContent: "center" }}
+        // style={{ justifyContent: "center" }}
         key={key}
       >
         <div className="icon-container">
@@ -212,15 +212,8 @@ export default function PortfolioDetails() {
             solutionContent
           }
           solutionKeyPoints
-
-          missionContent {
-            missionContent
-          }
           missionKeyPoints
 
-          goalContent {
-            goalContent
-          }
           goalKeyPoints
 
           coreTechnology {
@@ -245,34 +238,94 @@ export default function PortfolioDetails() {
       }
     }
   `);
+  // const data = useStaticQuery(graphql`
+  //   query PortfolioDetailsStaticQuery {
+  //     allContentfulPortfolio {
+  //       nodes {
+  //         name
+  //         slug
+  //         projectImage {
+  //           gatsbyImageData(width: 900)
+  //         }
+
+  //         overview {
+  //           overview
+  //         }
+
+  //         detailedDescription {
+  //           detailedDescription
+  //         }
+
+  //         challengeContent {
+  //           challengeContent
+  //         }
+  //         challengekeyPoints
+
+  //         solutionContent {
+  //           solutionContent
+  //         }
+  //         solutionKeyPoints
+
+  //         missionContent {
+  //           missionContent
+  //         }
+  //         missionKeyPoints
+
+  //         goalContent {
+  //           goalContent
+  //         }
+  //         goalKeyPoints
+
+  //         coreTechnology {
+  //           coreTechnology
+  //         }
+  //         technologyStack
+
+  //         impactContent {
+  //           impactContent
+  //         }
+  //         impactKeyPoints
+
+  //         coreCapability
+  //         keyOutcomes
+  //         collaboration {
+  //           collaboration
+  //         }
+  //         conclusion {
+  //           conclusion
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   const allContent = data?.allContentfulPortfolio?.nodes;
   const project = allContent?.find((item) => item.slug === slug);
   const relatedProjects = allContent.filter((item) => item.slug !== slug);
 
   const projectContentConfig = [
-    {
-      type: "point",
-      renderCondition:
-        project?.missionContent?.missionContent || project?.missionKeyPoints,
-      props: {
-        heading: "Mission",
-        Icon: IconFlag,
-        content: project?.missionContent?.missionContent,
-        keypoints: project?.missionKeyPoints,
-      },
-    },
-    {
-      type: "point",
-      renderCondition:
-        project?.goalContent?.goalContent || project?.goalKeyPoints,
-      props: {
-        heading: "Goals",
-        Icon: IconTarget,
-        content: project?.goalContent?.goalContent,
-        keypoints: project?.goalKeyPoints,
-      },
-    },
+    // {
+    //   type: "point",
+    //   renderCondition:
+    //     project?.missionContent?.missionContent || project?.missionKeyPoints,
+    //   props: {
+    //     heading: "Mission",
+    //     Icon: IconFlag,
+    //     content: project?.missionContent?.missionContent,
+    //     keypoints: project?.missionKeyPoints,
+    //   },
+    // },
+    // {
+    //   type: "point",
+    //   renderCondition:
+    //     project?.goalContent?.goalContent || project?.goalKeyPoints,
+    //   props: {
+    //     heading: "Goals",
+    //     Icon: IconTarget,
+    //     content: project?.goalContent?.goalContent,
+    //     keypoints: project?.goalKeyPoints,
+    //   },
+    // },
     {
       type: "point",
       renderCondition:
@@ -372,61 +425,6 @@ export default function PortfolioDetails() {
                 >
                   {project?.overview?.overview}
                 </p>
-
-                {/* SHARE */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "16px",
-                    marginBottom: "32px",
-                  }}
-                >
-                  <strong style={{ fontSize: "16px" }}>Share this on:</strong>
-
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${
-                      typeof window !== "undefined" ? window.location.href : ""
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "8px 14px",
-                      background: "#0a66c2",
-                      color: "#fff",
-                      borderRadius: "999px",
-                      textDecoration: "none",
-                      fontWeight: 550,
-                    }}
-                  >
-                    <IconBrandLinkedin size={20} stroke={2} />
-                    LinkedIn
-                  </a>
-
-                  <a
-                    href={`https://twitter.com/intent/tweet?url=${
-                      typeof window !== "undefined" ? window.location.href : ""
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "8px 14px",
-                      background: "#000",
-                      color: "#fff",
-                      borderRadius: "999px",
-                      textDecoration: "none",
-                      fontWeight: 550,
-                    }}
-                  >
-                    <IconBrandX size={20} stroke={2} />X
-                  </a>
-                </div>
               </div>
 
               {/* RIGHT IMAGE */}
@@ -438,14 +436,25 @@ export default function PortfolioDetails() {
                   alt={project.name}
                   style={{
                     width: "100%",
-                    borderRadius: "16px",
+                    // borderRadius: "16px",
                   }}
                 />
               </div>
             </div>
             <hr style={{ margin: "40px 0" }} />
 
+
             <div style={{ display: "flex", justifyContent: "center" }}>
+              {project?.detailedDescription?.detailedDescription && (
+                <RenderPoints
+                  Icon={IconStack}
+                  heading="Detailed Description"
+                  content={project?.detailedDescription?.detailedDescription}
+                />
+              )}
+            </div>
+
+            <div>
               {project?.technologyStack && (
                 <RenderBadge
                   Icon={IconStack}
@@ -474,7 +483,7 @@ export default function PortfolioDetails() {
             </section>
 
             {/* Other Related Products */}
-            <section style={{ padding: "80px 40px" }}>
+            <section style={{ padding: "10px 40px" }}>
               <h2
                 style={{
                   fontSize: "40px",

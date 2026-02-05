@@ -27,7 +27,7 @@ function ProjectPortfolio() {
           challengeContent {
             challengeContent
           }
-          projectImage {
+          coverImage {
             gatsbyImageData(width: 900, placeholder: BLURRED)
           }
         }
@@ -36,6 +36,7 @@ function ProjectPortfolio() {
   `);
 
   const projects = data?.allContentfulPortfolio?.nodes;
+  const aviationProjects = projects?.filter((p) => p.filter === "aviation");
 
   const handleScollToTop = () => {
     if (typeof window !== "undefined") {
@@ -94,12 +95,11 @@ function ProjectPortfolio() {
           margin: "0 auto",
         }}
       >
-        {projects.map((project) => (
+        {aviationProjects.map((project) => (
           <div
             key={project?.contentful_id}
             style={{
               background: "white",
-              // background: "#fdbebe28",
               border: "1px solid #e5e7eb",
               borderRadius: "10px",
               padding: "20px",
@@ -111,27 +111,24 @@ function ProjectPortfolio() {
             {/* IMAGE */}
             <div
               style={{
-                height: "220px",
-                borderRadius: "16px",
+                height: "180px",
                 overflow: "hidden",
                 marginBottom: "20px",
               }}
             >
               <img
-                src={
-                  project.projectImage?.gatsbyImageData?.images?.fallback?.src
-                }
+                src={project.coverImage?.gatsbyImageData?.images?.fallback?.src}
                 alt={project.name}
-                // style={{
-                //   width: "100%",
-                //   height: "100%",
-                //   // objectFit: "cover",
-                // }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
               />
             </div>
 
             {/* CONTENT */}
-            <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
+            <h3 style={{ fontSize: "20px", marginBottom: "12px" }}>
               {project?.name}
             </h3>
 
@@ -153,7 +150,7 @@ function ProjectPortfolio() {
               }
               style={{
                 color: "#c52222",
-                marginTop: "16px",
+                marginTop: "12px",
                 alignSelf: "flex-start",
                 background:
                   hoveredId === project.contentful_id ? "#fbcccc" : "#ffe6e6",
@@ -162,6 +159,7 @@ function ProjectPortfolio() {
                 borderRadius: "5px",
                 fontWeight: 600,
                 cursor: "pointer",
+                fontSize: "12px"
               }}
             >
               Read More
