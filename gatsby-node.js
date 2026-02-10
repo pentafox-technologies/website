@@ -59,13 +59,6 @@ exports.createPages = async ({ graphql, actions }) => {
           slug
         }
       }
-
-      allContentfulAviationPortfolio {
-        nodes {
-          contentful_id
-          slug
-        }
-      }
     }
   `);
 
@@ -81,19 +74,19 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  portfolioResult.data.allContentfulAviationPortfolio.nodes.forEach(
-    (project) => {
-      createPage({
-        path: `/portfolio/${project.slug}`,
-        component: path.resolve(
-          "./src/components/projectPortfolio/PortfolioDetails.jsx"
-        ),
-        context: {
-          contentfulId: project.contentful_id,
-        },
-      });
-    }
-  );
+  // portfolioResult.data.allContentfulAviationPortfolio.nodes.forEach(
+  //   (project) => {
+  //     createPage({
+  //       path: `/portfolio/${project.slug}`,
+  //       component: path.resolve(
+  //         "./src/components/projectPortfolio/PortfolioDetails.jsx"
+  //       ),
+  //       context: {
+  //         contentfulId: project.contentful_id,
+  //       },
+  //     });
+  //   }
+  // );
 };
 
 // /**

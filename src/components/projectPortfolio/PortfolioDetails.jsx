@@ -5,15 +5,12 @@ import LayoutCommon from "../layout/layoutCommon";
 import PageWrapper from "../pageWrapper/PageWrapper";
 import {
   IconArrowRight,
-  IconBrandLinkedin,
-  IconBrandX,
   IconBulb,
   IconChartBar,
   IconCpu,
-  IconExternalLink,
+  IconFileText,
   IconFlag,
   IconFlagCheck,
-  IconPuzzle,
   IconStack,
   IconTarget,
   IconUsers,
@@ -24,6 +21,7 @@ import { Badge } from "@mantine/core";
 import { IconCheck } from "@tabler/icons-react";
 import { COLOR_CODES } from "../../constant/colorCode";
 import { IconAlertTriangle } from "@tabler/icons-react";
+import ProjectCard from "./ProjectCard";
 
 const handleSeperateHeadingAndContent = (data) => {
   const contentArray = data?.split("--"); // Ex:- item = heading -- content
@@ -37,6 +35,10 @@ const handleSeperateHeadingAndContent = (data) => {
 };
 
 export const PointsWrapper = styled.div`
+  --title-size: 3rem;
+  --heading-size: 1.8rem;
+  --content-size: 1.2rem;
+
   background: white;
   padding: 24px;
   border-radius: var(--radius);
@@ -59,7 +61,7 @@ export const PointsWrapper = styled.div`
   }
 
   .section-heading {
-    font-size: 2.3rem;
+    font-size: var(--heading-size);
     font-weight: 500;
     color: var(--gray-dark);
     margin-bottom: 12px;
@@ -68,11 +70,11 @@ export const PointsWrapper = styled.div`
   }
 
   .section-content {
-    font-size: 1.3rem;
+    font-size: var(--content-size);
     color: var(--gray-dark);
     line-height: 1.6;
     font-weight: 500;
-    text-align: justify;
+    text-align: left;
   }
 
   .points-list {
@@ -100,13 +102,16 @@ export const PointsWrapper = styled.div`
   }
 
   .point-text {
-    font-size: 1.2rem;
+    font-size: var(--content-size);
     color: var(--gray-dark);
     text-align: auto;
+    margin: 2px;
+    font-weight: 600;
   }
   .point-sub-text {
-    font-size: 1.2rem;
-    color: var(--gray-medium);
+    font-size: var(--content-size);
+    color: var(--gray-dark);
+    margin: 2px;
   }
 `;
 
@@ -125,7 +130,7 @@ const RenderBadge = ({ heading, badgeList = [], Icon = IconCheck, key }) => {
       </div>
       <div style={{ marginTop: "10px" }}>
         {badgeList?.length > 0 && (
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {badgeList?.map((badge, index) => (
               <Badge key={index} color="green">
                 {badge}
@@ -167,7 +172,7 @@ const RenderPoints = ({
 
                 <div className="text-container">
                   {heading && <p className="point-text">{heading}</p>}
-                  {content && <p className="point-text">{content}</p>}
+                  {content && <p className="point-sub-text">{content}</p>}
                 </div>
               </div>
             );
@@ -185,59 +190,6 @@ export default function PortfolioDetails() {
 
   const slug = location.pathname.split("/").filter(Boolean).pop();
 
-  const data = useStaticQuery(graphql`
-    query PortfolioDetailsStaticQuery {
-      allContentfulPortfolio {
-        nodes {
-          name
-          slug
-          projectImage {
-            gatsbyImageData(width: 900)
-          }
-
-          overview {
-            overview
-          }
-
-          detailedDescription {
-            detailedDescription
-          }
-
-          challengeContent {
-            challengeContent
-          }
-          challengekeyPoints
-
-          solutionContent {
-            solutionContent
-          }
-          solutionKeyPoints
-          missionKeyPoints
-
-          goalKeyPoints
-
-          coreTechnology {
-            coreTechnology
-          }
-          technologyStack
-
-          impactContent {
-            impactContent
-          }
-          impactKeyPoints
-
-          coreCapability
-          keyOutcomes
-          collaboration {
-            collaboration
-          }
-          conclusion {
-            conclusion
-          }
-        }
-      }
-    }
-  `);
   // const data = useStaticQuery(graphql`
   //   query PortfolioDetailsStaticQuery {
   //     allContentfulPortfolio {
@@ -265,15 +217,8 @@ export default function PortfolioDetails() {
   //           solutionContent
   //         }
   //         solutionKeyPoints
-
-  //         missionContent {
-  //           missionContent
-  //         }
   //         missionKeyPoints
 
-  //         goalContent {
-  //           goalContent
-  //         }
   //         goalKeyPoints
 
   //         coreTechnology {
@@ -298,34 +243,92 @@ export default function PortfolioDetails() {
   //     }
   //   }
   // `);
+  const data = useStaticQuery(graphql`
+    query PortfolioDetailsStaticQuery {
+      allContentfulPortfolio {
+        nodes {
+          contentful_id
+          name
+          slug
+          projectImage {
+            gatsbyImageData(width: 900)
+          }
+
+          overview {
+            overview
+          }
+
+          detailedDescription {
+            detailedDescription
+          }
+
+          challengeContent {
+            challengeContent
+          }
+          challengekeyPoints
+
+          solutionContent {
+            solutionContent
+          }
+          solutionKeyPoints
+
+          missionKeyPoints
+
+          goalKeyPoints
+
+          coreTechnology {
+            coreTechnology
+          }
+          technologyStack
+
+          impactContent {
+            impactContent
+          }
+          impactKeyPoints
+
+          coreCapability
+          keyOutcomes
+          collaboration {
+            collaboration
+          }
+          conclusion {
+            conclusion
+          }
+        }
+      }
+    }
+  `);
 
   const allContent = data?.allContentfulPortfolio?.nodes;
   const project = allContent?.find((item) => item.slug === slug);
   const relatedProjects = allContent.filter((item) => item.slug !== slug);
+  console.log(relatedProjects);
 
   const projectContentConfig = [
-    // {
-    //   type: "point",
-    //   renderCondition:
-    //     project?.missionContent?.missionContent || project?.missionKeyPoints,
-    //   props: {
-    //     heading: "Mission",
-    //     Icon: IconFlag,
-    //     content: project?.missionContent?.missionContent,
-    //     keypoints: project?.missionKeyPoints,
-    //   },
-    // },
-    // {
-    //   type: "point",
-    //   renderCondition:
-    //     project?.goalContent?.goalContent || project?.goalKeyPoints,
-    //   props: {
-    //     heading: "Goals",
-    //     Icon: IconTarget,
-    //     content: project?.goalContent?.goalContent,
-    //     keypoints: project?.goalKeyPoints,
-    //   },
-    // },
+    {
+      type: "point",
+      renderCondition: project?.missionKeyPoints,
+      // renderCondition:
+      //   project?.missionContent?.missionContent || project?.missionKeyPoints,
+      props: {
+        heading: "Mission",
+        Icon: IconFlag,
+        // content: project?.missionContent?.missionContent,
+        keypoints: project?.missionKeyPoints,
+      },
+    },
+    {
+      type: "point",
+      renderCondition: project?.goalKeyPoints,
+      // renderCondition:
+      //   project?.goalContent?.goalContent || project?.goalKeyPoints,
+      props: {
+        heading: "Goals",
+        Icon: IconTarget,
+        // content: project?.goalContent?.goalContent,
+        keypoints: project?.goalKeyPoints,
+      },
+    },
     {
       type: "point",
       renderCondition:
@@ -371,6 +374,15 @@ export default function PortfolioDetails() {
     },
     {
       type: "point",
+      renderCondition: project?.keyOutcomes,
+      props: {
+        heading: "Outcomes & Results",
+        Icon: IconChartBar,
+        keypoints: project?.keyOutcomes,
+      },
+    },
+    {
+      type: "point",
       renderCondition: project?.coreTechnology?.coreTechnology,
       props: {
         heading: "Core Technology",
@@ -406,7 +418,7 @@ export default function PortfolioDetails() {
               <div>
                 <h1
                   style={{
-                    fontSize: "40px",
+                    fontSize: "2.4rem",
                     fontWeight: 550,
                     lineHeight: "1.3",
                     marginBottom: "20px",
@@ -436,6 +448,7 @@ export default function PortfolioDetails() {
                   alt={project.name}
                   style={{
                     width: "100%",
+                    boxShadow: "6px 6px 10px 1px #f7f3f3",
                     // borderRadius: "16px",
                   }}
                 />
@@ -443,12 +456,11 @@ export default function PortfolioDetails() {
             </div>
             <hr style={{ margin: "40px 0" }} />
 
-
             <div style={{ display: "flex", justifyContent: "center" }}>
               {project?.detailedDescription?.detailedDescription && (
                 <RenderPoints
-                  Icon={IconStack}
-                  heading="Detailed Description"
+                  Icon={IconFileText}
+                  heading="Background & Story"
                   content={project?.detailedDescription?.detailedDescription}
                 />
               )}
@@ -483,111 +495,28 @@ export default function PortfolioDetails() {
             </section>
 
             {/* Other Related Products */}
-            <section style={{ padding: "10px 40px" }}>
+            <section style={{ padding: "0px 0" }}>
               <h2
                 style={{
-                  fontSize: "40px",
-                  fontWeight: 700,
+                  fontSize: "3rem",
+                  fontWeight: 500,
                   marginBottom: "40px",
                 }}
               >
-                Read our Other Products
+                Read Our Other Products
               </h2>
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                  gap: "32px",
+              <ProjectCard
+                isThemeGray={true}
+                projects={relatedProjects}
+                handleClickButton={(project) => {
+                  navigate(`/portfolio/${project.slug}`, {
+                    state: {
+                      filter: project?.filter || project?.filters,
+                    },
+                  });
                 }}
-              >
-                {relatedProjects.map((item) => (
-                  <div
-                    key={item.contentful_id}
-                    style={{
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "20px",
-                      padding: "20px",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    {/* IMAGE */}
-                    <div
-                      style={{
-                        height: "220px",
-                        borderRadius: "16px",
-                        overflow: "hidden",
-                        background: "#f8fafc",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <img
-                        src={
-                          item.projectImage?.gatsbyImageData?.images?.fallback
-                            ?.src
-                        }
-                        alt={item.name}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-
-                    {/* CONTENT */}
-                    <div style={{ flex: 1 }}>
-                      <h3
-                        style={{
-                          fontSize: "22px",
-                          marginBottom: "12px",
-                          lineHeight: "1.4",
-                        }}
-                      >
-                        {item.name}
-                      </h3>
-
-                      <p
-                        style={{
-                          fontSize: "15px",
-                          color: "#64748b",
-                          lineHeight: "1.6",
-                        }}
-                      >
-                        {item?.overview?.overview ||
-                          item?.projectDescription?.projectDescription}
-                      </p>
-                    </div>
-
-                    {/* READ MORE */}
-                    <div style={{ marginTop: "16px" }}>
-                      <button
-                        onClick={() =>
-                          navigate(`/portfolio/${item.slug}`, {
-                            state: {
-                              filter: item.filter || item.filters,
-                            },
-                          })
-                        }
-                        style={{
-                          color: "#c52222",
-                          marginTop: "16px",
-                          alignSelf: "flex-start",
-                          background: "#ffe6e6",
-                          border: "none",
-                          padding: "8px 18px",
-                          borderRadius: "5px",
-                          fontWeight: 600,
-                          cursor: "pointer",
-                        }}
-                      >
-                        Read More
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              />
             </section>
           </div>
         </Wrapper>

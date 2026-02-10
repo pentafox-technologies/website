@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
+    // background: red;
   }
 
   /* HERO */
@@ -50,7 +51,7 @@ export const Wrapper = styled.div`
 
   /* SECTIONS */
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
 
   .project-section-title {

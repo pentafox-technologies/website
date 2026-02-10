@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { graphql, useStaticQuery, navigate } from "gatsby";
 import { IconArrowUp } from "@tabler/icons-react";
+import ProjectCard from "./ProjectCard";
 
 function ProjectPortfolio() {
-  const [hoveredId, setHoveredId] = useState(null);
-
   /* ===================== DATA ===================== */
 
   const data = useStaticQuery(graphql`
@@ -28,7 +27,10 @@ function ProjectPortfolio() {
             challengeContent
           }
           coverImage {
-            gatsbyImageData(width: 900, placeholder: BLURRED)
+            gatsbyImageData(width: 900)
+          }
+          projectImage {
+            gatsbyImageData(width: 900)
           }
         }
       }
@@ -37,6 +39,13 @@ function ProjectPortfolio() {
 
   const projects = data?.allContentfulPortfolio?.nodes;
   const aviationProjects = projects?.filter((p) => p.filter === "aviation");
+  const bankingProjects = projects?.filter((p) => p.filter === "banking");
+
+  const projectConfig = [...bankingProjects, ...aviationProjects];
+
+  const projectWithoutOurProducts = projects?.filter((p) =>
+    !["fastkyc", "walane"].includes(p.slug),
+  );
 
   const handleScollToTop = () => {
     if (typeof window !== "undefined") {
@@ -63,7 +72,7 @@ function ProjectPortfolio() {
         Explore{" "}
         <span
           style={{
-            background: "linear-gradient(90deg, #c52222, #2460e2)",
+            background: "linear-gradient(90deg, #c52222, #f9b4b4)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -82,91 +91,21 @@ function ProjectPortfolio() {
           textAlign: "center",
         }}
       >
-        Tap into insightful blogs, data sheets, case studies, and more.
+        Access blogs, data sheets, case studies, solution guides, and expert
+        insights to power your growth.
       </p>
 
-      {/* CARDS */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "20px",
-          maxWidth: "1200px",
-          margin: "0 auto",
+      <ProjectCard
+        projects={projectWithoutOurProducts}
+        handleClickButton={(project) => {
+          navigate(`/portfolio/${project.slug}`, {
+            state: {
+              filter: project.filter || project.filters,
+              id: project.contentful_id,
+            },
+          });
         }}
-      >
-        {aviationProjects.map((project) => (
-          <div
-            key={project?.contentful_id}
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "10px",
-              padding: "20px",
-              display: "flex",
-              flexDirection: "column",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            {/* IMAGE */}
-            <div
-              style={{
-                height: "180px",
-                overflow: "hidden",
-                marginBottom: "20px",
-              }}
-            >
-              <img
-                src={project.coverImage?.gatsbyImageData?.images?.fallback?.src}
-                alt={project.name}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-
-            {/* CONTENT */}
-            <h3 style={{ fontSize: "20px", marginBottom: "12px" }}>
-              {project?.name}
-            </h3>
-
-            <p style={{ fontSize: "15px", color: "#64748b", flex: 1 }}>
-              {project?.overview?.overview}
-            </p>
-
-            {/* CTA */}
-            <button
-              onMouseEnter={() => setHoveredId(project.contentful_id)}
-              onMouseLeave={() => setHoveredId(null)}
-              onClick={() =>
-                navigate(`/portfolio/${project.slug}`, {
-                  state: {
-                    filter: project.filter || project.filters,
-                    id: project.contentful_id,
-                  },
-                })
-              }
-              style={{
-                color: "#c52222",
-                marginTop: "12px",
-                alignSelf: "flex-start",
-                background:
-                  hoveredId === project.contentful_id ? "#fbcccc" : "#ffe6e6",
-                border: "none",
-                padding: "8px 18px",
-                borderRadius: "5px",
-                fontWeight: 600,
-                cursor: "pointer",
-                fontSize: "12px"
-              }}
-            >
-              Read More
-            </button>
-          </div>
-        ))}
-      </div>
+      />
 
       <section
         style={{
@@ -188,6 +127,88 @@ function ProjectPortfolio() {
 }
 
 export default ProjectPortfolio;
+
+//  <div
+//         style={{
+//           display: "grid",
+//           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+//           gap: "20px",
+//           maxWidth: "1200px",
+//           margin: "0 auto",
+//         }}
+//       >
+//         {aviationProjects.map((project) => (
+//           <div
+//             key={project?.contentful_id}
+//             style={{
+//               background: "white",
+//               border: "1px solid #e5e7eb",
+//               borderRadius: "10px",
+//               padding: "20px",
+//               display: "flex",
+//               flexDirection: "column",
+//               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+//             }}
+//           >
+//             {/* IMAGE */}
+//             <div
+//               style={{
+//                 height: "180px",
+//                 overflow: "hidden",
+//                 marginBottom: "20px",
+//               }}
+//             >
+//               <img
+//                 src={project.coverImage?.gatsbyImageData?.images?.fallback?.src}
+//                 alt={project.name}
+//                 style={{
+//                   width: "100%",
+//                   height: "100%",
+//                   objectFit: "contain",
+//                 }}
+//               />
+//             </div>
+
+//             {/* CONTENT */}
+//             <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
+//               {project?.name}
+//             </h3>
+
+//             <p style={{ fontSize: "15px", color: "#64748b", flex: 1 }}>
+//               {project?.overview?.overview}
+//             </p>
+
+//             {/* CTA */}
+//             <button
+//               onMouseEnter={() => setHoveredId(project.contentful_id)}
+//               onMouseLeave={() => setHoveredId(null)}
+//               onClick={() =>
+//                 navigate(`/portfolio/${project.slug}`, {
+//                   state: {
+//                     filter: project.filter || project.filters,
+//                     id: project.contentful_id,
+//                   },
+//                 })
+//               }
+//               style={{
+//                 color: "#c52222",
+//                 marginTop: "12px",
+//                 alignSelf: "flex-start",
+//                 background:
+//                   hoveredId === project.contentful_id ? "#fbcccc" : "#ffe6e6",
+//                 border: "none",
+//                 padding: "8px 18px",
+//                 borderRadius: "5px",
+//                 fontWeight: 600,
+//                 cursor: "pointer",
+//                 fontSize: "12px"
+//               }}
+//             >
+//               Read More
+//             </button>
+//           </div>
+//         ))}
+//       </div>
 
 // ------------------------------------------------  WITH FILTER TABS --------------------------------------
 
