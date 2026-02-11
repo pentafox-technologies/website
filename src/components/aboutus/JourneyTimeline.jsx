@@ -1,22 +1,35 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./JourneyTimeline.css";
-import { 
-  IconHeart, IconTrophy, IconThumbUp, IconStar, 
-  IconRocket, IconTarget, IconBulb, IconBolt, 
-  IconAward, IconChartLine 
+import {
+  IconHeart,
+  IconTrophy,
+  IconThumbUp,
+  IconStar,
+  IconRocket,
+  IconTarget,
+  IconBulb,
+  IconBolt,
+  IconAward,
+  IconChartLine,
+  IconChevronLeft,
+  IconChevronRight,
 } from "@tabler/icons-react";
+import IsMobile from "../../helpers/IsMobile";
+import TitleComp from "../commonComponents/TitleComp";
 
 const timelineData = [
   {
     year: "2016",
     title: "Innovation",
-    content: "Driving digital ecosystems. Tech + People, Creative Flow, Impact Delivery.",
+    content:
+      "Driving digital ecosystems. Tech + People, Creative Flow, Impact Delivery.",
     icon: <IconHeart size={32} stroke={1.5} />,
   },
   {
     year: "2017",
     title: "Our Mission",
-    content: "Delivering value at scale. Excellence, Client Focus, Scalable Tech.",
+    content:
+      "Delivering value at scale. Excellence, Client Focus, Scalable Tech.",
     icon: <IconTrophy size={32} stroke={1.5} />,
   },
   {
@@ -28,7 +41,8 @@ const timelineData = [
   {
     year: "2019",
     title: "Quality",
-    content: "Exceptional delivery. QA Processes, Design Systems, Testing Culture.",
+    content:
+      "Exceptional delivery. QA Processes, Design Systems, Testing Culture.",
     icon: <IconStar size={32} stroke={1.5} />,
   },
   {
@@ -46,7 +60,8 @@ const timelineData = [
   {
     year: "2022",
     title: "Ideas",
-    content: "Innovation at the core. Hackathons, Feedback Loops, Product Labs.",
+    content:
+      "Innovation at the core. Hackathons, Feedback Loops, Product Labs.",
     icon: <IconBulb size={32} stroke={1.5} />,
   },
   {
@@ -58,7 +73,8 @@ const timelineData = [
   {
     year: "2024",
     title: "Recognition",
-    content: "We value achievement. Internal Awards, External Certifications, Peer Reviews.",
+    content:
+      "We value achievement. Internal Awards, External Certifications, Peer Reviews.",
     icon: <IconAward size={32} stroke={1.5} />,
   },
   {
@@ -70,14 +86,62 @@ const timelineData = [
 ];
 
 const JourneyTimeline = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const timelineRef = useRef(null);
+  const isMobileDevice = IsMobile();
+  const scrollRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      // Show left arrow if we have scrolled at least 10px
+      setShowLeftArrow(scrollLeft > 10);
+      // Show right arrow if we haven't reached the end (minus a small buffer)
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = isMobileDevice ? 220 : 440; // Moves roughly 2 years per click
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      // Initial check
+      handleScroll();
+    }
+    return () => container?.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (container) {
+      // This function forces the scroll to the far right (latest year)
+      const scrollToLatest = () => {
+        container.scrollLeft = container.scrollWidth - container.clientWidth;
+        handleScroll(); // Updates arrow visibility (shows left, hides right)
+      };
+
+      // Execute after the browser has painted the layout
+      const frameId = requestAnimationFrame(() => {
+        setTimeout(scrollToLatest, 50);
+      });
+
+      container.addEventListener("scroll", handleScroll);
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll);
+        cancelAnimationFrame(frameId);
+      };
+    }
   }, []);
 
   const generatePath = () => {
@@ -94,65 +158,78 @@ const JourneyTimeline = () => {
 
   return (
     <div className="jt-wrapper">
-      <h1 className="jt-heading">Journey of Pentafox</h1>
+      <TitleComp title="Journey of Pentafox" />
 
-      <div className="jt-scroll-container">
-        <div
-          className="jt-container"
-          style={{ width: `${timelineData.length * 220}px` }}
-          ref={timelineRef}
-        >
-          {!isMobile && (
+      <div className="jt-main-container">
+        {/* Navigation Arrows */}
+        {showLeftArrow && (
+          <button className="jt-nav-btn jt-left" onClick={() => scroll("left")}>
+            <IconChevronLeft size={isMobileDevice ? 24 : 40} />
+          </button>
+        )}
+
+        {showRightArrow && (
+          <button
+            className="jt-nav-btn jt-right"
+            onClick={() => scroll("right")}
+          >
+            <IconChevronRight size={isMobileDevice ? 24 : 40} />
+          </button>
+        )}
+
+        <div className="jt-scroll-container" ref={scrollRef}>
+          <div
+            className="jt-container"
+            style={{ width: `${timelineData.length * 220}px` }}
+          >
             <svg
               className="jt-wave-desktop"
               viewBox={`0 0 ${timelineData.length * 220} 200`}
               preserveAspectRatio="none"
             >
-              <path
-                d={generatePath()}
-                className="jt-wave-path"
-              />
+              <path d={generatePath()} className="jt-wave-path" />
             </svg>
-          )}
 
-          <div className="jt-track">
-            {timelineData.map((item, index) => {
-              const isTrough = index % 2 === 0;
+            <div className="jt-track">
+              {timelineData.map((item, index) => {
+                const isTrough = index % 2 === 0;
+                return (
+                  <div key={index} className="jt-card-wrapper">
+                    {!isTrough && (
+                      <div className="jt-text-block jt-text-bottom">
+                        <h3 className="jt-year">{item.year}</h3>
+                        <p className="jt-description">
+                          {/* <span className="jt-title-highlight">
+                            {item.title}:
+                          </span> */}
+                          {item.content}
+                        </p>
+                      </div>
+                    )}
 
-              return (
-                <div key={index} className="jt-card-wrapper">
-                  {/* PEAKS - Content BELOW */}
-                  {!isTrough && (
-                    <div className="jt-text-block jt-text-bottom">
-                      <h3 className="jt-year">{item.year}</h3>
-                      <p className="jt-description">
-                        <span className="jt-title-highlight">{item.title}:</span>{" "}
-                        {item.content}
-                      </p>
+                    <div className="jt-icon-wrapper">
+                      <div
+                        className={`jt-icon-circle ${isTrough ? "jt-move-down" : "jt-move-up"}`}
+                      >
+                        {item.icon}
+                      </div>
                     </div>
-                  )}
 
-                  <div className="jt-icon-wrapper">
-                    <div
-                      className={`jt-icon-circle ${isTrough ? "jt-move-down" : "jt-move-up"}`}
-                    >
-                      {item.icon}
-                    </div>
+                    {isTrough && (
+                      <div className="jt-text-block jt-text-top">
+                        <h3 className="jt-year">{item.year}</h3>
+                        <p className="jt-description">
+                          {/* <span className="jt-title-highlight">
+                            {item.title}:
+                          </span>{" "} */}
+                          {item.content}
+                        </p>
+                      </div>
+                    )}
                   </div>
-
-                  {/* TROUGHS - Content ABOVE */}
-                  {isTrough && (
-                    <div className="jt-text-block jt-text-top">
-                      <h3 className="jt-year">{item.year}</h3>
-                      <p className="jt-description">
-                        <span className="jt-title-highlight">{item.title}:</span>{" "}
-                        {item.content}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -162,7 +239,183 @@ const JourneyTimeline = () => {
 
 export default JourneyTimeline;
 
+// import React, { useEffect, useState, useRef } from "react";
+// import "./JourneyTimeline.css";
+// import {
+//   IconHeart,
+//   IconTrophy,
+//   IconThumbUp,
+//   IconStar,
+//   IconRocket,
+//   IconTarget,
+//   IconBulb,
+//   IconBolt,
+//   IconAward,
+//   IconChartLine,
+// } from "@tabler/icons-react";
 
+// const timelineData = [
+//   {
+//     year: "2016",
+//     title: "Innovation",
+//     content:
+//       "Driving digital ecosystems. Tech + People, Creative Flow, Impact Delivery.",
+//     icon: <IconHeart size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2017",
+//     title: "Our Mission",
+//     content:
+//       "Delivering value at scale. Excellence, Client Focus, Scalable Tech.",
+//     icon: <IconTrophy size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2018",
+//     title: "Trust First",
+//     content: "People-first always. Integrity, Well-being, Empathy.",
+//     icon: <IconThumbUp size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2019",
+//     title: "Quality",
+//     content:
+//       "Exceptional delivery. QA Processes, Design Systems, Testing Culture.",
+//     icon: <IconStar size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2020",
+//     title: "Speed",
+//     content: "Go-to-market fast. Agile Teams, Rapid Prototyping, Automation.",
+//     icon: <IconRocket size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2021",
+//     title: "Focus",
+//     content: "Sharp strategic goals. OKRs, KPIs, Clarity in Vision.",
+//     icon: <IconTarget size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2022",
+//     title: "Ideas",
+//     content:
+//       "Innovation at the core. Hackathons, Feedback Loops, Product Labs.",
+//     icon: <IconBulb size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2023",
+//     title: "Power",
+//     content: "Boosting capabilities. Infrastructure, Cloud Ops, Performance.",
+//     icon: <IconBolt size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2024",
+//     title: "Recognition",
+//     content:
+//       "We value achievement. Internal Awards, External Certifications, Peer Reviews.",
+//     icon: <IconAward size={32} stroke={1.5} />,
+//   },
+//   {
+//     year: "2025",
+//     title: "Growth",
+//     content: "Scale without compromise. Hiring Smart, Retention, Expansion.",
+//     icon: <IconChartLine size={32} stroke={1.5} />,
+//   },
+// ];
+
+// const JourneyTimeline = () => {
+//   const [isMobile, setIsMobile] = useState(false);
+//   const timelineRef = useRef(null);
+
+//   useEffect(() => {
+//     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+//     checkMobile();
+//     window.addEventListener("resize", checkMobile);
+//     return () => window.removeEventListener("resize", checkMobile);
+//   }, []);
+
+//   const generatePath = () => {
+//     let path = "M0,100 ";
+//     timelineData.forEach((_, i) => {
+//       const x = (i + 1) * 220;
+//       const prevX = i * 220;
+//       const midX = prevX + 110;
+//       const y = i % 2 === 0 ? 160 : 40;
+//       path += `Q${midX},${y} ${x},100 `;
+//     });
+//     return path;
+//   };
+
+//   return (
+//     <div className="jt-wrapper">
+//       <h1 className="jt-heading">Journey of Pentafox</h1>
+//       <div style={{ padding: "0px 70px", background: "black" }}>
+//         <div className="jt-scroll-container">
+//           <div
+//             className="jt-container"
+//             style={{ width: `${timelineData.length * 220}px` }}
+//             ref={timelineRef}
+//           >
+//             {true && (
+//               <svg
+//                 className="jt-wave-desktop"
+//                 viewBox={`0 0 ${timelineData.length * 220} 200`}
+//                 preserveAspectRatio="none"
+//               >
+//                 <path d={generatePath()} className="jt-wave-path" />
+//               </svg>
+//             )}
+
+//             <div className="jt-track">
+//               {timelineData.map((item, index) => {
+//                 const isTrough = index % 2 === 0;
+
+//                 return (
+//                   <div key={index} className="jt-card-wrapper">
+//                     {/* PEAKS - Content BELOW */}
+//                     {!isTrough && (
+//                       <div className="jt-text-block jt-text-bottom">
+//                         <h3 className="jt-year">{item.year}</h3>
+//                         <p className="jt-description">
+//                           <span className="jt-title-highlight">
+//                             {item.title}:
+//                           </span>{" "}
+//                           {item.content}
+//                         </p>
+//                       </div>
+//                     )}
+
+//                     <div className="jt-icon-wrapper">
+//                       <div
+//                         className={`jt-icon-circle ${isTrough ? "jt-move-down" : "jt-move-up"}`}
+//                       >
+//                         {item.icon}
+//                       </div>
+//                     </div>
+
+//                     {/* TROUGHS - Content ABOVE */}
+//                     {isTrough && (
+//                       <div className="jt-text-block jt-text-top">
+//                         <h3 className="jt-year">{item.year}</h3>
+//                         <p className="jt-description">
+//                           <span className="jt-title-highlight">
+//                             {item.title}:
+//                           </span>{" "}
+//                           {item.content}
+//                         </p>
+//                       </div>
+//                     )}
+//                   </div>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default JourneyTimeline;
 
 // import { IconHeart } from "@tabler/icons-react";
 // import React, { useEffect, useState, useRef } from "react";

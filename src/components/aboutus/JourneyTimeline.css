@@ -1,8 +1,11 @@
+/* --- Core Wrapper --- */
 .jt-wrapper {
-  background: #dc2b2b;
-  padding: 60px 0;
-  color: #ffffff;
-  min-height: 100vh;
+  background: linear-gradient(to right, #fff 50%, #FFF5F5 100%);
+  /* background: #F4F4F4; */
+  /* background: #dc2b2b; */
+  padding: 30px 0;
+  /* color: #ffffff; */
+  min-height: auto;
   overflow: hidden;
   font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
 }
@@ -14,10 +17,18 @@
   margin-bottom: 40px;
 }
 
+/* --- Layout Containers --- */
+.jt-main-container {
+  position: relative;
+  padding: 0 60px; /* Base horizontal padding for desktop */
+}
+
 .jt-scroll-container {
   overflow-x: auto;
-  padding: 200px 70px;
+  padding: 90px 0;
   scrollbar-width: none;
+  -ms-overflow-style: none;
+
 }
 
 .jt-scroll-container::-webkit-scrollbar {
@@ -29,6 +40,7 @@
   margin: 0 auto;
 }
 
+/* --- Wave Styling --- */
 .jt-wave-desktop {
   position: absolute;
   top: 50%;
@@ -41,11 +53,13 @@
 
 .jt-wave-path {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.4);
+  stroke: #a5a4a4;
+  /* stroke: #fd9898; */
   stroke-width: 3;
   stroke-dasharray: 10, 10;
 }
 
+/* --- Track & Cards --- */
 .jt-track {
   position: relative;
   display: flex;
@@ -64,6 +78,7 @@
   justify-content: center;
 }
 
+/* --- Icon Circles --- */
 .jt-icon-wrapper {
   z-index: 3;
 }
@@ -71,24 +86,23 @@
 .jt-icon-circle {
   width: 80px;
   height: 80px;
-  background: #ffffff;
+  background: #fff;
+  /* background: #fff; */
+  /* background: #fff3f3; */
+  /* color: black; */
+  color: #dc2b2b;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc2b2b; /* Icon color */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 10px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(248, 130, 130, 0.2), 0 0 0 10px rgba(251, 172, 172, 0.15);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.jt-move-down {
-  transform: translateY(60px);
-}
+.jt-move-down { transform: translateY(60px); }
+.jt-move-up { transform: translateY(-60px); }
 
-.jt-move-up {
-  transform: translateY(-60px);
-}
-
+/* --- Text Blocks --- */
 .jt-text-block {
   position: absolute;
   text-align: center;
@@ -96,29 +110,87 @@
   padding: 0 10px;
 }
 
-.jt-text-bottom {
-  top: 140px;
-}
-
-.jt-text-top {
-  bottom: 140px;
-}
+.jt-text-bottom { top: 140px; }
+.jt-text-top { bottom: 140px; }
 
 .jt-year {
   font-size: 1.8rem;
   font-weight: 900;
   margin: 0 0 8px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #dc2b2b;
+  /* text-shadow: 0 2px 4px #dc2b2b; */
+  /* text-shadow: 0 2px 4px rgba(0,0,0,0.1); */
 }
 
 .jt-description {
   font-size: 0.95rem;
   line-height: 1.4;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: #dc2b2b;
+  /* color: rgba(255, 255, 255, 0.9); */
 }
 
 .jt-title-highlight {
-  color: #000000;
+  color: #f76969;
+  /* color: #000; */
   font-weight: 700;
+}
+
+/* --- Navigation Buttons --- */
+.jt-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 80px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background: #dc2b2b29;
+  /* background: rgba(0, 0, 0, 0.3); */
+}
+
+.jt-nav-btn:hover {
+  background: #dc2b2b9f;
+}
+
+.jt-left { left: 0; border-radius: 0 8px 8px 0; }
+.jt-right { right: 0; border-radius: 8px 0 0 8px; }
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 768px) {
+  .jt-main-container { padding: 0 40px; }
+  .jt-scroll-container { padding: 120px 0; }
+  .jt-heading { margin-bottom: 10px; font-size: 1.8rem; }
+
+  .jt-nav-btn {
+    width: 35px;
+    height: 60px;
+    background: #dc2b2b29;
+  }
+
+  .jt-nav-btn svg { width: 24px; height: 24px; }
+  .jt-year { font-size: 1.3rem; color: #dc2b2b }
+  .jt-description { font-size: 0.8rem; line-height: 1.2; }
+  .jt-icon-circle { width: 60px; height: 60px; }
+  
+  .jt-icon-circle svg { 
+    width: 24px !important; 
+    height: 24px !important; 
+  }
+
+  .jt-move-down { transform: translateY(40px); }
+  .jt-move-up { transform: translateY(-40px); }
+  .jt-text-bottom { top: 110px; }
+  .jt-text-top { bottom: 110px; }
+}
+
+@media (max-width: 480px) {
+  .jt-main-container { padding: 0 30px; }
+  .jt-nav-btn { width: 30px; height: 50px; }
 }

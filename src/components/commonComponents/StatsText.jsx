@@ -1,3 +1,4 @@
+import { BackgroundImage } from "@mantine/core";
 import React from "react";
 
 const styles = {
@@ -7,7 +8,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    padding: "16px",
+    padding: "10px 20px",
   },
 
   count: {
@@ -19,7 +20,7 @@ const styles = {
   },
 
   desc: {
-    color: "#001a8f", // dark blue like image
+    color: "gray", // dark blue like image
     fontWeight: 500,
     fontSize: "clamp(0.9rem, 2.5vw, 1.2rem)",
     marginTop: "8px",

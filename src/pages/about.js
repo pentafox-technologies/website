@@ -112,7 +112,7 @@ const AboutUs = () => {
 
           <>
             <HeadSection data={aboutPageData.headSectionData} />
-            {/* <Journey data={aboutPageData.journeyData} /> */}
+            <Journey data={aboutPageData.journeyData} />
             <Corevalues data={aboutPageData.coreValuesData} />
             <Leadership data={aboutPageData.leadershipData} /> 
             <Teams data={aboutPageData.teamData} />
