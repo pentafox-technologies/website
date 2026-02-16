@@ -94,7 +94,7 @@ const PortfolioLayout = ({
     <ContentSectionWrapper
       id={`content-section-${id}-${section}`}
       rightSideStyle={rightSide}
-      style={{ overflow: "hidden" }}  // FINAL FIX: prevents bottom overflow
+      style={{ overflow: "hidden" }}  
     >
       <div className="container lg-container">
         <div className="middle-content" style={{ gap: 35 }}>

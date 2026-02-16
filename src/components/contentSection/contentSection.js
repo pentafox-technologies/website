@@ -5,7 +5,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import {
-  IconArrowRight,
   IconCircleArrowRightFilled,
 } from "@tabler/icons-react";
 import { Link } from "gatsby";
@@ -54,48 +53,54 @@ const ContentSection = ({
   const animListItem = useRef(null);
 
   useEffect(() => {
-    const listItems = animListItem?.current?.querySelectorAll(".list-item");
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(animContainer.current, {
-      opacity: 0.1,
-      y: 100,
-      duration: 1,
-      scrollTrigger: {
-        trigger: animContainer.current,
-        start: "top 90%",
-        end: "+=100",
-        scrub: false,
-      },
-    });
+    if (animContainer.current) {
+      gsap.from(animContainer.current, {
+        opacity: 0.1,
+        y: 100,
+        duration: 1,
+        scrollTrigger: {
+          trigger: animContainer.current,
+          start: "top 90%",
+        },
+      });
+    }
 
-    gsap.from(listItems, {
-      opacity: 0,
-      y: 100,
-      ease: "power4.out",
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: animListItem.current.children,
-        start: "top 90%",
-      },
-    });
+    // run only if list exists
+    if (animListItem.current) {
+      const listItems =
+        animListItem.current.querySelectorAll(".list-item");
+
+      if (listItems.length > 0) {
+        gsap.from(listItems, {
+          opacity: 0,
+          y: 100,
+          ease: "power4.out",
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: animListItem.current,
+            start: "top 90%",
+          },
+        });
+      }
+    }
   }, []);
 
-  const customRoutes = [
-    "/cloud-engineering",
-    "/machine-learning",
-    "/digital-mobility",
-  ].includes(route)
-    ? "/pentafox-portfolio"
-    : null;
-  const customRoutesFilter =
-    route === "/cloud-engineering"
-      ? "cloud"
-      : route === "/machine-learning"
-      ? "machine-learning"
-      : "others";
 
-  console.log(customRoutesFilter);
+  // route
+  const goToRoute = route || "/pentafox-portfolio";
+
+  // filter logic
+  const filterType =
+    id === "aviation-static"
+      ? "aviation"
+      : route === "/cloud-engineering"
+        ? "cloud"
+        : route === "/machine-learning"
+          ? "machine-learning"
+          : "others";
+
 
   return (
     <Center>
@@ -107,7 +112,15 @@ const ContentSection = ({
           <div className="middle-content">
             <div className="left-col">
               <h3>{heading}</h3>
-              <p>{description}</p>
+              {id === "aviation-static" ? (
+                description.split("\n").map((line, i) => (
+                  <p key={i} style={{ marginBottom: 12, lineHeight: "28px" }}>
+                    {line}
+                  </p>
+                ))
+              ) : (
+                <p>{description}</p>
+              )}
 
               {listWithIcons ? (
                 <ul
@@ -131,20 +144,23 @@ const ContentSection = ({
               ) : null}
 
               <Link
-                to={customRoutes}
-                state={{ filter: customRoutesFilter }}
+                to={goToRoute}
+                state={{ filter: filterType }}
                 style={{
                   color: "#CD0E11",
                   display: "flex",
-                  flexDirection: "row",
                   alignItems: "center",
                   gap: 10,
                   textDecoration: "none",
+                  marginTop: 20,
                 }}
               >
-                <h6 style={{ margin: 0, fontSize: 16 }}>{discoverLabel}</h6>
+                <h6 style={{ margin: 0, fontSize: 16 }}>
+                  {discoverLabel || "Discover More"}
+                </h6>
                 <IconCircleArrowRightFilled size={22} />
               </Link>
+
             </div>
 
             <div className="right-col">

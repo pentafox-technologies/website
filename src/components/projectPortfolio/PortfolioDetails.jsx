@@ -190,7 +190,7 @@ export default function PortfolioDetails() {
 
   const slug = location.pathname.split("/").filter(Boolean).pop();
 
-  // const data = useStaticQuery(graphql`
+
   //   query PortfolioDetailsStaticQuery {
   //     allContentfulPortfolio {
   //       nodes {
@@ -308,8 +308,6 @@ export default function PortfolioDetails() {
     {
       type: "point",
       renderCondition: project?.missionKeyPoints,
-      // renderCondition:
-      //   project?.missionContent?.missionContent || project?.missionKeyPoints,
       props: {
         heading: "Mission",
         Icon: IconFlag,
@@ -320,12 +318,9 @@ export default function PortfolioDetails() {
     {
       type: "point",
       renderCondition: project?.goalKeyPoints,
-      // renderCondition:
-      //   project?.goalContent?.goalContent || project?.goalKeyPoints,
       props: {
         heading: "Goals",
         Icon: IconTarget,
-        // content: project?.goalContent?.goalContent,
         keypoints: project?.goalKeyPoints,
       },
     },
@@ -449,7 +444,6 @@ export default function PortfolioDetails() {
                   style={{
                     width: "100%",
                     boxShadow: "6px 6px 10px 1px #f7f3f3",
-                    // borderRadius: "16px",
                   }}
                 />
               </div>

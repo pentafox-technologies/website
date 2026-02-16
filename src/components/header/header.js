@@ -2,6 +2,9 @@ import React from "react";
 import IsMobile from "../../helpers/IsMobile";
 import LogoSVG from "../../images/logo-pf-white-1.svg";
 import LogoRedSVG from "../../images/logo-pf-red-1.svg";
+import FastkycLogo from "../../about_assets/Logo.png";
+import WalaneLogo from "../../about_assets/Walane.png";
+import aviLogo from "../../about_assets/avi_favicon.png";
 import { Link, navigate } from "gatsby";
 import {
   createStyles,
@@ -278,9 +281,8 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md} calc(${theme.spacing.md} * 2)`,
     paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
-    }`,
+    borderTop: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
+      }`,
   },
 
   hiddenMobile: {
@@ -445,6 +447,33 @@ const companydata = [
   // },
 ];
 
+const ourProductsdata = [
+  {
+    title: "Aervia Digital Platforms",
+    description: "Intelligent software solutions that streamline and modernize airline operations across flight, ground, and business functions.",
+    pageRoute: "/pentafox-portfolio",
+    state: { filter: "aviation" },
+    image: aviLogo,
+  },
+  {
+    title: "Walane",
+    description:
+      "Engage customers instantly, automate responses, and drive conversions",
+    pageRoute: "https://www.walane.ai/",
+    external: true,
+    image: WalaneLogo,
+  },
+  {
+    title: "FastKYC",
+    description:
+      "AI-driven platform that streamlines the entire KYC process",
+    pageRoute: "https://www.fastkyc.com/",
+    external: true,
+    image: FastkycLogo,
+  }
+];
+
+
 const HeaderBar = ({
   showDarkLogo = true,
   headerColor = "#FFFFFF",
@@ -464,6 +493,8 @@ const HeaderBar = ({
     useDisclosure(false);
   const [companyOpened, { toggle: toggleCompany, close: closeCompany }] =
     useDisclosure(false);
+  const [productsOpened, { toggle: toggleProducts, close: closeProducts }] =
+    useDisclosure(false);
 
   const handleHomePage = (e) => {
     e.preventDefault();
@@ -472,32 +503,76 @@ const HeaderBar = ({
   };
 
   const NavigationLinks = ({ item }) => {
-    // Construct the link dynamically based on whether pageRoute and sectionId are defined.
     const linkTo =
       item.pageRoute && item.sectionId
         ? `${item.pageRoute}${item.sectionId}`
         : item.pageRoute;
 
-    return (
-      <Link to={linkTo} onClick={closeDrawer}>
-        <UnstyledButton className={classes.subLink} key={item.title}>
-          <Group noWrap align="flex-start">
+    const content = (
+      <UnstyledButton className={classes.subLink} key={item.title}>
+        <Group noWrap align="center" spacing={12} style={{ width: "100%" }}>
+          {item.image ? (
+            <div
+              style={{
+                minWidth: 42,
+                height: 42,
+                border: "1px solid #e5e5e5",
+                borderRadius: 8,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#fff",
+              }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{
+                  width: 22,
+                  height: 22,
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+          ) : (
             <ThemeIcon size={34} variant="default" radius="md">
               <item.icon size={20} style={{ color: "#CD0E11" }} />
             </ThemeIcon>
-            <div>
-              <Text size="sm" fw={600}>
-                {item.title}
-              </Text>
-              <Text size="xs" color="dimmed">
-                {item.description}
-              </Text>
-            </div>
-          </Group>
-        </UnstyledButton>
+          )}
+          <div>
+            <Text size="sm" fw={600}>
+              {item.title}
+            </Text>
+            <Text size="xs" color="dimmed">
+              {item.description}
+            </Text>
+          </div>
+        </Group>
+      </UnstyledButton>
+    );
+
+    //external link
+    if (item.external) {
+      return (
+        <a href={linkTo} target="_blank" rel="noopener noreferrer">
+          {content}
+        </a>
+      );
+    }
+
+    // internal link
+    return (
+      <Link
+        to={linkTo}
+        state={item.state}
+        onClick={closeDrawer}
+      >
+        {content}
       </Link>
     );
+
   };
+
 
   const handleToggleSubNav = (type) => {
     switch (type) {
@@ -515,6 +590,12 @@ const HeaderBar = ({
         togglePortfolio();
         closeSolutions();
         closeCompany();
+        break;
+      case "products":
+        toggleProducts();
+        closeSolutions();
+        closeCompany();
+        closePortfolio();
         break;
       default:
         break;
@@ -607,6 +688,37 @@ const HeaderBar = ({
                 <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
                   <SimpleGrid cols={2} spacing={10}>
                     {companydata?.map((item) => (
+                      <NavigationLinks key={item.title} item={item} />
+                    ))}
+                  </SimpleGrid>
+                </HoverCard.Dropdown>
+              </HoverCard>
+              {/* Our Products */}
+              <HoverCard
+                width={600}
+                position="bottom-end"
+                radius="md"
+                shadow="md"
+                withinPortal
+                offset={-20}
+                zIndex={999}
+              >
+                <HoverCard.Target>
+                  <a href="#" className={lightLinks ? "lightLinks" : "link"}>
+                    <h5>
+                      <Center inline>
+                        <Box component="span" mr={5}>
+                          Our Products
+                        </Box>
+                        <IconChevronDown size={16} />
+                      </Center>
+                    </h5>
+                  </a>
+                </HoverCard.Target>
+
+                <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
+                  <SimpleGrid cols={2} spacing={12}>
+                    {ourProductsdata?.map((item) => (
                       <NavigationLinks key={item.title} item={item} />
                     ))}
                   </SimpleGrid>
@@ -736,6 +848,32 @@ const HeaderBar = ({
                   }}
                 />
               </UnstyledButton>
+              {/* Our Products Section */}
+              <div>
+                <UnstyledButton
+                  onClick={() => handleToggleSubNav("products")}
+                  className={classes.drawerMenuItem}
+                  style={{ width: "auto" }}
+                >
+                  <span className={classes.mobileNavHeading}>Our Products</span>
+                  <IconChevronDown
+                    size={18}
+                    style={{
+                      transition: "transform 200ms",
+                      transform: productsOpened ? "rotate(180deg)" : "rotate(0deg)",
+                      color: "#878787",
+                    }}
+                  />
+                </UnstyledButton>
+
+                <Collapse in={productsOpened}>
+                  <div className={classes.drawerCollapseContent}>
+                    {ourProductsdata.map((item) => (
+                      <NavigationLinks key={item.title} item={item} />
+                    ))}
+                  </div>
+                </Collapse>
+              </div>
 
               <Collapse in={companyOpened}>
                 <div className={classes.drawerCollapseContent}>
