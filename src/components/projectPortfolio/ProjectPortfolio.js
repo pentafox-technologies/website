@@ -44,14 +44,28 @@ function ProjectPortfolio() {
   const projects = data?.allContentfulPortfolio?.nodes;
   const aviationProjects = projects?.filter((p) => p.filter === "aviation");
   const bankingProjects = projects?.filter((p) => p.filter === "banking");
-  
 
   const projectConfig = [...bankingProjects, ...aviationProjects];
 
-  let projectWithoutOurProducts = projects?.filter(
+  /* REMOVE OUR PRODUCTS */
+  let projectWithoutOurProducts = projects.filter(
     (p) => !["fastkyc", "walane"].includes(p.slug)
   );
 
+  /* FORCE ONLY THIS PROJECT FIRST */
+  const firstProjectName =
+    "Pentafox Digitizes Workforce Planning with the WFM Platform for Aviation Operations";
+
+  const firstProject = projectWithoutOurProducts.find(
+    (p) => p.name === firstProjectName
+  );
+
+  if (firstProject) {
+    projectWithoutOurProducts = [
+      firstProject,
+      ...projectWithoutOurProducts.filter((p) => p.name !== firstProjectName),
+    ];
+  }
   // if coming from aviation click
   if (filterFromNav === "aviation") {
     projectWithoutOurProducts = projectWithoutOurProducts?.filter(
@@ -78,35 +92,80 @@ function ProjectPortfolio() {
       }}
     >
       {/* HEADER */}
-      <h1
-        id="heading"
-        style={{ fontSize: "56px", fontWeight: 700, textAlign: "center" }}
-      >
-        Explore{" "}
-        <span
-          style={{
-            background: "linear-gradient(90deg, #c52222, #f9b4b4)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Pentafox's
-        </span>{" "}
-        Portfolio
-      </h1>
+      {/* HEADER TEXT CHANGE */}
+      {filterFromNav === "aviation" ? (
+        <>
+          <h1
+            style={{
+              fontSize: "56px",
+              fontWeight: 700,
+              textAlign: "center",
+            }}
+          >
+            Explore{" "}
+            <span
+              style={{
+                background: "linear-gradient(90deg, #c52222, #f9b4b4)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Pentafox’s Aviation
+            </span>{" "}
+            Solutions
+          </h1>
 
-      <p
-        style={{
-          fontSize: "18px",
-          color: "#475569",
-          maxWidth: "700px",
-          margin: "16px auto 30px",
-          textAlign: "center",
-        }}
-      >
-        Access blogs, data sheets, case studies, solution guides, and expert
-        insights to power your growth.
-      </p>
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#475569",
+              maxWidth: "700px",
+              margin: "16px auto 30px",
+              textAlign: "center",
+            }}
+          >
+            Discover advanced aviation platforms, workforce management systems, and
+            operational tools built to modernize airline operations and improve
+            performance.
+          </p>
+        </>
+      ) : (
+        <>
+          <h1
+            style={{
+              fontSize: "56px",
+              fontWeight: 700,
+              textAlign: "center",
+            }}
+          >
+            Explore{" "}
+            <span
+              style={{
+                background: "linear-gradient(90deg, #c52222, #f9b4b4)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Pentafox's
+            </span>{" "}
+            Portfolio
+          </h1>
+
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#475569",
+              maxWidth: "700px",
+              margin: "16px auto 30px",
+              textAlign: "center",
+            }}
+          >
+            Access blogs, data sheets, case studies, solution guides, and expert
+            insights to power your growth.
+          </p>
+        </>
+      )}
+
 
       <ProjectCard
         projects={projectWithoutOurProducts}

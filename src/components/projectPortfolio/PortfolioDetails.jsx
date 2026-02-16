@@ -24,7 +24,7 @@ import { IconAlertTriangle } from "@tabler/icons-react";
 import ProjectCard from "./ProjectCard";
 
 const handleSeperateHeadingAndContent = (data) => {
-  const contentArray = data?.split("--"); // Ex:- item = heading -- content
+  const contentArray = data?.split("--");
   const [heading, content, Icon] = contentArray;
   return {
     heading: contentArray.length === 2 ? heading : null,
@@ -190,59 +190,6 @@ export default function PortfolioDetails() {
 
   const slug = location.pathname.split("/").filter(Boolean).pop();
 
-
-  //   query PortfolioDetailsStaticQuery {
-  //     allContentfulPortfolio {
-  //       nodes {
-  //         name
-  //         slug
-  //         projectImage {
-  //           gatsbyImageData(width: 900)
-  //         }
-
-  //         overview {
-  //           overview
-  //         }
-
-  //         detailedDescription {
-  //           detailedDescription
-  //         }
-
-  //         challengeContent {
-  //           challengeContent
-  //         }
-  //         challengekeyPoints
-
-  //         solutionContent {
-  //           solutionContent
-  //         }
-  //         solutionKeyPoints
-  //         missionKeyPoints
-
-  //         goalKeyPoints
-
-  //         coreTechnology {
-  //           coreTechnology
-  //         }
-  //         technologyStack
-
-  //         impactContent {
-  //           impactContent
-  //         }
-  //         impactKeyPoints
-
-  //         coreCapability
-  //         keyOutcomes
-  //         collaboration {
-  //           collaboration
-  //         }
-  //         conclusion {
-  //           conclusion
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
   const data = useStaticQuery(graphql`
     query PortfolioDetailsStaticQuery {
       allContentfulPortfolio {
@@ -250,6 +197,7 @@ export default function PortfolioDetails() {
           contentful_id
           name
           slug
+          filter
           projectImage {
             gatsbyImageData(width: 900)
           }
@@ -301,8 +249,17 @@ export default function PortfolioDetails() {
 
   const allContent = data?.allContentfulPortfolio?.nodes;
   const project = allContent?.find((item) => item.slug === slug);
-  const relatedProjects = allContent.filter((item) => item.slug !== slug);
-  console.log(relatedProjects);
+  let relatedProjects = [];
+
+  // if current project is aviation → show aviation only
+  if (project?.filter === "aviation") {
+    relatedProjects = allContent.filter(
+      (item) => item.slug !== slug && item.filter === "aviation"
+    );
+  } else {
+    // all other projects normal
+    relatedProjects = allContent.filter((item) => item.slug !== slug);
+  }
 
   const projectContentConfig = [
     {
