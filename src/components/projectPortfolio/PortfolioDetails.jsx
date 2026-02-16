@@ -29,6 +29,8 @@ export default function PortfolioDetails() {
           projectImage {
             gatsbyImageData(width: 900)
           }
+           keyOutcomes
+          solutionKeyPoints,
         }
       }
 
@@ -40,6 +42,9 @@ export default function PortfolioDetails() {
           projectStory {
             projectStory
           }
+          challengeKeyPoints,
+          
+         
           projectImage {
             gatsbyImageData(width: 900)
           }
@@ -358,3 +363,5 @@ export default function PortfolioDetails() {
     </LayoutCommon>
   );
 }
+
+

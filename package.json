@@ -54,6 +54,7 @@
     "gbimage-bridge": "^0.2.2",
     "gh-pages": "^4.0.0",
     "gsap": "^3.13.0",
+    "html2pdf.js": "^0.14.0",
     "intersection-observer": "^0.12.2",
     "markdown-it": "^13.0.1",
     "or": "^0.2.0",
