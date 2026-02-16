@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
+    // background: red;
   }
 
   /* HERO */
@@ -50,7 +51,7 @@ export const Wrapper = styled.div`
 
   /* SECTIONS */
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
 
   .project-section-title {
@@ -62,8 +63,8 @@ export const Wrapper = styled.div`
   /* GRID */
   .challenge-solution-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 10px;
   }
 
   .content {
