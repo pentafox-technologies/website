@@ -44,6 +44,7 @@ function ProjectPortfolio() {
   const projects = data?.allContentfulPortfolio?.nodes;
   const aviationProjects = projects?.filter((p) => p.filter === "aviation");
   const bankingProjects = projects?.filter((p) => p.filter === "banking");
+  
 
   const projectConfig = [...bankingProjects, ...aviationProjects];
 
