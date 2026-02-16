@@ -5,6 +5,8 @@ import LogoRedSVG from "../../images/logo-pf-red-1.svg";
 import FastkycLogo from "../../about_assets/Logo.png";
 import WalaneLogo from "../../about_assets/Walane.png";
 import aviLogo from "../../about_assets/avi_favicon.png";
+import digiopsLogo from "../../about_assets/digi-ops.png";
+
 import { Link, navigate } from "gatsby";
 import {
   createStyles,
@@ -470,6 +472,13 @@ const ourProductsdata = [
     pageRoute: "https://www.fastkyc.com/",
     external: true,
     image: FastkycLogo,
+  },
+   {
+    title: 'Digital Lending Platform',
+    description: "Intelligent lending solution that automates LOS, LMS, and DDMS to accelerate loan processing and improve operational efficiency.",
+    pageRoute: 'https://digiops.in/',
+    external: true,
+    image: digiopsLogo,
   }
 ];
 
