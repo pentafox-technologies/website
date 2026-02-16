@@ -449,8 +449,8 @@ const companydata = [
 
 const ourProductsdata = [
   {
-    title: "Aervia Digital Platforms",
-    description: "Intelligent software solutions that streamline and modernize airline operations across flight, ground, and business functions.",
+    title: "Aervia-Aviation Digital Platforms",
+    description: "Smart manpower planning and rostering platform that converts headcount into structured shifts and task assignments based on flight schedules, operational rules, and real-time demand.",
     pageRoute: "/pentafox-portfolio",
     state: { filter: "aviation" },
     image: aviLogo,
