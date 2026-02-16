@@ -12,7 +12,7 @@ const Clients = ({
     <div>
       <ClientLogoSection>
         <div className="container">
-          <h3>{clientSectionData.title}</h3>
+          <h3 style={{ color: "#CD0E11" }}>{clientSectionData.title}</h3>
           <p>{clientSectionData.description.description}</p>
 
           <ul className={`m-auto mb-24`}>

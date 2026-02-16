@@ -4,9 +4,7 @@ import { ContentSectionWrapper } from "./contentSection.css";
 import { useMediaQuery } from "@mantine/hooks";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import {
-  IconCircleArrowRightFilled,
-} from "@tabler/icons-react";
+import { IconCircleArrowRightFilled } from "@tabler/icons-react";
 import { Link } from "gatsby";
 
 const useStyles = createStyles((theme) => ({
@@ -38,14 +36,17 @@ const ContentSection = ({
   id,
   heading,
   description,
+  isPoint,
   rightSide,
   listWithIcons,
   serviceStock,
   image1,
   image2,
+  singleImage,
   category,
   route,
   discoverLabel,
+  openAnotherTab = false,
 }) => {
   const { classes } = useStyles();
   const matches = useMediaQuery("(max-width: 990px)");
@@ -69,8 +70,7 @@ const ContentSection = ({
 
     // run only if list exists
     if (animListItem.current) {
-      const listItems =
-        animListItem.current.querySelectorAll(".list-item");
+      const listItems = animListItem.current.querySelectorAll(".list-item");
 
       if (listItems.length > 0) {
         gsap.from(listItems, {
@@ -87,7 +87,6 @@ const ContentSection = ({
     }
   }, []);
 
-
   // route
   const goToRoute = route || "/pentafox-portfolio";
 
@@ -101,7 +100,6 @@ const ContentSection = ({
           ? "machine-learning"
           : "others";
 
-
   return (
     <Center>
       <ContentSectionWrapper
@@ -112,7 +110,7 @@ const ContentSection = ({
           <div className="middle-content">
             <div className="left-col">
               <h3>{heading}</h3>
-              {id === "aviation-static" ? (
+              {isPoint ? (
                 description.split("\n").map((line, i) => (
                   <p key={i} style={{ marginBottom: 12, lineHeight: "28px" }}>
                     {line}
@@ -142,45 +140,68 @@ const ContentSection = ({
                   })}
                 </ul>
               ) : null}
-
-              <Link
-                to={goToRoute}
-                state={{ filter: filterType }}
-                style={{
-                  color: "#CD0E11",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  textDecoration: "none",
-                  marginTop: 20,
-                }}
-              >
-                <h6 style={{ margin: 0, fontSize: 16 }}>
-                  {discoverLabel || "Discover More"}
-                </h6>
-                <IconCircleArrowRightFilled size={22} />
-              </Link>
-
+              {openAnotherTab ? (
+                <a
+                  href={goToRoute}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "#CD0E11",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    textDecoration: "none",
+                    marginTop: 20,
+                  }}
+                >
+                  <h6 style={{ margin: 0, fontSize: 16 }}>
+                    {discoverLabel || "Discover More"}
+                  </h6>
+                  <IconCircleArrowRightFilled size={22} />
+                </a>
+              ) : (
+                <Link
+                  to={goToRoute}
+                  state={{ filter: filterType }}
+                  style={{
+                    color: "#CD0E11",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    textDecoration: "none",
+                    marginTop: 20,
+                  }}
+                >
+                  <h6 style={{ margin: 0, fontSize: 16 }}>
+                    {discoverLabel || "Discover More"}
+                  </h6>
+                  <IconCircleArrowRightFilled size={22} />
+                </Link>
+              )}
             </div>
 
             <div className="right-col">
-              <div className="image-card" ref={animContainer}>
-                <Box className={classes.leftImg}>
-                  <Image
-                    src={image1}
-                    height={matches ? 120 : 220}
-                    radius="sm"
-                  />
-                </Box>
-                <Box className={classes.rightImg}>
-                  <Image
-                    src={image2}
-                    // width={220}
-                    height={matches ? 140 : 300}
-                    radius="sm"
-                  />
-                </Box>
-              </div>
+              {singleImage ? (
+                <Image src={singleImage} radius="sm" />
+              ) : (
+                <div className="image-card" ref={animContainer}>
+                  <Box className={classes.leftImg}>
+                    <Image
+                      src={image1}
+                      height={matches ? 120 : 220}
+                      radius="sm"
+                    />
+                  </Box>
+                  <Box className={classes.rightImg}>
+                    <Image
+                      src={image2}
+                      // width={220}
+                      height={matches ? 140 : 300}
+                      radius="sm"
+                    />
+                  </Box>
+                </div>
+              )}
             </div>
           </div>
         </div>

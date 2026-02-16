@@ -7,6 +7,9 @@ import ContentSection from "../components/contentSection/contentSection";
 import Clients from "../components/clientSection/clients";
 import { HeaderData } from "../components/head/Head";
 import AviationImg from "../about_assets/Aviation.png";
+import walaneImg from "../about_assets/Solution_Walane.png";
+import fastKycImg from "../about_assets/FastKyc-image.png";
+import digiOps from "../about_assets/Digiops2.png";
 
 export const Head = () => {
   return <HeaderData />;
@@ -75,110 +78,86 @@ const IndexPage = () => {
         {/* HERO SECTION */}
         <HeroSection contentData={queryData.allContentfulServices.nodes} />
 
-          <h3 style={{ textAlign: "center", marginTop: "10px" }}>Our Products</h3>
-
+        <h3 style={{ textAlign: "center", marginTop: "10px", color: "#CD0E11" }}>Our Products</h3>
 
         <ContentSection
           id="Aervia-smart"
-          rightSide={true}
-          listWithIcons={true}
+          isPoint={true}
+          rightSide={false}
           heading="Aervia – Smart Aviation Operations Suite"
-          description={`Aervia is Pentafox’s flagship aviation operations platform designed to streamline airline operations and improve workforce coordination.
-It combines intelligent operational modules with advanced Workforce Management (WFM) to plan manpower, automate workflows, and enhance operational visibility.
-Aervia enables airlines to optimize resources, improve efficiency, and ensure reliable execution across flight, ground, and business functions.`}
-          discoverLabel="Explore Aviation Work"
+          description={`
+            Aervia is Pentafox’s flagship aviation operations platform designed to streamline airline operations and improve workforce coordination.
+
+            It combines intelligent operational modules with advanced Workforce Management (WFM) to plan manpower, automate workflows, and enhance operational visibility.
+
+            Aervia enables airlines to optimize resources, improve efficiency, and ensure reliable execution across flight, ground, and business functions.
+            
+            At Pentafox, our goal is to help airlines operate smarter, faster, and more efficiently through purpose-built technology.`}
+          discoverLabel="Discover More"
           image1={AviationImg}
           image2={AviationImg}
           route="/pentafox-portfolio"
-          category={[
-            {
-              title: "Workforce Management (WFM)",
-              description:
-                "Intelligent manpower planning and rostering platform that converts headcount into optimized rosters, shifts, and task assignments based on flight schedules, operational rules, and real-time demand.",
-            },
-            {
-              title: "Operations Management",
-              description:
-                "Centralized tools to monitor and manage flight operations, ground activities, and operational workflows, ensuring smooth coordination and real-time operational visibility.",
-            },
-            {
-              title: "Pricing & Revenue Management",
-              description:
-                "Automated pricing and revenue optimization tools that help airlines manage fare strategies, analyze demand, and improve revenue performance.",
-            },
-            {
-              title: "Inflight & Booking Management",
-              description:
-                "Integrated systems to manage inflight services, passenger bookings, and operational support workflows, improving efficiency and enhancing passenger experience.",
-            },
-          ]}
         />
         <ContentSection
           id="Walane-ai"
-          rightSide={false}
-          listWithIcons={true}
+          rightSide={true}
+          isPoint={true}
           heading="Walane AI Business Automation"
-          description={`Walane is an AI-powered conversational platform designed to automate customer interactions across channels like WhatsApp, web, and mobile. It helps businesses improve customer engagement, automate support and sales workflows, and deliver faster, more intelligent responses using conversational AI and automation.`}
-          discoverLabel="Explore Walane"
-          image1={AviationImg}
-          image2={AviationImg}
+          description={`
+            Walane is Pentafox’s intelligent conversational AI platform designed to automate customer interactions and improve engagement across digital channels.
+            
+            It combines AI-powered chatbots with workflow automation to handle customer support, sales, onboarding, and service requests efficiently and at scale.
+            
+            Walane enables organizations to streamline communication, reduce manual effort, and deliver faster, more consistent customer experiences across WhatsApp, web, and mobile platforms.
+            
+            At Pentafox, our goal is to help businesses operate smarter, faster, and more efficiently through AI-driven automation.
+            `}
+          discoverLabel="Discover More"
+          singleImage={walaneImg}
           route="https://www.walane.ai/"
-          category={[
-            {
-              title: "Conversational AI",
-              description:
-                "Build intelligent chatbots that understand user intent, respond naturally, and automate customer support, sales, and service workflows.",
-            },
-            {
-              title: "Workflow Automation",
-              description:
-                "Automate repetitive business processes, customer journeys, notifications, and task execution using configurable conversation-driven workflows.",
-            },
-            {
-              title: "Multi-Channel Integration",
-              description:
-                "Engage customers across WhatsApp, web, mobile apps, and enterprise systems, ensuring seamless and consistent communication experiences.",
-            },
-            {
-              title: "Analytics & Insights",
-              description:
-                "Track conversations, user behavior, and engagement metrics with real-time dashboards to improve performance and optimize customer interactions.",
-            },
-          ]}
+          openAnotherTab
         />
         <ContentSection
           id="fastKYC-platform"
-          rightSide={true}
-          listWithIcons={true}
+          rightSide={false}
+          isPoint={true}
           heading="FastKYC Platform"
-          description={`FastKYC is a digital identity verification platform that enables businesses to securely onboard customers through automated KYC workflows. It simplifies identity verification using WhatsApp and web-based interactions, helping organizations improve onboarding speed, ensure regulatory compliance, and reduce manual verification effort.`}
-          discoverLabel="Explore FastKYC Platform"
-          image1={AviationImg}
-          image2={AviationImg}
+          description={`
+            FastKYC is Pentafox’s digital identity verification platform designed to simplify and automate customer onboarding and compliance processes.
+            
+            It combines secure document capture, automated verification workflows, and centralized record management to ensure accurate and compliant identity validation.
+            
+            FastKYC enables organizations to accelerate onboarding, improve compliance visibility, and reduce manual verification effort while maintaining secure and audit-ready records.
+            
+            At Pentafox, our goal is to help businesses onboard customers faster, safer, and more efficiently through intelligent digital verification solutions.
+            `}
+          discoverLabel="Discover More"
+          singleImage={fastKycImg}
           route="https://www.fastkyc.com/"
-          category={[
-            {
-              title: "WhatsApp KYC Verification",
-              description:
-                "Enable customers to complete KYC directly through WhatsApp with guided, secure, and user-friendly identity verification workflows.",
-            },
-            {
-              title: "Automated Identity Processing",
-              description:
-                "Automatically capture, validate, and verify customer identity documents, reducing manual effort and accelerating onboarding processes.",
-            },
-            {
-              title: "Secure Document & Data Management",
-              description:
-                "Store and manage KYC records securely with centralized access, ensuring data integrity, privacy, and compliance with regulatory requirements.",
-            },
-            {
-              title: "Compliance & Audit Trail",
-              description:
-                "Maintain complete audit-ready records of customer verification activities, ensuring transparency, traceability, and regulatory compliance.",
-            },
-          ]}
+          openAnotherTab
         />
+
+        <ContentSection
+          id="digiops"
+          rightSide={true}
+          isPoint={true}
+          heading="Digital Lending Platform - LMS,LOS,DDMS"
+          description={`
+            Pentafox’s Digital Lending Platform is an end-to-end solution designed to transform and streamline lending operations for Banks, NBFCs, FinTechs, and financial institutions.
+            
+            It combines Loan Origination System (LOS), Loan Management System (LMS), and Digital Document Management System (DDMS) to automate the complete lending lifecycle—from onboarding and loan processing to servicing and collections.
+            
+            The platform enables organizations to accelerate loan processing, improve operational efficiency, strengthen credit risk controls, and ensure seamless management across origination, servicing, and compliance workflows.
+            
+            At Pentafox, our goal is to help financial institutions operate smarter, faster, and more efficiently through intelligent digital lending solutions.
+            `}
+          discoverLabel="Discover More"
+          singleImage={digiOps}
+          route="https://www.fastkyc.com/"
+          openAnotherTab
+        />
+
+        <h3 style={{ textAlign: "center", marginTop: "10px", color: "#CD0E11" }}>Our Services</h3>
 
         {/* ===== CONTENTFUL SERVICES ===== */}
         {queryData.allContentfulServices.nodes?.map((item, index) => {
@@ -193,7 +172,7 @@ Aervia enables airlines to optimize resources, improve efficiency, and ensure re
             <ContentSection
               key={index}
               id={index}
-              rightSide={index % 2}
+              rightSide={index % 2 !== 0}
               listWithIcons
               heading={item.title}
               description={item?.description?.description}
