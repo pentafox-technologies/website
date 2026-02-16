@@ -47,6 +47,7 @@ const ContentSection = ({
   route,
   discoverLabel,
   openAnotherTab = false,
+  routerState = {},
 }) => {
   const { classes } = useStyles();
   const matches = useMediaQuery("(max-width: 990px)");
@@ -162,7 +163,7 @@ const ContentSection = ({
               ) : (
                 <Link
                   to={goToRoute}
-                  state={{ filter: filterType }}
+                  state={routerState}
                   style={{
                     color: "#CD0E11",
                     display: "flex",

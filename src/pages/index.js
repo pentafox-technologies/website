@@ -97,6 +97,7 @@ const IndexPage = () => {
           image1={AviationImg}
           image2={AviationImg}
           route="/pentafox-portfolio"
+          routerState={{filter: "aviation"}}
         />
         <ContentSection
           id="Walane-ai"

@@ -738,7 +738,7 @@ const HeaderBar = ({
                 to="/contact-us"
                 className={lightLinks ? "lightLinks" : "link"}
               >
-                <p className="contactUs">Contact Us</p>
+                <p className="contactUs">Book a Demo</p>
               </Link>
             </div>
 
