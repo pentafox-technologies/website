@@ -259,6 +259,16 @@ const ContactForm = () => {
                   {...form.getInputProps("project_sevices")}
                   data={[
                     {
+                      value: "Aervia - Aviation Digital Platforms",
+                      label: "Aervia - Aviation Digital Platforms",
+                      group: "Products",
+                    },
+                    {
+                      value: "Digiops - Digital Lending Platform",
+                      label: "Digiops - Digital Lending Platform",
+                      group: "Products",
+                    },
+                    {
                       value: "Whatsapp business automation - walane.ai",
                       label: "Whatsapp business automation - walane.ai",
                       group: "Products",

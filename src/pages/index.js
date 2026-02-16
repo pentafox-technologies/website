@@ -153,7 +153,7 @@ const IndexPage = () => {
             `}
           discoverLabel="Discover More"
           singleImage={digiOps}
-          route="https://www.fastkyc.com/"
+          route="https://digiops.in/"
           openAnotherTab
         />
 
