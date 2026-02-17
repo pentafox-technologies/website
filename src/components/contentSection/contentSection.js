@@ -183,7 +183,9 @@ const ContentSection = ({
 
             <div className="right-col">
               {singleImage ? (
-                <Image src={singleImage} radius="sm" ref={animContainer} style={{ marginRight: "10px" }} />
+                <div ref={animContainer}>
+                  <Image src={singleImage} radius="sm" />
+                </div>
               ) : (
                 <div className="image-card" ref={animContainer}>
                   <Box className={classes.leftImg}>

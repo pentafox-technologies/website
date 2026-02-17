@@ -254,7 +254,7 @@ export default function PortfolioDetails() {
   // if current project is aviation → show aviation only
   if (project?.filter === "aviation") {
     relatedProjects = allContent.filter(
-      (item) => item.slug !== slug && item.filter === "aviation"
+      (item) => item.slug !== slug && item.filter === "aviation",
     );
   } else {
     // all other projects normal
@@ -348,6 +348,14 @@ export default function PortfolioDetails() {
     return <h2>Project not found</h2>;
   }
 
+  const DetailedDescriptionArray =
+    project?.detailedDescription?.detailedDescription
+      .split(/\s*\d+\.\s*/g)
+      .filter(Boolean);
+
+      console.log(DetailedDescriptionArray?.length);
+      
+
   return (
     <LayoutCommon
       hideLink
@@ -401,6 +409,7 @@ export default function PortfolioDetails() {
                   style={{
                     width: "100%",
                     boxShadow: "6px 6px 10px 1px #f7f3f3",
+                    // border: "1px solid #b7adad"
                   }}
                 />
               </div>
@@ -412,7 +421,12 @@ export default function PortfolioDetails() {
                 <RenderPoints
                   Icon={IconFileText}
                   heading="Background & Story"
-                  content={project?.detailedDescription?.detailedDescription}
+                  content={
+                    DetailedDescriptionArray?.length !== 1
+                      ? null
+                      : project?.detailedDescription?.detailedDescription
+                  }
+                  keypoints={DetailedDescriptionArray?.length === 1 ? null : DetailedDescriptionArray}
                 />
               )}
             </div>

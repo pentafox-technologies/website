@@ -10,6 +10,14 @@ import AviationImg from "../about_assets/Aviation.png";
 import walaneImg from "../about_assets/Solution_Walane.png";
 import fastKycImg from "../about_assets/FastKyc-image.png";
 import digiOps from "../about_assets/Digiops2.png";
+import aerviaImg1 from "../about_assets/aervia-image-1.png";
+import aerviaImg2 from "../about_assets/aervia-image-2.png";
+import walaneImg1 from "../about_assets/walane-image-1.png";
+import walaneImg2 from "../about_assets/walane-image-2.png";
+import fastkycImg1 from "../about_assets/fastkyc-image-1.png";
+import fastkycImg2 from "../about_assets/fastkyc-image-2.png";
+import digiopsImg1 from "../about_assets/digiops-image-1.png";
+import digiopsImg2 from "../about_assets/digiops-image-2.png";
 
 export const Head = () => {
   return <HeaderData />;
@@ -86,7 +94,7 @@ const IndexPage = () => {
           rightSide={false}
           heading="Aervia – Smart Aviation Operations Suite"
           description={`
-            Aervia is Pentafox’s flagship aviation operations platform designed to streamline airline operations and improve workforce coordination.
+            Aervia is Pentafox’s flagship aviation operations platform designed to streamline airline operations and improve workforce coordination using AI/ML-driven intelligence.
 
             It combines intelligent operational modules with advanced Workforce Management (WFM) to plan manpower, automate workflows, and enhance operational visibility.
 
@@ -94,8 +102,8 @@ const IndexPage = () => {
             
             At Pentafox, our goal is to help airlines operate smarter, faster, and more efficiently through purpose-built technology.`}
           discoverLabel="Discover More"
-          image1={AviationImg}
-          image2={AviationImg}
+          image1={aerviaImg1}
+          image2={aerviaImg2}
           route="/pentafox-portfolio"
           routerState={{filter: "aviation"}}
         />
@@ -133,7 +141,8 @@ const IndexPage = () => {
             At Pentafox, our goal is to help businesses onboard customers faster, safer, and more efficiently through intelligent digital verification solutions.
             `}
           discoverLabel="Discover More"
-          singleImage={fastKycImg}
+          image1={fastkycImg1}
+          image2={fastkycImg2}
           route="https://www.fastkyc.com/"
           openAnotherTab
         />
@@ -153,7 +162,8 @@ const IndexPage = () => {
             At Pentafox, our goal is to help financial institutions operate smarter, faster, and more efficiently through intelligent digital lending solutions.
             `}
           discoverLabel="Discover More"
-          singleImage={digiOps}
+          image1={digiopsImg1}
+          image2={digiopsImg2}
           route="https://digiops.in/"
           openAnotherTab
         />
