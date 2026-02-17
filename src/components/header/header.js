@@ -283,8 +283,9 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md} calc(${theme.spacing.md} * 2)`,
     paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
-      }`,
+    borderTop: `1px solid ${
+      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
+    }`,
   },
 
   hiddenMobile: {
@@ -452,7 +453,8 @@ const companydata = [
 const ourProductsdata = [
   {
     title: "Aervia-Aviation Digital Platforms",
-    description: "Smart manpower planning and rostering platform that converts headcount into structured shifts and task assignments based on flight schedules, operational rules, and real-time demand.",
+    description:
+      "Smart manpower planning and rostering platform that converts headcount into structured shifts and task assignments based on flight schedules, operational rules, and real-time demand.",
     pageRoute: "/pentafox-portfolio",
     state: { filter: "aviation" },
     image: aviLogo,
@@ -467,21 +469,20 @@ const ourProductsdata = [
   },
   {
     title: "FastKYC",
-    description:
-      "AI-driven platform that streamlines the entire KYC process",
+    description: "AI-driven platform that streamlines the entire KYC process",
     pageRoute: "https://www.fastkyc.com/",
     external: true,
     image: FastkycLogo,
   },
-   {
-    title: 'Digital Lending Platform',
-    description: "Intelligent lending solution that automates LOS, LMS, and DDMS to accelerate loan processing and improve operational efficiency.",
-    pageRoute: 'https://digiops.in/',
+  {
+    title: "Digital Lending Platform",
+    description:
+      "Intelligent lending solution that automates LOS, LMS, and DDMS to accelerate loan processing and improve operational efficiency.",
+    pageRoute: "https://digiops.in/",
     external: true,
     image: digiopsLogo,
-  }
+  },
 ];
-
 
 const HeaderBar = ({
   showDarkLogo = true,
@@ -519,29 +520,44 @@ const HeaderBar = ({
 
     const content = (
       <UnstyledButton className={classes.subLink} key={item.title}>
-        <Group noWrap align="center" spacing={12} style={{ width: "100%" }}>
+        <Group
+          noWrap
+          spacing={12}
+          style={{
+            width: "100%",
+            alignItems: "flex-start",
+          }}
+        >
           {item.image ? (
             <div
               style={{
-                minWidth: 42,
-                height: 42,
-                border: "1px solid #e5e5e5",
-                borderRadius: 8,
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "#fff",
+                flexDirection: "column",
+                justifyContent: "flex-start",
               }}
             >
-              <img
-                src={item.image}
-                alt={item.title}
+              <div
                 style={{
-                  width: 22,
-                  height: 22,
-                  objectFit: "contain",
+                  minWidth: 42,
+                  height: 42,
+                  border: "1px solid #e5e5e5",
+                  borderRadius: 8,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "#fff",
                 }}
-              />
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{
+                    width: 22,
+                    height: 22,
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
             </div>
           ) : (
             <ThemeIcon size={34} variant="default" radius="md">
@@ -571,17 +587,11 @@ const HeaderBar = ({
 
     // internal link
     return (
-      <Link
-        to={linkTo}
-        state={item.state}
-        onClick={closeDrawer}
-      >
+      <Link to={linkTo} state={item.state} onClick={closeDrawer}>
         {content}
       </Link>
     );
-
   };
-
 
   const handleToggleSubNav = (type) => {
     switch (type) {
@@ -831,11 +841,7 @@ const HeaderBar = ({
                 onClick={() => navigate("/pentafox-portfolio")}
                 className={classes.drawerMenuItem}
               >
-                <span
-                  className={classes.mobileNavHeading}
-                >
-                  Portfolio
-                </span>
+                <span className={classes.mobileNavHeading}>Portfolio</span>
               </UnstyledButton>
             </div>
 
@@ -869,7 +875,9 @@ const HeaderBar = ({
                     size={18}
                     style={{
                       transition: "transform 200ms",
-                      transform: productsOpened ? "rotate(180deg)" : "rotate(0deg)",
+                      transform: productsOpened
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
                       color: "#878787",
                     }}
                   />
