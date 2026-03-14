@@ -408,7 +408,7 @@ const Footer = () => {
                 <br />
                 No. 66-A4, 3rd Floor, Jeyam Towers, Erode
                 <br />
-                Tamil Nadu 638001
+                Tamil Nadu, India 638001
                 <br />
                 (Or)
                 <br />
@@ -426,7 +426,7 @@ const Footer = () => {
                 <br />
                 NO.59,Journalist colony, Kottivakkam, Thiruvanmiyur
                 <br />
-                Chennai - 600041, Tamil Nadu, INDIA
+                Chennai, Tamil Nadu, India 600041
               </p>
             </p>
           </div>

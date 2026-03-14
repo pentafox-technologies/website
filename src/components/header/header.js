@@ -283,9 +283,8 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md} calc(${theme.spacing.md} * 2)`,
     paddingBottom: theme.spacing.xl,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
-    }`,
+    borderTop: `1px solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
+      }`,
   },
 
   hiddenMobile: {
@@ -454,22 +453,22 @@ const ourProductsdata = [
   {
     title: "Aervia-Aviation Digital Platforms",
     description:
-      "Smart manpower planning and rostering platform that converts headcount into structured shifts and task assignments based on flight schedules, operational rules, and real-time demand.",
-    pageRoute: "/pentafox-portfolio",
+      "AI-powered workforce planning and rostering platform that optimizes aviation shifts and task allocation using real-time data.",
+    pageRoute: "/pentafox-aviation-portfolio",
     state: { filter: "aviation" },
     image: aviLogo,
   },
   {
     title: "Walane",
     description:
-      "Engage customers instantly, automate responses, and drive conversions",
+      "WhatsApp engagement platform that automates customer communication, enabling real-time interactions, support, and conversions.",
     pageRoute: "https://www.walane.ai/",
     external: true,
     image: WalaneLogo,
   },
   {
     title: "FastKYC",
-    description: "AI-driven platform that streamlines the entire KYC process",
+    description: "AI-powered KYC platform that automates identity verification to accelerate onboarding and improve compliance.",
     pageRoute: "https://www.fastkyc.com/",
     external: true,
     image: FastkycLogo,
@@ -477,7 +476,7 @@ const ourProductsdata = [
   {
     title: "Digital Lending Platform",
     description:
-      "Intelligent lending solution that automates LOS, LMS, and DDMS to accelerate loan processing and improve operational efficiency.",
+      "End-to-end lending platform that automates loan origination, management, and processing to improve efficiency and speed.",
     pageRoute: "https://digiops.in/",
     external: true,
     image: digiopsLogo,

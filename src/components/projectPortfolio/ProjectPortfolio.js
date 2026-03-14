@@ -6,7 +6,14 @@ import ProjectCard from "./ProjectCard";
 
 function ProjectPortfolio() {
   const location = useLocation();
+  const pathname = location?.pathname;
   const filterFromNav = location?.state?.filter;
+
+  // detect filter from URL
+  const filterFromPath = pathname === "/aviation" ? "aviation" : null;
+
+  // final filter
+  const activeFilter = filterFromNav || filterFromPath;
 
   /* ===================== DATA ===================== */
 
@@ -67,7 +74,7 @@ function ProjectPortfolio() {
     ];
   }
   // if coming from aviation click
-  if (filterFromNav === "aviation") {
+  if (activeFilter === "aviation") {
     projectWithoutOurProducts = projectWithoutOurProducts?.filter(
       (p) => p.filter === "aviation",
     );
@@ -92,7 +99,7 @@ function ProjectPortfolio() {
     >
       {/* HEADER */}
       {/* HEADER TEXT CHANGE */}
-      {filterFromNav === "aviation" ? (
+      {activeFilter === "aviation" ? (
         <>
           <h1
             style={{

@@ -1,19 +1,14 @@
-import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import { HomeWrapper } from "../components/home/home.css";
 import LayoutCommon from "../components/layout/layoutCommon";
 import HeroSection from "../components/heroSection/heroSection";
 import ContentSection from "../components/contentSection/contentSection";
 import Clients from "../components/clientSection/clients";
 import { HeaderData } from "../components/head/Head";
-import AviationImg from "../about_assets/Aviation.png";
 import walaneImg from "../about_assets/Solution_Walane.png";
-import fastKycImg from "../about_assets/FastKyc-image.png";
-import digiOps from "../about_assets/Digiops2.png";
 import aerviaImg1 from "../about_assets/aervia-image-1.png";
 import aerviaImg2 from "../about_assets/aervia-image-2.png";
-import walaneImg1 from "../about_assets/walane-image-1.png";
-import walaneImg2 from "../about_assets/walane-image-2.png";
 import fastkycImg1 from "../about_assets/fastkyc-image-1.png";
 import fastkycImg2 from "../about_assets/fastkyc-image-2.png";
 import digiopsImg1 from "../about_assets/digiops-image-1.png";
@@ -104,7 +99,7 @@ const IndexPage = () => {
           discoverLabel="Discover More"
           image1={aerviaImg1}
           image2={aerviaImg2}
-          route="/pentafox-portfolio"
+          route="/pentafox-aviation-portfolio"
           routerState={{filter: "aviation"}}
         />
         <ContentSection

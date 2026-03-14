@@ -158,6 +158,21 @@ module.exports = {
         display: "swap",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Montserrat: 300,400,500,600,700`,
+          `Outfit: 300,400,500,600,700`,
+          `Varela Round: 400`,
+          `Kalam: 300,400,700`,
+        ],
+        display: "swap",
+      },
+    },
+
+    `gatsby-plugin-sitemap`,
+
     // {
     //   resolve: "gatsby-plugin-force-file-loader",
     // },
