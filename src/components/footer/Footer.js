@@ -272,6 +272,11 @@ const Footer = () => {
                       group: "Products",
                     },
                     {
+                      value: "Unified Digital Lending Platform - digiops.in",
+                      label: "Unified Digital Lending Platform - digiops.in",
+                      group: "Products",
+                    },
+                    {
                       value: "Cloud / Infra services",
                       label: "Cloud / Infra services",
                       group: "Services",
@@ -473,7 +478,7 @@ const Footer = () => {
             alignItems: "center",
           }}
         >
-          <div style={{ paddingTop: 20, paddingBottom: 20 }}>
+          {/* <div style={{ paddingTop: 20, paddingBottom: 20 }}>
             <img
               src="https://i.imgur.com/brwBGIo.png"
               alt="Pentafox Logo"
@@ -481,7 +486,7 @@ const Footer = () => {
               width="200"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </div> */}
         </div>
 
         {/* BOTTOM SECTION */}
@@ -497,10 +502,18 @@ const Footer = () => {
           }}
         >
           {/* LEFT COL */}
-          <div className="left-col">
+          <div
+            className="left-col"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
             <Link
               to="/"
-              className="pr-3 text-white"
+              className="text-white"
               style={{ textDecoration: "none", marginRight: 8 }}
             >
               Home
@@ -530,24 +543,19 @@ const Footer = () => {
               Internship
             </Link> */}
             {/* {"    "}&#124;{"    "} */}
-            {queryData?.allContentfulStaticPage?.nodes?.map((item, i) => {
-              return (
-                <>
-                  {"    "}&#124;{"    "}
-                  <Link
-                    to={`/${item?.slug}`}
-                    className="pl-3 text-white"
-                    style={{
-                      textDecoration: "none",
-                      marginLeft: 8,
-                      marginRight: 8,
-                    }}
-                  >
-                    {item?.title}
-                  </Link>
-                </>
-              );
-            })}
+            {queryData?.allContentfulStaticPage?.nodes?.map((item, i) => (
+              <React.Fragment key={i}>
+                <span style={{ color: "#888" }}>|</span>
+
+                <Link
+                  to={`/${item?.slug}`}
+                  className="text-white"
+                  style={{ textDecoration: "none" }}
+                >
+                  {item?.title}
+                </Link>
+              </React.Fragment>
+            ))}
             {/* <Link
               to="/terms"
               className="pl-3 text-white"
@@ -564,7 +572,7 @@ const Footer = () => {
           <Box
             className="right-col"
             sx={{
-              textAlign: isMobile ? "center" : "right",
+              textAlign: isMobile ? "center" : "left",
               color: "rgba(255, 255, 255, 0.5)",
             }}
           >
