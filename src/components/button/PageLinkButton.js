@@ -13,9 +13,7 @@ const PageLinkButton = ({routeLink, title, subTitle, leftArrow}) => {
       <Box
         w={window.innerWidth / 4}
         sx={{
-          border: "1px solid black",
           padding: 20,
-          borderRadius: 10,
           backdropFilter: "blur(16px) saturate(180%)",
           backgroundColor: "rgba(220, 41, 8, 0.05)",
           borderRadius: 12,

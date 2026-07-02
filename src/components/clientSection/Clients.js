@@ -23,7 +23,7 @@ const Clients = ({
 
           <ul className="m-auto mb-24">
             {clientsAndPartnersData
-              .filter((v) => v.parentSection == clientSectionData.title)
+              .filter((v) => v.parentSection === clientSectionData.title)
               .map((item, i) => (
                 <li key={i}>
                   <a>
@@ -53,7 +53,7 @@ const Clients = ({
 
           <ul className="m-auto mb-24">
             {clientsAndPartnersData
-              .filter((v) => v.parentSection == partnerSectionData.title)
+              .filter((v) => v.parentSection === partnerSectionData.title)
               .map((item, i) => (
                 <li key={i}>
                   <img

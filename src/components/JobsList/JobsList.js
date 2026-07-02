@@ -37,6 +37,21 @@ const JobsList = ({ data }) => {
     linkify: false,
   });
 
+  if (!data?.length) {
+    return (
+      <div className="job-email job-empty text-center">
+        <p>
+          No open positions right now. We are always keen to meet great people —
+          email your CV to{" "}
+          <a href="mailto:jobs@pentafox.in" title="Email us">
+            jobs@pentafox.in
+          </a>{" "}
+          and we will reach out when a fit opens up.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="job-listing">

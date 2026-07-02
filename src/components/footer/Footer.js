@@ -152,7 +152,7 @@ const Footer = () => {
               <ul className="list-unstyled social-icons mb-40">
                 {queryData.allContentfulSocialLink?.nodes?.map((link, item) => (
                   <li key={item}>
-                    <a href={link.socialLink} target="_blank">
+                    <a href={link.socialLink} target="_blank" rel="noreferrer">
                       <Image src={link.socialIcon} width={17} />
                     </a>
                   </li>
@@ -189,7 +189,7 @@ const Footer = () => {
                   {queryData.allContentfulSocialLink?.nodes?.map(
                     (link, item) => (
                       <li key={item}>
-                        <a href={link.socialLink} target="_blank">
+                        <a href={link.socialLink} target="_blank" rel="noreferrer">
                           <Image src={link.socialIcon} width={17} />
                         </a>
                       </li>

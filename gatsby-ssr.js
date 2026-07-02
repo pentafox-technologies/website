@@ -35,7 +35,7 @@ export const replaceRenderer = ({
 
 export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadComponents, setPostBodyComponents }) => {
   setPreBodyComponents([
-    <div id='preloader'>
+    <div key="preloader" id='preloader'>
       {/* <img src="pentafox.png" alt="logo" style={{"width": 180}} /> */}
       {/* <img id="loader-img" src="/arya-pulses-icon.png" alt="logo" style={{"width": 80}} /> */}
       {/* <div className="preloader_animation"></div> */}
@@ -47,7 +47,7 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
   })
 
   setHeadComponents([
-    <>
+    <React.Fragment key="head-components">
       <link as='script' rel="preload" href="/scripts/preloader.js" />
       <noscript>
         <link rel="stylesheet" href="/scripts/preloader.css" defer />
@@ -76,11 +76,11 @@ export const onRenderBody = ({ setPreBodyComponents, setBodyAttributes, setHeadC
         `
         }}
       />
-    </>
+    </React.Fragment>
   ])
 
   setPostBodyComponents([
-    <script src="/scripts/preloader.js" />
+    <script key="preloader-script" src="/scripts/preloader.js" />
   ])
 }
 

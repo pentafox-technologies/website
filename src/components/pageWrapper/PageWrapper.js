@@ -11,7 +11,7 @@ export const TopSectionWrapper = styled.section`
   /* box-shadow: 0px 80px 20px 0px rgba(0,0,0,0.25) inset; */
 
   min-height: 340px;
-  height: 60vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
