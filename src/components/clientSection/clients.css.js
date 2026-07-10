@@ -65,4 +65,73 @@ export const ClientLogoSection = styled.div`
       }
     }
   }
+
+  /* ===== Clients logo marquee (left → right) ===== */
+  .logo-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    padding: 8px 0 12px;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+  }
+
+  .logo-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: clientMarquee 60s linear infinite;
+
+    img {
+      width: 105px;
+      height: 41px;
+      object-fit: contain;
+      margin: 0 14px;
+
+      ${sm} {
+        width: 120px;
+        height: 46px;
+        margin: 0 19px;
+      }
+    }
+  }
+
+  .logo-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes clientMarquee {
+    from {
+      transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 `;

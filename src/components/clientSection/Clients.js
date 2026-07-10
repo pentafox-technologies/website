@@ -12,6 +12,10 @@ const Clients = ({
 }) => {
   const sm = useMediaQuery("(min-width: 768px)");
 
+  const clientLogos = (clientsAndPartnersData || []).filter(
+    (v) => v.parentSection === clientSectionData.title,
+  );
+
   return (
     <div>
       {/* ===== CLIENTS SECTION ===== */}
@@ -21,27 +25,21 @@ const Clients = ({
             {clientSectionData.title}
           </h3>
           <p>{clientSectionData.description.description}</p>
+        </div>
 
-          <ul className="m-auto mb-24">
-            {clientsAndPartnersData
-              .filter((v) => v.parentSection === clientSectionData.title)
-              .map((item, i) => (
-                <li key={i}>
-                  <a>
-                    <img
-                      title={item.name}
-                      alt={item.name}
-                      src={item.logoUrl}
-                      style={{
-                        width: 155,
-                        objectFit: "contain",
-                        height: 70,
-                      }}
-                    />
-                  </a>
-                </li>
-              ))}
-          </ul>
+        {/* logos marquee (left → right) */}
+        <div className="logo-marquee">
+          <div className="logo-track">
+            {[...clientLogos, ...clientLogos].map((item, i) => (
+              <img
+                key={i}
+                title={item.name}
+                alt={item.name}
+                src={item.logoUrl}
+                aria-hidden={i >= clientLogos.length}
+              />
+            ))}
+          </div>
         </div>
       </ClientLogoSection>
 
@@ -52,7 +50,7 @@ const Clients = ({
       <ClientLogoSection className="bg-white">
         <div className="container">
           {/* PARTNERS */}
-          <h3>{partnerSectionData.title}</h3>
+          <h3 style={{ color: "#CD0E11" }}>{partnerSectionData.title}</h3>
           <p>{partnerSectionData.description.description}</p>
 
           <ul className="m-auto mb-24">

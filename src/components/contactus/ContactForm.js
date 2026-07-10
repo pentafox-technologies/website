@@ -261,22 +261,27 @@ const ContactForm = () => {
                     {
                       value: "Aervia - Aviation Digital Platforms",
                       label: "Aervia - Aviation Digital Platforms",
-                      group: "Products",
+                      group: "Our Product",
                     },
                     {
                       value: "Digiops - Digital Lending Platform",
                       label: "Digiops - Digital Lending Platform",
-                      group: "Products",
+                      group: "Our Product",
                     },
                     {
                       value: "Whatsapp business automation - walane.ai",
                       label: "Whatsapp business automation - walane.ai",
-                      group: "Products",
+                      group: "Our Product",
                     },
                     {
                       value: "KYC / ID verification APIs - FastKYC.com",
                       label: "KYC / ID verification APIs - FastKYC.com",
-                      group: "Products",
+                      group: "Our Product",
+                    },
+                    {
+                      value: "JATAS AI - Voice AI Platform",
+                      label: "JATAS AI - Voice AI Platform",
+                      group: "Partner Product",
                     },
                     {
                       value: "Cloud / Infra services",

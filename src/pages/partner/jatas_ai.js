@@ -21,7 +21,6 @@ import JatasLogo from "../../about_assets/jatas-ai.png";
 
 export const Head = () => <HeaderData pageTitle="Partner Products — JATAS AI" />;
 
-const TOMATOVATION_URL = "https://www.tomatovation.com";
 
 const greetings = [
   { text: "नमस्ते", lang: "hi" },
@@ -50,12 +49,6 @@ const capabilities = [
     title: "Live analytics",
     body: "Real-time dashboards for every interaction, so teams act on what callers actually need. Track resolution rates, sentiment trends, and peak-hour patterns — all updating as calls happen.",
   },
-];
-
-const targets = [
-  { num: "1–2s", cap: "Response latency" },
-  { num: "85%+", cap: "First-call resolution" },
-  { num: "99.9%", cap: "Platform uptime SLA" },
 ];
 
 const howItWorks = ["Understand", "Think", "Respond", "Learn", "Improve"];
@@ -178,24 +171,15 @@ const JatasAiPage = () => {
             {/* ===== OFFICIAL CHANNEL PARTNER — Tomatovation ===== */}
             <section className="pp-section partner-section">
               <div className="container">
-                <p className="pp-label">Official Channel Partner</p>
+                <p className="pp-label">Official Implementation Partner</p>
                 <h2>Tomatovation</h2>
                 <p className="partner-lede">
                   Tomatovation is an AI-first IT consulting firm and our official
-                  channel partner, building indigenous AI products engineered for
+                  implementation partner, building indigenous AI products engineered for
                   Indian enterprises. Through this partnership we bring their
                   production-ready platforms to our customers — implemented,
                   integrated and supported end to end by Pentafox.
                 </p>
-                <a
-                  className="partner-link"
-                  href={TOMATOVATION_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Tomatovation
-                  <IconCircleArrowRightFilled size={18} />
-                </a>
               </div>
             </section>
 
@@ -265,33 +249,10 @@ const JatasAiPage = () => {
                   <div className="flow-diagram">
                     <FlowDiagram steps={howItWorks} />
                   </div>
-                </div>
-              </div>
-            </section>
 
-            {/* ===== SECTION 3 — Dark Panel: Stats + Verticals ===== */}
-            <section className="pp-section">
-              <div className="container">
-                <div className="dark-panel">
-                  <div className="panel-header">
-                    <div className="tag">
-                      <span className="dot" />
-                      Enterprise SLA targets
-                    </div>
-                    <h2>Engineered to perform at scale.</h2>
-                  </div>
-
-                  <div className="stats-row">
-                    {targets.map((t) => (
-                      <div key={t.cap} className="stat">
-                        <div className="num">{t.num}</div>
-                        <div className="cap">{t.cap}</div>
-                      </div>
-                    ))}
-                  </div>
-
+                  {/* Deploys across 7 verticals */}
                   <div className="verticals-strip">
-                    <p className="strip-label">Deploys across 7 verticals</p>
+                   Serving Diverse Industry Sectors
                     <div className="verticals-grid">
                       {verticals.map((v) => {
                         const Icon = v.icon;

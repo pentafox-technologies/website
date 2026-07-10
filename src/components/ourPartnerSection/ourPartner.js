@@ -8,13 +8,13 @@ const OurPartner = () => {
   return (
     <OurPartnerSection>
       <div className="container">
-        <h3 className="partner-title">Official Channel Partner</h3>
+        <h3 style={{ color: "#CD0E11" }} className="partner-title">Official Implementation Partner</h3>
         <div className="partner-inner">
           <div className="partner-copy">
             <h3>Tomatovation</h3>
             <p>
               Tomatovation, an AI-first IT consulting firm, is our official
-              channel partner. Together we deliver bespoke software, AI-driven
+              implementation partner. Together we deliver bespoke software, AI-driven
               solutions, and user-centric design — scalable, smart systems that
               solve complex operational challenges for enterprises.
             </p>
@@ -27,7 +27,7 @@ const OurPartner = () => {
           <div className="partner-visual">
             <img
               src={TomatovationLogo}
-              alt="Tomatovation — Official Channel Partner"
+              alt="Tomatovation — Official Implementation Partner"
             />
           </div>
         </div>

@@ -26,9 +26,9 @@ export const PartnerProductsWrapper = styled.div`
   .hero-product {
     background: #ffffff;
     text-align: center;
-    padding: 40px 0 48px;
+    padding: 5px 0 48px;
     ${sm} {
-      padding: 56px 0 72px;
+      padding: 10px 0 72px;
     }
   }
 
@@ -387,9 +387,11 @@ export const PartnerProductsWrapper = styled.div`
     margin-top: 6px;
   }
 
-  /* Verticals — compact pills */
+  /* Verticals — compact pills (light section) */
   .verticals-strip {
     margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
     text-align: center;
   }
   .verticals-strip .strip-label {
@@ -398,7 +400,7 @@ export const PartnerProductsWrapper = styled.div`
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--muted);
     margin-bottom: 18px;
   }
   .verticals-grid {
@@ -413,10 +415,10 @@ export const PartnerProductsWrapper = styled.div`
     align-items: center;
     gap: 8px;
     padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #fff;
+    border: 1px solid var(--line);
     border-radius: 999px;
-    color: #fff;
+    color: var(--ink);
     font-family: 'Outfit', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -424,8 +426,8 @@ export const PartnerProductsWrapper = styled.div`
     transition: all 0.2s ease;
   }
   .vertical-pill:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--accent);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     transform: translateY(-2px);
   }
   .vertical-pill .pill-icon {
@@ -440,8 +442,8 @@ export const PartnerProductsWrapper = styled.div`
     bottom: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%) scale(0.95);
-    background: #fff;
-    color: var(--ink);
+    background: var(--ink);
+    color: #fff;
     font-family: 'Varela Round', sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -460,7 +462,7 @@ export const PartnerProductsWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: #fff;
+    border-top-color: var(--ink);
   }
   .vertical-pill:hover .tooltip {
     opacity: 1;
