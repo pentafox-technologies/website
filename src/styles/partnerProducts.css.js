@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { sm, md, xs } from "../../helpers/device";
+import { sm, md, xs } from "../helpers/device";
 
 export const PartnerProductsWrapper = styled.div`
   --accent: #cd0e11;

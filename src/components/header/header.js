@@ -665,7 +665,7 @@ const HeaderBar = ({
                 zIndex={999}
               >
                 <HoverCard.Target>
-                  <a href="#" className={lightLinks ? "lightLinks" : "link"}>
+                  <a href="/" onClick={(e) => e.preventDefault()} className={lightLinks ? "lightLinks" : "link"}>
                     <h5>
                       <Center inline>
                         <Box component="span" mr={5}>
@@ -702,7 +702,7 @@ const HeaderBar = ({
                 zIndex={999}
               >
                 <HoverCard.Target>
-                  <a href="#" className={lightLinks ? "lightLinks" : "link"}>
+                  <a href="/" onClick={(e) => e.preventDefault()} className={lightLinks ? "lightLinks" : "link"}>
                     <h5>
                       <Center inline>
                         <Box component="span" mr={5}>
@@ -733,7 +733,7 @@ const HeaderBar = ({
                 zIndex={999}
               >
                 <HoverCard.Target>
-                  <a href="#" className={lightLinks ? "lightLinks" : "link"}>
+                  <a href="/" onClick={(e) => e.preventDefault()} className={lightLinks ? "lightLinks" : "link"}>
                     <h5>
                       <Center inline>
                         <Box component="span" mr={5}>

@@ -262,19 +262,29 @@ const Footer = () => {
                   {...form.getInputProps("project_sevices")}
                   data={[
                     {
+                      value: "Aervia - Aviation Digital Platforms",
+                      label: "Aervia - Aviation Digital Platforms",
+                      group: "Our Product",
+                    },
+                    {
+                      value: "Digiops - Digital Lending Platform",
+                      label: "Digiops - Digital Lending Platform",
+                      group: "Our Product",
+                    },
+                    {
                       value: "Whatsapp business automation - walane.ai",
                       label: "Whatsapp business automation - walane.ai",
-                      group: "Products",
+                      group: "Our Product",
                     },
                     {
                       value: "KYC / ID verification APIs - FastKYC.com",
                       label: "KYC / ID verification APIs - FastKYC.com",
-                      group: "Products",
+                      group: "Our Product",
                     },
                     {
-                      value: "Unified Digital Lending Platform - digiops.in",
-                      label: "Unified Digital Lending Platform - digiops.in",
-                      group: "Products",
+                      value: "JATAS AI - Voice AI Platform",
+                      label: "JATAS AI - Voice AI Platform",
+                      group: "Partner Product",
                     },
                     {
                       value: "Cloud / Infra services",

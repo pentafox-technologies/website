@@ -98,10 +98,8 @@ export const OurPartnerSection = styled.section`
     width: 100%;
     max-width: 340px;
     padding: 36px 28px;
-    background: #ffffff;
-    border: 1px solid #eee;
     border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+
 
     ${sm} {
       width: 340px;

@@ -16,20 +16,20 @@ import PageWrapper, {
   TopSectionWrapper,
 } from "../../components/pageWrapper/PageWrapper";
 import { HeaderData } from "../../components/head/Head";
-import { PartnerProductsWrapper } from "./partnerProducts.css";
+import { PartnerProductsWrapper } from "../../styles/partnerProducts.css";
 import JatasLogo from "../../about_assets/jatas-ai.png";
 
 export const Head = () => <HeaderData pageTitle="Partner Products — JATAS AI" />;
 
 
 const greetings = [
+  { text: "hello", lang: "en" },
   { text: "नमस्ते", lang: "hi" },
   { text: "નમસ્તે", lang: "gu" },
   { text: "வணக்கம்", lang: "ta" },
   { text: "నమస్కారం", lang: "te" },
   { text: "ನಮಸ್ಕಾರ", lang: "kn" },
   { text: "নমস্কার", lang: "bn" },
-  { text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", lang: "pa" },
 ];
 
 const capabilities = [

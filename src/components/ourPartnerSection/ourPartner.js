@@ -8,15 +8,15 @@ const OurPartner = () => {
   return (
     <OurPartnerSection>
       <div className="container">
-        <h3 style={{ color: "#CD0E11" }} className="partner-title">Official Implementation Partner</h3>
+        <h3 style={{ color: "#CD0E11" }} className="partner-title">
+          Official Implementation Partner
+        </h3>
         <div className="partner-inner">
           <div className="partner-copy">
             <h3>Tomatovation</h3>
             <p>
-              Tomatovation, an AI-first IT consulting firm, is our official
-              implementation partner. Together we deliver bespoke software, AI-driven
-              solutions, and user-centric design — scalable, smart systems that
-              solve complex operational challenges for enterprises.
+              Tomatovation, an AI-first IT consulting firm, is our official implementation partner. Together, we help enterprises implement bespoke software, AI-driven solutions, and user-centric platforms, delivering scalable and intelligent systems
+              that address complex operational challenges.
             </p>
             <Link className="partner-cta" to="/partner/jatas_ai">
               <h6>Learn more about JATAS AI</h6>
@@ -25,10 +25,7 @@ const OurPartner = () => {
           </div>
 
           <div className="partner-visual">
-            <img
-              src={TomatovationLogo}
-              alt="Tomatovation — Official Implementation Partner"
-            />
+            <img src={TomatovationLogo} alt="Tomatovation — Official Implementation Partner" />
           </div>
         </div>
       </div>
