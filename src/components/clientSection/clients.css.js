@@ -6,6 +6,27 @@ export const ClientLogoSection = styled.div`
   padding: 32px 0;
   text-align: center;
   // margin-bottom: 64px;
+
+  h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #1a1a1a;
+    margin: 0 0 14px;
+
+    ${sm} {
+      font-size: 30px;
+    }
+  }
+
+  p {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 15px;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
+  }
+
   ${sm} {
     padding: 50px 0;
     // margin-bottom: 120px;

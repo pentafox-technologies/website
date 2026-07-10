@@ -1,6 +1,7 @@
 import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import { ClientLogoSection } from "./clients.css";
+import OurPartner from "../ourPartnerSection/ourPartner";
 import ISO_Certificate from "../../about_assets/ISO.png";
 import SOC_Certificate from "../../about_assets/SOC.png";
 
@@ -43,6 +44,9 @@ const Clients = ({
           </ul>
         </div>
       </ClientLogoSection>
+
+      {/* ===== OFFICIAL CHANNEL PARTNER (Tomatovation) ===== */}
+      <OurPartner />
 
       {/* ===== PARTNERS + CERTIFICATES ===== */}
       <ClientLogoSection className="bg-white">

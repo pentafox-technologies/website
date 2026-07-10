@@ -4,18 +4,20 @@ import { xs, sm, md } from "../../helpers/device";
 
 export const HomeWrapper = styled.div`
   h3 {
-    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
     line-height: 120%;
     color: #292733;
     margin: 0 0 8px;
     font-weight: 500;
 
     ${sm} {
-      font-size: 28px;
+      font-size: 30px;
     }
   }
 
   p {
+    font-family: 'Varela Round', sans-serif;
     line-height: 140%;
     margin-bottom: 24px;
 
@@ -25,6 +27,7 @@ export const HomeWrapper = styled.div`
   }
 
   h5 {
+    font-family: 'Outfit', sans-serif;
     font-size: 14px;
     line-height: 140%;
     font-weight: 700;
@@ -34,6 +37,7 @@ export const HomeWrapper = styled.div`
     }
   }
 `;
+
 
 // ${ContentSectionWrapper} {
 //     p {

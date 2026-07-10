@@ -6,6 +6,7 @@ import FastkycLogo from "../../about_assets/Logo.png";
 import WalaneLogo from "../../about_assets/Walane.png";
 import aviLogo from "../../about_assets/avi_favicon.png";
 import digiopsLogo from "../../about_assets/digi-ops.png";
+import JatasLogo from "../../about_assets/jatas-ai.png";
 
 import { Link, navigate } from "gatsby";
 import {
@@ -483,6 +484,16 @@ const ourProductsdata = [
   },
 ];
 
+const partnerProductsData = [
+  {
+    title: "JATAS AI",
+    description:
+      "Human-like voice AI agent that handles customer conversations across industries with natural, contextual dialogue.",
+    pageRoute: "/partner/jatas_ai",
+    image: JatasLogo,
+  },
+];
+
 const HeaderBar = ({
   showDarkLogo = true,
   headerColor = "#FFFFFF",
@@ -726,7 +737,7 @@ const HeaderBar = ({
                     <h5>
                       <Center inline>
                         <Box component="span" mr={5}>
-                          Our Products
+                          Products
                         </Box>
                         <IconChevronDown size={16} />
                       </Center>
@@ -735,8 +746,34 @@ const HeaderBar = ({
                 </HoverCard.Target>
 
                 <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
+                  <Text
+                    size="xs"
+                    tt="uppercase"
+                    fw={700}
+                    color="dimmed"
+                    mb={8}
+                    ml={4}
+                  >
+                    Our Products
+                  </Text>
                   <SimpleGrid cols={2} spacing={12}>
                     {ourProductsdata?.map((item) => (
+                      <NavigationLinks key={item.title} item={item} />
+                    ))}
+                  </SimpleGrid>
+                  <Divider my={12} />
+                  <Text
+                    size="xs"
+                    tt="uppercase"
+                    fw={700}
+                    color="dimmed"
+                    mb={8}
+                    ml={4}
+                  >
+                    Partner Products
+                  </Text>
+                  <SimpleGrid cols={2} spacing={12}>
+                    {partnerProductsData?.map((item) => (
                       <NavigationLinks key={item.title} item={item} />
                     ))}
                   </SimpleGrid>
@@ -869,7 +906,7 @@ const HeaderBar = ({
                   className={classes.drawerMenuItem}
                   style={{ width: "auto" }}
                 >
-                  <span className={classes.mobileNavHeading}>Our Products</span>
+                  <span className={classes.mobileNavHeading}>Products</span>
                   <IconChevronDown
                     size={18}
                     style={{
@@ -884,7 +921,32 @@ const HeaderBar = ({
 
                 <Collapse in={productsOpened}>
                   <div className={classes.drawerCollapseContent}>
+                    <Text
+                      size="xs"
+                      tt="uppercase"
+                      fw={700}
+                      color="dimmed"
+                      px={20}
+                      pt={12}
+                      pb={4}
+                    >
+                      Our Products
+                    </Text>
                     {ourProductsdata.map((item) => (
+                      <NavigationLinks key={item.title} item={item} />
+                    ))}
+                    <Text
+                      size="xs"
+                      tt="uppercase"
+                      fw={700}
+                      color="dimmed"
+                      px={20}
+                      pt={12}
+                      pb={4}
+                    >
+                      Partner Products
+                    </Text>
+                    {partnerProductsData.map((item) => (
                       <NavigationLinks key={item.title} item={item} />
                     ))}
                   </div>
