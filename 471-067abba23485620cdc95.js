@@ -1,1 +1,0 @@
-(self.webpackChunkpentafox_web=self.webpackChunkpentafox_web||[]).push([[471],{1471:function(){}}]);
